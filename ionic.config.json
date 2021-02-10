@@ -1,0 +1,7 @@
+{
+  "name": "Elearning",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
