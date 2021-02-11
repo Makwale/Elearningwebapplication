@@ -1,19 +1,66 @@
 
+<mat-toolbar id="toolbar">
+
+    <span id="brand">ElearningApp</span>
+
+    <ion-input placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
+
+    <div style="width: 35%; padding-left: 15%;">
+      <ion-button href="#" fill="outline" shape="round"  id="btnsignin">Sign In/Sign Out</ion-button>
+      <ion-button fill="clear" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
+    </div>
+    
+  </mat-toolbar>
+
 <mat-sidenav-container class="example-container" >
+  
+  <mat-sidenav mode="side" fixedInViewport="true" opened id="sideNav">
+    <ion-item button="true" detail routerLink="home">
+      <mat-icon>home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+    </ion-item>
 
-  <mat-sidenav mode="side" fixedInViewport="true" opened id="sideNav">Sidenav content</mat-sidenav>
+    <ion-item button="true" detail routerLink="featuredcourses">
+      <mat-icon>domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail routerLink="latestcourses">
+      <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail  routerLink="popularcourses">
+      <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail routerLink="categories">
+      <mat-icon>category</mat-icon><ion-label class="pagestabs">Categories</ion-label>
+    </ion-item>
+
+
+    <ion-item button="true" detail routeroulet routerLink="popularinstructors">
+      <mat-icon >people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail routerLink="account">
+      <mat-icon >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail routerLink="about">
+      <mat-icon >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail routerLink="contacts">
+      <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
+    </ion-item>
+
+    <ion-item button="true" detail>
+      <mat-icon >settings</mat-icon><ion-label class="pagestabs">Settings</ion-label>
+    </ion-item>
+
+  </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar>
-
-      <span>My App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
-    </mat-toolbar>
+      <router-outlet></router-outlet>
+      
   </mat-sidenav-content>
 
 </mat-sidenav-container>
+
