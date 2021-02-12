@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .body {
     background-color:light;
   }
@@ -31,3 +32,38 @@ font-size: medium;
 .checked {
     color: orange;
   }
+=======
+.body {
+    background-color:light;
+  }
+
+.course {
+    text-align: center;
+}
+
+img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+p {
+font-size: medium;
+}
+
+.title{
+
+    margin: 0 auto 80px;
+    position: relative;
+    line-height: 40px;
+    color: #555;
+    font-size: 30px;
+    font-weight: bold;
+  
+}
+
+.checked {
+    color: orange;
+  }
+>>>>>>> refs/remotes/origin/master
