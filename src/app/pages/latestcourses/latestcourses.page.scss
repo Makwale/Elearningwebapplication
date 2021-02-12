@@ -1,0 +1,68 @@
+ion-content {
+    --background: linear-gradient(90deg, rgba(43,90,148,1) 0%,
+     rgba(45,112,229,1) 35%, rgba(45,112,229,1) 100%);
+   }
+ 
+   .box {
+     display:flex;
+     flex-wrap: wrap;
+     height: 100%;
+     width: auto;
+     background-color:  hsl(0, 40%, 98%); 
+     align-content:stretch;
+
+   // padding: 10px;
+     padding-left: 20px;
+     margin: 50px 10px;
+   }
+   
+   .card{ 
+    height: auto;
+    width: auto;
+    background-color: white;
+     text-align: center;
+     text-justify: auto;
+    // background-color: darkgoldenrod;
+     //background-color: rgb(172, 172, 172);
+    // border-width: 1px 1px 5px 5px;
+    // border-style: solid;
+     border-color: rgb(233, 233, 233);
+     margin: 25px;
+     border-radius: 15px 15px 15px 15px;
+     .img{
+       border-radius: 18px 18px 8px 8px;
+       height: 160px;
+       width: 100%;
+     }
+     .name{
+         color:rgb(3, 0, 0);
+         font-size: 16px;
+         font-weight: bold;
+     }
+   
+     .desc{
+       color:rgb(3, 0, 0);
+         font-size: 16px;color:rgb(3, 0, 0);
+         font-weight: bold;
+        // text-align: left;
+         padding-left: 10px;
+     }
+     .price{
+       color:rgb(46, 43, 43);
+         font-size: 18px;
+         font-weight: bold;
+        // text-align: left;
+         padding-left: 10px;
+       }
+   .enroll{
+      // align-self: center;
+        //width: 40%;
+        border-radius: 500px 500px 500px 500px;
+       
+        align-items: center !important;
+        justify-content: center !important;
+   }
+
+   
+   
+   }
