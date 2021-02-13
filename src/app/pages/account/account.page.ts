@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage implements OnInit {
 
+  type="login"
   constructor() { }
 
   ngOnInit() {

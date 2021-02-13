@@ -1,0 +1,402 @@
+#mapId{
+    height: 100%;
+    width: 100%;
+  }
+  
+  $black: #252021;
+  $light: #D8DBE2;
+  $pale: #B7CEE8;
+  $navy: #577399;
+  $dark: #495867;
+  $white: #FFFFFF;
+  
+  @import url('https://fonts.googleapis.com/css?family=Raleway:200,400|PT+Mono&display=swap');
+  
+  $font: 'Raleway', sans-serif;
+  $mono: 'PT Mono', monospace;
+  $ease: all .3s ease;
+  
+  body {
+    margin: 0;
+    font-family: $font;
+  }
+  
+  .color-box {
+    position: absolute;
+    display: flex;
+    width: 250px;
+    height: 50px;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+    margin: 8px;
+  }
+  
+  #dashboard-container {
+    position: relative;
+  
+  
+    width: 1080px;
+    height: 500px;
+    border: 1px solid $light;
+    background: $light;
+  }
+  
+  .leftside-menu {
+    position: absolute;
+    height: 100%;
+    width: 25%;
+    margin-left: 73%;
+    //background: $light;
+    background: $white;
+    box-shadow: 2px 2px 15px rgba($dark, .3);
+    text-align: center;
+    
+  }
+  .avatar {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      color: $dark;
+      font-size: .8em;
+      margin-top: 15px;
+    }
+  }
+  .icon {
+    width: 55px;
+    height: 55px;
+    background: $pale;
+    border-radius: 50%;
+    p {
+      color: $white;
+      font-size: 1.7em;
+      margin: 0;
+      margin-top: 12px;
+    }
+  }
+  
+  li {
+    list-style-type: none;
+    color: $dark;
+    margin: 0;
+    padding: 15px;
+    text-transform: uppercase;
+    font-size: .8em;
+    letter-spacing: 1px;
+    cursor: pointer;
+    &:hover {
+      background: $white;
+      color: $navy;
+      transition: $ease;
+    }
+  }
+  
+  .active {
+    background: $pale;
+    margin-bottom: 15px;
+    color: $white;
+    width: 140px;
+    margin-left: -10px;
+    box-shadow: 1px 1px 3px rgba($dark, .3);
+    transition: $ease;
+    &:hover {
+      background: $white;
+      color: $dark;
+      transition: $ease;
+    }
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 1.15em;
+    color: $white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  p {
+    color: $navy;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8em;
+  }
+  
+  a {
+    cursor: pointer;
+    padding: 3px;
+    &:hover {
+      background: $pale;
+      color: $white;
+      transition: $ease;
+    }
+  }
+  
+  .time {
+    font-size: 1.8em;
+    font-family: $mono;
+    margin-top: -30px;
+    margin-bottom: 25px;
+    color: $pale;
+    background: $white;
+    padding: 7px;
+  }
+  
+  ion-icon {
+    font-size: 20px;
+    padding: 10px
+  }
+  
+  .main-grid {
+   // margin-top: 3.5%;
+   margin-top: 1%;
+    width: 70%;
+    margin-left: 1%;
+    background: $white;
+    height: 96%;
+    display: grid;
+    grid-gap: 10px;
+    grid-gap: $light;
+    grid-template-columns: repeat(2, 1fr);
+    box-shadow: 2px 2px 15px rgba($dark, .3);
+   grid-template-areas: 
+    "one four"
+    "one five"
+    "two five"
+    "two five"
+    "three six"
+    "three six"
+    "three six";
+  }
+  
+  .item {
+    border: 1px solid $light;
+  
+  }
+  //time
+  .one {
+    grid-area: one;
+   grid-column: 1 / 2;
+  
+   // background: $pale;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   // justify-content: center;
+    /* p {
+      margin-bottom: -40px
+    } */
+  }
+  //music player
+  .two { 
+    grid-area: two;
+    grid-column: 1;
+    background: $pale;
+   
+  }
+
+  
+  //weather
+  
+  .three {
+    grid-area: three;
+    grid-column: 1;
+    background: $light;
+  }
+  
+  h2 {
+    color: $white;
+    font-size: 2.3em;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    i {
+      font-size: .7em;
+      margin-left: -10px;
+    }
+  }
+  .weather {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: -70px;
+    p {
+      font-size: .7em;
+    }
+  }
+  .city {
+    color: $dark;
+  }
+  
+  //calendar
+  .four {
+    grid-area: four;
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    p {
+      margin-top: 8px;
+    }
+  }
+  #date {
+    color: $pale;
+    font-family: $mono;
+    font-size: 1.3em;
+    font-weight: 900;
+    letter-spacing: 2px;
+  }
+  
+  //rooms
+  .five {
+    grid-area: five;
+    grid-column: 2;
+    text-align: center;
+  }
+  
+  
+
+
+  .six {
+    grid-area: six;
+    grid-column: 2;
+    background: $pale;
+    //text-align: center;
+  }
+  
+ 
+  
+
+  .column {
+    float: left;
+    width: 50%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+ 
+  
+ 
+
+  .form {
+   // max-width:400px;
+    width:100%;
+   // margin:0 auto;
+    position:relative;
+  }
+  
+  #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+  
+  #contact {
+    background:#F9F9F9;
+    padding:25px;
+   // margin:50px 0;
+  }
+  
+  #contact h3 {
+    color: $pale;
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+  #contact h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:13px;
+  }
+  
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+  
+  #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+  }
+  
+  #contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+  }
+  
+  #contact textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+  }
+  
+  #contact button[type="submit"] {
+    cursor:pointer;
+    width:100%;
+    border:none;
+    background:$pale;
+    color:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+    font-size:15px;
+  }
+  
+  #contact button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+  }
+  
+  #contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+  
+  #contact input:focus, #contact textarea:focus {
+    outline:0;
+    border:1px solid #999;
+  }
+  ::-webkit-input-placeholder {
+   color:#888;
+  }
+  :-moz-placeholder {
+   color:#888;
+  }
+  ::-moz-placeholder {
+   color:#888;
+  }
+  :-ms-input-placeholder {
+   color:#888;
+  }
+  
