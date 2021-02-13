@@ -6,11 +6,6 @@ const routes: Routes = [
   
   {
     path: '',
-    redirectTo: 'main',
-    pathMatch: 'full'
-  },
-  {
-    path: 'main',
     component: MainPage,
     children: [  {
               path: 'home',

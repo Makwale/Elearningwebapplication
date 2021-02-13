@@ -1,163 +1,76 @@
 
 <mat-toolbar id="toolbar">
 
-  <span id="brand">ElearningApp</span>
-
-  <ion-input placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
-
-    <div style="width: 35%; padding-left: 15%;">
-      <ion-button href="#" fill="outline" shape="round"  id="btnsignin">Sign In/Sign Up</ion-button>
-      <ion-button fill="clear" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
-    </div>
-    
-</mat-toolbar>
-
-
-<!-- <mat-toolbar id="toolbar">
-
-  <span id="brand">ElearningApp</span>
-
-  <ion-input placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
-
-    <div style="width: 35%; padding-left: 15%;">
-      <ion-button href="#" fill="outline" shape="round"  id="btnsignin">Sign In/Sign Up</ion-button>
-      <ion-button fill="clear" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
-    </div>
-    
-</mat-toolbar>
-
-<mat-sidenav-container class="example-container" >
-  <mat-sidenav mode="side" fixedInViewport="true" fixedTopGap="80" opened id="sideNav">
-
-    <ion-item button="true" detail routerLink="home">
-      <mat-icon>home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
-    </ion-item>
-
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    
-    <router-outlet></router-outlet>
-   
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
-
-<mat-sidenav-container class="example-container" >
+    <span id="brand">ElearningApp</span>
   
-  <mat-sidenav mode="side" fixedInViewport="true" fixedTopGap="80" opened id="sideNav">
-    <ion-item button="true" detail routerLink="home">
-      <mat-icon>home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail routerLink="featuredcourses">
-      <mat-icon>domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail routerLink="latestcourses">
-      <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail  routerLink="popularcourses">
-      <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail routerLink="categories">
-      <mat-icon>book</mat-icon><ion-label class="pagestabs">Categories</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail routerLink="courseinrolled">
-      <mat-icon>library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
-    </ion-item>
-
-
-    <ion-item button="true" detail routeroulet routerLink="popularinstructors">
-      <mat-icon >people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail routerLink="account">
-      <mat-icon >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
-    </ion-item>
-
-    
-
-    <ion-item button="true" detail routerLink="about">
-      <mat-icon >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
-    </ion-item>
-
-    <ion-item button="true" detail routerLink="contacts">
-      <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
-    </ion-item>
-
-  </mat-sidenav>
-  <mat-sidenav-content >
-    
-      <!-- <router-outlet></router-outlet> -->
-
-      <!-- <div id="conta">
-      <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" mat-card-image src="../../../assets/img/featuredcourses/cloud.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Database systems,SQL and PL/SQL</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          <span>By: <span class="instructor">Emmanuel Mametja</span></span>
-            <br>
-          <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R600</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-        </mat-card-content>
-        
-      </mat-card>
-
+    <ion-input placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
+  
+      <div style="width: 35%; padding-left: 15%;">
+        <ion-button href="#" fill="outline" shape="round"  id="btnsignin">Sign In/Sign Up</ion-button>
+        <ion-button fill="clear" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
+      </div>
       
-      <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" mat-card-image src="../../../assets/img/featuredcourses/cloud.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Database systems,SQL and PL/SQL</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          <span>By: <span class="instructor">Emmanuel Mametja</span></span>
-            <br>
-          <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R600</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-        </mat-card-content>
-        
-      </mat-card>
+  </mat-toolbar>
 
-
-      
-      <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" mat-card-image src="../../../assets/img/featuredcourses/cloud.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Database systems,SQL and PL/SQL</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          <span>By: <span class="instructor">Emmanuel Mametja</span></span>
-            <br>
-          <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R600</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-        </mat-card-content>
-        
-      </mat-card>
-
-      
-      <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" mat-card-image src="../../../assets/img/featuredcourses/cloud.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Database systems,SQL and PL/SQL</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          <span>By: <span class="instructor">Emmanuel Mametja</span></span>
-            <br>
-          <ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R600</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
-        </mat-card-content>
-        
-      </mat-card>
-
-    </div> -->
-
-    <ion-content>
-      hgkjdshgjskdghd\s
-    </ion-content>
+  <ion-content>
+  
+  
+  <mat-sidenav-container class="example-container" >
     
-     
-  </mat-sidenav-content>
+    <mat-sidenav mode="side" fixedInViewport="true" fixedTopGap="80" opened id="sideNav">
+      <ion-item button="true" detail routerLink="home">
+        <mat-icon>home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail routerLink="featuredcourses">
+        <mat-icon>domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail routerLink="latestcourses">
+        <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail  routerLink="popularcourses">
+        <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail routerLink="categories">
+        <mat-icon>book</mat-icon><ion-label class="pagestabs">Categories</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail routerLink="courseinrolled">
+        <mat-icon>library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
+      </ion-item>
+  
+  
+      <ion-item button="true" detail routeroulet routerLink="popularinstructors">
+        <mat-icon >people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail routerLink="account">
+        <mat-icon >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+      </ion-item>
+  
+      
+  
+      <ion-item button="true" detail routerLink="about">
+        <mat-icon >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
+      </ion-item>
+  
+      <ion-item button="true" detail routerLink="contacts">
+        <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
+      </ion-item>
+  
+    </mat-sidenav>
+    <mat-sidenav-content >
+      
+        <router-outlet></router-outlet>
+  
+  
+    </mat-sidenav-content>
+  
+  </mat-sidenav-container>
 
-</mat-sidenav-container>
-
+</ion-content>
+  
+  

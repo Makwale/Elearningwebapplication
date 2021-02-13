@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {MatIconModule} from '@angular/material/icon';
     IonicModule,
     HomePageRoutingModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatStepperModule
   ],
   declarations: [HomePage]
 })
