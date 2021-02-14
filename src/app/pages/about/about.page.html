@@ -85,10 +85,15 @@
 
     <div class="rightcolumn">
       <div class="card" >
-        <h2>Popular Instructors</h2>
-        <!-- <div class="fakeimg" style="height:90px;" id="iv"> -->
-        <img  [routerLink]="['/popularinstructors']" src="https://www.nxsports.org/wp-content/uploads/2016/04/team-1024x474.jpg" >
-        <!-- </div> -->
+       <h2>Popular Instructors
+        <button fill="clear">  
+        <ion-icon class="hh" name="people" [routerLink]="['/popularinstructors']"  ></ion-icon>
+        </button>
+      </h2>
+      
+       <a [routerLink]="['/popularinstructors']" class="image">
+        <img src="https://www.nxsports.org/wp-content/uploads/2016/04/team-1024x474.jpg"></a>
+      
        
       </div>
       <div class="card">

@@ -58,6 +58,7 @@
 .section .slider,
 .section .footer {
   background: #333;
+  margin-bottom: 20px;
 }
 
 .slidercontent {
@@ -480,3 +481,21 @@ background: yellowgreen;
 h1{
   text-align: center;
 }
+/* .card a image:hover {
+  background: url(https://www.nxsports.org/wp-content/uploads/2016/04/team-1024x474.jpg); */
+ // position: absolute;
+//}
+
+.image  {
+  
+  background: url('https://www.nxsports.org/wp-content/uploads/2016/04/team-1024x474.jpg');
+}
+
+.image :hover img {
+  visibility: hidden;
+}
+
+button:hover ion-icon{
+  color: #577399;
+  background: #B7CEE8;
+ }   
