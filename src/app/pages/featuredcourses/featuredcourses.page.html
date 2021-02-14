@@ -11,83 +11,149 @@
 
 
       <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/gaming2.jpg">
+        <img style="margin: auto;" class="img" mat-card-image
+         src="../../../assets/img/featuredcourses/gaming2.jpg" alt="Gaming image">
         <mat-card-content style="margin: 10px; ">
           <h5><b>Learn Games Programming</b></h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
           <span>By: <span class="instructor">Thembi</span></span>
             <br>
           <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R560</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          <span class="prices">R560</span>
+          <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>create</mat-icon>
+              <span>enroll now</span>
+            </button>
+          </mat-menu>
         </mat-card-content>
         
       </mat-card>
     
       
       <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/iot.jpg">
+        <img style="margin: auto;" class="img" mat-card-image 
+        src="../../../assets/img/featuredcourses/iot.jpg" alt="Internet of Things image">
         <mat-card-content style="margin: 10px; ">
           <h5><b>Learn Internet of Things</b></h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
           <span>By: <span class="instructor">Sinoxolo</span></span>
             <br>
           <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-          <span class="prices">R860</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          <span class="prices">R860</span> 
+          <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>create</mat-icon>
+              <span>enroll now</span>
+            </button>
+          </mat-menu>
         </mat-card-content>
         
       </mat-card>
   
       
       <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/robotics.jpg">
+        <img style="margin: auto;" class="img" mat-card-image 
+        src="../../../assets/img/featuredcourses/robotics.jpg" alt="Robotics image">
         <mat-card-content style="margin: 10px; ">
           <h5><b>Learn Robot Programming</b></h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
           <span>By: <span class="instructor">Kgothatso</span></span>
             <br>
          <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R460</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          <span class="prices">R460</span> 
+          <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>create</mat-icon>
+              <span>enroll now</span>
+            </button>
+          </mat-menu>
         </mat-card-content>
         
       </mat-card>
 
       
       <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;"  class="img"  mat-card-image src="../../../assets/img/featuredcourses/cloud.jpg">
+        <img style="margin: auto;"  class="img"  mat-card-image 
+        src="../../../assets/img/featuredcourses/cloud.jpg" alt="Cloud Computing image">
         <mat-card-content style="margin: 10px; ">
           <h5><b>Learn Cloud Computing</b></h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
           <span>By: <span class="instructor">Emmanuel Mametja</span></span>
             <br>
             <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-            <span class="prices">R600</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            <span class="prices">R600</span> 
+            <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>create</mat-icon>
+                <span>enroll now</span>
+              </button>
+            </mat-menu>
         </mat-card-content>
         
       </mat-card>
   
   
       <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/c++.png">
+        <img style="margin: auto;" class="img" mat-card-image 
+        src="../../../assets/img/featuredcourses/c++.png" alt="C++ programming image">
         <mat-card-content style="margin: 10px; ">
           <h5><b>Learn C++ Programming</b></h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
           <span>By: <span class="instructor">Innocent Partco</span></span>
             <br>
             <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R890</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          <span class="prices">R890</span>
+          <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>create</mat-icon>
+              <span>enroll now</span>
+            </button>
+          </mat-menu>    
         </mat-card-content>
         
       </mat-card>
     
       <mat-card class="fcourse-card" style=" padding: 0px;">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/django.png">
+        <img style="margin: auto;" class="img" mat-card-image 
+        src="../../../assets/img/featuredcourses/django.png" alt="Django python image">
         <mat-card-content style="margin: 10px; ">
           <h5><b>Learn Django Python</b></h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
           <span>By: <span class="instructor">Mia Sinah</span></span>
             <br>
             <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-            <span class="prices">R860</span> <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            <span class="prices">R860</span> 
+            <button mat-icon-button color="white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>create</mat-icon>
+                <span>enroll now</span>
+              </button>
+            </mat-menu>
         </mat-card-content>
         
       </mat-card>

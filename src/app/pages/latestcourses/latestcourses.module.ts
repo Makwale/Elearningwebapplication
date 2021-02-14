@@ -8,6 +8,8 @@ import { LatestcoursesPage } from './latestcourses.page';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { MatStepperModule } from '@angular/material/stepper';
     LatestcoursesPageRoutingModule,
     MatCardModule,
     MatIconModule,
-    MatStepperModule
+    MatStepperModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   declarations: [LatestcoursesPage]
 })
