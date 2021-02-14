@@ -37,7 +37,7 @@
   
   
     width: 1080px;
-    height: 500px;
+    height: 560px;
     border: 1px solid $light;
     background: $light;
   }
@@ -55,7 +55,7 @@
   }
   .avatar {
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,22 +97,18 @@
   .active {
     background: $pale;
     margin-bottom: 15px;
-    color: $white;
+    color: $dark;
     width: 140px;
     margin-left: -10px;
     box-shadow: 1px 1px 3px rgba($dark, .3);
     transition: $ease;
-    &:hover {
-      background: $white;
-      color: $dark;
-      transition: $ease;
-    }
+  
   }
   
   h1 {
     margin: 0;
     font-size: 1.15em;
-    color: $white;
+    color: $dark;
     letter-spacing: 2px;
     text-transform: uppercase;
   }
@@ -242,7 +238,7 @@
     }
   }
   #date {
-    color: $pale;
+    color: $dark;
     font-family: $mono;
     font-size: 1.3em;
     font-weight: 900;
@@ -368,14 +364,15 @@
     width:100%;
     border:none;
     background:$pale;
-    color:#FFF;
+    color:black;
     margin:0 0 5px;
     padding:10px;
-    font-size:15px;
+    font-size:18px;
   }
   
   #contact button[type="submit"]:hover {
     background:#09C;
+    color: white;
     -webkit-transition:background 0.3s ease-in-out;
     -moz-transition:background 0.3s ease-in-out;
     transition:background-color 0.3s ease-in-out;
@@ -398,5 +395,13 @@
   }
   :-ms-input-placeholder {
    color:#888;
+  }
+
+
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background:$pale;
+    margin-top: 5px;
   }
   
