@@ -8,6 +8,9 @@ import { AccountPageRoutingModule } from './account-routing.module';
 
 import { AccountPage } from './account.page';
 import { InputModule } from 'src/app/components/input/input.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   imports: [
@@ -15,7 +18,10 @@ import { InputModule } from 'src/app/components/input/input.module';
     FormsModule,
     IonicModule,
     AccountPageRoutingModule,
-    InputModule
+    InputModule,
+    MatCardModule,
+    MatIconModule,
+    MatStepperModule
   ],
   declarations: [AccountPage]
 })
