@@ -9,8 +9,9 @@
 
       <ion-item-divider class="category">
         <h2 class="subheaders" style="margin-left: 0px; margin-top: 10px;">Featured Courses</h2>
-        <ion-label slot="end">
-            <a href="#" style="margin-right: 10px;">See All</a>
+        <ion-label slot="end" >
+            <a href="#" style="margin-right: 10px;" [routerLink]="['/featuredcourses']" 
+            >See All</a>
         </ion-label>
 
       </ion-item-divider>
@@ -115,7 +116,8 @@
         <h2 class="subheaders" style="margin-left: 0px; margin-top: 10px;">Latest Courses</h2>
 
         <ion-label slot="end">
-            <a href="" style="margin-right: 10px;">See All</a>
+            <a 
+            [routerLink]="['/latestcourses']"  style="margin-right: 10px;">See All</a>
         </ion-label>
 
       </ion-item-divider>
