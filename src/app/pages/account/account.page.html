@@ -1,47 +1,56 @@
-<br>
-<br>
-<div class="account-container">
-
-  <ion-segment [(ngModel)]="type" scrollable>
-    <ion-segment-button value="login" checked>
-      <ion-label>Login</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="signup">
-      <ion-label>Sign Up</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-<br>
 
 
-  <div [ngSwitch]="type">
-    <div *ngSwitchCase="'login'" class="login">
-      <div id="header">
-        <img src="assets/log.png" />
-      </div>
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+  <mat-tab label="SIGN IN">
 
-      <form id="form">
-        <app-input placeholder="Email"></app-input>
-        <app-input type="password" placeholder="Password"></app-input>
-        <ion-button expand="block" shape="round">Login</ion-button>
+    <div style="width: 50%; margin: auto; text-align: center; background-color: white; margin-top: 120px; padding-top: 50px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
+
+        <h2>Welcom to Elearning Accademy</h2>
+        <h4>Sign in and start learning</h4>
+      <form>
+ 
+        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+          <ion-label position="stacked">Email Address</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input ></ion-input>
+        </ion-item>
+
+        <ion-checkbox></ion-checkbox> <ion-label class="ion-margin">Remember password</ion-label>
+
+        <ion-button class="ion-margin" size="large" expand="block" shape="round" strong>SIGN IN</ion-button>
+
+        <div><ion-label>Or Sign in with</ion-label></div>
+
+        <button mat-icon-button  style="background-color: transparent;">
+
+        <ion-icon size="large" class="ion-margin" color="primary" name="logo-facebook"></ion-icon>
+          
+        </button>
+
+        <button mat-icon-button  style="background-color: transparent;">
+          <ion-icon class="ion-margin" name="logo-google" size="large" color="danger"></ion-icon>
+        </button>
+
+          <button mat-icon-button  style="background-color: transparent;">
+            <ion-icon name="call" class="ion-margin" size="large"></ion-icon>
+          </button>
+
       </form>
+
     </div>
 
-    <div *ngSwitchCase="'signup'" class="sign-up">
-      <h1>Create your<br />Account</h1>
+  </mat-tab>
 
-      <form id="form">
-        <app-input placeholder="Your Name"></app-input>
-        <app-input placeholder="Email"></app-input>
-        <app-input type="password" placeholder="Password"></app-input>
-        <ion-button expand="block" shape="round">Join Us</ion-button>
-      </form>
 
-      <p>By pressing 'Join Us' you agree to <br />our terms & conditions.</p>
-    </div>
-  </div>
+  <mat-tab label="SIGN UP">
 
 
 
+  </mat-tab>
 
-  <br>
-</div>
+</mat-tab-group>
+
