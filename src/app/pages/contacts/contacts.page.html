@@ -1,96 +1,116 @@
-
-
-<div id="dashboard-container">
-  <div class="leftside-menu">
-    <div class="avatar">
-      <ion-icon name="information-circle-outline"></ion-icon>
-     <h1 id="date"><b>Infomation</b></h1>
-    </div>
-    <nav class="menu">
-      <li class="active"><b>contacts</b></li>
-      <ion-icon name="call"></ion-icon>
-        <p>+27(012) 786 7865</p>
-      <ion-icon name="mail"></ion-icon>
-      <p>elearning@gmail.co.za</p>
-  <ion-icon name="globe"></ion-icon>
-  <p>www.elearningacdemy.co.za</p>
-  <div class="avatar"></div>
-      <li class="active"><b>connect</b></li>
-      <ion-icon name="logo-facebook"></ion-icon>
-          <ion-icon name="logo-twitter"></ion-icon>
-          <ion-icon name="logo-youtube"></ion-icon>
-          <ion-icon name="logo-linkedin"></ion-icon>
-    </nav>
-  </div>
-  
- 
-  <div class="main-grid">
-    <div class="item one">
-
-      <div class="row">
-        <div class="column">
-          <div class="card">
-            <img src="https://th.bing.com/th/id/OIP.Lp6-IMruBOU7G-xDNOi3nAAAAA?pid=ImgDet&rs=1"  style="width:100%">
-            <h4><b>Prof J SMITH</b></h4>
-            <p><b>IT Faculty</b></p>
-            <p><b><ion-icon name="call"></ion-icon></b></p>
-            <p><b>012 987 3246</b></p>
-          </div>
-        </div>
-      
-        <div class="column">
-          <div class="card">
-            <img src="https://img1.wsimg.com/isteam/ip/a0d0563b-149e-4a5a-9d36-8c367c075087/Linda.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:400,cg:true" style="width: 100%;">
-            <h3><b>Mrs Loius</b></h3>
-            <p><b>Finance</b></p>
-            <p><b><ion-icon name="call"></ion-icon></b></p>
-            <p><b>012 097 2345</b></p>
-          </div>
-        </div>
+<section class="contact_us">
+<div class="contact" id="contact">
+  <!-- <div class="container"> -->
+      <div class="heading text-center">
+          <h2>Contact
+              <span> Us </span></h2>
+              <div class="redline"></div>
+         
       </div>
-
       
-    </div>
-    <div class="item two">
-      
-      
-      
-      
-    </div> 
-   
-    <div class="item four">
-      <h1 id="date"><b>Contact us</b></h1>
-     <b> <p><a>we'd love to hear from you</a></p></b>
-
-      <p><a></a></p>
-    </div>
-    
-    <div class="item five">
-      <div class="form">  
-        <form id="contact" action="" method="post">
-          <h1><b>Get in touch</b></h1>
-          <fieldset>
-            <input placeholder="Your name" type="text" tabindex="1" required autofocus>
-          </fieldset>
-          <fieldset>
-            <input placeholder="Your Email Address" type="email" tabindex="2" required>
-          </fieldset>
+       <div class="row" style=" margin-top: 20px;">
         
-          <fieldset>
-            <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
-          </fieldset>
-          <fieldset>
-            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending"  (click)="checkout()">Submit</button>
-          </fieldset>
-        </form>
-       
+          
+                <div class="column">
+
+              <form>
+                  <div class="row">
+                      <div class="col-sm-6">
+                          <input type="text" class="form-control" placeholder="Name">
+                      </div>
+                      <div class="col-sm-6">
+                          <input type="email" class="form-control" placeholder="Email">
+                      </div>
+                      <div class="col-sm-12">
+                          <input type="text" class="form-control" placeholder="Subject">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <textarea class="form-control" rows="5" id="comment" placeholder="Message"></textarea>
+                  </div>
+                  <button class="btn btn-block" type="submit"  (click)="send()">Send Now!</button>
+              </form>
+          </div>
+          <div class="column">
+            <div class="title">
+                <h3>Contact detail</h3>
+                
+            </div>
+              <div class="content">
+                
+                  <div class="info">
+                      <i class="fas fa-mobile-alt"></i>
+                      <h4 class="d-inline-block">PHONE :
+                          <br>
+                          <ion-icon name="call"></ion-icon>
+                          
+                          <span>+27157836913</span></h4>
+                  </div>
+                  
+                  <div class="info">
+                      <i class="far fa-envelope"></i>
+                      <h4 class="d-inline-block">EMAIL :
+                          <br>
+                          <ion-icon name="mail"></ion-icon>
+                          <span>elearning@info.com</span></h4>
+                  </div>
+                  
+                  <div class="info">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <h4 class="d-inline-block">WEBSITE :<br>
+                        <ion-icon name="globe"></ion-icon>
+                          <span>www.elearningwebapplication.com</span></h4>
+                  </div>
+              </div>
+          </div>
+
         
       </div> 
+<div class="row" style="padding-bottom: 10%;">
+  <div class="container address">
+    <div class="row">
+      <div class="column">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h3>Our Address</h3>
+      <div class="redline-address"></div>
+      <p> 13th Nelson Mandela Ave</p>
+      <p>Hillside</p>
+      <p>Windhoek</p>
+      <p>South Afrrica</p>
+      <p>0117</p>
       
     </div>
-    
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h3>Connect with us</h3>
+      <ion-icon name="logo-facebook"></ion-icon>
+      <ion-icon name="logo-twitter"></ion-icon>
+      <ion-icon name="logo-linkedin"></ion-icon>
+      <ion-icon name="logo-github"></ion-icon>
+
+    </div>
+      </div>
+      <div class="column">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1087.7724805178511!2d17.10185470022082!3d-22.56914263462643!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c0b1b4c07cc9a2d%3A0xa7b7fb2d2b6617b9!2sNelson%20Mandela%20Ave%2C%20Windhoek!5e0!3m2!1sen!2sna!4v1596791356742!5m2!1sen!2sna" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+      </div>
   </div>
-  <div class="footer">
-   
-  </div>
+    </div>
 </div>
+
+
+
+
+    </div>
+</section>
+
+
+
+
+
+
+
