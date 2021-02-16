@@ -1,6 +1,6 @@
 
 
-<mat-tab-group mat-align-tabs="center" mat-stretch-tabs>
+<mat-tab-group mat-align-tabs="center" mat-stretch-tabs [selectedIndex]="index">
   <mat-tab >
     <ng-template mat-tab-label>
       <ion-icon name="log-in" size="large" class="ion-margin"></ion-icon>
@@ -24,7 +24,7 @@
 
         <ion-checkbox></ion-checkbox> <ion-label class="ion-margin">Remember password</ion-label>
 
-        <ion-button class="ion-margin" size="large" expand="block" shape="round" strong>SIGN IN</ion-button>
+        <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong>SIGN IN</ion-button>
 
         <div><ion-label>Or Sign in with</ion-label></div>
 
@@ -110,7 +110,7 @@
       </ion-item>
 
 
-      <ion-button class="ion-margin" size="large" expand="block" shape="round" strong>SIGN UP</ion-button>
+      <ion-button class="ion-margin" size="large" expand="block" shape="round"  strong>SIGN UP</ion-button>
 
 
 
