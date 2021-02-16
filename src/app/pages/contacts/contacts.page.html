@@ -24,10 +24,11 @@
                       <div class="col-sm-12">
                           <input type="text" class="form-control" placeholder="Subject">
                       </div>
-                  </div>
+                  </div> 
                   <div class="form-group">
-                      <textarea class="form-control" rows="5" id="comment" placeholder="Message"></textarea>
-                  </div>
+                       <textarea class="form-control" rows="5" id="comment" placeholder="Message"></textarea> 
+                      
+                    </div>
                   <button class="btn btn-block" type="submit"  (click)="send()">Send Now!</button>
               </form>
           </div>
@@ -39,27 +40,24 @@
               <div class="content">
                 
                   <div class="info">
-                      <i class="fas fa-mobile-alt"></i>
-                      <h4 class="d-inline-block">PHONE :
-                          <br>
-                          <ion-icon name="call"></ion-icon>
+                      <i style="margin-right: 20px; color: #3a5876;" class="fa fa-phone fa-2x number"></i>
+                      
+                         
                           
-                          <span>+27157836913</span></h4>
+                          <span>+27157836913</span>
                   </div>
                   
                   <div class="info">
-                      <i class="far fa-envelope"></i>
-                      <h4 class="d-inline-block">EMAIL :
-                          <br>
-                          <ion-icon name="mail"></ion-icon>
-                          <span>elearning@info.com</span></h4>
+                      <i style="margin-right: 20px;margin-top: 15px;color: #e88845;" class="fa fa-envelope-o fa-2x email"></i>
+                      
+                          <span>elearning@info.com</span>
                   </div>
                   
                   <div class="info">
-                      <i class="fas fa-map-marker-alt"></i>
-                      <h4 class="d-inline-block">WEBSITE :<br>
-                        <ion-icon name="globe"></ion-icon>
-                          <span>www.elearningwebapplication.com</span></h4>
+                      <!-- <i style="margin-right: 20px;" class="fa fa-website fa-2x website"></i> -->
+                      
+                       <i> <ion-icon  style="margin-right: 20px;margin-top: 15px;" name="globe"></ion-icon></i>
+                          <span>www.elearningwebapplication.com</span>
                   </div>
               </div>
           </div>
@@ -72,21 +70,35 @@
       <div class="column">
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
     <div class="col-lg-4 col-md-4 col-sm-4">
-      <h3>Our Address</h3>
+     <h3>Our Address </h3>
+
+     
       <div class="redline-address"></div>
-      <p> 13th Nelson Mandela Ave</p>
-      <p>Hillside</p>
-      <p>Windhoek</p>
-      <p>South Afrrica</p>
-      <p>0117</p>
+
+      <p>13th Nelson Mandela Ave<br>
+      Hillside<br>
+      Windhoek<br>
+      South Afrrica<br>
+      0117</p>
       
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
       <h3>Connect with us</h3>
-      <ion-icon name="logo-facebook"></ion-icon>
+      
+      <div id="social">
+        <a class="facebookBtn smGlobalBtn" href="https://web.facebook.com/login.php?_rdc=1&_rdr" ></a>
+        <a class="twitterBtn smGlobalBtn" href="https://twitter.com/" ></a>
+        <a class="googleplusBtn smGlobalBtn" href="#" ></a>
+        <a class="linkedinBtn smGlobalBtn" href="#" ></a>
+        <a class="tumblrBtn smGlobalBtn" href="#" ></a>
+        <a class="rssBtn smGlobalBtn" href="#" ></a>
+      </div>
+    
+
+      <!-- <ion-icon name="logo-facebook"></ion-icon>
       <ion-icon name="logo-twitter"></ion-icon>
       <ion-icon name="logo-linkedin"></ion-icon>
-      <ion-icon name="logo-github"></ion-icon>
+      <ion-icon name="logo-github"></ion-icon> -->
 
     </div>
       </div>
