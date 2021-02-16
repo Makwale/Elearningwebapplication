@@ -2,12 +2,24 @@
 
  .img{
  // border-radius: 18px 18px 0px 0px;
-  height: 100px;
+ height: 125px;
   width: 100%;
 }
 
 .latest-courses{
-  padding-bottom: 50px;
-  margin-bottom: 50px;
-  padding-left: 10px;
-}
+   padding-bottom: 50px;
+   margin-bottom: 50px;
+   padding-left: 10px;
+   align-content: stretch;
+ 
+   display:flex;
+   flex-wrap: wrap;
+   height: 100%;
+   width: auto;
+ }
+ .fcourse-card{
+   margin: 28px;
+   width: 280px;
+   height: auto;
+     margin-left: 50px;
+ }
