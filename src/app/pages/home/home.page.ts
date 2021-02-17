@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +22,6 @@ export class HomePage {
       delay: 5000
     }
   };
-
   slideOpts2 = {
     init: true,
     initialSlide: 0,
@@ -34,9 +35,15 @@ export class HomePage {
     }
 
   }
-  constructor(private router: Router) {}
-
+  constructor(private router: Router, private modalCtrl: ModalController) {}
   navigateToCourselink(){
     this.router.navigateByUrl("coursedetails");
+  }
+  async viewCourse() {
+    let modal = await this.modalCtrl.create({
+      component: CoursedetailsPage,
+      cssClass: 'cart-modal'
+    });
+    modal.present();
   }
 }
