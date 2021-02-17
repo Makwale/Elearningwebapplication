@@ -9,6 +9,10 @@ import { CoursedetailsPageRoutingModule } from './coursedetails-routing.module';
 import { CoursedetailsPage } from './coursedetails.page';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   imports: [
@@ -17,7 +21,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     IonicModule,
     CoursedetailsPageRoutingModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [CoursedetailsPage]
 })
