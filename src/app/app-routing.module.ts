@@ -70,7 +70,11 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
+  },  {
+    path: 'leasons',
+    loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
   },
+
   
 
 
