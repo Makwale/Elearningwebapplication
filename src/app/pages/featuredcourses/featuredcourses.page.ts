@@ -25,9 +25,11 @@ export class FeaturedcoursesPage implements OnInit {
     }
     //Selected course
     selectCourse(_course: course){  
+     
       this.selectedCourse = _course;
-      this.coursesService.selectCourse(_course);
-        this.viewCourse();
+      console.log(this.selectedCourse);
+      this.coursesService.selectCourse(this.selectedCourse);
+       this.viewCourse();
     }
     async viewCourse() {
       let modal = await this.modalCtrl.create({
