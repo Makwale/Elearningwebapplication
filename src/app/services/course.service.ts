@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FEATURED_COURSES } from "src/app/mocks/featured.mock";
+import { LATEST_COURSES } from '../mocks/latest.mock';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { FEATURED_COURSES } from "src/app/mocks/featured.mock";
 export class CourseService {
 
   featuredCourses: course [] = FEATURED_COURSES; 
-
+  latestCourses: course [] = LATEST_COURSES; 
   selectedC: course;
   constructor() {
     //Just for testing home page and latest
@@ -15,6 +16,9 @@ export class CourseService {
    }
   getFeaturedCourses(){
     return this.featuredCourses;
+  }
+  getLatestCourses(){
+    return this.latestCourses;
   }
   selectCourse(selected:course)
   {

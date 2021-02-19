@@ -9,7 +9,7 @@
   <div class="featured-courses">
 <mat-card class="fcourse-card" style=" padding: 0px;"  *ngFor="let course of featured_courses"
 [class.selected]="course === selectedcourse" (click) ="selectCourse(course)" >   
-  <img style="margin: auto;" class="img" mat-card-image [src]="course.image"alt="Gaming image">
+  <img style="margin: auto;" class="img" mat-card-image [src]="course.image"alt="{{course.name}} image">
 <mat-card-content style="margin: 10px; ">
   <h5><b>{{course.name}}</b></h5>
   <p>{{course.desc}}</p>

@@ -16,7 +16,7 @@ export class FeaturedcoursesPage implements OnInit {
     private coursesService: CourseService
     ){ }
      ngOnInit() {
-       this.getCourses();
+       this.getCourses(); 
        console.log(this.featured_courses);
     }
     //Get all Featured Courses
@@ -25,13 +25,11 @@ export class FeaturedcoursesPage implements OnInit {
     }
     //Selected course
     selectCourse(_course: course){  
-     
       this.selectedCourse = _course;
-      console.log(this.selectedCourse);
-      this.coursesService.selectCourse(this.selectedCourse);
-       this.viewCourse();
+      this.coursesService.selectCourse(this.selectedCourse); //Set the selected course globally to the course service
+       this.courseDetails(); //Open Modal course details
     }
-    async viewCourse() {
+    async courseDetails() {
       let modal = await this.modalCtrl.create({
       component: CoursedetailsPage,
       cssClass: 'cart-modal'

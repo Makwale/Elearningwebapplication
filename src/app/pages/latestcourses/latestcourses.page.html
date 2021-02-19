@@ -1,5 +1,5 @@
  
-<div class="latest-courses">
+<!-- <div class="latest-courses">
    
     <section style="overflow:auto;">
 
@@ -95,4 +95,37 @@
     </section>
 
 
-</div>
+</div> -->
+<section style="overflow:auto"> 
+
+  <ion-item-divider class="category">
+    <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;">Featured Courses</h2>
+  </ion-item-divider>
+
+  <div class="latest-courses">
+<mat-card class="fcourse-card" style=" padding: 0px;"  *ngFor="let course of latest_courses"
+[class.selected]="course === selectedcourse" (click) ="selectCourse(course)" >   
+  <img style="margin: auto;" class="img" mat-card-image [src]="course.image"alt="{{course.name}} image">
+<mat-card-content style="margin: 10px; ">
+  <h5><b>{{course.name}}</b></h5>
+  <p>{{course.desc}}</p>
+  <span>By: <span class="instructor">{{course.instructor}}</span></span>
+  <br>
+  <ion-row>
+    <ion-col> 
+      <ion-icon color="warning" name="star"></ion-icon>
+      <ion-icon color="warning" name="star"></ion-icon>
+      <ion-icon color="warning" name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </ion-col>
+    <ion-col class="price">{{course.price | currency : 'R '}} </ion-col>
+  </ion-row>
+
+  <span class="prices"></span>
+  
+</mat-card-content>
+
+</mat-card>
+  </div>
+  </section>
