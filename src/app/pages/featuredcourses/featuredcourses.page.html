@@ -1,125 +1,35 @@
-<div class="featured-courses">
-  <section style="overflow:auto">
-
-    <ion-item-divider class="category">
-      <h2 class="subheaders" style="margin-left: 0px; margin-top: 10px;">Featured Courses</h2>
 
 
-    </ion-item-divider>
+ <section style="overflow:auto"> 
 
+  <ion-item-divider class="category">
+    <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;">Featured Courses</h2>
+  </ion-item-divider>
 
-    <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">   
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/gaming2.jpg"
-        alt="Gaming image">
-      <mat-card-content style="margin: 10px; ">
-        <h5><b>Learn Games Programming</b></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-        <span>By: <span class="instructor">Thembi</span></span>
-        <br>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <span class="prices">R560</span>
-      </mat-card-content>
+  <div class="featured-courses">
+<mat-card class="fcourse-card" style=" padding: 0px;"  *ngFor="let course of featured_courses"
+[class.selected]="course === selectedcourse" (click) ="selectCourse(course)" >   
+  <img style="margin: auto;" class="img" mat-card-image [src]="course.image"alt="Gaming image">
+<mat-card-content style="margin: 10px; ">
+  <h5><b>{{course.name}}</b></h5>
+  <p>{{course.desc}}</p>
+  <span>By: <span class="instructor">{{course.instructor}}</span></span>
+  <br>
+  <ion-row>
+    <ion-col> 
+      <ion-icon color="warning" name="star"></ion-icon>
+      <ion-icon color="warning" name="star"></ion-icon>
+      <ion-icon color="warning" name="star"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+      <ion-icon name="star-outline"></ion-icon>
+    </ion-col>
+    <ion-col class="price">{{course.price | currency : 'R '}} </ion-col>
+  </ion-row>
 
-    </mat-card>
+  <span class="prices"></span>
+  
+</mat-card-content>
 
-
-    <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-      <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/iot.jpg"
-        alt="Internet of Things image">
-      <mat-card-content style="margin: 10px; ">
-        <h5><b>Learn Internet of Things</b></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-        <span>By: <span class="instructor">Sinoxolo</span></span>
-        <br>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <span class="prices">R860</span>
-      </mat-card-content>
-
-    </mat-card>
-
-
-    <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-      <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/robotics.jpg"
-        alt="Robotics image">
-      <mat-card-content style="margin: 10px; ">
-        <h5><b>Learn Robot Programming</b></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-        <span>By: <span class="instructor">Kgothatso</span></span>
-        <br>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <span class="prices">R460</span>
-      </mat-card-content>
-
-    </mat-card>
-
-
-    <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-      <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/cloud.jpg"
-        alt="Cloud Computing image">
-      <mat-card-content style="margin: 10px; ">
-        <h5><b>Learn Cloud Computing</b></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-        <span>By: <span class="instructor">Emmanuel Mametja</span></span>
-        <br>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <span class="prices">R600</span>
-      </mat-card-content>
-
-    </mat-card>
-
-
-    <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-      <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/c++.png"
-        alt="C++ programming image">
-      <mat-card-content style="margin: 10px; ">
-        <h5><b>Learn C++ Programming</b></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-        <span>By: <span class="instructor">Innocent Partco</span></span>
-        <br>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <span class="prices">R890</span>
-      </mat-card-content>
-
-    </mat-card>
-
-    <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-      <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/featuredcourses/django.png"
-        alt="Django python image">
-      <mat-card-content style="margin: 10px; ">
-        <h5><b>Learn Django Python</b></h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-        <span>By: <span class="instructor">Mia Sinah</span></span>
-        <br>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon color="warning" name="star"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <ion-icon name="star-outline"></ion-icon>
-        <span class="prices">R860</span>
-      </mat-card-content>
-
-    </mat-card>
-
+</mat-card>
+  </div>
   </section>
-</div> 
-
