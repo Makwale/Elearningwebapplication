@@ -1,0 +1,56 @@
+<ion-content color= "light">
+   
+    <ion-card color="light">
+
+   
+      
+
+        <ion-progress-bar color="warning" value="{{stat}}"></ion-progress-bar>
+
+       
+        
+        <ion-card-content>
+        
+          What’s the main reason you’d like to do an online course?<br><br>
+
+        <!-- Count Down:&nbsp;{{displayTime}} -->
+        
+        </ion-card-content>
+        
+      </ion-card>
+
+<ion-card color="tertiary">
+    <ion-list>
+        <ion-radio-group [(ngModel)]="answer1">
+         
+  
+          <ion-item>
+            <ion-label>I feel like I’m losing my way and learning will help me get back on track </ion-label>
+            <ion-radio value="1" ></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>I’m worried about career opportunities and I want to do something about it</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>I want to earn more money - I’m struggling to pay my bills
+
+              None of these</ion-label>
+            <ion-radio value="3"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> None of these</ion-label>
+            <ion-radio value="4"></ion-radio>
+          </ion-item>
+      
+          
+        </ion-radio-group>
+      </ion-list>
+          </ion-card>
+
+            <ion-button color="warning" shape="round" expand="full" (click)="goNext()">Submit</ion-button>
+
+</ion-content>

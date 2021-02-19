@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { AccountPage } from '../account/account.page';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
+
+
 
 @Component({
   selector: 'app-home',
@@ -47,3 +50,5 @@ export class HomePage {
     modal.present();
   }
 }
+
+
