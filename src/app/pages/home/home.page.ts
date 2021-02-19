@@ -1,6 +1,8 @@
+import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { CourseService } from 'src/app/services/course.service';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
 @Component({
@@ -8,7 +10,7 @@ import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
   slideOpts = {
     init: true,
@@ -35,15 +37,30 @@ export class HomePage {
     }
 
   }
-  constructor(private router: Router, private modalCtrl: ModalController) {}
+  featured_courses : course[] = [];
+  latest_courses : course[] = [];
+  selectedCourse: course;
+  constructor(private router: Router, 
+    private modalCtrl: ModalController,
+    private courseDao: CourseService) {}
   navigateToCourselink(){
     this.router.navigateByUrl("coursedetails");
   }
-  async viewCourse() {
-    let modal = await this.modalCtrl.create({
-      component: CoursedetailsPage,
-      cssClass: 'cart-modal'
-    });
-    modal.present();
+  ngOnInit(){
+      this.featured_courses = this.courseDao.getFeaturedCourses().slice(0,3);
+      this.latest_courses = this.courseDao.getLatestCourses().slice(0,3);  
   }
+   //Selected course
+   selectCourse(_course: course){  
+    this.selectedCourse = _course;
+    this.courseDao.selectCourse(this.selectedCourse); //Set the selected course globally to the course service
+     this.courseDetails(); //Open Modal course details
+  }
+  async courseDetails() {
+    let modal = await this.modalCtrl.create({
+    component: CoursedetailsPage,
+    cssClass: 'cart-modal'
+  });
+  modal.present();
+}
 }

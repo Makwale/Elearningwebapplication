@@ -15,7 +15,7 @@ export class LatestcoursesPage implements OnInit {
     private modalCtrl: ModalController,
     private coursesService: CourseService
     ){ }
-     ngOnInit() {
+     ngOnInit() { 
        this.getCourses(); 
        console.log(this.latest_courses);
     }

@@ -1,131 +1,35 @@
- 
-<!-- <div class="latest-courses">
-   
-    <section style="overflow:auto;">
-
-      <ion-item-divider class="category">
-        <h2 class="subheaders" style="margin-left: 0px; margin-top: 10px;">Latest Courses</h2>
-      </ion-item-divider>
-      
-      <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-        <img style="margin: auto;"  class="img"  mat-card-image src="../../../assets/img/latestcourses/AI.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Artificial Intelligence</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-          <span>By: <span class="instructor">Emmanuel Mametja</span></span>
-            <br>
-            <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-            <span class="prices">R600</span> 
-            
-        </mat-card-content>
-        
-      </mat-card>
-  
-  
-      <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/latestcourses/Angular.png">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Angular</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-          <span>By: <span class="instructor">Innocent Partco</span></span>
-            <br>
-            <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R660</span>
-        </mat-card-content>
-        
-      </mat-card>
-    
-      <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/latestcourses/flutter.png">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Flutter </b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-          <span>By: <span class="instructor">Mia Sinah</span></span>
-            <br>
-            <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-            <span class="prices">R790</span> 
-    
-        </mat-card-content>
-        
-      </mat-card>
-
-      <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/latestcourses/FIREBASE.png">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Google Firebase</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-          <span>By: <span class="instructor">Thembi</span></span>
-            <br>
-            <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon><ion-icon name="star-outline"></ion-icon> 
-          <span class="prices">R860</span> 
-        </mat-card-content>
-        
-      </mat-card>
-    
-      
-      <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/latestcourses/gaming.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Game Development</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-          <span>By: <span class="instructor">Sinoxolo</span></span>
-            <br>
-          <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-          <span class="prices">R460</span>
-        </mat-card-content>
-        
-      </mat-card>
-  
-      
-      <mat-card class="fcourse-card" style=" padding: 0px;" (click)="viewCourse()">
-        <img style="margin: auto;" class="img" mat-card-image src="../../../assets/img/latestcourses/nodejs.jpg">
-        <mat-card-content style="margin: 10px; ">
-          <h5><b>Learn Node JS</b></h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipis</p>
-          <span>By: <span class="instructor">Kgothatso</span></span>
-            <br>
-          <ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon color ="warning" name="star"></ion-icon><ion-icon name="star-outline"></ion-icon>
-          <span class="prices">R760</span> 
-          
-        </mat-card-content>
-        
-      </mat-card>
-      
-      
-    </section>
 
 
-</div> -->
 <section style="overflow:auto"> 
-
   <ion-item-divider class="category">
     <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;">Latest Courses</h2>
   </ion-item-divider>
-
-  <div class="latest-courses">
-<mat-card class="fcourse-card" style=" padding: 0px;"  *ngFor="let course of latest_courses"
-[class.selected]="course === selectedcourse" (click) ="selectCourse(course)" >   
-  <img style="margin: auto;" class="img" mat-card-image [src]="course.image"alt="{{course.name}} image">
-<mat-card-content style="margin: 10px; ">
-  <h5><b>{{course.name}}</b></h5>
-  <p>{{course.desc}}</p>
-  <span>By: <span class="instructor">{{course.instructor}}</span></span>
-  <br>
-  <ion-row>
-    <ion-col> 
-      <ion-icon color="warning" name="star"></ion-icon>
-      <ion-icon color="warning" name="star"></ion-icon>
-      <ion-icon color="warning" name="star"></ion-icon>
-      <ion-icon name="star-outline"></ion-icon>
-      <ion-icon name="star-outline"></ion-icon>
-    </ion-col>
-    <ion-col class="price">{{course.price | currency : 'R '}} </ion-col>
-  </ion-row>
-
-  <span class="prices"></span>
+  <div  class="latest-courses">
+      <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of latest_courses"
+    [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
+    <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.image"></a>
+    <mat-card-content style="margin: 10px;">
+      <a   class="course-link">Learn {{course.name}}</a>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+      <span>By: <span class="instructor">{{course.instructor}}</span></span>
+        <br>
+        <ion-row>
+          <ion-col size ="8"> 
+            <ion-icon color="warning" name="star"></ion-icon>
+            <ion-icon color="warning" name="star"></ion-icon>
+            <ion-icon color="warning" name="star"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+            <ion-icon name="star-outline"></ion-icon>
+          </ion-col>
   
-</mat-card-content>
-
-</mat-card>
+             <ion-col    size ="4" class="ion-align-self-end">
+              <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+            </ion-col>
+        </ion-row>
+        
+        
+    </mat-card-content>
+    
+      </mat-card>
   </div>
-  </section>
+</section>

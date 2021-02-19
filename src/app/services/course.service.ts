@@ -6,22 +6,34 @@ import { LATEST_COURSES } from '../mocks/latest.mock';
   providedIn: 'root'
 })
 export class CourseService {
-
+  homeView: boolean;
   featuredCourses: course [] = FEATURED_COURSES; 
   latestCourses: course [] = LATEST_COURSES; 
   selectedC: course;
   constructor() {
     //Just for testing home page and latest
     this.selectedC = this.featuredCourses[0];
+    this.homeView = false;
    }
   getFeaturedCourses(){
-    return this.featuredCourses;
+    if(this.homeView){
+      return this.featuredCourses = this.featuredCourses.slice(0,3);
+    }
+    else{
+          return this.featuredCourses;
+    }
   }
   getLatestCourses(){
-    return this.latestCourses;
+    if(this.homeView){
+      return this.latestCourses = this.latestCourses.slice(0,3);
+    }
+    else{
+      return this.latestCourses;
+    }
   }
   selectCourse(selected:course)
   {
     this.selectedC = selected;
   }
+  
 }
