@@ -1,16 +1,17 @@
-<ion-content color= "light">
-   
-    <ion-card color="light">
-        <ion-progress-bar color="warning" value="{{stat}}"></ion-progress-bar>
-        <ion-card-content>
-          What’s the main reason you’d like to do an online course?<br><br>
+<ion-item-divider >
+  <ion-toolbar id="toolbar">
 
-        <!-- Count Down:&nbsp;{{displayTime}} -->
-        </ion-card-content>
+  <span id="brand">ElearningApp</span>
+  </ion-toolbar>
+  </ion-item-divider>
+<ion-content>
+
+<h1>What’s the main reason you’d like to do an online course?</h1>
+  
+        <ion-progress-bar  class="length" color="medium" value="{{stat}}"></ion-progress-bar>  
         
-      </ion-card>
 
-<ion-card color="tertiary">
+<ion-card color="medium">
     <ion-list>
         <ion-radio-group [(ngModel)]="answer1">
          
@@ -42,6 +43,5 @@
       </ion-list>
           </ion-card>
 
-            <ion-button color="warning" shape="round" expand="full" (click)="goNext()">Submit</ion-button>
-
-</ion-content>
+            <ion-button color="medium" shape="round" size="small" (click)="goNext()">Submit</ion-button>
+        </ion-content>
