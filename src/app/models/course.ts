@@ -1,5 +1,4 @@
-class Course {
-   
+class Course{
     name: string;
     image: string;
     gradNo: number;

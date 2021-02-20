@@ -1,4 +1,4 @@
-const featuredlist : Course[] = [
+export const FeaturedCourse = [
     {
        price:1230, instructor:'Thembi', desc: 'C++ is a powerful general-purpose programming language. It can be used to develop operating systems, browsers, games, and so on. ',  image: './../assets/img/featuredcourses/c++.png', name: 'C++ Programming', gradNo: 17753, 
     },
@@ -17,5 +17,4 @@ const featuredlist : Course[] = [
     {
         price:2531,instructor:'Innocent',desc: 'Robotics is an interdisciplinary field that integrates computer science and engineering. Robotics involves design, construction,',  image: './../assets/img/featuredcourses/robotics.jpg', name: 'Robotics', gradNo: 4993, 
     },
-]
-export const FEATURED_COURSES = featuredlist;
+];

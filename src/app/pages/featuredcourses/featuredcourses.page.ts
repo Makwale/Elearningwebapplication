@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ModalController} from '@ionic/angular';
+import { FeaturedCourse } from 'src/app/mocks/featured.mock';
 import { CourseService } from 'src/app/services/course.service';
 import { CoursedetailsPage } from './../coursedetails/coursedetails.page';
 
@@ -9,8 +10,8 @@ import { CoursedetailsPage } from './../coursedetails/coursedetails.page';
   styleUrls: ['./featuredcourses.page.scss'],
 })
 export class FeaturedcoursesPage implements OnInit {
-  featured_courses : course[] = [];
-  selectedCourse: course;
+  featured_courses = FeaturedCourse;
+  selectedCourse;
   constructor( 
     private modalCtrl: ModalController,
     private coursesService: CourseService
@@ -24,7 +25,7 @@ export class FeaturedcoursesPage implements OnInit {
       this.featured_courses = this.coursesService.getFeaturedCourses();
     }
     //Selected course
-    selectCourse(_course: course){  
+    selectCourse(_course){  
       this.selectedCourse = _course;
       this.coursesService.selectCourse(this.selectedCourse); //Set the selected course globally to the course service
        this.courseDetails(); //Open Modal course details

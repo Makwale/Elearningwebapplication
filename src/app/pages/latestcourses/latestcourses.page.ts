@@ -9,8 +9,8 @@ import { CoursedetailsPage } from './../coursedetails/coursedetails.page'
 })
 export class LatestcoursesPage implements OnInit {
 
-  latest_courses : course[] = [];
-  selectedCourse: course;
+  latest_courses = [];
+  selectedCourse;
   constructor( 
     private modalCtrl: ModalController,
     private coursesService: CourseService
@@ -24,7 +24,7 @@ export class LatestcoursesPage implements OnInit {
       this.latest_courses = this.coursesService.getLatestCourses();
     }
     //Selected course
-    selectCourse(_course: course){  
+    selectCourse(_course){  
       this.selectedCourse = _course;
       this.coursesService.selectCourse(this.selectedCourse); //Set the selected course globally to the course service
        this.courseDetails(); //Open Modal course details

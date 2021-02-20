@@ -7,7 +7,6 @@ import { AccountPage } from '../account/account.page';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -40,9 +39,9 @@ export class HomePage implements OnInit {
     }
 
   }
-  featured_courses : course[] = [];
-  latest_courses : course[] = [];
-  selectedCourse: course;
+  featured_courses= [];
+  latest_courses= [];
+  selectedCourse;
   constructor(private router: Router, 
     private modalCtrl: ModalController,
     private courseDao: CourseService) {}
@@ -54,7 +53,7 @@ export class HomePage implements OnInit {
       this.latest_courses = this.courseDao.getLatestCourses().slice(0,3);  
   }
    //Selected course
-   selectCourse(_course: course){  
+   selectCourse(_course){  
     this.selectedCourse = _course;
     this.courseDao.selectCourse(this.selectedCourse); //Set the selected course globally to the course service
      this.courseDetails(); //Open Modal course details

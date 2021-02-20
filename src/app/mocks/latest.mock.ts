@@ -1,4 +1,4 @@
-const latestlist : Course [] = [
+export const LatestCourse = [
     {
        price:1230, instructor:'Thembi', desc: 'C++ is a powerful general-purpose programming language. It can be used to develop operating systems, browsers, games, and so on. ',  image: './../assets/img/latestcourses/AI.jpg', name: 'Artificial Intelligence', gradNo: 17753, 
     },
@@ -17,5 +17,4 @@ const latestlist : Course [] = [
     {
         price:2531,instructor:'Kgothatso',desc: 'Robotics is an interdisciplinary field that integrates computer science and engineering. Robotics involves design, construction,',  image: './../assets/img/latestcourses/react.png', name: 'React', gradNo: 4993, 
     },
-]
-export const LATEST_COURSES = latestlist;
+];
