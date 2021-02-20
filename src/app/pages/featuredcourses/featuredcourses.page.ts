@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ModalController} from '@ionic/angular';
-import { FeaturedCourse } from 'src/app/mocks/featured.mock';
+import { FeaturedCourse } from 'src/app/MockData/featured.mock';
 import { CourseService } from 'src/app/services/course.service';
 import { CoursedetailsPage } from './../coursedetails/coursedetails.page';
 
