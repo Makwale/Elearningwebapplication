@@ -9,6 +9,7 @@ export class CourseService {
   homeView: boolean;
   featuredCourses: course [] = FEATURED_COURSES; 
   latestCourses: course [] = LATEST_COURSES; 
+  
   selectedC: course;
   constructor() {
     //Just for testing home page and latest

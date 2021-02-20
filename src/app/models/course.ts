@@ -5,6 +5,5 @@ class course {
     gradNo: number;
     desc: string;
     instructor: string;
-    price: number;
-    
+    price: number;  
 }
