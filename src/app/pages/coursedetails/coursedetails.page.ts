@@ -22,7 +22,7 @@ export class CoursedetailsPage implements OnInit {
   }
   enroll(){
       this.close();
-      this.route.navigateByUrl('questions');
+      this.route.navigateByUrl('page1');
 
   }
 }
