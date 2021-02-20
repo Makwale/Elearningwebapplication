@@ -1,6 +1,11 @@
 export const FeaturedCourse = [
     {
-       price:1230, instructor:'Thembi', desc: 'C++ is a powerful general-purpose programming language. It can be used to develop operating systems, browsers, games, and so on. ',  image: './../assets/img/featuredcourses/c++.png', name: 'C++ Programming', gradNo: 17753, 
+        price:1230, 
+        instructor:'Thembi',
+        desc: 'C++ is a powerful general-purpose programming language. It can be used to develop operating systems, browsers, games, and so on. ',  
+        image: './../assets/img/featuredcourses/c++.png',
+        name: 'C++ Programming',
+        gradNo: 17753, 
     },
     {
         price:2564, instructor:'Kgothatso', desc: 'Cloud computing is the provision of computing services, such as servers, storage, databases, networks, softwareCourse Description',  image: './../assets/img/featuredcourses/cloud.jpg', name: 'Cloud Computing', gradNo: 1773, 
