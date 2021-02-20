@@ -1,19 +1,48 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
-</mat-card>
+<ion-item-divider >
+  <ion-toolbar id="toolbar">
+
+  <span id="brand">ElearningApp</span>
+  </ion-toolbar>
+  </ion-item-divider>
+<ion-content>
+
+<h1 style="text-align:center" font-weight="bold">Students have better success when they set learning goals</h1>
+  
+        <ion-progress-bar  class="length" color="medium" value="{{stat}}"></ion-progress-bar>  
+        <br>
+        <br>
+
+<ion-card color="medium">
+    <ion-list>
+      <ion-radio-group [(ngModel)]="answer3">
+         
+  
+          <ion-item>
+            <ion-label>3 hours - per week</ion-label>
+            <ion-radio value="1" ></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>2 hours - per week</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>1 hour - per week</ion-label>
+            <ion-radio value="3"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> 30 minutes - per week</ion-label>
+            <ion-radio value="4"></ion-radio>
+          </ion-item>
+      
+          
+        </ion-radio-group>
+      </ion-list>
+          </ion-card>
+
+            <ion-button color="medium" shape="round" size="large" (click)="goNext()">Submit</ion-button>
+        </ion-content>
+
+

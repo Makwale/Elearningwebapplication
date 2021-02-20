@@ -11,7 +11,12 @@
       }
 
       ion-card{
-width: 75%;
+width: 50%;
+
+transform: translateX(-50%) translateY(-50%);
+    top: 30%;
+    left: 50%;
+    position: absolute;
 
       }
 
@@ -22,5 +27,24 @@ width: 75%;
       }
 
       .length{
-        width: 75%;
+        width: 50%;
+        align-items: center;
+        transform: translateX(-50%) translateY(-50%);
+         top: 10%;
+    left: 50%;
+    position: absolute;
       }
+      ion-button{
+        transform: translateX(-50%) translateY(-50%);
+        position: absolute;
+        bottom: 40%;
+        left:50%;
+        right:40%;
+        
+      }
+      .h1{
+        font-weight: bold;
+      
+        
+    }
+      

@@ -8,8 +8,11 @@ import { Router } from '@angular/router';
 })
 export class Page1Page implements OnInit  {
   answer1;
-
-  constructor(private router: Router) {}
+  stat
+  constructor(private router: Router) {
+    this.stat=1/3
+console.log(this.stat)
+  }
 
     goNext(){
       this.router.navigateByUrl("page2")

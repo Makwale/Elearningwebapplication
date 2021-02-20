@@ -1,9 +1,47 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>page2</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-item-divider >
+  <ion-toolbar id="toolbar">
 
+  <span id="brand">ElearningApp</span>
+  </ion-toolbar>
+  </ion-item-divider>
 <ion-content>
 
-</ion-content>
+<h1 style="text-align:center" font-weight="bold">What’s been your biggest challenge in the past?</h1>
+  
+        <ion-progress-bar  class="length" color="medium" value="{{stat}}"></ion-progress-bar>  
+        <br>
+        <br>
+
+<ion-card color="medium">
+    <ion-list>
+      <ion-radio-group [(ngModel)]="answer2">
+         
+  
+          <ion-item>
+            <ion-label> Making learning a priority and finding the time to study </ion-label>
+            <ion-radio value="1" ></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Keeping myself motivated - I always fall off the wagon eventually</ion-label>
+            <ion-radio value="2"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Study is long and repetitive - I get bored easily</ion-label>
+            <ion-radio value="3"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label> None of these</ion-label>
+            <ion-radio value="4"></ion-radio>
+          </ion-item>
+      
+          
+        </ion-radio-group>
+      </ion-list>
+          </ion-card>
+
+            <ion-button color="medium" shape="round" size="large" (click)="goNext()">Submit</ion-button>
+        </ion-content>
+
