@@ -1,4 +1,4 @@
-const latestlist : course [] = [
+const latestlist : Course [] = [
     {
        price:1230, instructor:'Thembi', desc: 'C++ is a powerful general-purpose programming language. It can be used to develop operating systems, browsers, games, and so on. ',  image: './../assets/img/latestcourses/AI.jpg', name: 'Artificial Intelligence', gradNo: 17753, 
     },

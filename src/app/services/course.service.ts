@@ -7,10 +7,10 @@ import { LATEST_COURSES } from '../mocks/latest.mock';
 })
 export class CourseService {
   homeView: boolean;
-  featuredCourses: course [] = FEATURED_COURSES; 
-  latestCourses: course [] = LATEST_COURSES; 
+  featuredCourses: Course [] = FEATURED_COURSES; 
+  latestCourses: Course [] = LATEST_COURSES; 
   
-  selectedC: course;
+  selectedC: Course;
   constructor() {
     //Just for testing home page and latest
     this.selectedC = this.featuredCourses[0];
@@ -32,7 +32,7 @@ export class CourseService {
       return this.latestCourses;
     }
   }
-  selectCourse(selected:course)
+  selectCourse(selected:Course)
   {
     this.selectedC = selected;
   }

@@ -9,7 +9,7 @@ import { CourseService } from 'src/app/services/course.service';
   styleUrls: ['./coursedetails.page.scss'],
 })
 export class CoursedetailsPage implements OnInit {
-  courseSelected: course;
+  courseSelected: Course;
   constructor(private modalCtrl: ModalController,
     private courseDao:CourseService,
     private route:Router) { }

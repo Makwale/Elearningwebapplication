@@ -1,4 +1,4 @@
-const featuredlist : course [] = [
+const featuredlist : Course[] = [
     {
        price:1230, instructor:'Thembi', desc: 'C++ is a powerful general-purpose programming language. It can be used to develop operating systems, browsers, games, and so on. ',  image: './../assets/img/featuredcourses/c++.png', name: 'C++ Programming', gradNo: 17753, 
     },

@@ -1,4 +1,4 @@
-class course {
+class Course {
    
     name: string;
     image: string;
