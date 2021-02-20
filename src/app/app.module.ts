@@ -15,6 +15,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { QuestionsPage } from './questions/questions.page';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent, MainPage,QuestionsPage],
@@ -25,8 +29,11 @@ import { QuestionsPage } from './questions/questions.page';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
+    AngularFireModule.initializeApp( environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     MatToolbarModule,
-    MatSidenavModule],
+    MatSidenavModule],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

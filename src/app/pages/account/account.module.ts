@@ -15,6 +15,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    AngularFireAuthModule,
   ],
   declarations: [AccountPage]
 })

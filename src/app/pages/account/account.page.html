@@ -14,17 +14,17 @@
  
         <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
           <ion-label position="stacked" >Email Address</ion-label>
-          <ion-input ></ion-input>
+          <ion-input #email></ion-input>
         </ion-item>
 
         <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
           <ion-label position="stacked" >Password</ion-label>
-          <ion-input ></ion-input>
+          <ion-input #password ></ion-input>
         </ion-item>
 
         <ion-checkbox></ion-checkbox> <ion-label class="ion-margin">Remember password</ion-label>
 
-        <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong>SIGN IN</ion-button>
+        <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong (click)="signInWithEmailAndPassword(email.value, password.value)">SIGN IN</ion-button>
 
         <div><ion-label>Or Sign in with</ion-label></div>
 
@@ -63,15 +63,15 @@
 
       <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
         <ion-label position="stacked">First Name</ion-label>
-        <ion-input ></ion-input>
+        <ion-input #name ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
         <ion-label position="stacked">Last Name</ion-label>
-        <ion-input ></ion-input>
+        <ion-input #surname ></ion-input>
       </ion-item>
 
-      <ion-radio-group value="biff">
+      <ion-radio-group value="" #gender>
       
         <ion-item>
           <ion-label>Male</ion-label>
@@ -86,22 +86,22 @@
 
       <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
         <ion-label position="stacked">Phone Number</ion-label>
-        <ion-input ></ion-input>
+        <ion-input #phone ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
         <ion-label position="stacked">Email Address</ion-label>
-        <ion-input ></ion-input>
+        <ion-input #email ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
         <ion-label position="stacked">Password</ion-label>
-        <ion-input ></ion-input>
+        <ion-input #password ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
         <ion-label position="stacked">Confirm Password</ion-label>
-        <ion-input ></ion-input>
+        <ion-input  #cpassword ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin" style="border-radius: 20px; border: 1px solid black; ">
@@ -110,7 +110,7 @@
       </ion-item>
 
 
-      <ion-button class="ion-margin" size="large" expand="block" shape="round"  strong>SIGN UP</ion-button>
+      <ion-button class="ion-margin" size="large" expand="block" shape="round"  strong (click)="createUserAccount(name.value, surname.value, gender.value, phone.value, email.value, password.value, cpassword.value)">SIGN UP</ion-button>
 
 
 

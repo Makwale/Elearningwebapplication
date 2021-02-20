@@ -7,6 +7,7 @@ import { AccountPage } from '../account/account.page';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -47,6 +48,7 @@ export class HomePage implements OnInit {
     private courseDao: CourseService) {}
   navigateToCourselink(){
     this.router.navigateByUrl("coursedetails");
+
   }
   ngOnInit(){
       this.featured_courses = this.courseDao.getFeaturedCourses().slice(0,3);
