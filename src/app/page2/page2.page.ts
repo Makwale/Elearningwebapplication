@@ -7,18 +7,18 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./page2.page.scss'],
 })
 export class Page2Page implements OnInit {
-  a1
-  answer2
-  stat
+  a1;
+  answer2;
+  stat;
   constructor(private route: ActivatedRoute,private router: Router) {
-    this.stat=2/3
-    console.log(this.stat)
+    this.stat=2/3;
+    console.log(this.stat);
     
   }
 
   goNext() {
-    this.router.navigateByUrl("page3")
-    this.router.navigate(['/Page3'], { queryParams: { answer2: this.answer2,a1:this.a1 } });
+    this.router.navigateByUrl("page3");
+    this.router.navigate(['/page3'], { queryParams: { answer2: this.answer2,a1:this.a1 } });
   
   }
 

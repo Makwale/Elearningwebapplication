@@ -91,7 +91,13 @@ const routes: Routes = [
   {
     path: 'page2',
     loadChildren: () => import('./page2/page2.module').then( m => m.Page2PageModule)
-  },  {
+  },
+  {
+    path: 'page3',
+    loadChildren: () => import('./page3/page3.module').then( m => m.Page3PageModule)
+  },
+  
+  {
     path: 'congratulations',
     loadChildren: () => import('./pages/congratulations/congratulations.module').then( m => m.CongratulationsPageModule)
   },

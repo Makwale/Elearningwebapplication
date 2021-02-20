@@ -11,9 +11,7 @@ export class Page3Page implements OnInit {
   answer3
   stat
   
-  
 
-  
   constructor(private route: ActivatedRoute,private router: Router) {
     this.stat=3/3
     console.log(this.stat)
@@ -22,7 +20,7 @@ export class Page3Page implements OnInit {
 
   goNext() {
     this.router.navigateByUrl("congratulations")
-    this.router.navigate(['/pages/congratulations'], { queryParams: { answer3: this.answer3,b1:this.b1,a2:this.a2 } });
+    this.router.navigate(['/congratulations'], { queryParams: { answer3: this.answer3,b1:this.b1,a2:this.a2 } });
     
   }
 

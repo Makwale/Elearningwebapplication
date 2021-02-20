@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
 })
 export class Page1Page implements OnInit  {
   answer1;
-  stat
+  stat;
   constructor(private router: Router) {
-    this.stat=1/3
-console.log(this.stat)
+    this.stat=1/3;
+console.log(this.stat);
   }
 
     goNext(){
-      this.router.navigateByUrl("page2")
-      this.router.navigate(['/page2'], { queryParams: { answer1: this.answer1 } })
+      this.router.navigateByUrl("page2");
+      this.router.navigate(['/page2'], { queryParams: { answer1: this.answer1 } });
      
     }
     
