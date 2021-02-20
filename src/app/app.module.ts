@@ -14,9 +14,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { QuestionsPage } from './questions/questions.page';
 
 @NgModule({
-  declarations: [AppComponent, MainPage],
+  declarations: [AppComponent, MainPage,QuestionsPage],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 

@@ -12,7 +12,7 @@ const featuredlist : course [] = [
         price:897,instructor:'Emmanuel',desc: 'the best in game development. Access industry expertise focusing on debugging, performance, and testing. Register now.',  image: './../assets/img/featuredcourses/gaming2.jpg', name: 'Gaming Development', gradNo: 14453, 
     },
     {
-        price:2315,instructor:'Angie',desc: 'The Internet of things (IoT) describes the network of physical objects—“things”—that are embedded with sensors, software,',  image: './../assets/img/featuredcourses/iot.jpg', name: 'IoT', gradNo: 885443, 
+        price:2315,instructor:'Mia Sinah',desc: 'The Internet of things (IoT) describes the network of physical objects—“things”—that are embedded with sensors, software,',  image: './../assets/img/featuredcourses/iot.jpg', name: 'IoT', gradNo: 885443, 
     },
     {
         price:2531,instructor:'Innocent',desc: 'Robotics is an interdisciplinary field that integrates computer science and engineering. Robotics involves design, construction,',  image: './../assets/img/featuredcourses/robotics.jpg', name: 'Robotics', gradNo: 4993, 

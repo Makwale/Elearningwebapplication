@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CourseService } from 'src/app/services/course.service';
 
@@ -10,13 +11,18 @@ import { CourseService } from 'src/app/services/course.service';
 export class CoursedetailsPage implements OnInit {
   courseSelected: course;
   constructor(private modalCtrl: ModalController,
-    private courseDao:CourseService) { }
+    private courseDao:CourseService,
+    private route:Router) { }
 
   ngOnInit() {
     this.courseSelected = this.courseDao.selectedC;
-    console.log(this.courseSelected);
   }
   close() {
     this.modalCtrl.dismiss();
+  }
+  enroll(){
+      this.close();
+      this.route.navigateByUrl('questions');
+
   }
 }

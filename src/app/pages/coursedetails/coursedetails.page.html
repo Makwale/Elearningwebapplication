@@ -2,7 +2,7 @@
 <ion-header>
   <ion-toolbar color="dark">
       <ion-title>
-          About {{courseSelected.name}}
+          {{courseSelected.name}}
       </ion-title>
       <ion-button fill="clear" size="small" slot="end" (click)="close()">
           <ion-icon color="light" name="close"></ion-icon>
@@ -16,7 +16,7 @@
         <ion-col size ="4"> 
                     <img style="margin: auto;" class="img" mat-card-image [src]="courseSelected.image" alt="Gaming image">  
         </ion-col>
-        <ion-col size ="8"> 
+        <ion-col size ="6"> 
           <h5><b>{{courseSelected.name}}</b></h5>
           <p>{{courseSelected.desc}}</p>
           <span>By: <span class="instructor">{{courseSelected.instructor}}</span></span>
@@ -27,8 +27,14 @@
           <ion-icon name="star-outline"></ion-icon>
           <ion-icon name="star-outline"></ion-icon>
           <span class="prices">{{courseSelected.price | currency : 'R'}}</span>
+          
+        </ion-col>
+        <ion-col size ="2">
+            <ion-button vertically = "bottom" color ="danger" (click)="enroll()">Enroll Now
+            </ion-button>
         </ion-col>
       </ion-row>
+      
     </div>
 
     <div class="moreInfo">

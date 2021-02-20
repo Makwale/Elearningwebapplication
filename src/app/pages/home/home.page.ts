@@ -2,11 +2,8 @@ import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-<<<<<<< HEAD
-import { AccountPage } from '../account/account.page';
-=======
 import { CourseService } from 'src/app/services/course.service';
->>>>>>> 5b417b343cb6db32ce563dfd8aaeb8e082618912
+import { AccountPage } from '../account/account.page';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
 

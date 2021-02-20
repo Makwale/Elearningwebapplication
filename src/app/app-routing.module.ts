@@ -61,7 +61,12 @@ const routes: Routes = [
       {
         path: 'coursedetails',
         loadChildren: () => import('./pages/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
-      },]
+      },
+      {
+        path: 'questions',
+        loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
+      },
+    ]
   },
   {
     path: 'login',
@@ -74,7 +79,8 @@ const routes: Routes = [
   {
     path: 'leasons',
     loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
-  },  {
+  },
+  {
     path: 'questions',
     loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
   },
