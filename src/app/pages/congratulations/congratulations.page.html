@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>congratulations</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-item-divider >
+  <ion-toolbar id="toolbar">
 
-<ion-content>
+  <span id="brand">ElearningApp</span>
+  </ion-toolbar>
+  </ion-item-divider>
+
+<ion-content  class="ion-padding">
+
+  <br>
+  <h1 class="deco">Congratulations,
+    you are almost done! 
+  </h1>
+  <ion-icon name="checkmark-circle"></ion-icon>
+
+  <ion-button color="medium" size="big" (click)="showPrompt()">Continue</ion-button>  <code>{{selectedData | json }}</code>
 
 </ion-content>
