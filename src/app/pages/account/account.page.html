@@ -28,17 +28,13 @@
 
         <div><ion-label>Or Sign in with</ion-label></div>
 
-        <button mat-icon-button  style="background-color: transparent;">
+        <button mat-icon-button  style="background-color: transparent;" (click)="signInWithFacebook()">
 
         <ion-icon size="large" class="ion-margin" color="primary" name="logo-facebook"></ion-icon>
           
         </button>
 
-        <button mat-icon-button  style="background-color: transparent;">
-          <ion-icon class="ion-margin" name="logo-google" size="large" color="danger"></ion-icon>
-        </button>
-
-          <button mat-icon-button  style="background-color: transparent;">
+          <button mat-icon-button  style="background-color: transparent;" (click)="signInWithPhone()">
             <ion-icon name="call" class="ion-margin" size="large"></ion-icon>
           </button>
 

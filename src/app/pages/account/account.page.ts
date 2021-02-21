@@ -2,7 +2,10 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { ModalController } from '@ionic/angular';
+import { PhonePage } from '../phone/phone.page';
 
 @Component({
   selector: 'app-account',
@@ -12,7 +15,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class AccountPage implements OnInit {
  
   type="login"
-  constructor(private router: Router, private dbs: DatabaseService) { }
+  constructor(private router: Router, private dbs: DatabaseService, private authService: AuthService,private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -23,6 +26,19 @@ export class AccountPage implements OnInit {
 
   signInWithEmailAndPassword(email: string, password: string){
     this.dbs.signinWithEmailAndPassword(email, password);
+  }
+
+  signInWithFacebook(){
+		this.authService.logingWithFacebook().then( userCredentials =>{
+      this.router.navigateByUrl("home");
+    });
+	}
+
+  async signInWithPhone(){
+    const modal = await this.modalController.create({
+      component: PhonePage
+    });
+    await modal.present();
   }
 
 }
