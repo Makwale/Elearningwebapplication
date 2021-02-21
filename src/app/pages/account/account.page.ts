@@ -31,7 +31,10 @@ export class AccountPage implements OnInit {
       { type: 'required', message: 'gender is required.' },
     ],
     'phone': [
-      { type: 'required', message: 'phone number is required.' },
+      { type: 'required', message: 'phone number is required.'},
+      { type: 'minlength', message: 'Phone number must be 10 numbers long.' },
+      { type: 'maxlength', message: 'Phone number must not exceed 10 numbers.' },
+      
     ],
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -64,7 +67,10 @@ export class AccountPage implements OnInit {
         Validators.required,
       ])),
       'phone': new FormControl('', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.pattern("^((\\+27-?)|0)?[0-9]{10}$"),
+        Validators.minLength(10),
+        Validators.maxLength(10)
       ])),
       'email': new FormControl('', Validators.compose([
         Validators.required,
@@ -76,7 +82,15 @@ export class AccountPage implements OnInit {
       ]))
     });
   }
+
   ngOnInit() {
+  }
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 10 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
   //==================================== Login ============================================
   signInWithEmail() {

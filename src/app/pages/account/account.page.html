@@ -206,7 +206,7 @@
 <!-- Phone -->
 <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
           <ion-label position="stacked">Phone number</ion-label>
-          <ion-input type="text" placeholder="+27 " formControlName="phone" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+          <ion-input  (keypress)="keyPress($event)" type="text" placeholder="+27 " formControlName="phone" clearInput autocapitalize="off" inputmode="numbers" ></ion-input>
 </ion-item>  
  <div class="error-container">
           <ng-container *ngFor="let validation of validation_messages.phone">
