@@ -3,7 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabGroup } from '@angular/material/tabs';
 import { Router } from '@angular/router';
+<<<<<<< HEAD
 import { AuthService } from 'src/app/services/auth.service';
+=======
+import { Subscription } from 'rxjs';
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
 import { DatabaseService } from 'src/app/services/database.service';
 import { ModalController } from '@ionic/angular';
 import { PhonePage } from '../phone/phone.page';
@@ -15,7 +19,12 @@ import { PhonePage } from '../phone/phone.page';
 })
 export class AccountPage implements OnInit {
  
+<<<<<<< HEAD
   type="login"
+=======
+  selected = 'other';
+  type="login";
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
 
   submitError: string;
   signInForm: FormGroup;
@@ -43,7 +52,11 @@ export class AccountPage implements OnInit {
       { type: 'minlength', message: 'Password must be at least 6 characters long.' }
     ]
   };
+<<<<<<< HEAD
   constructor(private modalController: ModalController ,private authService: AuthService,private router: Router, private dbs: DatabaseService) { 
+=======
+  constructor(private router: Router, private dbs: DatabaseService) { 
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
     this.signInForm = new FormGroup({
       'email': new FormControl('', Validators.compose([
         Validators.required,
@@ -76,6 +89,7 @@ export class AccountPage implements OnInit {
         Validators.required
       ]))
     });
+<<<<<<< HEAD
   }
   ngOnInit() {
   }
@@ -123,6 +137,42 @@ export class AccountPage implements OnInit {
       component: PhonePage
     });
     await modal.present();
+=======
   }
+  ngOnInit() {
+  }
+  //==================================== Login ============================================
+  signInWithEmail() {
+    this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
+    .then(user => {
+      // successfull login
+      console.log(this.signInForm.value['email']);
+      window.alert('Successful login');
+      //Re-Route here
+    })
+    .catch(error => {
+      this.submitError = error.message;
+    });
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
+  }
+ //==================================== Signup ============================================
+ signUpWithEmail() {
+  this.dbs.RegisterUser(
+    this.signUpForm.value['name'],
+    this.signUpForm.value['surname'],
+    this.signUpForm.value['gender'],
+    this.signUpForm.value['phone'],
+    this.signUpForm.value['email'], 
+    this.signUpForm.value['password'])
+  .then(user => {
+    // successfull sign-up
+      console.log(this.signUpForm);
+      window.alert('Successful register');
+      //Re-Route here
+    })
+  .catch(error => {
+    this.submitError = error.message;
+  });
+}
 
 }

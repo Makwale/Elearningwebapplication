@@ -10,7 +10,74 @@
 
         <h2>Welcome to E-Learning Academy</h2>
         <h4>Sign in and start learning</h4>
+<<<<<<< HEAD
       
+      <form [formGroup]="signInForm" (ngSubmit)="signInWithEmail()">
+        <ion-list class="inputs-list" lines="full">
+          <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+            <ion-label position="stacked" >Email Address</ion-label>
+            <ion-input #email type="email" placeholder="abc123@gmail.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+          </ion-item>
+          <div class="error-container" >
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div class="error-message" *ngIf="signInForm.get('email').hasError(validation.type) && (signInForm.get('email').dirty || signInForm.get('email').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+    
+=======
+      <!-- <form>
+ 
+        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+          <ion-label position="stacked" >Email Address</ion-label>
+          <ion-input #email></ion-input>
+        </ion-item>
+
+        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+          <ion-label position="stacked" >Password</ion-label>
+          <ion-input #password></ion-input>
+        </ion-item>
+
+        <ion-checkbox></ion-checkbox> <ion-label class="ion-margin">Remember password</ion-label>
+
+        <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong (click)="signInWithEmailAndPassword(email.value, password.value)">SIGN IN</ion-button>
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
+
+          <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+            <ion-label position="stacked" >Password</ion-label>
+            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+          </ion-item>
+  
+          <div class="error-container">
+            <ng-container *ngFor="let validation of validation_messages.password">
+              <div class="error-message" *ngIf="signInForm.get('password').hasError(validation.type) && (signInForm.get('password').dirty || signInForm.get('password').touched)">
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </ion-list>
+    
+        <ion-button class="ion-margin" class="sign-in-btn" type="submit" size="large" expand="block" shape="round"   strong [disabled]="!signInForm.valid">SIGN IN</ion-button>
+        
+        
+        <div style="margin-top: 7px;"><ion-label>Or Sign in with</ion-label></div>
+
+        <button mat-icon-button  style="background-color: transparent;" (click)="signInWithFacebook()">
+
+        <ion-icon size="large" class="ion-margin" color="primary" name="logo-facebook"></ion-icon>
+          
+        </button>
+
+          <button mat-icon-button  style="background-color: transparent;" (click)="signInWithPhone()">
+            <ion-icon name="call" class="ion-margin" size="large"></ion-icon>
+          </button>
+
+<<<<<<< HEAD
+=======
+      </form> -->
       <form [formGroup]="signInForm" (ngSubmit)="signInWithEmail()">
         <ion-list class="inputs-list" lines="full">
           <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
@@ -43,20 +110,8 @@
         </ion-list>
     
         <ion-button class="ion-margin" class="sign-in-btn" type="submit" size="large" expand="block" shape="round"   strong [disabled]="!signInForm.valid">SIGN IN</ion-button>
-        
-        
-        <div style="margin-top: 7px;"><ion-label>Or Sign in with</ion-label></div>
 
-        <button mat-icon-button  style="background-color: transparent;" (click)="signInWithFacebook()">
-
-        <ion-icon size="large" class="ion-margin" color="primary" name="logo-facebook"></ion-icon>
-          
-        </button>
-
-          <button mat-icon-button  style="background-color: transparent;" (click)="signInWithPhone()">
-            <ion-icon name="call" class="ion-margin" size="large"></ion-icon>
-          </button>
-
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
         <div class="error-container" *ngIf="submitError">
           <div class="error-message">
             <ion-icon name="information-circle-outline"></ion-icon>
@@ -77,12 +132,78 @@
 
       <h2>Welcom to Elearning Accademy</h2>
       <h4>Sign up and start learning</h4>
+<<<<<<< HEAD
     
     
       <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()">
       <ion-list class="inputs-list" lines="full">
         
 
+=======
+    <!-- <form>
+
+      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+        <ion-label position="stacked">First Name</ion-label>
+        <ion-input #name ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+        <ion-label position="stacked">Last Name</ion-label>
+        <ion-input #surname ></ion-input>
+      </ion-item>
+
+      <ion-radio-group value="" #gender>
+      
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio slot="start" value="Male"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio slot="start" value="Female"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+
+
+      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+        <ion-label position="stacked">Phone Number</ion-label>
+        <ion-input #phone ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+        <ion-label position="stacked">Email Address</ion-label>
+        <ion-input #email ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input #password ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+        <ion-label position="stacked">Confirm Password</ion-label>
+        <ion-input  #cpassword ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin" style="border-radius: 20px; border: 1px solid black; ">
+        <ion-label position="stacked">Profile summary</ion-label>
+        <ion-textarea rows="5" placeholder="Write a little description about you. Words should be atleast 500 charecters"></ion-textarea>
+      </ion-item>
+
+
+      <ion-button class="ion-margin" size="large" expand="block" shape="round"  strong (click)="createUserAccount(name.value, surname.value, gender.value, phone.value, email.value, password.value, cpassword.value)">SIGN UP</ion-button>
+
+
+
+    </form> -->
+
+    
+      <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()">
+      <ion-list class="inputs-list" lines="full">
+        
+
+>>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
 <!-- First Name -->
         <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
           <ion-label position="stacked">First Name</ion-label>
