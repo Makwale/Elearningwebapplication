@@ -10,19 +10,14 @@ export class DatabaseService {
      private afa: AngularFireAuth, 
      private router: Router) { }
   
+
   
-  signinWithEmailAndPassword(email: string, password: string){
-      this.afa.signInWithEmailAndPassword(email, password).then( res => {
-        this.router.navigateByUrl("home");
-      }).catch(error =>{
-        alert(error)
-      });
-  }
   // Login user with email/password
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {
       this.router.navigateByUrl("home");
+       console.log( 'Signin success');
     }).catch(error =>{
       alert(error)
     });
