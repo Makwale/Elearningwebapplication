@@ -80,19 +80,7 @@ export class AccountPage implements OnInit {
   }
   ngOnInit() {
   }
-  //==================================== Login ============================================
-  signInWithEmail() {
-    this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
-    .then(user => {
-      // successfull login
-      console.log(this.signInForm.value['email']);
-      window.alert('Successful login');
-      //Re-Route here
-    })
-    .catch(error => {
-      this.submitError = error.message;
-    });
-  }
+ 
  //==================================== Signup ============================================
  signUpWithEmail() {
   this.dbs.RegisterUser(
@@ -125,7 +113,26 @@ export class AccountPage implements OnInit {
     });
     await modal.present();
   }
-
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 10 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+  //==================================== Login ============================================
+  signInWithEmail() {
+    this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
+    .then(user => {
+      // successfull login
+      console.log(this.signInForm.value['email']);
+      window.alert('Successful login');
+      //Re-Route here
+    })
+    .catch(error => {
+      this.submitError = error.message;
+    });
+  }
 
 
 }
