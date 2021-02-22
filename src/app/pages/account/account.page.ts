@@ -115,7 +115,6 @@ export class AccountPage implements OnInit {
     this.signUpForm.value['password'])
   .then(user => {
     // successfull sign-up
-      console.log(this.signUpForm);
       window.alert('Successful register');
       //Re-Route here
     })

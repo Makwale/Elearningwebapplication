@@ -39,13 +39,26 @@
             </ng-container>
           </div>
         </ion-list>
-  
+    
         <ion-button class="ion-margin" class="sign-in-btn" type="submit" size="large" expand="block" shape="round"   strong [disabled]="!signInForm.valid">SIGN IN</ion-button>
+        
+        
+        <div style="margin-top: 7px;"><ion-label>Or Sign in with</ion-label></div>
+
+        <button mat-icon-button  style="background-color: transparent;" (click)="signInWithFacebook()">
+
+        <ion-icon size="large" class="ion-margin" color="primary" name="logo-facebook"></ion-icon>
+          
+        </button>
+
+          <button mat-icon-button  style="background-color: transparent;" (click)="signInWithPhone()">
+            <ion-icon name="call" class="ion-margin" size="large"></ion-icon>
+          </button>
 
         <div class="error-container" *ngIf="submitError">
           <div class="error-message">
             <ion-icon name="information-circle-outline"></ion-icon>
-            <span>{{ submitError }}</span>
+5             <span>{{ submitError }}</span>
           </div>
         </div>
       </form>
@@ -172,6 +185,8 @@
         </div>
       </div>
     </form>
+
+
   </div>
   </mat-tab>
 
