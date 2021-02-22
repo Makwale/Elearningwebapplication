@@ -97,7 +97,6 @@ export class AccountPage implements OnInit {
     this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
       // successfull login
-      console.log(this.signInForm.value['email']);
       window.alert('Successful login');
       //Re-Route here
     })
