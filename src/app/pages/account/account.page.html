@@ -6,48 +6,15 @@
       <ion-icon name="log-in" size="large" class="ion-margin"></ion-icon>
        <b>SIGN IN</b>
     </ng-template>
-    <div style="width: 40%; margin: auto; text-align: center; background-color: white; margin-top: 20px; padding-top: 50px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
+    <div style="width: 50%; margin: auto; text-align: center; background-color: white; margin-top: 40px; padding-top: 5px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
 
         <h2>Welcome to E-Learning Academy</h2>
-        <h4>Sign in and start learning</h4>
-      <!-- <form>
- 
-        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-          <ion-label position="stacked" >Email Address</ion-label>
-          <ion-input #email></ion-input>
-        </ion-item>
-
-        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-          <ion-label position="stacked" >Password</ion-label>
-          <ion-input #password></ion-input>
-        </ion-item>
-
-        <ion-checkbox></ion-checkbox> <ion-label class="ion-margin">Remember password</ion-label>
-
-        <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong (click)="signInWithEmailAndPassword(email.value, password.value)">SIGN IN</ion-button>
-
-        <div><ion-label>Or Sign in with</ion-label></div>
-
-        <button mat-icon-button  style="background-color: transparent;">
-
-        <ion-icon size="large" class="ion-margin" color="primary" name="logo-facebook"></ion-icon>
-          
-        </button>
-
-        <button mat-icon-button  style="background-color: transparent;">
-          <ion-icon class="ion-margin" name="logo-google" size="large" color="danger"></ion-icon>
-        </button>
-
-          <button mat-icon-button  style="background-color: transparent;">
-            <ion-icon name="call" class="ion-margin" size="large"></ion-icon>
-          </button>
-
-      </form> -->
+        <h4>Sign in and continue learning</h4>
       <form [formGroup]="signInForm" (ngSubmit)="signInWithEmail()">
         <ion-list class="inputs-list" lines="full">
           <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
             <ion-label position="stacked" >Email Address</ion-label>
-            <ion-input #email type="email" placeholder="abc123@gmail.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+            <ion-input #email type="email" placeholder="you@example.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
           </ion-item>
           <div class="error-container" >
             <ng-container *ngFor="let validation of validation_messages.email">
@@ -58,10 +25,9 @@
             </ng-container>
           </div>
     
-
           <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
             <ion-label position="stacked" >Password</ion-label>
-            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+            <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
           </ion-item>
   
           <div class="error-container">
@@ -73,13 +39,13 @@
             </ng-container>
           </div>
         </ion-list>
-    
+  
         <ion-button class="ion-margin" class="sign-in-btn" type="submit" size="large" expand="block" shape="round"   strong [disabled]="!signInForm.valid">SIGN IN</ion-button>
 
         <div class="error-container" *ngIf="submitError">
           <div class="error-message">
             <ion-icon name="information-circle-outline"></ion-icon>
-5             <span>{{ submitError }}</span>
+            <span>{{ submitError }}</span>
           </div>
         </div>
       </form>
@@ -92,157 +58,111 @@
        <b>SIGN UP</b>
     </ng-template>
 
-    <div style="width: 40%; margin: auto; text-align: center; background-color: white; margin-top: 5px; padding-top: 5px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
+    <div style="width: 50%; margin: auto; text-align: center; background-color: white; margin-top: 40px; padding-top: 5px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
 
       <h2>Welcom to Elearning Accademy</h2>
       <h4>Sign up and start learning</h4>
-    <!-- <form>
-
-      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-        <ion-label position="stacked">First Name</ion-label>
-        <ion-input #name ></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-        <ion-label position="stacked">Last Name</ion-label>
-        <ion-input #surname ></ion-input>
-      </ion-item>
-
-      <ion-radio-group value="" #gender>
-      
-        <ion-item>
-          <ion-label>Male</ion-label>
-          <ion-radio slot="start" value="Male"></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Female</ion-label>
-          <ion-radio slot="start" value="Female"></ion-radio>
-        </ion-item>
-      </ion-radio-group>
-
-
-      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-        <ion-label position="stacked">Phone Number</ion-label>
-        <ion-input #phone ></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-        <ion-label position="stacked">Email Address</ion-label>
-        <ion-input #email ></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-        <ion-label position="stacked">Password</ion-label>
-        <ion-input #password ></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-        <ion-label position="stacked">Confirm Password</ion-label>
-        <ion-input  #cpassword ></ion-input>
-      </ion-item>
-
-      <ion-item class="ion-margin" style="border-radius: 20px; border: 1px solid black; ">
-        <ion-label position="stacked">Profile summary</ion-label>
-        <ion-textarea rows="5" placeholder="Write a little description about you. Words should be atleast 500 charecters"></ion-textarea>
-      </ion-item>
-
-
-      <ion-button class="ion-margin" size="large" expand="block" shape="round"  strong (click)="createUserAccount(name.value, surname.value, gender.value, phone.value, email.value, password.value, cpassword.value)">SIGN UP</ion-button>
-
-
-
-    </form> -->
-
-    
       <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()">
-      <ion-list class="inputs-list" lines="full">
-        
-
-<!-- First Name -->
-        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-          <ion-label position="stacked">First Name</ion-label>
-          <ion-input type="text" placeholder="Name" formControlName="name" clearInput autocapitalize="off" inputmode="text" ></ion-input>
-        </ion-item>      
+      <ion-list class="inputs-list" lines="full">      
+            <!-- First and Last Name -->
+            <ion-row> 
+              <ion-col>
+                <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-label position="stacked">First Name</ion-label>
+                  <ion-input type="text" placeholder="John" formControlName="name" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+                </ion-item>      
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.name">
+                    <div class="error-message" *ngIf="signUpForm.get('name').hasError(validation.type) && (signUpForm.get('name').dirty || signUpForm.get('name').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+              <ion-col>
+                <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-label position="stacked">Last Name</ion-label>
+                  <ion-input type="text" placeholder="Dou" formControlName="surname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+                </ion-item>
+                
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.surname">
+                    <div class="error-message" *ngIf="signUpForm.get('surname').hasError(validation.type) && (signUpForm.get('surname').dirty || signUpForm.get('surname').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Phone Number and Gender -->
+            <ion-row>
+              <ion-col>
+                <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-label position="stacked">Phone number</ion-label>
+                  <ion-input  (keypress)="keyPress($event)" type="text" placeholder="+271 123 4567" formControlName="phone" clearInput autocapitalize="off" inputmode="numbers" ></ion-input>
+        </ion-item>  
         <div class="error-container">
-          <ng-container *ngFor="let validation of validation_messages.name">
-            <div class="error-message" *ngIf="signUpForm.get('name').hasError(validation.type) && (signUpForm.get('name').dirty || signUpForm.get('name').touched)">
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span>{{ validation.message }}</span>
-            </div>
-          </ng-container>
+                  <ng-container *ngFor="let validation of validation_messages.phone">
+                    <div class="error-message" *ngIf="signUpForm.get('phone').hasError(validation.type) && (signUpForm.get('phone').dirty || signUpForm.get('phone').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
         </div>
-<!-- Last Name -->
-        <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-          <ion-label position="stacked">Last Name</ion-label>
-          <ion-input type="text" placeholder="Last Name" formControlName="surname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
-        </ion-item>
-        
-        <div class="error-container">
-          <ng-container *ngFor="let validation of validation_messages.surname">
-            <div class="error-message" *ngIf="signUpForm.get('surname').hasError(validation.type) && (signUpForm.get('surname').dirty || signUpForm.get('surname').touched)">
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span>{{ validation.message }}</span>
-            </div>
-          </ng-container>
-        </div>
-<!-- Gender -->
-<ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-  <ion-label position="stacked">Gender</ion-label>
-  <ion-select formControlName="gender" placeholder="Select gender">
-    <ion-select-option  value="female">Female</ion-select-option>
-    <ion-select-option value="male">Male</ion-select-option>
-  </ion-select>
-</ion-item>
-
-<div class="error-container">
-  <ng-container *ngFor="let validation of validation_messages.gender">
-    <div class="error-message" *ngIf="signUpForm.get('gender').hasError(validation.type) && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched)">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      <span>{{ validation.message }}</span>
-    </div>
-  </ng-container>
-</div>
-<!-- Phone -->
-<ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-          <ion-label position="stacked">Phone number</ion-label>
-          <ion-input  (keypress)="keyPress($event)" type="text" placeholder="+27 " formControlName="phone" clearInput autocapitalize="off" inputmode="numbers" ></ion-input>
-</ion-item>  
- <div class="error-container">
-          <ng-container *ngFor="let validation of validation_messages.phone">
-            <div class="error-message" *ngIf="signUpForm.get('phone').hasError(validation.type) && (signUpForm.get('phone').dirty || signUpForm.get('phone').touched)">
-              <ion-icon name="information-circle-outline"></ion-icon>
-              <span>{{ validation.message }}</span>
-            </div>
-          </ng-container>
- </div>
-<!-- Email -->
-<ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-  <ion-label position="stacked" >Email Address</ion-label>
-  <ion-input #email type="email" placeholder="abc123@gmail.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
-</ion-item>
-<div class="error-container" >
-  <ng-container *ngFor="let validation of validation_messages.email">
-    <div class="error-message" *ngIf="signUpForm.get('email').hasError(validation.type) && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      <span>{{ validation.message }}</span>
-    </div>
-  </ng-container>
-</div>
-<!-- Password -->
-<ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
-  <ion-label position="stacked" >Password</ion-label>
-  <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-</ion-item>
-<div class="error-container">
-  <ng-container *ngFor="let validation of validation_messages.password">
-    <div class="error-message" *ngIf="signUpForm.get('password').hasError(validation.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
-      <ion-icon name="information-circle-outline"></ion-icon>
-      <span>{{ validation.message }}</span>
-    </div>
-  </ng-container>
-</div>
-<!-- Confirm Password -->
+              </ion-col>
+              <ion-col>
+                <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-label position="stacked">Gender</ion-label>
+                  <ion-select formControlName="gender" placeholder="Select gender">
+                    <ion-select-option  value="female">Female</ion-select-option>
+                    <ion-select-option value="male">Male</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.gender">
+                    <div class="error-message" *ngIf="signUpForm.get('gender').hasError(validation.type) && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Email Address -->
+            <ion-row>
+              <ion-col>
+                <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-label position="stacked" >Email Address</ion-label>
+                  <ion-input #email type="email" placeholder="you@example.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+                </ion-item>
+                <div class="error-container" >
+                  <ng-container *ngFor="let validation of validation_messages.email">
+                    <div class="error-message" *ngIf="signUpForm.get('email').hasError(validation.type) && (signUpForm.get('email').dirty || signUpForm.get('email').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+            <!-- Password -->
+            <ion-row>
+              <ion-col> <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                <ion-label position="stacked" >Password</ion-label>
+                <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validation_messages.password">
+                  <div class="error-message" *ngIf="signUpForm.get('password').hasError(validation.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div></ion-col>
+            </ion-row>
       </ion-list>
       <ion-button class="sign-up-btn" type="submit" expand="block" shape="round" [disabled]="!signUpForm.valid">Sign Up</ion-button>
       <div class="error-container" *ngIf="submitError">
@@ -252,11 +172,7 @@
         </div>
       </div>
     </form>
-
-
   </div>
-
-
   </mat-tab>
 
 </mat-tab-group>
