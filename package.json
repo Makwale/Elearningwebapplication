@@ -33,20 +33,8 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-<<<<<<< HEAD
+
     "@angular-devkit/architect": "^0.1102.1",
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@angular-devkit/architect": "^0.1102.1",
-=======
-    "@angular-devkit/architect": ">= 0.900 < 0.1200",
->>>>>>> 4bf2ec3bfc33e7350e39634af7f685362e5a60c2
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
-=======
-    "@angular-devkit/architect": ">= 0.900 < 0.1200",
->>>>>>> 4bf2ec3bfc33e7350e39634af7f685362e5a60c2
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
     "@angular-devkit/build-angular": "~0.1100.5",
     "@angular/cli": "~11.0.5",
     "@angular/compiler": "~11.0.5",
@@ -59,27 +47,9 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.20.4",
     "codelyzer": "^6.0.0",
-<<<<<<< HEAD
     "firebase-tools": "^9.4.0",
     "fuzzy": "^0.1.3",
     "inquirer": "^6.5.2",
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "firebase-tools": "^9.4.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.5.2",
-=======
-=======
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
-    "firebase-tools": "^8.0.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
->>>>>>> 4bf2ec3bfc33e7350e39634af7f685362e5a60c2
-<<<<<<< HEAD
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
-=======
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
     "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -93,20 +63,8 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-<<<<<<< HEAD
-    "typescript": "^4.1.5"
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "typescript": "^4.1.5"
-=======
-    "typescript": "~4.0.2"
->>>>>>> 4bf2ec3bfc33e7350e39634af7f685362e5a60c2
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
-=======
-    "typescript": "~4.0.2"
->>>>>>> 4bf2ec3bfc33e7350e39634af7f685362e5a60c2
->>>>>>> 841ec5f0f4653468b4f245076f67ddaf24bcbdc4
+
+    "typescript": "^4.1.0"
   },
   "description": "An Ionic project"
 }

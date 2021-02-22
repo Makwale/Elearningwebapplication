@@ -126,4 +126,6 @@ export class AccountPage implements OnInit {
     await modal.present();
   }
 
+
+
 }
