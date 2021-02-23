@@ -16,7 +16,7 @@
     
       <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of featured_course"
        [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-       <img style="margin: auto;"    mat-card-image [src]="course.imgURL">
+       <img style="margin: auto;" class="img" mat-card-image [src]="course.imgURL">
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category}}</p>
@@ -54,7 +54,7 @@
       </ion-item-divider>
       <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of latest_course"
       [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-      <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL"></a>
+     <img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL">
       <mat-card-content style="margin: 10px;">
         <a   class="course-link">Learn {{course.name}}</a>
         <p>{{course.category}}</p>

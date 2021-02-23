@@ -9,7 +9,7 @@
     <mat-card class="fcourse-card" style=" padding: 0px;"
        [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
      
-       <a><img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL"></a>
+      <img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL">
 
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
