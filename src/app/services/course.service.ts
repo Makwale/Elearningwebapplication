@@ -17,10 +17,6 @@ export class CourseService {
     this.selectedC = this.featuredCourses[0];
     this.homeView = false;
    }
-   getCourses() {
-    return this.firestore.collection('course').snapshotChanges();
-}
-   
   getFeaturedCourses(){
     if(this.homeView){
       return this.featuredCourses = this.featuredCourses.slice(0,3);

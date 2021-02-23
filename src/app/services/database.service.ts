@@ -44,10 +44,7 @@ export class DatabaseService {
       alert(error);
     })
   }
-  read_students() {
-    return this.asf.collection(this.collectionName).snapshotChanges();
-  }
-  getAllCountry() {  
-    return this.asf.collection('Course').snapshotChanges();  
+  getInstructor(userID){
+    return this.asf.collection('Instructor', ref => ref.where('userID','==', userID)).snapshotChanges();
   }
 }

@@ -39,6 +39,7 @@ export class FeaturedcoursesPage implements OnInit {
       this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
         this.featured_course = objects;
      })
+     
     } 
     //Selected course
     selectCourse(_course){  
