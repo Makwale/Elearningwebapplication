@@ -102,22 +102,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/congratulations/congratulations.module').then( m => m.CongratulationsPageModule)
   },
   {
-    path: 'phone',
-    loadChildren: () => import('./pages/phone/phone.module').then( m => m.PhonePageModule)
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
   },
  
   {
     path: 'databasequiz',
     loadChildren: () => import('./pages/databasequiz/databasequiz.module').then( m => m.DatabasequizPageModule)
   },
-
-
-
-
-
-
-  
-
 
 
 ];
