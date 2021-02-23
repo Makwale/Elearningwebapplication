@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeasonsPage implements OnInit {
 selectTabs ="recent";
+videoURL;
+ 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  play(videoURL){
+    this.videoURL = videoURL;
   }
 
 }

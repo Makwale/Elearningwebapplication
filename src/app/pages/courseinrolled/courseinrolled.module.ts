@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CourseinrolledPageRoutingModule } from './courseinrolled-routing.module';
 
 import { CourseinrolledPage } from './courseinrolled.page';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CourseinrolledPageRoutingModule
+    CourseinrolledPageRoutingModule,
+    MatCardModule
   ],
   declarations: [CourseinrolledPage]
 })
