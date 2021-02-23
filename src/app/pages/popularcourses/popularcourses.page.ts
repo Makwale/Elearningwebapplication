@@ -16,6 +16,7 @@ export class PopularcoursesPage implements OnInit {
   selectedCourse; //On select course item
 
   popular_course: Course [] = []; //All courses offered
+  popular_instructors: Course []=[];
   
   constructor( 
     private modalCtrl: ModalController, 
@@ -27,6 +28,10 @@ export class PopularcoursesPage implements OnInit {
       this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
         this.popular_course = objects.slice(0,8);
      })
+     this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
+      this.popular_instructors= objects;
+      console.log(this.popular_instructors);
+   })
     } 
     //Selected course
     selectCourse(_course){  
