@@ -36,11 +36,7 @@ export class CongratulationsPage implements OnInit {
           label: 'Gain a qualification',
           value: 'Gain a qualification'
         },
-        {
-          type: 'checkbox',
-          label: 'Son',
-          value: 'son'
-        },
+        
         {
           type: 'checkbox',
           label: 'Gain new skills',
@@ -67,8 +63,5 @@ export class CongratulationsPage implements OnInit {
     });
   }
 
-  goNext() {
-    this.router.navigateByUrl("Account")
-    this.router.navigate(['/Account'])
-  }
+ 
 }

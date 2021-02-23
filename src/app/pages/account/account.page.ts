@@ -76,6 +76,10 @@ export class AccountPage implements OnInit {
       ]))
     });
   }
+  goDash() {
+    this.router.navigateByUrl("dashboard");
+  
+}
   ngOnInit() {
   }
   //==================================== Login ============================================
