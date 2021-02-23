@@ -100,14 +100,10 @@ const routes: Routes = [
   {
     path: 'congratulations',
     loadChildren: () => import('./pages/congratulations/congratulations.module').then( m => m.CongratulationsPageModule)
-  },  {
-<<<<<<< HEAD
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-=======
-    path: 'phone',
-    loadChildren: () => import('./pages/phone/phone.module').then( m => m.PhonePageModule)
->>>>>>> a6e57140621778dd56b2c35c4f474e59db43abda
   },
 
 

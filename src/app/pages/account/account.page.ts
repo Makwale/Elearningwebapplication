@@ -82,14 +82,10 @@ export class AccountPage implements OnInit {
       ]))
     });
   }
-<<<<<<< HEAD
   goDash() {
     this.router.navigateByUrl("dashboard");
   
 }
-=======
-
->>>>>>> a6e57140621778dd56b2c35c4f474e59db43abda
   ngOnInit() {
   }
   keyPress(event: any) {
