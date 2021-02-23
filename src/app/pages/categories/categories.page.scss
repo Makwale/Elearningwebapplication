@@ -1,61 +1,60 @@
+// .img{
+//   height: 100px;
+//   width: 100%;
+// }
+// .latest-courses{
+//   padding-bottom: 50px;
+//   margin-bottom: 50px;
+//   padding-left: 10px;
+//   align-content: stretch;
+//   display:flex;
+//   flex-wrap: wrap;
+//   height: 100%;
+//   width: auto;
+// }
+// .fcourse-card{
+//   margin: 10px;
+//   width: 250px;
+//   height: auto;
+//   margin-left: 10px;
+// }
+// .fcourse-card:hover{
+
+//   background-color: coral;
+//   .instructor{
+//     color: cornsilk;
+//   }
+// }
+.img{
+  height: 100px;
+  width: 100%;
+}
+.featured-courses{
+  //padding-bottom: 50px;
+  margin-bottom: 50px;
+  // padding-left: 10px;
+  // align-content: stretch;
+  // display:flex;
+  // flex-wrap: wrap;
+  // height: 100%;
+  // width: auto;
+}
+.fcourse-card{
+  margin: 10px;
+  width: 250px;
+//  height: auto;
+  margin-left: 10px;
+}
 .fcourse-card:hover{
 
-    background-color: rgb(196, 118, 90);
-    .instructor{
-      color: cornsilk;
-    }
+  background-color: coral;
+  .instructor{
+    color: cornsilk;
+  }
 }
 
 
-.entry h2 {
-    font-size: 48px;
-    color: #000000;
-    font-weight: 750;
-  }
-  h1{
-    color: #000000;
-  }
-  h1:hover{
-    color: #3498db;
-  }
-  
-  /* Next, add a delay to the hover effect */
-  .entry h2:hover{
-    color: #f00;
-    transition: all 0.5s ease;
-  }
-  .hide {
-    display: block;
-  }
-      
-  .myDIV:hover + .hide {
-    display: block;
-    color: red;
-  }
-  .product-description {
-    max-width: 150px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #3498db;
-      width: 120px;
-      height: 120px;
-      -webkit-animation: spin 2s linear infinite; /* Safari */
-      animation: spin 2s linear infinite;
-    }
-    
-    /* Safari */
-    @-webkit-keyframes spin {
-      0% { -webkit-transform: rotate(0deg); }
-      100% { -webkit-transform: rotate(360deg); }
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  
+
+
+
+

@@ -14,9 +14,9 @@
 
       </ion-item-divider>
     
-      <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of featured_courses"
+      <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of featured_course"
        [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-       <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.image"></a>
+       <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL"></a>
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
@@ -52,9 +52,9 @@
         </ion-label>
 
       </ion-item-divider>
-      <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of latest_courses"
+      <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of latest_course"
       [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-      <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.image"></a>
+      <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL"></a>
       <mat-card-content style="margin: 10px;">
         <a   class="course-link">Learn {{course.name}}</a>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>

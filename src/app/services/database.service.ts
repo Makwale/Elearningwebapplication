@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore'
+import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DatabaseService {
+  collectionName = 'Course';
   constructor(private asf: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router) { }
-  
 
-  
   // Login user with email/password
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
@@ -44,5 +44,10 @@ export class DatabaseService {
       alert(error);
     })
   }
-  
+  read_students() {
+    return this.asf.collection(this.collectionName).snapshotChanges();
+  }
+  getAllCountry() {  
+    return this.asf.collection('Course').snapshotChanges();  
+  }
 }

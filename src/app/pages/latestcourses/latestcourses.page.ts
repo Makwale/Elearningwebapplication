@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ModalController} from '@ionic/angular';
+import { Course } from 'src/app/Model/course';
 import { CourseService } from 'src/app/services/course.service';
+import { DatabaseService } from 'src/app/services/database.service';
 import { CoursedetailsPage } from './../coursedetails/coursedetails.page'
 @Component({
   selector: 'app-latestcourses',
@@ -8,21 +11,21 @@ import { CoursedetailsPage } from './../coursedetails/coursedetails.page'
   styleUrls: ['./latestcourses.page.scss'],
 })
 export class LatestcoursesPage implements OnInit {
-
-  latest_courses = [];
+  latest_course: Course [] = [];
+  
   selectedCourse;
+  iT: string = 'IT';
+  bM: string = 'Business Management';
   constructor( 
-    private modalCtrl: ModalController,
-    private coursesService: CourseService
+    private modalCtrl: ModalController, private asf:AngularFirestore,
+    private coursesService: CourseService, private dbService: DatabaseService
     ){ }
      ngOnInit() { 
-       this.getCourses(); 
-       console.log(this.latest_courses);
+           this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(storeItems =>{
+        this.latest_course = storeItems;
+     })
     }
-    //Get all Featured Courses
-    getCourses():void{
-      this.latest_courses = this.coursesService.getLatestCourses();
-    }
+    
     //Selected course
     selectCourse(_course){  
       this.selectedCourse = _course;

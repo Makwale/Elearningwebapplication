@@ -281,9 +281,9 @@
 
       <ion-col size="4">
         <div style="border: 1px solid; height: 400px; padding: 10px; background-color: rgba(0, 0, 0, .05); border-radius: 5px;">
-          <img style="margin: auto; margin-left: 10px;"  [src]="courseSelected.image" alt="image"> 
+          <img style="margin: auto; margin-left: 10px;"  [src]="courseSelected.imgURL" alt="image"> 
           <h5><b>{{courseSelected.name}}</b></h5>
-          <p>{{courseSelected.desc}}</p>
+          <p>{{courseSelected.category}}</p>
           <span>By: <span class="instructor">{{courseSelected.instructor}}</span></span>
           <span class="prices">{{courseSelected.price | currency : 'R'}}</span>
           <ion-button vertically="bottom" color ="danger" size="large" expand="block" shape="round" (click)="enroll()">Enroll Now
