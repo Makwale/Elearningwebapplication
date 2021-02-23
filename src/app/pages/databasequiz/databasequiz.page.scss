@@ -1,0 +1,137 @@
+@import url('//fonts.googleapis.com/css?family=Raleway:400,800');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+
+%clearfix {
+  &:after {clear:both;content:"";display:table;}
+  &:before { content:"";display:table;} }
+
+$green: #2dceb1;
+$red: #ff383e;
+$wht: #fbfbfb;
+$grey: #fdfdfd;
+$type: #737373;
+
+$cancel: "\f00d";
+$check: "\f00c";
+
+
+
+.submit {
+  padding: 20px 5px;
+  button {
+    display: block;
+    outline: none;
+    width: 300px;
+    margin: 1em auto 1.5em;
+    padding: .8em 1em;
+    background: darken($wht,1%);
+    color: darken($wht,12%);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 1px solid darken($wht,5%);
+  }
+}
+
+#emc-submit {
+  position: relative;
+ // @include transition(all .33s ease);
+  &.ready-show {
+     background: $green;
+     color: darken($green,15%);
+     border: none;
+     border-bottom: 2px solid darken($green,7.5%);
+     box-shadow: 0 1px 1px rgba(#444,.2);
+   //  @include transform(rotateX(360deg));
+    &:hover {
+      color: $wht;
+      background: darken($green,7%);
+      border-color: darken($green,15%);
+    }
+    &:active {
+      top: 2px;
+      border-bottom: none;
+    }
+  }
+}
+.quiz {
+    padding:0 30px 20px 30px;
+    max-width:960px;
+    margin:0 auto;
+    
+    ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+  }
+  .quiz-question {
+    font-weight:bold;
+    display:block;
+    padding:30px 0 10px 0;
+    margin:0;
+  }
+  .quiz-answer {
+    margin:0;
+    padding:10px;
+    background:#f7f7f7;
+    margin-bottom:5px;
+    cursor: pointer;
+    
+    &:hover {
+      background:#eee;
+    }
+    
+    &:before {
+      content:"";
+      display:inline-block;
+      width:15px;
+      height:15px;
+      border:1px solid #ccc;
+      background:#fff;
+      vertical-align:middle;
+      margin-right:10px;
+    }
+    
+    &.active {
+      &:before {
+        background-color:#333;
+        border-color:#333;
+      }
+    }
+    &.correct {
+      &:before {
+        background-color:green;
+        border-color:green;
+      }
+    }
+    &.incorrect {
+      &:before {
+        background-color:red;
+        border-color:red;
+      }
+    }
+    &.active.correct {
+      &:before {
+        outline: 2px solid green;
+        outline-offset: 2px;
+      }
+    }
+  }
+  .quiz-result {
+    max-width:960px;
+    margin:0 auto;
+    font-weight:bold;
+    text-align:center;
+    color: #fff;
+    padding:20px;
+    
+    &.good {
+      background: green;
+    }
+    &.mid {
+      background: orange;
+    }
+    &.bad {
+      background: red;
+    }
+  }

@@ -109,7 +109,11 @@ const routes: Routes = [
   {
     path: 'databasequiz',
     loadChildren: () => import('./pages/databasequiz/databasequiz.module').then( m => m.DatabasequizPageModule)
+  },  {
+    path: 'tasklist',
+    loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
   },
+
 
 
 ];
