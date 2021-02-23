@@ -1,19 +1,20 @@
 
-
- <section style="overflow:auto"> 
+<section style="overflow:auto" style="padding-bottom: 150px;"> 
 
   <ion-item-divider class="category">
     <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;">Featured Courses</h2>
   </ion-item-divider>
-  
-  <div class="featured-courses">
-    <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of featured_courses"
-       [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-       <a ><img style="margin: auto;"  class="img"  mat-card-image [src]="course.image"></a>
+
+  <div *ngFor="let course of featured_course" >
+    <mat-card class="fcourse-card" style=" padding: 0px;"
+       [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
+     
+      <img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL">
+
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-         <span>By: <span class="instructor">{{course.instructor}}</span></span>
+         <p>{{course.category}}</p>
+         <span>By: <span class="instructor">{{course.instructor_id }}</span></span>
            <br>
            <ion-row>
              <ion-col size ="8"> 
@@ -27,11 +28,14 @@
                 <ion-col    size ="4" class="ion-align-self-end">
                  <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
                </ion-col>
-           </ion-row>
-           
-           
+           </ion-row> 
        </mat-card-content>
        
      </mat-card>
-     </div>
-  </section>
+  </div>
+
+<ion-item-divider class="category">
+  <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;"></h2>
+</ion-item-divider>
+
+</section>

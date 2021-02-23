@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-title>Sign In With Phone Number</ion-title>
+
+    <ion-buttons slot="end">
+      <button mat-icon-button (click)="dismiss()"><ion-icon name="close-outline" size="large"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form>
+ 
+    <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+      <ion-label position="stacked" >Phone Number</ion-label>
+      <ion-input #phone placeholder="e.g(+27654453437)"></ion-input>
+    </ion-item>
+
+    <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong (click)="sendOTP(phone.value)">SUBMIT</ion-button>
+    
+    <div style="margin-left: 10px;" id="recaptcha-container"></div>
+
+    <ion-item class="ion-margin" style="border-radius: 90px; border: 1px solid black;">
+      <ion-label position="stacked" >OTP</ion-label>
+      <ion-input #otp placeholder="One Time Password" ></ion-input>
+    </ion-item>
+
+    <ion-button class="ion-margin" size="large" expand="block" shape="round"   strong (click)="verifyOTP(otp.value)">VERIFY OTP</ion-button>
+
+
+    </form>
+
+</ion-content>

@@ -1,0 +1,27 @@
+.img{
+    height: 100px;
+    width: 100%;
+  }
+  .featured-courses{
+    //padding-bottom: 50px;
+    margin-bottom: 50px;
+    // padding-left: 10px;
+    // align-content: stretch;
+    // display:flex;
+    // flex-wrap: wrap;
+    // height: 100%;
+    // width: auto;
+  }
+  .fcourse-card{
+    margin: 10px;
+    width: 250px;
+   height: auto;
+    margin-left: 10px;
+  }
+  .fcourse-card:hover{
+  
+    background-color: coral;
+    .instructor{
+      color: cornsilk;
+    }
+  }

@@ -1,8 +1,11 @@
 import { OnInit } from '@angular/core';
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { Course } from 'src/app/Model/course';
 import { CourseService } from 'src/app/services/course.service';
+import { DatabaseService } from 'src/app/services/database.service';
 import { AccountPage } from '../account/account.page';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
@@ -43,7 +46,13 @@ export class HomePage implements OnInit {
   featured_courses= [];
   latest_courses= [];
   selectedCourse;
+
+
+  featured_course: Course [] = []; //All courses offered
+  latest_course: Course [] = [];
+
   constructor(private router: Router, 
+    private asf:AngularFirestore,
     private modalCtrl: ModalController,
     private courseDao: CourseService) {}
   navigateToCourselink(){
@@ -51,7 +60,13 @@ export class HomePage implements OnInit {
 
   }
   ngOnInit(){
-      this.featured_courses = this.courseDao.getFeaturedCourses().slice(0,3);
+    this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
+      this.featured_course = objects.splice(9,3);
+   })
+   this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
+    this.latest_course = objects.splice(6,3);
+ })
+    this.featured_courses = this.courseDao.getFeaturedCourses().slice(0,3);
       this.latest_courses = this.courseDao.getLatestCourses().slice(0,3);  
   }
    //Selected course
@@ -66,7 +81,8 @@ export class HomePage implements OnInit {
     cssClass: 'cart-modal'
   });
   modal.present();
+}     
 }
-}
+
 
 
