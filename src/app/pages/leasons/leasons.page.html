@@ -1,282 +1,95 @@
 <ion-header>
-    <ion-toolbar color="dark">
-
-        <ion-title>
-            Course Name Thembi working here
-        </ion-title>
-        <ion-button fill="clear" size="small" slot="end" (click)="close()">
-            <ion-icon color="light" name="close"></ion-icon>
-        </ion-button>
+    <ion-toolbar>
+        <h3 style="margin-left: 7px;">Course Name</h3>
     </ion-toolbar>
 </ion-header>
 
-<ion-content class="course">
-    <div class="float-container">
+    
+<div style="margin-left: 7px;" class="ion-margin">
+    <ion-grid> 
+        <ion-row>
+        <ion-col size="8">  
+            <video [src]="videoURL" controls loop style="width: 100%; height: 400px; margin: auto;" autoplay >
 
-        <div class="videoWrapper">
-            <!-- Copy & Pasted from YouTube -->
-            <iframe width="560" height="349" src="http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1" frameborder="0" allowfullscreen></iframe>
-          </div>
-        
-        <!-- <div class="float-child">
-          <div class="vidlist">Float Column 2</div>
-        </div> -->
-        
-      </div>
-      <div class="moreInfo">
+            </video>
 
-        <mat-tab-group>
-            <mat-tab label="Course Details">
-                <h2 style="margin-top: 20px;">Introduction</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet leo vulputate justo porta, a pellentesque sem molestie. Nunc tempus metus sed porta sollicitudin. Sed sed ligula nec purus vehicula congue at ac velit. Aenean interdum
-                    ultricies cursus. Praesent facilisis dapibus dictum. Sed a sapien turpis</p>
-                <h3>What you'll learn?</h3>
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+         </ion-col> 
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+         <ion-col size="4">
+            <div class="popular-aside" style="width: 90%; margin-left: auto; margin-right: auto;">
+                <h2 class="aside-subheaders" >Latest Courses</h2>
+                <a href="#" class="popular-links">Software Engineering</a><br>
+                <a href="#" class="popular-links">Database Management</a><br>
+                <a href="#" class="popular-links">Forex</a><br>
+                <a href="#" class="popular-links">Marketing</a><br>
+                <a href="#" class="popular-links">Business Analysis</a><br>
+                <a href="#" class="popular-links">Business Management</a><br>
+            </div>
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+           
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </ion-col>
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+        </ion-row>
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+    </ion-grid>
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
 
-                <p>
-                    <ion-icon name="checkmark-circle-outline"></ion-icon>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-            </mat-tab>
-            <mat-tab label="Curriculum">
-                <h2 style="margin-top: 20px;">Course Contents</h2>
-                <mat-accordion>
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">1</span> is the expansion title
-                            </mat-panel-title>
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Course Contents">
+            <ion-list>
+                <ion-item button type="button" (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Introduction to HTML
+                    </ion-label>
+                </ion-item>
+                
 
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
+                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Creating a simple page
+                    </ion-label>
+                </ion-item>
 
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">2</span> is the expansion title
-                            </mat-panel-title>
+                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Making up texts
+                    </ion-label>
+                </ion-item>
 
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
+                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Adding links
+                    </ion-label>
+                </ion-item>
 
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">3</span> is the expansion title
-                            </mat-panel-title>
+                <ion-item button (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Adding Images
+                    </ion-label>
+                </ion-item>
 
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
+                <ion-item button (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4')">
+                    <ion-icon slot="start" name="play-circle-outline"></ion-icon>
+                    <ion-label>
+                        Table Markup
+                    </ion-label>
+                </ion-item>
 
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">4</span> is the expansion title
-                            </mat-panel-title>
+            </ion-list>
+              
 
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
+        </mat-tab>
+        <mat-tab label="Q&A">Q&A</mat-tab>
+        <mat-tab label="Notes">Notes</mat-tab>
+        <mat-tab label="Announcements">Announcements</mat-tab>
+    </mat-tab-group>
 
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">5</span> is the expansion title
-                            </mat-panel-title>
-
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">6</span> is the expansion title
-                            </mat-panel-title>
-
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">7</span> is the expansion title
-                            </mat-panel-title>
-
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">8</span> is the expansion title
-                            </mat-panel-title>
-
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">9</span> is the expansion title
-                            </mat-panel-title>
-
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-
-                    <mat-expansion-panel hideToggle="false">
-                        <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                <span class="course-curriculum">10</span> is the expansion title
-                            </mat-panel-title>
-
-                        </mat-expansion-panel-header>
-                        <p>This is the primary content of the panel.</p>
-                    </mat-expansion-panel>
-                </mat-accordion>
-
-            </mat-tab>
-            <mat-tab label="Reviews">
-                <h2 style="margin-top: 20px;">Student Feedback</h2>
-                <ion-grid>
-                    <ion-row>
-                        <ion-col style="text-align: center; padding-top: 50px;" size="4">
-                            <ion-label color="primary" style="font-size: xx-large;">4.5</ion-label> <br>
-                            <ion-icon color="primary" name="star"></ion-icon>
-                            <ion-icon color="primary" name="star"></ion-icon>
-                            <ion-icon color="primary" name="star"></ion-icon>
-                            <ion-icon color="primary" name="star"></ion-icon>
-                            <ion-icon color="primary" name="star-outline"></ion-icon> <br>
-                            <ion-label>Course Ratings</ion-label>
-                        </ion-col>
-
-                        <ion-col size="8">
-                            <ion-grid>
-                                <ion-grid>
-                                    <ion-row>
-                                        <ion-col size="8">
-                                            <ion-progress-bar value="100" class="progress-ratings"></ion-progress-bar>
-                                        </ion-col>
-
-                                        <ion-col size="4">
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-
-                                            <label class="rating-percentage">78%</label>
-                                        </ion-col>
-                                    </ion-row>
-
-                                    <ion-row>
-                                        <ion-col size="8">
-                                            <ion-progress-bar class="progress-ratings" value="0.5"></ion-progress-bar>
-                                        </ion-col>
-
-                                        <ion-col size="4">
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-
-                                            <label class="rating-percentage">78%</label>
-                                        </ion-col>
-                                    </ion-row>
-
-                                    <ion-row>
-                                        <ion-col size="8">
-                                            <ion-progress-bar class="progress-ratings" value="0.3"></ion-progress-bar>
-                                        </ion-col>
-
-                                        <ion-col size="4">
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-
-                                            <label class="rating-percentage">78%</label>
-                                        </ion-col>
-                                    </ion-row>
-
-                                    <ion-row>
-                                        <ion-col size="8">
-                                            <ion-progress-bar class="progress-ratings" value="0.2"></ion-progress-bar>
-                                        </ion-col>
-
-                                        <ion-col size="4">
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-
-                                            <label class="rating-percentage">78%</label>
-                                        </ion-col>
-                                    </ion-row>
-
-                                    <ion-row>
-                                        <ion-col size="8">
-                                            <ion-progress-bar class="progress-ratings" value="0.15"></ion-progress-bar>
-                                        </ion-col>
-
-                                        <ion-col size="4">
-                                            <ion-icon color="primary" name="star"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-                                            <ion-icon color="primary" name="star-outline"></ion-icon>
-
-                                            <label class="rating-percentage">78%</label>
-                                        </ion-col>
-                                    </ion-row>
-                                </ion-grid>
-                            </ion-grid>
-
-                        </ion-col>
-                    </ion-row>
-                </ion-grid>
-
-                <h2>
-                    Reviews
-                </h2>
-            </mat-tab>
-            <mat-tab label="Lessons"> Content 3 </mat-tab>
-        </mat-tab-group>
-    </div>
-
-</ion-content>
+</div>
+  
+ 
