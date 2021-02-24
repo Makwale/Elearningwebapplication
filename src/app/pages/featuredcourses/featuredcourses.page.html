@@ -14,8 +14,12 @@
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category}}</p>
-         <span>By: <span class="instructor">{{course.instructor_id }}</span></span>
-           <br>
+         <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div>  
+              <br>
            <ion-row>
              <ion-col size ="8"> 
                <ion-icon color="warning" name="star"></ion-icon>

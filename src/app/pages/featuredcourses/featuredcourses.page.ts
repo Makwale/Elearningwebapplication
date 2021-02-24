@@ -28,7 +28,7 @@ export class FeaturedcoursesPage implements OnInit {
   selectedCourse; //On select course item
 
   featured_course: Course [] = []; //All courses offered
-  
+  popular_instructors: Course []=[];
   constructor( 
     private modalCtrl: ModalController, 
     private asf:AngularFirestore,
@@ -39,6 +39,9 @@ export class FeaturedcoursesPage implements OnInit {
       this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
         this.featured_course = objects;
      })
+     this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
+      this.popular_instructors= objects;
+   })
      
     } 
     //Selected course

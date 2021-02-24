@@ -12,7 +12,7 @@ import { CoursedetailsPage } from './../coursedetails/coursedetails.page'
 })
 export class LatestcoursesPage implements OnInit {
   latest_course: Course [] = [];
-  
+  popular_instructors: Course []=[];
   selectedCourse;
   iT: string = 'IT';
   bM: string = 'Business Management';
@@ -24,8 +24,11 @@ export class LatestcoursesPage implements OnInit {
            this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(storeItems =>{
         this.latest_course = storeItems;
      })
+     this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
+      this.popular_instructors= objects;
+   })
     }
-    
+      
     //Selected course
     selectCourse(_course){  
       this.selectedCourse = _course;

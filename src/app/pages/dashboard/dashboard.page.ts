@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,13 +9,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class DashboardPage implements OnInit {
 
-  constructor(private route: ActivatedRoute,private router: Router) { }
+  constructor(private route: ActivatedRoute,private router: Router,
+    private auth: AngularFireAuth, ) { }
   goDash() {
     this.router.navigateByUrl("account");
   
 }
   ngOnInit() {
   }
-  
+  logout(){
+    this.auth.signOut();
+  }
 }
 

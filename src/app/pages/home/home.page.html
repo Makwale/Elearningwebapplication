@@ -19,9 +19,19 @@
        <img style="margin: auto;" class="img" mat-card-image [src]="course.imgURL">
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
-         <p>C++ is a powerful general-purpose programming language. 
-           It can be used to develop operating systems, browsers, games, and so on. .</p>
+
+         <p></p>
          <span>By: <span class="instructor">{{course.instructor}}</span></span>
+
+         <p> {{course.category}}</p>
+         
+           <div *ngFor ="let instructor of popular_instructors">
+
+            <div *ngIf = "course.instructor_id ===instructor.id" > 
+              <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+            </div>  
+         
+
            <br>
            <ion-row>
              <ion-col size ="8"> 
@@ -59,8 +69,13 @@
       <mat-card-content style="margin: 10px;">
         <a   class="course-link">Learn {{course.name}}</a>
         <p>{{course.category}}</p>
-        <span>By: <span class="instructor">{{course.instructor_id}}</span></span>
-          <br>
+       
+        <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div> 
+        <br>
           <ion-row>
             <ion-col size ="8"> 
               <ion-icon color="warning" name="star"></ion-icon>
@@ -96,16 +111,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor 1.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Sam Abraham</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>PhD in geology</span> <br>
+             <p>Master's (Rhodes),PhD (Wits)</p>
+             <p><span class="courses">3+ Courses, </span> <span> 7+ years of experience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -115,16 +131,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor2.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Simon Kweja</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>Phd in Reseachology</span> <br>
+             <p>PhD (Walter Sisulu University)</p>
+             <p><span class="courses">5+ Courses, </span> <span> 10+ years of experience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -132,16 +149,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor3.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Jack Daniels</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>Master's in Science</span> <br>
+             <p>Master's degree(UNISA)</p>
+             <p><span class="courses">4+ Courses, </span> <span> 4+ years of exprience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -149,16 +167,18 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor3.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Johanna Smit</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>PhD in Geocology</span> <br>
+             <p>Masters(UNISA)</p>
+             <p><span class="courses">5+ Courses, </span> <span> 8+ years of experience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
+
 
             </mat-card-content>
             
@@ -171,16 +191,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor4.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Narthon Gabriel</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>PhD in Physiocology</span> <br>
+             <p>Diploma(TUT),Masters(WITS)</p>
+             <p><span class="courses">4+ Courses, </span> <span> 3+ years of  experience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -188,16 +209,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor 5.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Emson James</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>PhD in Physics</span> <br>
+             <p>Masters(UJ) ,PhD(UKZ)</p>
+             <p><span class="courses">2+ Courses, </span> <span> 7+ years of Experience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -205,16 +227,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor2.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Emellie Jackson</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>PhD in Project management</span> <br>
+             <p>Masters (UNISA)</p>
+             <p><span class="courses">5+ Courses, </span> <span> 7+ years of exprience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -222,16 +245,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor 6.jpg">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Abraham sithole</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+             <span>PhD in Theology</span> <br>
+             <p>Masters degree(UNISA)</p>
+             <p><span class="courses">4+ Courses, </span> <span> 6+ years of experience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
 
             </mat-card-content>
             
@@ -241,13 +265,31 @@
          
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor 5.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Joa Nohan</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+             <span>PhD in statistics </span> <br>
+             <p>Masters degree(UNISA).</p>
+             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
+
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
+
+
+            </mat-card-content>
+            
+          </mat-card>
+
+          <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
+            <ion-avatar style="margin: auto; margin-top: 10px;">
+              <img  src="../../../assets/img/instructors/instructor 5.jfif">
+            </ion-avatar>
+            <mat-card-content style="margin: 10px; ">
+              <span ><b>James jeo</b></span>
+                <br>
+             <span>PhD in Mathematics</span> <br>
+             <p>Masters degree(UNISA)</p>
              <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
 
              <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
@@ -258,13 +300,13 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor2.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Joe elizabeth</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+             <span>PhD in geography</span> <br>
+             <p>Masters degree(UNISA).</p>
              <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
 
              <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
@@ -275,33 +317,17 @@
 
           <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/instructors/instructor 5.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Africa Nza</b></span>
                 <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+             <span>PhD in Theology</span> <br>
+             <p>Masters degree(UNISA)</p>
              <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
 
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
+             <ion-button color="white" href="https://www.linkedin.com/" > <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon></ion-button>  <ion-button color="white"  href="https://www.google.com/"><ion-icon class="social" color="danger" name="logo-google"></ion-icon></ion-button>  <ion-button color="white"  href="https://www.facebook.com/"><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon></ion-button>
 
-            </mat-card-content>
-            
-          </mat-card>
-
-          <mat-card class="fcourse-card profile-card" style=" padding: 0px;">
-            <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
-            </ion-avatar>
-            <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
-                <br>
-             <span>Systems Architect</span> <br>
-             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
-             <p><span class="courses">3+ Courses, </span> <span> 6+ years of exprience</span></p>
-
-             <ion-icon color="secondary" name="logo-linkedin" class="social" ></ion-icon><ion-icon class="social" color="danger" name="logo-google"></ion-icon><ion-icon color="primary" class="social" name="logo-facebook"></ion-icon>
 
              
             </mat-card-content>
@@ -325,13 +351,14 @@
          
           <mat-card class="fcourse-card student-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/students/student1.jpg">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>John Nathan</b></span>
                 <br>
-             <span>Student</span> <br>
-             <p>"Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit"</p>
+             <span> Student</span> <br>
+             <p>"It was my immense luck and fortune to be the part of E-learning where I can grow.
+                My four years at E-Learning have been wonderful "</p>
             
             </mat-card-content>
             
@@ -339,13 +366,13 @@
 
           <mat-card class="fcourse-card student-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/students/student2.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>James Jackson</b></span>
                 <br>
              <span>Student</span> <br>
-             <p>"Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit, "</p>
+             <p>" My four years at E-learning were great and a memory to cherish for lifetime. It was full of learning and grooming oneself. "</p>
 
             </mat-card-content>
             
@@ -360,13 +387,13 @@
          
           <mat-card class="fcourse-card student-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/students/student3.jpg">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Elma Johhane </b></span>
                 <br>
              <span>Student</span> <br>
-             <p>"Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit"</p>
+             <p>"Great experience from E-learning.  Work hard to get it.Great opportunity"</p>
             
             </mat-card-content>
             
@@ -374,13 +401,13 @@
 
           <mat-card class="fcourse-card student-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/students/student 4.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Chaitany Tomar</b></span>
                 <br>
              <span>Student</span> <br>
-             <p>"Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit, "</p>
+             <p>"E-learning and their instuctors have put in all the efforts to make us corporate professionals. "</p>
 
             </mat-card-content>
             
@@ -393,13 +420,14 @@
          
           <mat-card class="fcourse-card student-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/students/student5.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Amanda Pentacorse</b></span>
                 <br>
              <span>Student</span> <br>
-             <p>"Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipiscing elit"</p>
+             <p>"My experience at E-learning is great and memorable. The instructors and mentors are really helpful and
+                helped me to improve my academics"</p>
             
             </mat-card-content>
             
@@ -407,13 +435,15 @@
 
           <mat-card class="fcourse-card student-card" style=" padding: 0px;">
             <ion-avatar style="margin: auto; margin-top: 10px;">
-              <img  src="../../../assets/img/profile/pp.jpg">
+              <img  src="../../../assets/img/students/student2.jfif">
             </ion-avatar>
             <mat-card-content style="margin: 10px; ">
-              <span ><b>Emmanuel Mametja</b></span>
+              <span ><b>Almomd Jones</b></span>
                 <br>
              <span>Student</span> <br>
-             <p>"Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet, consectetur adipiscing elit, "</p>
+             <p>"
+              Due to the efforts made by the faculty and placement cell at E-learning i was able to bag a job in the second company that i applied for.
+                "</p>
 
             </mat-card-content>
             
@@ -472,7 +502,7 @@
    
     <div class="categories-aside" style="margin-top: 20px;">
       <h2 class="aside-subheaders">Categories</h2>
-        <a href="#" class="categories-links">Software Engineering</a><br>
+        <a href="/catagories" class="categories-links">Software Engineering</a><br>
         <a href="#" class="categories-links">Database Management</a><br>
         <a href="#" class="categories-links">Forex</a><br>
         <a href="#" class="categories-links">Marketing</a><br>

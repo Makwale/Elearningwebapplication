@@ -14,6 +14,8 @@ import { AccountService } from './account.service';
 })
 
 export class DatabaseService {
+  
+  private loggedIn: boolean;
   collectionName = 'Course';
   enrolledCoursesList: EnrolledCourse[];
   lessonsList: Lesson[] = [];
@@ -28,6 +30,7 @@ export class DatabaseService {
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {
+      this.loggedIn = true;
       //We get student data
       //
       this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
@@ -46,8 +49,8 @@ export class DatabaseService {
 
       })
 
-      this.router.navigateByUrl("home");
-       console.log( 'Signin success');
+     // this.router.navigateByUrl("home");
+     //  console.log( 'Signin success');
     }).catch(error =>{
       alert(error)
     });

@@ -6,6 +6,7 @@ import { Account } from '../Model/account.model';
 })
 export class AccountService {
 
+  
   private account: Account;
 
   constructor() {

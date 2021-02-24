@@ -11,17 +11,13 @@ export class Page3Page implements OnInit {
   answer3
   stat
   
-
   constructor(private route: ActivatedRoute,private router: Router) {
     this.stat=3/3
-    console.log(this.stat)
-    
+    console.log(this.stat)  
   }
-
   goNext() {
     this.router.navigateByUrl("congratulations")
-    this.router.navigate(['/congratulations'], { queryParams: { answer3: this.answer3,b1:this.b1,a2:this.a2 } });
-    
+    this.router.navigate(['/congratulations'], { queryParams: { answer3: this.answer3,b1:this.b1,a2:this.a2 } }); 
   }
 
   ngOnInit() {

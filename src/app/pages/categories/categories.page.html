@@ -14,8 +14,12 @@
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category}}</p>
       
-         <span>By: <span class="instructor">{{course.instructor_id}}</span></span>
-           <br>
+         <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div>  
+            <br>
            <ion-row>
              <ion-col size ="8"> 
                <ion-icon color="warning" name="star"></ion-icon>
@@ -51,8 +55,11 @@
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category}}</p>
       
-         <span>By: <span class="instructor">{{course.instructor_id}}</span></span>
-           <br>
+         <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div>      <br>
            <ion-row>
              <ion-col size ="8"> 
                <ion-icon color="warning" name="star"></ion-icon>
@@ -88,8 +95,12 @@
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category}}</p>
       
-         <span>By: <span class="instructor">{{course.instructor_id}}</span></span>
-           <br>
+         <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div>  
+                <br>
            <ion-row>
              <ion-col size ="8"> 
                <ion-icon color="warning" name="star"></ion-icon>
@@ -124,8 +135,13 @@
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category}}</p>
       
-         <span>By: <span class="instructor">{{course.instructor_id}}</span></span>
-           <br>
+         <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div>  
+          
+          <br>
            <ion-row>
              <ion-col size ="8"> 
                <ion-icon color="warning" name="star"></ion-icon>
@@ -152,7 +168,7 @@
 
 
   <ion-item-divider class="category">
-    <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;">k</h2>
+    <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;"></h2>
   </ion-item-divider>
   
   <ion-item-divider class="category">

@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabGroup } from '@angular/material/tabs';
 import { Router } from '@angular/router';
@@ -12,9 +13,13 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
- 
+  hasSignedUp: boolean;
+  loggedIn: boolean;
+  
+  
   selected = 'other';
   type="login";
+
 
   submitError: string;
   signInForm: FormGroup;
@@ -45,7 +50,7 @@ export class AccountPage implements OnInit {
       { type: 'minlength', message: 'Password must be at least 6 characters long.' }
     ]
   };
-  constructor(private router: Router, private dbs: DatabaseService) { 
+  constructor(private router: Router, private dbs: DatabaseService, private auth: AngularFireAuth) { 
     this.signInForm = new FormGroup({
       'email': new FormControl('', Validators.compose([
         Validators.required,
@@ -87,6 +92,10 @@ export class AccountPage implements OnInit {
     //this.router.navigateByUrl("dashboard");
   
 }
+goLogin() {
+  this.router.navigateByUrl("dashboard");
+}
+
   ngOnInit() {
   }
   keyPress(event: any) {
@@ -100,7 +109,8 @@ export class AccountPage implements OnInit {
   signInWithEmail() {
     this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
-      // successfull login
+      // successfull login 
+      this.signInForm.reset();
       window.alert('Successful login');
       //Re-Route here
     })
@@ -118,7 +128,7 @@ export class AccountPage implements OnInit {
     this.signUpForm.value['email'], 
     this.signUpForm.value['password'])
   .then(user => {
-    // successfull sign-up
+    this.signUpForm.reset();
       window.alert('Successful register');
       //Re-Route here
     })
@@ -126,5 +136,7 @@ export class AccountPage implements OnInit {
     this.submitError = error.message;
   });
 }
-
+logout(){
+  this.auth.signOut();
+}
 }
