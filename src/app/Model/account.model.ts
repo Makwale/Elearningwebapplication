@@ -2,9 +2,10 @@ import { Student } from "./student.model";
 
 export class Account{
 
-    private isSignedIn: boolean;
+    private isSignedIn: boolean = false;
 
     private student: Student;
+
 
     constructor(isSignedIn: boolean, student: Student){
         this.isSignedIn = isSignedIn;

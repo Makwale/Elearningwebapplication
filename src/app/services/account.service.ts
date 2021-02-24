@@ -9,6 +9,7 @@ export class AccountService {
   private account: Account;
 
   constructor() {
+    this.account = new Account(false, null);
    }
 
    public setAccount(account: Account){

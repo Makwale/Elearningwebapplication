@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-
-  constructor() { }
+  loginStatus: boolean = false;
+  constructor(public accoutService: AccountService) {
+    this.loginStatus = accoutService.getAccount().getSignInStatus();
+   }
 
   ngOnInit() {
+    
+  }
+
+  test(){
+    alert(this.accoutService.getAccount().getStudent().geteName())
   }
 
 }

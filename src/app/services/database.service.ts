@@ -3,7 +3,11 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Router } from '@angular/router';
 import { Account } from '../Model/account.model';
+import { Course } from '../Model/course';
+import { EnrolledCourse } from '../Model/enrolledcourse.model';
+import { Lesson } from '../Model/lesson.mode';
 import { Student } from '../Model/student.model';
+import { CoursedetailsPage } from '../pages/coursedetails/coursedetails.page';
 import { AccountService } from './account.service';
 @Injectable({
   providedIn: 'root'
@@ -11,9 +15,14 @@ import { AccountService } from './account.service';
 
 export class DatabaseService {
   collectionName = 'Course';
-  constructor(private asf: AngularFirestore,
+  enrolledCoursesList: EnrolledCourse[];
+  lessonsList: Lesson[] = [];
+
+  constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
-     private router: Router,private accountService: AccountService) { }
+     private router: Router,private accountService: AccountService) {
+        this.enrolledCoursesList = [];
+    }
 
   // Login user with email/password
   SignIn(email, password) {    
@@ -21,17 +30,19 @@ export class DatabaseService {
     .then(res => {
       //We get student data
       //
-      this.asf.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
+      this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
         // set student data
       
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
 
-        console.log(student)
+       // console.log(student)
         //create account object that has sign state and student object
         let account = new Account(true, student);
         
         //set Account service to keep account object
         this.accountService.setAccount(account);
+
+        this.getEnrolledCourses();
 
       })
 
@@ -46,7 +57,7 @@ export class DatabaseService {
     //return this.afa.createUserWithEmailAndPassword(email, password);
     return this.afa.createUserWithEmailAndPassword( email, password).then( userCredentials => {
       let id = userCredentials.user.uid;
-      this.asf.collection("Student").doc(id).set({
+      this.afs.collection("Student").doc(id).set({
         firstname: name,
         lastname: surname,
         gender: gender,
@@ -64,6 +75,77 @@ export class DatabaseService {
     })
   }
   getInstructor(userID){
-    return this.asf.collection('Instructor', ref => ref.where('userID','==', userID)).snapshotChanges();
+    return this.afs.collection('Instructor', ref => ref.where('userID','==', userID)).snapshotChanges();
   }
+
+// get enrolled courses from database
+  public getEnrolledCourses(){
+
+    if(this.enrolledCoursesList.length > 0){
+
+      this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
+
+    }
+    
+    // A query to select enrolled courses for a specific student
+    this.afs.collection("EnrolledCourse", ref => 
+    ref.where("student_id", "==", this.accountService.getAccount()
+
+    .getStudent().getStudentNumber())).snapshotChanges().subscribe(enrolledcoursesdata =>{
+
+        
+        //Using foreach method on enrolledcoursesdata to loop and get each enrolled course
+      enrolledcoursesdata.forEach( course =>{
+
+        //Get lessons for a course by calling getLesson method that accepts course id as parameter
+
+        this.getLessons(course.payload.doc.data()["course_id"]);
+
+        //We used each course id from enrolled courses to get actual course data from Course collection
+
+        this.afs.collection("Course").doc(course.payload.doc.data()["course_id"]
+        ).snapshotChanges().subscribe( coursedata =>{
+
+          //Assigning course data to data binding
+          let data = coursedata.payload.data();
+
+          //Loading enrolled courses list with Enrolled course object which also takes the actual course data
+          this.enrolledCoursesList.push(new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
+          data["imgURL"], data["category"], data["price"], data["instructor_id"])));
+
+         
+        })
+
+       
+
+       
+      })
+
+    });
+  }
+
+// Get lessons for selected enrolled courses
+  public getLessons(course_id: string): Lesson[]{
+
+   
+
+    this.afs.collection("Lesson", ref => ref.where("course_id", "==", course_id))
+
+    .snapshotChanges().subscribe( lessonsdata =>{
+
+      if(this.lessonsList.length > 0){
+        this.lessonsList.slice(0, this.lessonsList.length - 1);
+      }
+
+      lessonsdata.forEach( lesson => {
+  
+        this.lessonsList.push(lesson.payload.doc.data() as Lesson);
+       
+      })
+      
+    })
+    return null;
+  }
+
+ 
 }
