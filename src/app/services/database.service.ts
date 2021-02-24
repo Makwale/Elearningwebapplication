@@ -11,6 +11,7 @@ import { AccountService } from './account.service';
 
 export class DatabaseService {
   
+  private loggedIn: boolean;
   collectionName = 'Course';
   constructor(private asf: AngularFirestore,
      private afa: AngularFireAuth, 
@@ -20,6 +21,7 @@ export class DatabaseService {
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {
+      this.loggedIn = true;
       //We get student data
       //
       this.asf.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
@@ -69,6 +71,7 @@ export class DatabaseService {
   }
   SignOut() {
     return this.afa.signOut().then(() => {  
+      this.loggedIn = false;
       this.router.navigate(['']);
     })
   }

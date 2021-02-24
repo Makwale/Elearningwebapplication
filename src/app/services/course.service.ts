@@ -32,9 +32,7 @@ export class CourseService {
     else{
       return this.latestCourses;
     }
-  }
-  
-  
+  }  
   selectCourse(selected)
   {
     this.selectedC = selected;
