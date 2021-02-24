@@ -66,6 +66,10 @@ const routes: Routes = [
         path: 'question',
         loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
       },
+       {
+          path: 'leasons',
+          loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
+        },
     ]
   },
   {
@@ -75,10 +79,6 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
-  },
-  {
-    path: 'leasons',
-    loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
   },
   {
     path: 'questions',
@@ -109,7 +109,8 @@ const routes: Routes = [
   {
     path: 'databasequiz',
     loadChildren: () => import('./pages/databasequiz/databasequiz.module').then( m => m.DatabasequizPageModule)
-  },  {
+  },
+  {
     path: 'tasklist',
     loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
   },

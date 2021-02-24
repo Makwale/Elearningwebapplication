@@ -1,97 +1,95 @@
 <ion-header>
     <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-        <ion-title>
-            Commence Leasons Thembi
-        </ion-title>
+        <h3 style="margin-left: 7px;">Course Name</h3>
     </ion-toolbar>
 </ion-header>
 
+    
+<div style="margin-left: 7px;" class="ion-margin">
+    <ion-grid> 
+        <ion-row>
+        <ion-col size="8">  
+            <video [src]="videoURL" controls loop style="width: 100%; height: 400px; margin: auto;" autoplay >
 
-<div>
+            </video>
 
-    <div class="banner">
+         </ion-col> 
 
-        <div class="container">
-
-            <div class="row">
-                <div class="column">
-                    <h1>Angular.js</h1>
-
-                    <p>Angular - The Complete video for Angular 10 and start building awesome web apps with the successor of Angular.jsdition</p>
-                    <ion-col size="6">
-                        <ion-icon color="warning" name="star"></ion-icon>
-                        <ion-icon color="warning" name="star"></ion-icon>
-                        <ion-icon color="warning" name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-                        <ion-icon name="star-outline"> </ion-icon>
-                        <p>(40 000 Ratings) and 50 000 Students</p>
-
-                    </ion-col>
-                </div>
-                <div class="column">
-                    <video width="320" autoplay="autoplay" height="240" controls src=" http://www.youtube.com/embed/n_dZNLr2cME?rel=0&hd=1">
-                
-                </video>
-                </div>
+         <ion-col size="4">
+            <div class="popular-aside" style="width: 90%; margin-left: auto; margin-right: auto;">
+                <h2 class="aside-subheaders" >Latest Courses</h2>
+                <a href="#" class="popular-links">Software Engineering</a><br>
+                <a href="#" class="popular-links">Database Management</a><br>
+                <a href="#" class="popular-links">Forex</a><br>
+                <a href="#" class="popular-links">Marketing</a><br>
+                <a href="#" class="popular-links">Business Analysis</a><br>
+                <a href="#" class="popular-links">Business Management</a><br>
             </div>
 
-        </div>
-    </div>
+           
+
+        </ion-col>
+
+        </ion-row>
+
+    </ion-grid>
+
+
+    <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Course Contents">
+            <ion-list>
+                <ion-item button type="button" (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Introduction to HTML
+                    </ion-label>
+                </ion-item>
+                
+
+                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Creating a simple page
+                    </ion-label>
+                </ion-item>
+
+                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Making up texts
+                    </ion-label>
+                </ion-item>
+
+                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Adding links
+                    </ion-label>
+                </ion-item>
+
+                <ion-item button (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4')">
+                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4'" name="pause-circle-outline"></ion-icon>
+                    <ion-label>
+                        Adding Images
+                    </ion-label>
+                </ion-item>
+
+                <ion-item button (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4')">
+                    <ion-icon slot="start" name="play-circle-outline"></ion-icon>
+                    <ion-label>
+                        Table Markup
+                    </ion-label>
+                </ion-item>
+
+            </ion-list>
+              
+
+        </mat-tab>
+        <mat-tab label="Q&A">Q&A</mat-tab>
+        <mat-tab label="Notes">Notes</mat-tab>
+        <mat-tab label="Announcements">Announcements</mat-tab>
+    </mat-tab-group>
+
 </div>
-
-<ion-content>
-    <ion-segment [(ngModel)]="selectTabs">
-
-        <ion-segment-button value="Course Content">
-            <ion-label>Course Content</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Q&A">
-            <ion-label>Q&A</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Notes">
-            <ion-label>Notes</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="Announcements">
-            <ion-label>Announcements</ion-label>
-        </ion-segment-button>
-    </ion-segment>
-
-    <div *ngIf="selectTabs =='Course Content' ">
-
-        <table style="width:100%">
-            <th>
-                <tr>Section 1:</tr>
-                <tr>Section 2: </tr>
-                <tr>section 3:</tr>
-                <tr>section 4:</tr>
-                <tr>section 5:</tr>
-                <tr>section 6:</tr>
-
-
-            </th>
-
-        </table>
-
-    </div>
-
-
-
-    <div *ngIf="selectTabs =='Q&A' ">
-        <h3> Q&A</h3>
-    </div>
-
-    <div *ngIf="selectTabs =='Notes' ">
-        <h3>Notes</h3>
-
-    </div>
-
-    <ion-content *ngIf="selectTabs =='Announcements' ">
-        <h1 div="center">No announcements posted yet</h1>
-
-    </ion-content>
-
-
-</ion-content>
+  
+ 

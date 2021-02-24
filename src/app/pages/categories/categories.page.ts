@@ -15,7 +15,8 @@ export class CategoriesPage implements OnInit {
   
 
   categories : Course [] = [];
-  
+  popular_instructors: Course []=[];
+
   selectedCourse;
   iT: string = 'IT';
   bM: string = 'Business Management';
@@ -35,6 +36,9 @@ export class CategoriesPage implements OnInit {
     this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
       this.categories = objects;
    })
+   this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
+    this.popular_instructors= objects;
+ })
   }
    //Selected course
    selectCourse(_course){  

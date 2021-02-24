@@ -10,6 +10,7 @@ import { AccountService } from './account.service';
 })
 
 export class DatabaseService {
+  
   collectionName = 'Course';
   constructor(private asf: AngularFirestore,
      private afa: AngularFireAuth, 
@@ -35,8 +36,8 @@ export class DatabaseService {
 
       })
 
-      this.router.navigateByUrl("home");
-       console.log( 'Signin success');
+     // this.router.navigateByUrl("home");
+     //  console.log( 'Signin success');
     }).catch(error =>{
       alert(error)
     });
@@ -66,4 +67,11 @@ export class DatabaseService {
   getInstructor(userID){
     return this.asf.collection('Instructor', ref => ref.where('userID','==', userID)).snapshotChanges();
   }
+  SignOut() {
+    return this.afa.signOut().then(() => {  
+      this.router.navigate(['']);
+    })
+  }
+
+
 }

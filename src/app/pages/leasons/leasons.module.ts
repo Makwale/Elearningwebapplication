@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { LeasonsPageRoutingModule } from './leasons-routing.module';
 
 import { LeasonsPage } from './leasons.page';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LeasonsPageRoutingModule
+    LeasonsPageRoutingModule,
+    MatTabsModule,
+    MatListModule
   ],
   declarations: [LeasonsPage]
 })
