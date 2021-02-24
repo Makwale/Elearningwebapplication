@@ -237,10 +237,11 @@
          <a   class="course-link">Learn {{course.name}}</a>
          <p>{{course.category }} </p>
   
-         <div *ngIf = "course.instructor_id">
-           
-            <span>By: <span class="instructor">{{course.instructor_id}}</span></span>
-         </div>
+         <div *ngFor ="let instructor of popular_instructors">
+
+          <div *ngIf = "course.instructor_id ===instructor.id" > 
+            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
+          </div>
         
            <br>
            <ion-row>

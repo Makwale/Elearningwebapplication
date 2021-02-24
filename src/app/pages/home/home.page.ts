@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
 
   featured_course: Course [] = []; //All courses offered
   latest_course: Course [] = [];
-
+  popular_instructors: Course []=[];
   constructor(private router: Router, 
     private asf:AngularFirestore,
     private modalCtrl: ModalController,
@@ -66,6 +66,9 @@ export class HomePage implements OnInit {
    this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
     this.latest_course = objects.splice(6,3);
  })
+ this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
+  this.popular_instructors= objects;
+})
     this.featured_courses = this.courseDao.getFeaturedCourses().slice(0,3);
       this.latest_courses = this.courseDao.getLatestCourses().slice(0,3);  
   }

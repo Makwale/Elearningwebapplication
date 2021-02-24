@@ -12,7 +12,10 @@ import { DatabaseService } from 'src/app/services/database.service';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
- 
+  hasSignedUp: boolean;
+  loggedIn: boolean;
+
+
   selected = 'other';
   type="login";
 
@@ -81,12 +84,17 @@ export class AccountPage implements OnInit {
         Validators.required
       ]))
     });
+    this.hasSignedUp = true;
+    this.loggedIn = false;
   }
 
   goDash() {
     this.router.navigateByUrl("dashboard");
-  
 }
+goLogin() {
+  this.router.navigateByUrl("dashboard");
+}
+
   ngOnInit() {
   }
   keyPress(event: any) {
@@ -101,6 +109,7 @@ export class AccountPage implements OnInit {
     this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
       // successfull login
+      this.goDash(); 
       window.alert('Successful login');
       //Re-Route here
     })
@@ -118,7 +127,7 @@ export class AccountPage implements OnInit {
     this.signUpForm.value['email'], 
     this.signUpForm.value['password'])
   .then(user => {
-    // successfull sign-up
+    this.hasSignedUp = true;
       window.alert('Successful register');
       //Re-Route here
     })

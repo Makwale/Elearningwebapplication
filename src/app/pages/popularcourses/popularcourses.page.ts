@@ -30,7 +30,6 @@ export class PopularcoursesPage implements OnInit {
      })
      this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
       this.popular_instructors= objects;
-      console.log(this.popular_instructors);
    })
     } 
     //Selected course
