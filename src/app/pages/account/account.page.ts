@@ -89,7 +89,7 @@ export class AccountPage implements OnInit {
   }
 
   goDash() {
-    //this.router.navigateByUrl("dashboard");
+    this.router.navigateByUrl("dashboard");
   
 }
 goLogin() {
