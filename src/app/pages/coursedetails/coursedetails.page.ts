@@ -16,6 +16,7 @@ export class CoursedetailsPage implements OnInit {
   
   courseSelected: Course;
   userAccount:Account;
+  
   enrolled_course: EnrolledCourse;
 
   constructor(private modalCtrl: ModalController,
@@ -28,13 +29,14 @@ export class CoursedetailsPage implements OnInit {
   ngOnInit() {
     this.courseSelected = this.courseDao.selectedC; 
     this.userAccount = this.accountService.getAccount();
-     }
+   
+  }
   close() {
     this.modalCtrl.dismiss();
   }
   enroll(){
       //Check if the user has signed in
-      if (this.userAccount.getSignInStatus() != null) {
+      if (this.userAccount.getSignInStatus() == true) {
         let id = this.asf.createId();
         this.asf.collection("EnrolledCourse").doc(id).set({
         course_id: this.courseSelected.id,   //From Entity --course_id

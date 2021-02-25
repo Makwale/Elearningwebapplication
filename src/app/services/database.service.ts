@@ -88,9 +88,7 @@ export class DatabaseService {
     if(this.enrolledCoursesList.length > 0){
 
       this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
-
     }
-    
     // A query to select enrolled courses for a specific student
     this.afs.collection("EnrolledCourse", ref => 
     ref.where("student_id", "==", this.accountService.getAccount()

@@ -13,6 +13,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class MainPage implements OnInit {
   loginStatus: boolean = false;
   constructor(public accoutService: AccountService,  private auth: AngularFireAuth) {
+    
    }
   ngOnInit() {
    // this.loginStatus = this.accoutService.getAccount().getSignInStatus();
