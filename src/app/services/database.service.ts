@@ -19,12 +19,13 @@ export class DatabaseService {
   
   private loggedIn: boolean;
   collectionName = 'Course';
-  enrolledCoursesList: EnrolledCourse[];
+  enrolledCoursesList: EnrolledCourse[] = [];
   lessonsList: Lesson[] = [];
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService) {
+       
     }
 
   // Login user with email/password
@@ -84,23 +85,14 @@ export class DatabaseService {
 // get enrolled courses from database
   public getEnrolledCourses(){
 
-    // if(this.enrolledCoursesList.length > 0){
-
-<<<<<<< HEAD
-    //   this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
-
-    // }
     
-=======
-      this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
-    }
->>>>>>> b86569010b0fcf2ff68bd115c2d5f0865b8d3541
+   
+    alert(this.enrolledCoursesList.length);
     // A query to select enrolled courses for a specific student
     this.afs.collection("EnrolledCourse", ref => 
     ref.where("student_id", "==", this.accountService.getAccount()
 
     .getStudent().getStudentNumber())).snapshotChanges().subscribe(enrolledcoursesdata =>{
-
       let tempvar: EnrolledCourse[] = [];
         
         //Using foreach method on enrolledcoursesdata to loop and get each enrolled course
@@ -108,7 +100,7 @@ export class DatabaseService {
 
         //Get lessons for a course by calling getLesson method that accepts course id as parameter
 
-        this.getLessons(course.payload.doc.data()["course_id"]);
+       // this.getLessons(course.payload.doc.data()["course_id"]);
 
         //We used each course id from enrolled courses to get actual course data from Course collection
 
@@ -117,17 +109,12 @@ export class DatabaseService {
 
           //Assigning course data to data binding
           let data = coursedata.payload.data();
-
+          alert(data["name"]);
           //Loading enrolled courses list with Enrolled course object which also takes the actual course data
           let enrolledCourse = new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
           data["imgURL"], data["category"], data["price"], data["instructor_id"]))
 
           tempvar.push(enrolledCourse);
-          
-          //Find the course to check if the course is already added
-          // if(this.findCourse(enrolledCourse.getCourse()) == false){
-          //   this.enrolledCoursesList.push(enrolledCourse);
-          // };
           
         })
 
@@ -135,6 +122,8 @@ export class DatabaseService {
 
        
       })
+
+      this.enrolledCoursesList = tempvar;
 
     });
   }

@@ -102,10 +102,6 @@ export class AccountPage implements OnInit {
 }
 
   ngOnInit() {
-<<<<<<< HEAD
-=======
-    this.getUser();
->>>>>>> b86569010b0fcf2ff68bd115c2d5f0865b8d3541
     this.auth.authState.subscribe(user => {
       if (user) {
         this.loggedIn = true;
