@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Router } from '@angular/router';
+import firebase from 'firebase/app';
+import { threadId } from 'worker_threads';
 import { Account } from '../Model/account.model';
 import { Student } from '../Model/student.model';
 import { AccountService } from './account.service';
@@ -11,33 +13,28 @@ import { AccountService } from './account.service';
 
 export class DatabaseService {
   
-  private loggedIn: boolean;
-  collectionName = 'Course';
+  public loggedIn: boolean;
   constructor(private asf: AngularFirestore,
      private afa: AngularFireAuth, 
-     private router: Router,private accountService: AccountService) { }
+     private router: Router,private accountService: AccountService) {
+  
+      }
 
   // Login user with email/password
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {
       this.loggedIn = true;
-      //We get student data
-      //
       this.asf.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
         // set student data
       
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
-
         console.log(student)
         //create account object that has sign state and student object
         let account = new Account(true, student);
-        
         //set Account service to keep account object
         this.accountService.setAccount(account);
-
       })
-
      // this.router.navigateByUrl("home");
      //  console.log( 'Signin success');
     }).catch(error =>{
@@ -75,6 +72,7 @@ export class DatabaseService {
       this.router.navigate(['']);
     })
   }
+ 
 
 
 }

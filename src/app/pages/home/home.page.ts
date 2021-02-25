@@ -17,6 +17,7 @@ import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  userAccount:Account;
 
   slideOpts = {
     init: true,
@@ -41,12 +42,11 @@ export class HomePage implements OnInit {
     autoplay:{
       delay: 10000
     }
-
   }
   featured_courses= [];
   latest_courses= [];
-  selectedCourse;
 
+  selectedCourse: Course;
 
   featured_course: Course [] = []; //All courses offered
   latest_course: Course [] = [];
@@ -69,11 +69,9 @@ export class HomePage implements OnInit {
  this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
   this.popular_instructors= objects;
 })
-    this.featured_courses = this.courseDao.getFeaturedCourses().slice(0,3);
-      this.latest_courses = this.courseDao.getLatestCourses().slice(0,3);  
   }
    //Selected course
-   selectCourse(_course){  
+   selectCourse(_course:Course){  
     this.selectedCourse = _course;
     this.courseDao.selectCourse(this.selectedCourse); //Set the selected course globally to the course service
      this.courseDetails(); //Open Modal course details
