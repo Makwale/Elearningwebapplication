@@ -28,18 +28,17 @@ export class CoursedetailsPage implements OnInit {
   ngOnInit() {
     this.courseSelected = this.courseDao.selectedC; 
     this.userAccount = this.accountService.getAccount();
-    this.enrolled_course = new EnrolledCourse(this.userAccount.getStudent().getEmail(), this.courseSelected.id);
-    }
+     }
   close() {
     this.modalCtrl.dismiss();
   }
   enroll(){
       //Check if the user has signed in
       if (this.userAccount.getSignInStatus() != null) {
-        let id = this.asf.createId(); 
+        let id = this.asf.createId();
         this.asf.collection("EnrolledCourse").doc(id).set({
-        course_id: this.enrolled_course.getCourseID(),   //From Entity --course_id
-        student_id: this.enrolled_course.getStudentID(),       //From Entity --email
+        course_id: this.courseSelected.id,   //From Entity --course_id
+        student_id: this.userAccount.getStudent().getStudentNumber()      //From Entity --student_id
       }).then( () => {
         alert(this.courseSelected.name + " enrolled successfully");
         this.close();

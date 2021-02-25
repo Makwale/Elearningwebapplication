@@ -17,9 +17,7 @@ export class CourseinrolledPage implements OnInit {
   constructor(private Router: Router , private dbs: DatabaseService) { }
 
   lessons(course_id: string) {
-
     this.Router.navigate(["leasons"], {queryParams: {"course_id": course_id}});
-    
   }
 
   ngOnInit() {
