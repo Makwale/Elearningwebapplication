@@ -85,11 +85,11 @@ export class DatabaseService {
 // get enrolled courses from database
   public getEnrolledCourses(){
 
-    if(this.enrolledCoursesList.length > 0){
+    // if(this.enrolledCoursesList.length > 0){
 
-      this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
+    //   this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
 
-    }
+    // }
     
     // A query to select enrolled courses for a specific student
     this.afs.collection("EnrolledCourse", ref => 
@@ -114,8 +114,14 @@ export class DatabaseService {
           let data = coursedata.payload.data();
 
           //Loading enrolled courses list with Enrolled course object which also takes the actual course data
-          this.enrolledCoursesList.push(new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
-          data["imgURL"], data["category"], data["price"], data["instructor_id"])));
+          let enrolledCourse = new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
+          data["imgURL"], data["category"], data["price"], data["instructor_id"]))
+          
+          //Find the course to check if the course is already added
+          if(this.findCourse(enrolledCourse.getCourse()) == false){
+            this.enrolledCoursesList.push(enrolledCourse);
+          };
+          
 
          
         })
@@ -157,5 +163,18 @@ export class DatabaseService {
       this.router.navigate(['']);
       this.loggedIn = false;
     })
+  }
+
+  public findCourse(course: Course): boolean{
+    
+    if(this.enrolledCoursesList.length > 0){
+      this.enrolledCoursesList.forEach( enrolledCourse => {
+        if(enrolledCourse.getCourse().equal(course)){
+          
+          return true;
+        }
+      })
+    }
+    return false;
   }
 }
