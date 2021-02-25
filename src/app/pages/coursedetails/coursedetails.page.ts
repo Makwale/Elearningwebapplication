@@ -39,7 +39,7 @@ export class CoursedetailsPage implements OnInit {
         let id = this.asf.createId(); 
         this.asf.collection("EnrolledCourse").doc(id).set({
         course_id: this.enrolled_course.getCourseID(),   //From Entity --course_id
-        email: this.enrolled_course.getEmail(),       //From Entity --email
+        student_id: this.enrolled_course.getStudentID(),       //From Entity --email
       }).then( () => {
         alert(this.courseSelected.name + " enrolled successfully");
         this.close();

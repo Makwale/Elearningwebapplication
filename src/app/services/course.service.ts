@@ -30,7 +30,23 @@ export class CourseService {
       }
     })
    }
-  selectCourse(selected:Course)
+  getFeaturedCourses(){
+    if(this.homeView){
+      return this.featuredCourses = this.featuredCourses.slice(0,3);
+    }
+    else{
+          return this.featuredCourses;
+    }
+  }
+  getLatestCourses(){
+    if(this.homeView){
+      return this.latestCourses = this.latestCourses.slice(0,3);
+    }
+    else{
+      return this.latestCourses;
+    }
+  }  
+  selectCourse(selected)
   {
     this.selectedC = selected;
   }

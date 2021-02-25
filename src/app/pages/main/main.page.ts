@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
-import { DatabaseService } from 'src/app/services/database.service';
 
 import { Account } from 'src/app/Model/account.model';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -11,22 +10,17 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-
-  loggedIn:boolean;
-  constructor(private dbs:DatabaseService, private auth: AngularFireAuth, 
-   private accountService:AccountService) {
+  loginStatus: boolean = false;
+  constructor(public accoutService: AccountService) {
+    this.loginStatus = accoutService.getAccount().getSignInStatus();
    }
+
   ngOnInit() {
-    this.auth.authState.subscribe(user => {
-      if (user) {
-        this.loggedIn = true;
-       } else {
-        this.loggedIn = false;
-      }
-    })
+    
   }
-  signout(){
-    this.dbs.SignOut();
+
+  test(){
+    alert(this.accoutService.getAccount().getStudent().geteName())
   }
 
 }

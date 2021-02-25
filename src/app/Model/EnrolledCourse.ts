@@ -1,18 +1,18 @@
 export class EnrolledCourse{
-      private  email:string;
+      private  student_id:string;
        private course_id:string;
-        constructor(email:string,course_id:string){
-                this.email = email;
+        constructor(id:string,course_id:string){
+                this.student_id = id;
                 this.course_id = course_id;
         }
-        public setEmail(email:string){
-                this.email = email;
+        public setStudentid(id:string){
+                this.student_id = id;
         }
         public setCourseID(courseid:string){
                 this.course_id = courseid;
         }
-        public getEmail(){
-                return this.email;
+        public getStudentID(){
+                return this.student_id;
         }
         public getCourseID(){
                 return this.course_id;

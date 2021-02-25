@@ -11,6 +11,7 @@ export class AccountService {
 
 
   constructor() {
+    this.account = new Account(false, null);
    }
 
    public setAccount(account: Account){

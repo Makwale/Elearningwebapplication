@@ -69,6 +69,7 @@ export class HomePage implements OnInit {
  this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
   this.popular_instructors= objects;
 })
+ 
   }
    //Selected course
    selectCourse(_course:Course){  
