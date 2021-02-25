@@ -151,5 +151,11 @@ export class DatabaseService {
     return null;
   }
 
- 
+   // Sign-out 
+   SignOut() {
+    return this.afa.signOut().then(() => {  
+      this.router.navigate(['']);
+      this.loggedIn = false;
+    })
+  }
 }

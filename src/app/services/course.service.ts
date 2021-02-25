@@ -52,6 +52,7 @@ export class CourseService {
   }
   setUser(){
     let userID = firebase.auth().currentUser.uid.toString();
+    if(userID!=null){
     this.firestore.collection("Student").doc(userID).valueChanges().subscribe(data =>{
       // set student data
       let student = new Student(userID, data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
@@ -61,6 +62,7 @@ export class CourseService {
       
       //set Account service to keep account object
       this.accountService.setAccount(account);
-    })
+      })
+    }
     }
 }
