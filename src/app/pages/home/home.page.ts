@@ -57,7 +57,6 @@ export class HomePage implements OnInit {
     private courseDao: CourseService) {}
   navigateToCourselink(){
     this.router.navigateByUrl("coursedetails");
-
   }
   ngOnInit(){
     this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{

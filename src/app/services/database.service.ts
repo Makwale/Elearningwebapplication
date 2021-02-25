@@ -17,6 +17,7 @@ import { AccountService } from './account.service';
 
 export class DatabaseService {
   
+  userAccount: Account;
   private loggedIn: boolean;
   collectionName = 'Course';
   enrolledCoursesList: EnrolledCourse[];
@@ -26,8 +27,30 @@ export class DatabaseService {
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService) {
         this.enrolledCoursesList = [];
+        this.userAccount = this.accountService.getAccount();
+        this.afa.authState.subscribe(user => {
+          if (user) {
+            this.setUser();
+           } else {
+          }
+        })
     }
-
+    setUser(){
+      let userID = firebase.auth().currentUser.uid.toString();
+      if(userID!=null){
+      this.afs.collection("Student").doc(userID).valueChanges().subscribe(data =>{
+        // set student data
+        let student = new Student(userID, data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+        console.log(student)
+        //create account object that has sign state and student object
+        let account = new Account(true, student);
+        console.log("When do you popup")
+        console.log(account);
+        //set Account service to keep account object
+        this.accountService.setAccount(account);
+        })
+      }
+  }
   // Login user with email/password
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
@@ -45,11 +68,8 @@ export class DatabaseService {
         let account = new Account(true, student);
         //set Account service to keep account object
         this.accountService.setAccount(account);
-
         this.getEnrolledCourses();
-
       })
-
      // this.router.navigateByUrl("home");
      //  console.log( 'Signin success');
     }).catch(error =>{
@@ -81,7 +101,6 @@ export class DatabaseService {
   getInstructor(userID){
     return this.afs.collection('Instructor', ref => ref.where('userID','==', userID)).snapshotChanges();
   }
-
 // get enrolled courses from database
   public getEnrolledCourses(){
 
@@ -125,7 +144,6 @@ export class DatabaseService {
 
     });
   }
-
 // Get lessons for selected enrolled courses
   public getLessons(course_id: string): Lesson[]{
 
@@ -148,12 +166,13 @@ export class DatabaseService {
     })
     return null;
   }
-
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
       this.router.navigate(['']);
-      this.loggedIn = false;
+      this.userAccount.setSignIn(false);
+      this.accountService.setAccount(this.userAccount);
+      
     })
   }
 }

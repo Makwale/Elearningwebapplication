@@ -102,15 +102,13 @@ export class AccountPage implements OnInit {
 }
 
   ngOnInit() {
-    this.getUser();
     this.auth.authState.subscribe(user => {
       if (user) {
         this.loggedIn = true;
           } else {
         this.loggedIn = false;
       }
-    })
-    
+    })    
   }
   keyPress(event: any) {
     const pattern = /[0-9\+\-\ ]/;
@@ -165,5 +163,4 @@ logout(){
   this.accountService.setAccount(this.userAccount);
   this.auth.signOut();
 }
-
 }

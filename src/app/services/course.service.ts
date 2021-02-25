@@ -16,7 +16,6 @@ export class CourseService {
   homeView: boolean;
   featuredCourses = FeaturedCourse; 
   latestCourses = LatestCourse; 
-
   selectedC: Course;
   constructor(private firestore: AngularFirestore,
     private accountService:AccountService,
@@ -30,22 +29,22 @@ export class CourseService {
       }
     })
    }
-  getFeaturedCourses(){
-    if(this.homeView){
-      return this.featuredCourses = this.featuredCourses.slice(0,3);
-    }
-    else{
-          return this.featuredCourses;
-    }
-  }
-  getLatestCourses(){
-    if(this.homeView){
-      return this.latestCourses = this.latestCourses.slice(0,3);
-    }
-    else{
-      return this.latestCourses;
-    }
-  }  
+  // getFeaturedCourses(){
+  //   if(this.homeView){
+  //     return this.featuredCourses = this.featuredCourses.slice(0,3);
+  //   }
+  //   else{
+  //         return this.featuredCourses;
+  //   }
+  // }
+  // getLatestCourses(){
+  //   if(this.homeView){
+  //     return this.latestCourses = this.latestCourses.slice(0,3);
+  //   }
+  //   else{
+  //     return this.latestCourses;
+  //   }
+  // }  
   selectCourse(selected)
   {
     this.selectedC = selected;
@@ -59,7 +58,6 @@ export class CourseService {
       console.log(student)
       //create account object that has sign state and student object
       let account = new Account(true, student);
-      
       //set Account service to keep account object
       this.accountService.setAccount(account);
       })
