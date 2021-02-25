@@ -17,15 +17,15 @@ export class CourseinrolledPage implements OnInit {
   constructor(private Router: Router , private dbs: DatabaseService) { }
 
   lessons(course_id: string) {
-    this.Router.navigate(["leasons"], {queryParams: {"course_id": course_id}});
+    this.Router.navigate(["leasons"], {queryParams: {"course_id": course_id}}); 
   }
-
   ngOnInit() {
     
     this.dbs.enrolledCoursesList.forEach( ercourse => {
       this.listCourses.push(ercourse.getCourse())
     })
-    console.log(this.listCourses);
+
+    
   }
 
 

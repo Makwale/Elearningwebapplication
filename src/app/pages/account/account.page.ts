@@ -5,7 +5,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatTabGroup } from '@angular/material/tabs';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AccountService } from 'src/app/services/account.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Account } from 'src/app/Model/account.model';
+import { CourseService } from 'src/app/services/course.service';
+
 
 @Component({
   selector: 'app-account',
@@ -14,13 +18,12 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class AccountPage implements OnInit {
   hasSignedUp: boolean;
-  loggedIn: boolean;
-  
-  
+  loggedIn: boolean = false;
+  userAccount:Account;
+
+
   selected = 'other';
   type="login";
-
-
   submitError: string;
   signInForm: FormGroup;
   signUpForm: FormGroup;
@@ -50,7 +53,9 @@ export class AccountPage implements OnInit {
       { type: 'minlength', message: 'Password must be at least 6 characters long.' }
     ]
   };
-  constructor(private router: Router, private dbs: DatabaseService, private auth: AngularFireAuth) { 
+  constructor(
+    private accountService:AccountService, private courseDao: CourseService,
+      private router: Router, private dbs: DatabaseService, private auth: AngularFireAuth) { 
     this.signInForm = new FormGroup({
       'email': new FormControl('', Validators.compose([
         Validators.required,
@@ -85,17 +90,26 @@ export class AccountPage implements OnInit {
         Validators.minLength(6),
         Validators.required
       ]))
-    });
+    });  
+    this.loggedIn = false;
+    this.getUser();
   }
-
   goDash() {
     this.router.navigateByUrl("dashboard");
-}
-goLogin() {
+  }
+  goLogin() {
   this.router.navigateByUrl("dashboard");
 }
 
   ngOnInit() {
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.loggedIn = true;
+          } else {
+        this.loggedIn = false;
+      }
+    })
+    
   }
   keyPress(event: any) {
     const pattern = /[0-9\+\-\ ]/;
@@ -109,6 +123,7 @@ goLogin() {
     this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
       // successfull login 
+      this.router.navigateByUrl("");
       this.signInForm.reset();
       window.alert('Successful login');
       //Re-Route here
@@ -135,7 +150,19 @@ goLogin() {
     this.submitError = error.message;
   });
 }
+getUser(){
+  this.userAccount = this.accountService.getAccount();  
+  if (this.userAccount.getSignInStatus()) {
+    this.loggedIn =true;
+  } else {
+    this.loggedIn = false;
+  }
+}
 logout(){
+  this.loggedIn = false;
+  this.userAccount.setSignIn(false);
+  this.accountService.setAccount(this.userAccount);
   this.auth.signOut();
 }
+
 }

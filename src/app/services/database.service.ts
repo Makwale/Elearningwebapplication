@@ -25,7 +25,6 @@ export class DatabaseService {
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService) {
-        this.enrolledCoursesList = [];
     }
 
   // Login user with email/password
@@ -97,6 +96,7 @@ export class DatabaseService {
 
     .getStudent().getStudentNumber())).snapshotChanges().subscribe(enrolledcoursesdata =>{
 
+      let tempvar: EnrolledCourse[] = [];
         
         //Using foreach method on enrolledcoursesdata to loop and get each enrolled course
       enrolledcoursesdata.forEach( course =>{
@@ -116,14 +116,14 @@ export class DatabaseService {
           //Loading enrolled courses list with Enrolled course object which also takes the actual course data
           let enrolledCourse = new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
           data["imgURL"], data["category"], data["price"], data["instructor_id"]))
+
+          tempvar.push(enrolledCourse);
           
           //Find the course to check if the course is already added
-          if(this.findCourse(enrolledCourse.getCourse()) == false){
-            this.enrolledCoursesList.push(enrolledCourse);
-          };
+          // if(this.findCourse(enrolledCourse.getCourse()) == false){
+          //   this.enrolledCoursesList.push(enrolledCourse);
+          // };
           
-
-         
         })
 
        
