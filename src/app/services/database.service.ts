@@ -19,7 +19,7 @@ export class DatabaseService {
   
   private loggedIn: boolean;
   collectionName = 'Course';
-  enrolledCoursesList: EnrolledCourse[] = [];
+  coursesList: Course[] = [];
   lessonsList: Lesson[] = [];
 
   constructor(private afs: AngularFirestore,
@@ -40,14 +40,13 @@ export class DatabaseService {
       
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
 
-       // console.log(student)
+      
         //create account object that has sign state and student object
         let account = new Account(true, student);
         //set Account service to keep account object
         this.accountService.setAccount(account);
 
         this.getEnrolledCourses();
-
       })
 
      // this.router.navigateByUrl("home");
@@ -85,18 +84,15 @@ export class DatabaseService {
 // get enrolled courses from database
   public getEnrolledCourses(){
 
-    
-   
-    alert(this.enrolledCoursesList.length);
     // A query to select enrolled courses for a specific student
     this.afs.collection("EnrolledCourse", ref => 
     ref.where("student_id", "==", this.accountService.getAccount()
 
     .getStudent().getStudentNumber())).snapshotChanges().subscribe(enrolledcoursesdata =>{
-      let tempvar: EnrolledCourse[] = [];
+      let tempvar: Course[] = [];
         
         //Using foreach method on enrolledcoursesdata to loop and get each enrolled course
-      enrolledcoursesdata.forEach( course =>{
+      enrolledcoursesdata.forEach( enrcourse =>{
 
         //Get lessons for a course by calling getLesson method that accepts course id as parameter
 
@@ -104,17 +100,23 @@ export class DatabaseService {
 
         //We used each course id from enrolled courses to get actual course data from Course collection
 
-        this.afs.collection("Course").doc(course.payload.doc.data()["course_id"]
+        this.afs.collection("Course").doc(enrcourse.payload.doc.data()["course_id"]
         ).snapshotChanges().subscribe( coursedata =>{
 
           //Assigning course data to data binding
           let data = coursedata.payload.data();
-          alert(data["name"]);
-          //Loading enrolled courses list with Enrolled course object which also takes the actual course data
-          let enrolledCourse = new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
-          data["imgURL"], data["category"], data["price"], data["instructor_id"]))
+         
 
-          tempvar.push(enrolledCourse);
+          let course = new Course(coursedata.payload.id, data["name"], data["ratings"],
+          data["imgURL"], data["category"], data["price"], data["instructor_id"]);
+
+          
+          
+          //Loading enrolled courses list with Enrolled course object which also takes the actual course data
+          this.coursesList.push(course);
+         
+          
+          
           
         })
 
@@ -123,7 +125,8 @@ export class DatabaseService {
        
       })
 
-      this.enrolledCoursesList = tempvar;
+        
+        
 
     });
   }
@@ -159,16 +162,5 @@ export class DatabaseService {
     })
   }
 
-  public findCourse(course: Course): boolean{
-    
-    if(this.enrolledCoursesList.length > 0){
-      this.enrolledCoursesList.forEach( enrolledCourse => {
-        if(enrolledCourse.getCourse().equal(course)){
-          
-          return true;
-        }
-      })
-    }
-    return false;
-  }
+ 
 }

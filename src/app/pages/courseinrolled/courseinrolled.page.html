@@ -4,12 +4,13 @@
         <ion-title>
           Enrolled Courses
         </ion-title>
+
     </ion-toolbar>
 </ion-header>
 <section id="enrolled-courses">
 
     <mat-card class="fcourse-card" style=" padding: 0px; height: 270px;"
-         *ngFor="let course of listCourses" (click)="lessons(course.id)">
+         *ngFor="let course of getCoursesList()" (click)="lessons(course.id)">
        <img style="margin: auto;" class="img" mat-card-image src="{{course.imgURL}}">
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">{{course.name}}</a> <br>
