@@ -105,34 +105,34 @@
                 <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
                   <ion-label position="stacked">Phone number</ion-label>
                   <ion-input  (keypress)="keyPress($event)" type="text" placeholder="+271 123 4567" formControlName="phone" clearInput autocapitalize="off" inputmode="numbers" ></ion-input>
-        </ion-item>  
-        <div class="error-container">
+                </ion-item>  
+                <div class="error-container">
                   <ng-container *ngFor="let validation of validation_messages.phone">
                     <div class="error-message" *ngIf="signUpForm.get('phone').hasError(validation.type) && (signUpForm.get('phone').dirty || signUpForm.get('phone').touched)">
                       <ion-icon name="information-circle-outline"></ion-icon>
                       <span>{{ validation.message }}</span>
                     </div>
                   </ng-container>
-        </div>
-              </ion-col>
-              <ion-col>
-                <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
-                  <ion-label position="stacked">Gender</ion-label>
-                  <ion-select formControlName="gender" placeholder="Select gender">
-                    <ion-select-option  value="female">Female</ion-select-option>
-                    <ion-select-option value="male">Male</ion-select-option>
-                  </ion-select>
-                </ion-item>
-                
-                <div class="error-container">
-                  <ng-container *ngFor="let validation of validation_messages.gender">
-                    <div class="error-message" *ngIf="signUpForm.get('gender').hasError(validation.type) && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched)">
-                      <ion-icon name="information-circle-outline"></ion-icon>
-                      <span>{{ validation.message }}</span>
-                    </div>
-                  </ng-container>
                 </div>
               </ion-col>
+                <ion-col>
+                  <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                    <ion-label position="stacked">Gender</ion-label>
+                    <ion-select formControlName="gender" placeholder="Select gender">
+                      <ion-select-option  value="female">Female</ion-select-option>
+                      <ion-select-option value="male">Male</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                
+                  <div class="error-container">
+                    <ng-container *ngFor="let validation of validation_messages.gender">
+                      <div class="error-message" *ngIf="signUpForm.get('gender').hasError(validation.type) && (signUpForm.get('gender').dirty || signUpForm.get('gender').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                      </div>
+                    </ng-container>
+                  </div>
+                </ion-col>
             </ion-row>
             <!-- Email Address -->
             <ion-row>
@@ -154,17 +154,18 @@
             <!-- Password -->
             <ion-row>
               <ion-col> <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
-                <ion-label position="stacked" >Password</ion-label>
-                <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
-              </ion-item>
-              <div class="error-container">
-                <ng-container *ngFor="let validation of validation_messages.password">
-                  <div class="error-message" *ngIf="signUpForm.get('password').hasError(validation.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
-                    <ion-icon name="information-circle-outline"></ion-icon>
-                    <span>{{ validation.message }}</span>
-                  </div>
-                </ng-container>
-              </div></ion-col>
+                  <ion-label position="stacked" >Password</ion-label>
+                  <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validation_messages.password">
+                    <div class="error-message" *ngIf="signUpForm.get('password').hasError(validation.type) && (signUpForm.get('password').dirty || signUpForm.get('password').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
             </ion-row>
       </ion-list>
       <ion-button class="sign-up-btn" type="submit" expand="block" shape="round" [disabled]="!signUpForm.valid">Sign Up</ion-button>
@@ -197,10 +198,10 @@
                         <div class="col-sm-4 bg-c-lite-green user-profile">
                             <div class="card-block text-center text-white">
                                 <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
-                                <h6 class="f-w-600">{{userAccount.getStudent().geteName() }} - {{this.userAccount.getStudent().getSurname()}} </h6>
-                                <p>Student</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                  <h6 class="f-w-600">{{userAccount.getStudent().geteName() }} - {{this.userAccount.getStudent().getSurname()}} </h6>
+                                  <p>Student</p> <i class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-sm-8">
                             <div class="card-block">
                                 <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
@@ -237,15 +238,6 @@
             </div>
         </div>
 </div>
-</div>
+</div> 
 
-                    </ion-col>
-                  </ion-row>
-
-                </div>
-            </div>
-        </div>
-</div>
-</div>
-</div>
 
