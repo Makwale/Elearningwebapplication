@@ -7,8 +7,10 @@ export class Lesson{
     course_id: string;
     name: string;
     number: number
+    docURL: string;
 
-    constructor(id: string, name: string, number: number, vidoeURL: string, date: Date, course_id){
+    constructor(id: string, name: string, number: number, vidoeURL: string, docURL, date: Date, course_id){
+        
         this.id = id;
         
         this.videoURL = vidoeURL;
@@ -18,6 +20,8 @@ export class Lesson{
         this.course_id = course_id;
 
         this.number = number;
+
+        this.docURL = docURL;
     }
 
     
