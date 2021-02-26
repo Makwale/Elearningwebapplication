@@ -24,6 +24,14 @@ export class Course{
          this.instructor_id = instructor_id;
      }
 
-    
+    public equal(course: Course): boolean{
+        if(this.id == course.id){
+            alert("Equal");
+            return true;
+        }
+
+        alert("Not Equal");
+        return false;
+    }
 
  }

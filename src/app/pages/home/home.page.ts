@@ -17,6 +17,7 @@ import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  
   userAccount:Account;
 
   slideOpts = {

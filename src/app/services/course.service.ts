@@ -55,7 +55,7 @@ export class CourseService {
     this.firestore.collection("Student").doc(userID).valueChanges().subscribe(data =>{
       // set student data
       let student = new Student(userID, data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
-      console.log(student)
+      // console.log(student)
       //create account object that has sign state and student object
       let account = new Account(true, student);
       //set Account service to keep account object

@@ -16,24 +16,17 @@ import { AccountService } from './account.service';
 })
 
 export class DatabaseService {
-  
+  collectionNameStudent = 'Students';
   userAccount: Account;
   private loggedIn: boolean;
   collectionName = 'Course';
-  enrolledCoursesList: EnrolledCourse[];
+  coursesList: Course[] = [];
   lessonsList: Lesson[] = [];
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService) {
-        this.enrolledCoursesList = [];
-        this.userAccount = this.accountService.getAccount();
-        this.afa.authState.subscribe(user => {
-          if (user) {
-            this.setUser();
-           } else {
-          }
-        })
+      // this.setUser();
     }
     setUser(){
       let userID = firebase.auth().currentUser.uid.toString();
@@ -44,7 +37,6 @@ export class DatabaseService {
         console.log(student)
         //create account object that has sign state and student object
         let account = new Account(true, student);
-        console.log("When do you popup")
         console.log(account);
         //set Account service to keep account object
         this.accountService.setAccount(account);
@@ -63,7 +55,7 @@ export class DatabaseService {
       
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
 
-       // console.log(student)
+      
         //create account object that has sign state and student object
         let account = new Account(true, student);
         //set Account service to keep account object
@@ -104,43 +96,49 @@ export class DatabaseService {
 // get enrolled courses from database
   public getEnrolledCourses(){
 
-    if(this.enrolledCoursesList.length > 0){
-
-      this.enrolledCoursesList.slice(0, this.enrolledCoursesList.length - 1)
-    }
     // A query to select enrolled courses for a specific student
     this.afs.collection("EnrolledCourse", ref => 
     ref.where("student_id", "==", this.accountService.getAccount()
 
     .getStudent().getStudentNumber())).snapshotChanges().subscribe(enrolledcoursesdata =>{
-
+      let tempvar: Course[] = [];
         
         //Using foreach method on enrolledcoursesdata to loop and get each enrolled course
-      enrolledcoursesdata.forEach( course =>{
+      enrolledcoursesdata.forEach( enrcourse =>{
 
         //Get lessons for a course by calling getLesson method that accepts course id as parameter
 
-        this.getLessons(course.payload.doc.data()["course_id"]);
+       // this.getLessons(course.payload.doc.data()["course_id"]);
 
         //We used each course id from enrolled courses to get actual course data from Course collection
 
-        this.afs.collection("Course").doc(course.payload.doc.data()["course_id"]
+        this.afs.collection("Course").doc(enrcourse.payload.doc.data()["course_id"]
         ).snapshotChanges().subscribe( coursedata =>{
 
           //Assigning course data to data binding
           let data = coursedata.payload.data();
-
-          //Loading enrolled courses list with Enrolled course object which also takes the actual course data
-          this.enrolledCoursesList.push(new EnrolledCourse( new Course(coursedata.payload.id, data["name"], data["ratings"],
-          data["imgURL"], data["category"], data["price"], data["instructor_id"])));
-
          
+
+          let course = new Course(coursedata.payload.id, data["name"], data["ratings"],
+          data["imgURL"], data["category"], data["price"], data["instructor_id"]);
+
+          
+          
+          //Loading enrolled courses list with Enrolled course object which also takes the actual course data
+          this.coursesList.push(course);
+         
+          
+          
+          
         })
 
        
 
        
       })
+
+        
+        
 
     });
   }
@@ -166,13 +164,20 @@ export class DatabaseService {
     })
     return null;
   }
+  update_student(recordID, student) {
+    this.afs.doc('Student/' + recordID).update(student);
+    this.setUser();
+  }
+
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
-      this.router.navigate(['']);
+      //this.router.navigate(['']);
       this.userAccount.setSignIn(false);
       this.accountService.setAccount(this.userAccount);
       
     })
   }
+
+ 
 }
