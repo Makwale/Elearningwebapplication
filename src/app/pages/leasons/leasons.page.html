@@ -8,14 +8,14 @@
 <div style="margin-left: 7px;" class="ion-margin">
     <ion-grid> 
         <ion-row>
-        <ion-col size="8">  
+        <ion-col size="12">  
             <video [src]="videoURL" controls loop style="width: 100%; height: 400px; margin: auto;" autoplay >
-
+                
             </video>
 
          </ion-col> 
 
-         <ion-col size="4">
+         <!-- <ion-col size="4">
             <div class="popular-aside" style="width: 90%; margin-left: auto; margin-right: auto;">
                 <h2 class="aside-subheaders" >Latest Courses</h2>
                 <a href="#" class="popular-links">Software Engineering</a><br>
@@ -28,7 +28,7 @@
 
            
 
-        </ion-col>
+        </ion-col> -->
 
         </ion-row>
 
@@ -38,49 +38,15 @@
     <mat-tab-group mat-align-tabs="start">
         <mat-tab label="Course Contents">
             <ion-list>
-                <ion-item button type="button" (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4')">
-                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4'" name="pause-circle-outline"></ion-icon>
+                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="play(lesson.videoURL)">
+                    <ion-icon *ngIf="videoURL != lesson.videoURL" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == lesson.videoURL" name="pause-circle-outline"></ion-icon>
                     <ion-label>
-                        Introduction to HTML
+                        {{lesson.name}}
                     </ion-label>
                 </ion-item>
                 
 
-                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4')">
-                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim3.mp4'" name="pause-circle-outline"></ion-icon>
-                    <ion-label>
-                        Creating a simple page
-                    </ion-label>
-                </ion-item>
-
-                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4')">
-                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim2.mp4'" name="pause-circle-outline"></ion-icon>
-                    <ion-label>
-                        Making up texts
-                    </ion-label>
-                </ion-item>
-
-                <ion-item button (click)="play('../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4')">
-                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Integrating Chart.js with Angular 5 with Data from an API_Trim.mp4'" name="pause-circle-outline"></ion-icon>
-                    <ion-label>
-                        Adding links
-                    </ion-label>
-                </ion-item>
-
-                <ion-item button (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4')">
-                    <ion-icon *ngIf="videoURL != '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4'" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == '../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim3.mp4'" name="pause-circle-outline"></ion-icon>
-                    <ion-label>
-                        Adding Images
-                    </ion-label>
-                </ion-item>
-
-                <ion-item button (click)="play('../../../assets/videos/Login with Phone number in an Angular App using Firebase Authentication_Trim.mp4')">
-                    <ion-icon slot="start" name="play-circle-outline"></ion-icon>
-                    <ion-label>
-                        Table Markup
-                    </ion-label>
-                </ion-item>
-
+                
             </ion-list>
               
 

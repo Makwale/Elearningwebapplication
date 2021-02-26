@@ -24,6 +24,7 @@ export class CourseinrolledPage implements OnInit {
   }
   ngOnInit() {
    this.enrolledCourses = this.dbs.coursesList; 
+
   }
 
   getCoursesList(){

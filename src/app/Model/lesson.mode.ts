@@ -5,8 +5,10 @@ export class Lesson{
     videoURL: string;
     date: Date;
     course_id: string;
+    name: string;
+    number: number
 
-    constructor(id: string, vidoeURL: string, date: Date, course_id){
+    constructor(id: string, name: string, number: number, vidoeURL: string, date: Date, course_id){
         this.id = id;
         
         this.videoURL = vidoeURL;
@@ -14,6 +16,8 @@ export class Lesson{
         this.date = date;
 
         this.course_id = course_id;
+
+        this.number = number;
     }
 
     

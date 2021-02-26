@@ -108,7 +108,7 @@ export class DatabaseService {
 
         //Get lessons for a course by calling getLesson method that accepts course id as parameter
 
-       // this.getLessons(course.payload.doc.data()["course_id"]);
+       this.getLessons(enrcourse.payload.doc.data()["course_id"]);
 
         //We used each course id from enrolled courses to get actual course data from Course collection
 
@@ -147,7 +147,7 @@ export class DatabaseService {
 
    
 
-    this.afs.collection("Lesson", ref => ref.where("course_id", "==", course_id))
+    this.afs.collection("Lesson", ref => ref.where("course_id", "==", course_id),)
 
     .snapshotChanges().subscribe( lessonsdata =>{
 
