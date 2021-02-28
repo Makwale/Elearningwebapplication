@@ -13,6 +13,7 @@ export class LeasonsPage implements OnInit {
 selectTabs ="recent";
 videoURL;
  lessonList: Lesson[];
+ tempLessonList: Lesson[] = [];
   constructor(public activageRoute: ActivatedRoute,public dbs: DatabaseService) { }
 
   ngOnInit() {
@@ -20,8 +21,11 @@ videoURL;
     this.activageRoute.queryParams.subscribe(data =>{
       this.lessonList = [];
        this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == data["course_id"]);
-       //console.log(data["course_id"]);
+
+       this.deleteDuplicates();
+
        this.sort();
+
       
     })
   }
@@ -42,6 +46,27 @@ videoURL;
         }
       }
     }
+  }
+
+  deleteDuplicates(){
+    this.tempLessonList.push(this.lessonList[0]);
+    for(let lesson of this.lessonList){
+      if(this.search(lesson) == false){
+        this.tempLessonList.push(lesson);
+      }
+    }
+    this.lessonList = this.tempLessonList;
+
+  }
+
+  search(lesson: Lesson): boolean{
+    for(let temcourse of this.tempLessonList){
+      if(temcourse.number == lesson.number){
+        return true;
+      }
+    }
+
+    return false;
   }
 
 }
