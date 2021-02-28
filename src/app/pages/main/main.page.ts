@@ -39,12 +39,15 @@ export class MainPage implements OnInit {
     alert(this.accountService.getAccount().getStudent().geteName())
   }
   signOut(){
+    if (window.confirm('Do you really want to Sign-Out?')) {    
     this.loginStatus = false;
     this.userAccount.setSignIn(this.loginStatus)
     this.accountService.setAccount(this.userAccount); //Clear the user 
     this.auth.signOut();
+    }
   }
 
+  
 
 
 }
