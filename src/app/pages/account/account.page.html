@@ -260,6 +260,9 @@
                                     </ion-button>
                                   </ion-col>
                                   <ion-col>
+                                    <ion-button fill="solid" color="danger" size="small" (click)="EditRecord(userAccount.getStudent())">
+                                      Became an Instructor
+                                    </ion-button>
                                   </ion-col>
                                 </ion-row>
                               </ion-grid>
@@ -301,14 +304,14 @@
                           <ion-row>
                             <ion-col size ="6" class="col-sm-6">
                               <ion-item>
-                                <ion-label><strong>First Name</strong></ion-label>
+                                <ion-label><strong>First Name:</strong></ion-label>
                                 <ion-input type="text" [(ngModel)]="student.firstname"></ion-input>
                               </ion-item>
                              
                                 </ion-col>
                             <ion-col size ="6" class="col-sm-6" >
                               <ion-item>
-                                <ion-label><strong>Last Name</strong></ion-label>
+                                <ion-label><strong>Last Name:</strong></ion-label>
                                 <ion-input type="text" [(ngModel)]="student.lastname"></ion-input>
                               </ion-item>
                              
@@ -317,7 +320,7 @@
                           <ion-row>                  
                             <ion-col size ="6" class="col-sm-6" >
                               <ion-item>
-                                <ion-label><strong>Phone</strong></ion-label>
+                                <ion-label><strong>Phone:</strong></ion-label>
                                 <ion-input type="text" [(ngModel)]="student.phone"></ion-input>
                               </ion-item>
                              
