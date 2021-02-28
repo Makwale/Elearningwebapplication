@@ -43,7 +43,9 @@ export class MainPage implements OnInit {
     this.accountService.setAccount(this.userAccount); //Clear the user 
     this.auth.signOut();
   }
+  
 
+  
 
 
 }

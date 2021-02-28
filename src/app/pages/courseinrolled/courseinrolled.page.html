@@ -8,9 +8,10 @@
     </ion-toolbar>
 </ion-header>
 <section id="enrolled-courses">
-
+         <!-- Enrroled courses -->
     <mat-card class="fcourse-card" style=" padding: 0px; height: 270px;"
          *ngFor="let course of getCoursesList()" (click)="lessons(course.id)">
+
        <img style="margin: auto;" class="img" mat-card-image src="{{course.imgURL}}">
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">{{course.name}}</a> <br>
@@ -36,9 +37,9 @@
        </mat-card-content>
        
      </mat-card>
-     <mat-card *ngIf ="getCoursesList().length < 1" >
+     <!-- <mat-card *ngIf ="enrolledCourses.length < 1" >
        It seems like you haven't enrolled yet!
-     </mat-card>
+     </mat-card> -->
 
 
      

@@ -167,7 +167,6 @@ getUser(){
 }
 EditRecord(student) {
   console.log(student);
-
   this.isEdit = true;
   student.firstname = student.geteName();
   student.lastname = student.getSurname();
@@ -176,6 +175,7 @@ EditRecord(student) {
   student.email = student.getEmail();
 }
 UpdateRecord(student) {
+  if (window.confirm('You are updating your information?')) {    
   let record = {};
   record['firstname'] = student.firstname;
   record['gender'] = student.gender;
@@ -186,6 +186,7 @@ UpdateRecord(student) {
   this.accountService.setAccount(this.userAccount);
   this.dbs.update_student(student.getStudentNumber(), record);  
   this.isEdit = false;
+  }
 }
 logout(){
   this.loggedIn = false;
