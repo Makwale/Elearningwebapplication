@@ -20,6 +20,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [AppComponent, MainPage,QuestionsPage],
@@ -34,6 +35,7 @@ import { environment } from 'src/environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatToolbarModule,
+    MatMenuModule,
     MatSidenavModule],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

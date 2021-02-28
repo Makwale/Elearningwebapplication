@@ -35,10 +35,9 @@ export class MainPage implements OnInit {
     })
   }
 
-  test(){
-    alert(this.accountService.getAccount().getStudent().geteName())
-  }
+ 
   signOut(){
+    
     this.loginStatus = false;
     this.userAccount.setSignIn(this.loginStatus)
     this.accountService.setAccount(this.userAccount); //Clear the user 
