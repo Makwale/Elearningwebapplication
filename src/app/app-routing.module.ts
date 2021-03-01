@@ -88,7 +88,11 @@ const routes: Routes = [
   {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
+  },  {
+    path: 'html-quiz',
+    loadChildren: () => import('./pages/html-quiz/html-quiz.module').then( m => m.HtmlQuizPageModule)
   },
+
 
 
 
