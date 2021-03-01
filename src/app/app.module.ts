@@ -14,15 +14,15 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { QuestionsPage } from './questions/questions.page';
 import { AngularFireModule } from '@angular/fire';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
-  declarations: [AppComponent, MainPage,QuestionsPage],
+  declarations: [AppComponent, MainPage],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
@@ -34,6 +34,7 @@ import { environment } from 'src/environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     MatToolbarModule,
+    MatMenuModule,
     MatSidenavModule],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

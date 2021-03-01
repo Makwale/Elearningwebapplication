@@ -35,9 +35,7 @@ export class MainPage implements OnInit {
     })
   }
 
-  test(){
-    alert(this.accountService.getAccount().getStudent().geteName())
-  }
+ 
   signOut(){
     if (window.confirm('Do you really want to Sign-Out?')) {    
     this.loginStatus = false;
@@ -46,6 +44,7 @@ export class MainPage implements OnInit {
     this.auth.signOut();
     }
   }
+  
 
   
 

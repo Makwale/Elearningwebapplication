@@ -62,10 +62,7 @@ const routes: Routes = [
         path: 'coursedetails',
         loadChildren: () => import('./pages/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
       },
-      {
-        path: 'question',
-        loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
-      },
+     
        {
           path: 'leasons',
           loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
@@ -81,42 +78,21 @@ const routes: Routes = [
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
   },
   {
-    path: 'questions',
-    loadChildren: () => import('./questions/questions.module').then( m => m.QuestionsPageModule)
-  },
-  {
-    path: 'page1',
-    loadChildren: () => import('./page1/page1.module').then( m => m.Page1PageModule)
-  },
-  {
-    path: 'page2',
-    loadChildren: () => import('./page2/page2.module').then( m => m.Page2PageModule)
-  },
-  {
-    path: 'page3',
-    loadChildren: () => import('./page3/page3.module').then( m => m.Page3PageModule)
-  },
-  
-  {
-    path: 'congratulations',
-    loadChildren: () => import('./pages/congratulations/congratulations.module').then( m => m.CongratulationsPageModule)
-  },
-  {
-    path: 'dashboard',
-    loadChildren: () => import('./pages/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  },
- 
-  {
     path: 'databasequiz',
     loadChildren: () => import('./pages/databasequiz/databasequiz.module').then( m => m.DatabasequizPageModule)
   },
   {
     path: 'tasklist',
     loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
-  },  {
+  },
+  {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
+  },  {
+    path: 'html-quiz',
+    loadChildren: () => import('./pages/html-quiz/html-quiz.module').then( m => m.HtmlQuizPageModule)
   },
+
 
 
 
