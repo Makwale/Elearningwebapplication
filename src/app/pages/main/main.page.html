@@ -15,7 +15,7 @@
 
           <ion-button fill="clear" *ngIf="loginStatus" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
           
-          <ion-avatar *ngIf ="loginStatus"  style="width: 35px; height: 35px;">
+          <ion-avatar *ngIf ="loginStatus"  style="width: 25px; height: 25px;">
             <img src="../../../assets/img/profile/pp.jpg">
           </ion-avatar>
           <button *ngIf ="loginStatus" [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
@@ -27,8 +27,7 @@
             <button mat-menu-item (click)="signOut()">Sign out</button>
             
           </mat-menu>
-        </ion-buttons>
-
+        </ion-buttons> 
    
   </ion-toolbar>
 

@@ -88,7 +88,19 @@ const routes: Routes = [
   {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
+  },  {
+    path: 'courses',
+    loadChildren: () => import('./pages/courses/courses.module').then( m => m.CoursesPageModule)
   },
+  {
+    path: 'addcourse',
+    loadChildren: () => import('./pages/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
+  },
+  {
+    path: 'editcourse',
+    loadChildren: () => import('./pages/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
+  },
+
 
 
 
