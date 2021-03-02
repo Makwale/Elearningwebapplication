@@ -16,12 +16,21 @@ import { AccountService } from './account.service';
 })
 
 export class DatabaseService {
+
   collectionNameStudent = 'Students';
+
   userAccount: Account;
+
   private loggedIn: boolean;
+
   collectionName = 'Course';
+
   coursesList: Course[] = [];
+
   lessonsList: Lesson[] = [];
+
+  courses: Course[] = [];
+
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
@@ -177,6 +186,25 @@ export class DatabaseService {
       this.accountService.setAccount(this.userAccount);
       
     })
+  }
+
+  //Method to retrieve all courses for admin
+  getCourses(){
+
+    return this.afs.collection("Course").snapshotChanges();
+
+    // return this.afs.collection("Course").snapshotChanges().subscribe(data =>{
+    //   data.forEach(coursedata => {
+    //     let tempvar = coursedata.payload.doc.data();
+
+    //     let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
+    //     tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
+        
+
+    //     this.courses.push(course);
+        
+    //   })
+    // })
   }
 
  
