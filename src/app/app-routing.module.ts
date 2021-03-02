@@ -100,6 +100,14 @@ const routes: Routes = [
     path: 'editcourse',
     loadChildren: () => import('./pages/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
   },
+  {
+    path: 'student',
+    loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
+  },
+  {
+    path: 'instructors',
+    loadChildren: () => import('./pages/instructors/instructors.module').then( m => m.InstructorsPageModule)
+  },
 
 
 

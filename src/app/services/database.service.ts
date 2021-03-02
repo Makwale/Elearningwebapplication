@@ -193,18 +193,27 @@ export class DatabaseService {
 
     return this.afs.collection("Course").snapshotChanges();
 
-    // return this.afs.collection("Course").snapshotChanges().subscribe(data =>{
-    //   data.forEach(coursedata => {
-    //     let tempvar = coursedata.payload.doc.data();
+  }
 
-    //     let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
-    //     tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
-        
 
-    //     this.courses.push(course);
-        
-    //   })
-    // })
+  getAllStudentsAdmim(){
+
+    return this.afs.collection("Student").snapshotChanges();
+
+  }
+
+  getAllInstructorsAdmim(){
+
+    return this.afs.collection("Instructor").snapshotChanges();
+
+  }
+
+  deleteInstructor(studentId){
+    this.afs.collection("Instructor").doc(studentId).delete();
+  }
+
+  deleteStudent(studentId){
+    this.afs.collection("Student").doc(studentId).delete();
   }
 
  
