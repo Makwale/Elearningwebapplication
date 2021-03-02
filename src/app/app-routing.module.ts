@@ -92,6 +92,22 @@ const routes: Routes = [
     path: 'html-quiz',
     loadChildren: () => import('./pages/html-quiz/html-quiz.module').then( m => m.HtmlQuizPageModule)
   },
+  {
+    path: 'instructor-application',
+    loadChildren: () => import('./pages/Instructors-Page/instructor-application/instructor-application.module').then( m => m.InstructorApplicationPageModule)
+  },
+  {
+    path: 'instructor-profile',
+    loadChildren: () => import('./pages/Instructors-Page/instructor-profile/instructor-profile.module').then( m => m.InstructorProfilePageModule)
+  },
+  {
+    path: 'instructor-instructors',
+    loadChildren: () => import('./pages/Instructors-Page/instructor-instructors/instructor-instructors.module').then( m => m.InstructorInstructorsPageModule)
+  },
+  {
+    path: 'instructor-dashboard',
+    loadChildren: () => import('./pages/Instructors-Page/instructor-dashboard/instructor-dashboard.module').then( m => m.InstructorDashboardPageModule)
+  },
 
 
 

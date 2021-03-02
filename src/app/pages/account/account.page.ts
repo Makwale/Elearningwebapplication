@@ -97,6 +97,9 @@ export class AccountPage implements OnInit {
     this.loggedIn = false;
     this.getUser();
   }
+  goToInstrutorPage() {
+    this.router.navigateByUrl("instructor-dashboard");
+  }
   goDash() {
     this.router.navigateByUrl("dashboard");
   }
