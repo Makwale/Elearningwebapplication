@@ -262,5 +262,11 @@ export class DatabaseService {
     })
   }
 
+  deleteCourse(id){
+    this.afs.collection("Course").doc(id).delete().then(res =>{
+      alert("Course deleted");
+    })
+  }
+
  
 }
