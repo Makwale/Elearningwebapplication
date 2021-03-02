@@ -3,6 +3,7 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { Account } from '../Model/account.model';
 import { Course } from '../Model/course';
@@ -11,11 +12,15 @@ import { Lesson } from '../Model/lesson.mode';
 import { Student } from '../Model/student.model';
 import { CoursedetailsPage } from '../pages/coursedetails/coursedetails.page';
 import { AccountService } from './account.service';
+import { TasklistPage } from '../pages/tasklist/tasklist.page';
+import { finalize } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class DatabaseService {
+ 
 
   collectionNameStudent = 'Students';
 
@@ -34,7 +39,7 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
-     private router: Router,private accountService: AccountService) {
+     private router: Router,private accountService: AccountService,private storage: AngularFireStorage) {
       // this.setUser();
     }
     setUser(){
@@ -214,6 +219,47 @@ export class DatabaseService {
 
   deleteStudent(studentId){
     this.afs.collection("Student").doc(studentId).delete();
+  }
+
+  addCourse(cname , category, price, file) {
+    let imgUrl;
+    const filePath = cname + String(new Date());
+    const ref = this.storage.ref(filePath);
+
+    const task = ref.put(file);
+
+    task.snapshotChanges().pipe( finalize( () => {
+  		ref.getDownloadURL().subscribe(url =>{
+        imgUrl = url;
+
+        this.afs.collection('Course').add({
+          name: cname,
+          price: price,
+          category: category,
+          url: imgUrl,
+          ratings: 0,
+          instructor_id: "",
+          number_students: 0
+        }).then(() => {
+          alert("Course added");
+          })
+        });
+  	})).subscribe()	
+    
+  }
+
+  updateCourse(id, cname, category, price){
+
+    this.afs.collection("Course").doc(id).update({
+      name: cname,
+      price: price,
+      category: category,
+      ratings: 0,
+      instructor_id: "",
+      number_students: 0
+    }).then(res =>{
+      alert("Course updated");
+    })
   }
 
  

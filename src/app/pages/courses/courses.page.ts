@@ -9,6 +9,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { ModalController } from '@ionic/angular';
 import { AddcoursePage } from '../addcourse/addcourse.page';
 import { EditcoursePage } from '../editcourse/editcourse.page';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -64,8 +65,8 @@ export class CoursesPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
   }
 
   getCoursesList(){
@@ -102,11 +103,21 @@ export class CoursesPage implements OnInit {
     await modal.present();
   }
 
-  async editCourse(){
-    const modal = await this.modalController.create({
-      component: EditcoursePage,
-    });
-    await modal.present();
+  async editCourse(id){
+
+    for(let i = 0; i < this.courses.length; i++){
+      if(this.courses[i].id == id){
+        const modal = await this.modalController.create({
+          component: EditcoursePage,
+          componentProps: {
+            course: this.courses[i],
+          },
+        })
+        await modal.present();
+        break;
+      }
+    }
+    
   }
 
   deleteCourse(){
