@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CoursesPageRoutingModule } from './courses-routing.module';
+import { StudentPageRoutingModule } from './student-routing.module';
 
-import { CoursesPage } from './courses.page';
+import { StudentPage } from './student.page';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,7 +19,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CommonModule,
     FormsModule,
     IonicModule,
-    CoursesPageRoutingModule,
+    StudentPageRoutingModule,
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
@@ -27,6 +27,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSortModule,
     MatPaginatorModule
   ],
-  declarations: [CoursesPage]
+  declarations: [StudentPage]
 })
-export class CoursesPageModule {}
+export class StudentPageModule {}
