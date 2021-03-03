@@ -25,6 +25,8 @@ export class MainPage implements OnInit {
           this.userAccount = new Account(true, student);
           //set Account service to keep account object
           this.accountService.setAccount(this.userAccount);
+          console.log(this.loginStatus,'User-in2'); 
+
         })
         this.loginStatus = true;
         console.log(this.loginStatus,'User-in');    
@@ -34,12 +36,10 @@ export class MainPage implements OnInit {
       }
     })
   }
-
- 
   signOut(){
     if (window.confirm('Do you really want to Sign-Out?')) {    
     this.loginStatus = false;
-    this.userAccount.setSignIn(this.loginStatus)
+    this.userAccount.setSignIn(this.loginStatus);
     this.accountService.setAccount(this.userAccount); //Clear the user 
     this.auth.signOut();
     }

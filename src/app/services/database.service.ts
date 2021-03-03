@@ -31,11 +31,10 @@ export class DatabaseService {
 
   courses: Course[] = [];
 
-
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService) {
-      // this.setUser();
+      this.setUser();
     }
     setUser(){
       let userID = firebase.auth().currentUser.uid.toString();
@@ -177,7 +176,6 @@ export class DatabaseService {
     this.afs.doc('Student/' + recordID).update(student);
     this.setUser();
   }
-
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
@@ -187,7 +185,6 @@ export class DatabaseService {
       
     })
   }
-
   //Method to retrieve all courses for admin
   getCourses(){
 
