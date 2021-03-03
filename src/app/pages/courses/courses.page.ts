@@ -22,7 +22,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 export class CoursesPage implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'category', 'price', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'category', 'price', 'numberStudentsErrolled', 'actions'];
 
   courses: Course[] = [];
 
@@ -45,7 +45,7 @@ export class CoursesPage implements OnInit {
           let tempvar = coursedata.payload.doc.data();
   
           let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
-          tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
+          tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"], tempvar['numberStudentsErrolled']);
           
   
           this.courses.push(course);
