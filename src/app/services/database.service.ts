@@ -3,6 +3,7 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 import { Account } from '../Model/account.model';
 import { Course } from '../Model/course';
@@ -11,11 +12,15 @@ import { Lesson } from '../Model/lesson.mode';
 import { Student } from '../Model/student.model';
 import { CoursedetailsPage } from '../pages/coursedetails/coursedetails.page';
 import { AccountService } from './account.service';
+import { TasklistPage } from '../pages/tasklist/tasklist.page';
+import { finalize } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class DatabaseService {
+ 
 
   collectionNameStudent = 'Students';
 
@@ -33,8 +38,13 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
+<<<<<<< HEAD
      private router: Router,private accountService: AccountService) {
       this.setUser();
+=======
+     private router: Router,private accountService: AccountService,private storage: AngularFireStorage) {
+      // this.setUser();
+>>>>>>> 00a4fe62d031763154c14913ed1b9b6c6fd792a9
     }
     setUser(){
       let userID = firebase.auth().currentUser.uid.toString();
@@ -190,18 +200,74 @@ export class DatabaseService {
 
     return this.afs.collection("Course").snapshotChanges();
 
-    // return this.afs.collection("Course").snapshotChanges().subscribe(data =>{
-    //   data.forEach(coursedata => {
-    //     let tempvar = coursedata.payload.doc.data();
+  }
 
-    //     let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
-    //     tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
-        
 
-    //     this.courses.push(course);
-        
-    //   })
-    // })
+  getAllStudentsAdmim(){
+
+    return this.afs.collection("Student").snapshotChanges();
+
+  }
+
+  getAllInstructorsAdmim(){
+
+    return this.afs.collection("Instructor").snapshotChanges();
+
+  }
+
+  deleteInstructor(studentId){
+    this.afs.collection("Instructor").doc(studentId).delete();
+  }
+
+  deleteStudent(studentId){
+    this.afs.collection("Student").doc(studentId).delete();
+  }
+
+  addCourse(cname , category, price, file) {
+    let imgUrl;
+    const filePath = cname + String(new Date());
+    const ref = this.storage.ref(filePath);
+
+    const task = ref.put(file);
+
+    task.snapshotChanges().pipe( finalize( () => {
+  		ref.getDownloadURL().subscribe(url =>{
+        imgUrl = url;
+
+        this.afs.collection('Course').add({
+          name: cname,
+          price: price,
+          category: category,
+          url: imgUrl,
+          ratings: 0,
+          instructor_id: "",
+          number_students: 0
+        }).then(() => {
+          alert("Course added");
+          })
+        });
+  	})).subscribe()	
+    
+  }
+
+  updateCourse(id, cname, category, price){
+
+    this.afs.collection("Course").doc(id).update({
+      name: cname,
+      price: price,
+      category: category,
+      ratings: 0,
+      instructor_id: "",
+      number_students: 0
+    }).then(res =>{
+      alert("Course updated");
+    })
+  }
+
+  deleteCourse(id){
+    this.afs.collection("Course").doc(id).delete().then(res =>{
+      alert("Course deleted");
+    })
   }
 
  

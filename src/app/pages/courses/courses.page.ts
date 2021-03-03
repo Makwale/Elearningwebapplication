@@ -9,26 +9,8 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { ModalController } from '@ionic/angular';
 import { AddcoursePage } from '../addcourse/addcourse.page';
 import { EditcoursePage } from '../editcourse/editcourse.page';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 
 @Component({
@@ -73,7 +55,9 @@ export class CoursesPage implements OnInit {
       });
 
       this.dataSource = new MatTableDataSource(this.courses);
-      this.dataSource.sort = this.sort;
+     this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+      
 
     });
 
@@ -81,7 +65,8 @@ export class CoursesPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
   }
 
   getCoursesList(){
@@ -118,11 +103,21 @@ export class CoursesPage implements OnInit {
     await modal.present();
   }
 
-  async editCourse(){
-    const modal = await this.modalController.create({
-      component: EditcoursePage,
-    });
-    await modal.present();
+  async editCourse(id){
+
+    for(let i = 0; i < this.courses.length; i++){
+      if(this.courses[i].id == id){
+        const modal = await this.modalController.create({
+          component: EditcoursePage,
+          componentProps: {
+            course: this.courses[i],
+          },
+        })
+        await modal.present();
+        break;
+      }
+    }
+    
   }
 
   deleteCourse(){
