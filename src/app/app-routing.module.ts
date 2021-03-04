@@ -116,6 +116,10 @@ const routes: Routes = [
     path: 'instructors',
     loadChildren: () => import('./pages/instructors/instructors.module').then( m => m.InstructorsPageModule)
   },
+  {
+    path: 'instructroprofileadmin',
+    loadChildren: () => import('./pages/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
+  },
 
 
 

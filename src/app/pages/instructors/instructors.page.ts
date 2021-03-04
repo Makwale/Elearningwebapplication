@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Instructor } from 'src/app/Model/instructor';
 import { DatabaseService } from 'src/app/services/database.service';
+import { InstructroprofileadminPage } from '../instructroprofileadmin/instructroprofileadmin.page';
 
 @Component({
   selector: 'app-instructors',
@@ -68,10 +69,10 @@ export class InstructorsPage implements OnInit {
     return false;
   }
 
-  deleteStudent(studentId){
-    this.dbs.deleteStudent(studentId);
+  deleteInstructor(id){
+    this.dbs.deleteStudent(id);
     
-    this.deleteStudentFromArray(studentId);
+    //this.deleteStudentFromArray(studentId);
 
     this.getAllInstructors();
     
@@ -103,10 +104,20 @@ export class InstructorsPage implements OnInit {
 
   }
 
-  deleteStudentFromArray(studentId){
+  deleteInstructorFromArray(studentId){
     for(let i = 0; i < this.instructors.length ; i++){
       if(this.instructors[i].getId() == studentId){
         this.instructors.splice(i,1);
+      }
+    }
+  }
+
+  async intructorProfile(id){
+    for(let instructor of this.instructors){
+      if(instructor.getId() == id){
+        
+        this.router.navigate(['./instructroprofileadmin']);
+        break;
       }
     }
   }
