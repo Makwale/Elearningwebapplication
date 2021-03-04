@@ -1,0 +1,355 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>
+      ElearningAPP
+    </ion-title>
+  </ion-toolbar>
+</ion-header> 
+<br>
+<div class="time"> Count Down:&nbsp;{{displayTime}} </div>
+<br>
+
+<ion-content overflow-scroll ="true">
+        
+        <h1>1.Demand is the quantity of goods:</h1>
+    <ion-list>
+        <ion-radio-group [(ngModel)]="answer1">
+          
+          <ion-item>
+            <ion-label>1 - desired by consumers.</ion-label>
+            <ion-radio value="desired by consumers" ></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>2 – ordered by consumers in a particular period</ion-label>
+            <ion-radio value="ordered by consumers in a particular period"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>3 – consumers are willing and able to buy at particular prices in a certain period</ion-label>
+            <ion-radio value="consumers are willing and able to buy at particular prices in a certain period"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>4 –that consumers require in order to survive</ion-label>
+            <ion-radio value="that consumers require in order to survive"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>5 – None of the above</ion-label>
+            <ion-radio value="None of the above"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+<!-- two -->
+<h1>2 .A large increase in the number of fast-food restaurants in a community is most likely to result in:</h1>
+<ion-list>
+    <ion-radio-group [(ngModel)]="answer3">
+      <ion-item>
+        <ion-label>1 - Lower prices and higher quality.</ion-label>
+        <ion-radio value="Lower prices and higher quality" ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>2.Lower prices and lower quality</ion-label>
+        <ion-radio value="Lower prices and lower quality"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>3 – Higher prices and higher quality.</ion-label>
+        <ion-radio value="Higher prices and higher quality."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>4- 1 and 3</ion-label>
+        <ion-radio value="1 and 3"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>5- None of the above</ion-label>
+        <ion-radio value="None"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>  
+<!-- three -->
+<h1>3. A person who starts a business to produce a new product in the marketplace is known as:<br><br></h1>
+<ion-list>
+    <ion-radio-group [(ngModel)]="answer2">
+      <ion-item>
+        <ion-label>1 - A manager</ion-label>
+        <ion-radio value="South Africa" ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>2 – A bureaucrat</ion-label>
+        <ion-radio value="Nigeria"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>3 – An entrepreneu</ion-label>
+        <ion-radio value="Ethiopia"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>4 – All of the above</ion-label>
+        <ion-radio value="Cameroon"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>5 – None of the above</ion-label>
+        <ion-radio value="Ghana"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+     
+  <h1>4.  An increase from 5% to 8% in the interest rates charged by banks would most likely encourage:</h1>
+<ion-list>
+    <ion-radio-group [(ngModel)]="answer2">
+      <ion-item>
+        <ion-label>1 - Businesses to invest.</ion-label>
+        <ion-radio value="South Africa" ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>2 – People to purchase housing.</ion-label>
+        <ion-radio value="Nigeria"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>3 – People to save money.</ion-label>
+        <ion-radio value="Ethiopia"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>4 – one and three</ion-label>
+        <ion-radio value="Cameroon"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>5 – None of the above</ion-label>
+        <ion-radio value="Ghana"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+     
+  <h1>5. If the real gross domestic product of the United States has increased, but the production of goods has remained the same, then the production of services has:
+    Increased.<br><br></h1>
+<ion-list>
+    <ion-radio-group [(ngModel)]="answer3">
+      <ion-item>
+        <ion-label>1 - Increased. </ion-label>
+        <ion-radio value="Increased." ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>2 – Decreased. </ion-label>
+        <ion-radio value="Decreased."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>3 – Remained the same. </ion-label>
+        <ion-radio value="Remained the same."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>4 –Two and three </ion-label>
+        <ion-radio value="Two and three"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>5 – None of the above</ion-label>
+        <ion-radio value="None of the above"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+     
+  <h1>6. If the price of beef doubled and the price of poultry stayed the same, people would most likely buy:<br><br></h1>
+<ion-list>
+    <ion-radio-group [(ngModel)]="answer2">
+      <ion-item>
+        <ion-label>1 -More poultry and less beef.</ion-label>
+        <ion-radio value="More poultry and less beef." ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>2 – Less poultry and more beef. </ion-label>
+        <ion-radio value=" Less poultry and more beef."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>3 –The same amount of poultry and beef. </ion-label>
+        <ion-radio value="The same amount of poultry and beef."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>4 – One and three</ion-label>
+        <ion-radio value="One and three"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>5 – None of the above</ion-label>
+        <ion-radio value="None of the above"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+     
+  <h1>7. If the United States stopped importing automobiles from Country X, who would be most likely to benefit?<br><br></h1>
+<ion-list>
+    <ion-radio-group [(ngModel)]="answer3">
+      <ion-item>
+        <ion-label>1 -Automobile manufacturers in Country X. </ion-label>
+        <ion-radio value="Automobile manufacturers in Country X." ></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>2 – Consumers in the United States. </ion-label>
+        <ion-radio value=" Consumers in the United States."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>3 – Automobile manufacturers in the United States.</ion-label>
+        <ion-radio value="Automobile manufacturers in the United States."></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>4 – One and two</ion-label>
+        <ion-radio value="One and two"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>5 –None of the above </ion-label>
+        <ion-radio value="None of the above "></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <h1>8. If your city government sets a maximum amount landlords can charge in rent, what is the most likely result?<br><br></h1>
+  <ion-list>
+      <ion-radio-group [(ngModel)]="answer4">
+        <ion-item>
+          <ion-label>1 - South Africa</ion-label>
+          <ion-radio value="South Africa" ></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>2 – Nigeria</ion-label>
+          <ion-radio value="Nigeria"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>3 – Ethiopia</ion-label>
+          <ion-radio value="Ethiopia"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>4 – Cameroon</ion-label>
+          <ion-radio value="Cameroon"></ion-radio>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label>5 – Ghana</ion-label>
+          <ion-radio value="Ghana"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <h1>9. In the United States, who determines what goods and services should be produced? </h1>
+    <ion-list>
+        <ion-radio-group [(ngModel)]="answer1">
+          <ion-item>
+            <ion-label>1 - Producers and government.</ion-label>
+            <ion-radio value="Producers and government." ></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>2 – Consumers and government.</ion-label>
+            <ion-radio value="Consumers and government."></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>3 –  One and Two</ion-label>
+            <ion-radio value="One and Two"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>4 – Producers, consumers, and government</ion-label>
+            <ion-radio value="Producers, consumers, and government"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>5 – All of the above</ion-label>
+            <ion-radio value="All of the above"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <h1>10. Mexico grows fruits and vegetables and Argentina produces beef. If Mexico voluntarily trades fruits and vegetables in exchange for Argentinean beef, then:</h1>
+      <ion-list>
+          <ion-radio-group [(ngModel)]="answer2">
+            <ion-item>
+              <ion-label>1 - Both Mexico and Argentina benefit from the trade.</ion-label>
+              <ion-radio value="Both Mexico and Argentina benefit from the trade." ></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>2 – Both Mexico and Argentina lose from the trade.</ion-label>
+              <ion-radio value="Both Mexico and Argentina lose from the trade."></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>3 – Mexico benefits and Argentina loses from the trade.</ion-label>
+              <ion-radio value="Mexico benefits and Argentina loses from the trade."></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>4 – All of the above</ion-label>
+              <ion-radio value="All of the above"></ion-radio>
+            </ion-item>
+        
+            <ion-item>
+              <ion-label>5 – None of the about</ion-label>
+              <ion-radio value="None of the about"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+        <ion-button color="secondary" shape="round" expand="full" (click)="goNext()" >SUBMIT</ion-button>
+  
+                  
+                 
+                  
+                    <h1>10. Which country is the most popular country in Africa</h1>
+                     <ion-list>
+                        <ion-radio-group [(ngModel)]="answer2">
+                          <ion-item>
+                            <ion-label>1 - South Africa</ion-label>
+                            <ion-radio value="South Africa" ></ion-radio>
+                          </ion-item>
+                      
+                    <ion-item>
+                            <ion-label>2 – Nigeria</ion-label>
+                            <ion-radio value="Nigeria"></ion-radio>
+                          </ion-item>
+                      
+                          <ion-item>
+                            <ion-label>3 – Ethiopia</ion-label>
+                            <ion-radio value="Ethiopia"></ion-radio>
+                          </ion-item>
+                      
+                          <ion-item>
+                            <ion-label>4 – Cameroon</ion-label>
+                            <ion-radio value="Cameroon"></ion-radio>
+                          </ion-item>
+                      
+                          <ion-item>
+                            <ion-label>5 – Ghana</ion-label>
+                            <ion-radio value="Ghana"></ion-radio>
+                          </ion-item>
+                        </ion-radio-group>
+                      </ion-list> -->
+
+
+
+
+
+
+
+
+</ion-content>
