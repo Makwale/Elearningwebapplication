@@ -67,7 +67,7 @@ show(){
     }
 
 
-    if(this.q2=="Sahara"){
+    if(this.q2=="Higher prices and higher quality."){
       this.total +=1;
       this.neg2="correct";
     }else{
@@ -76,7 +76,7 @@ show(){
     }
 
 
-    if(this.q3=="Nepal"){
+    if(this.q3=="bureaucrat"){
       this.total +=1;
       this.neg3="correct";
     }else{
@@ -85,7 +85,7 @@ show(){
     }
 
 
-    if(this.q4=="Trichloromethane"){
+    if(this.q4=="People to purchase housing."){
       this.total +=1;
       this.neg4="correct";
     }else{
@@ -94,42 +94,42 @@ show(){
     }
 
 
-    if(this.q5=="All of the above"){
+    if(this.q5=="Remained the same."){
       this.total +=1;
       this.neg5="correct";
     } else{
       this.total=this.total;
       this.neg5="wrong";
     }
-    if(this.q6=="present continous"){
+    if(this.q6=="Less poultry and more beef."){
       this.total +=1;
       this.neg6="correct";
     } else{
       this.total=this.total;
       this.neg6="wrong";
     }
-    if(this.q7=="berries"){
+    if(this.q7=="Automobile manufacturers in the United States."){
       this.total +=1;
       this.neg7="correct";
     } else{
       this.total=this.total;
       this.neg7="wrong";
     }
-    if(this.q8=="monkeys"){
+    if(this.q8=="Cameroon"){
       this.total +=1;
       this.neg8="correct";
     } else{
       this.total=this.total;
       this.neg8="wrong";
     }
-    if(this.q9=="thieves"){
+    if(this.q9=="Producers and government."){
       this.total +=1;
       this.neg9="correct";
     } else{
       this.total=this.total;
       this.neg9="wrong";
     }
-    if(this.q10=="quarters"){
+    if(this.q10=="Both Mexico and Argentina lose from the trade."){
       this.total +=1;
       this.neg10="correct";
     } else{

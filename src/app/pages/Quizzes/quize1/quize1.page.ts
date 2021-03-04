@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class Quize1Page implements OnInit {
 
   answer1
-  // answer2
+  answer2
   // answer3
   // answer4
   // answer5
@@ -30,10 +30,7 @@ export class Quize1Page implements OnInit {
 
   
     constructor(private router: Router) {
-  // this.stat=1/15
-  // console.log(this.stat)
   
-  //this.countdown=30100
     }
    
     
@@ -112,7 +109,7 @@ export class Quize1Page implements OnInit {
 
   goNext() {
     this.router.navigateByUrl("results")
-    this.router.navigate(['/results'], { queryParams: { answer10: this.answer10,answer1: this.answer1} });
+    this.router.navigate(['/results'], { queryParams: { answer10: this.answer10,answer1: this.answer1,answer2: this.answer2,} });
   }
   
   
