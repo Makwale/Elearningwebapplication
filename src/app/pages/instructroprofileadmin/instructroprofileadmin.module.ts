@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CoursesPageRoutingModule } from './courses-routing.module';
+import { InstructroprofileadminPageRoutingModule } from './instructroprofileadmin-routing.module';
 
-import { CoursesPage } from './courses.page';
+import { InstructroprofileadminPage } from './instructroprofileadmin.page';
+import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -19,7 +20,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     CommonModule,
     FormsModule,
     IonicModule,
-    CoursesPageRoutingModule,
+    InstructroprofileadminPageRoutingModule,
+    MatTabsModule,
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
@@ -27,6 +29,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatSortModule,
     MatPaginatorModule
   ],
-  declarations: [CoursesPage]
+  declarations: [InstructroprofileadminPage]
 })
-export class CoursesPageModule {}
+export class InstructroprofileadminPageModule {}

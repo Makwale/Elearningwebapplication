@@ -42,6 +42,11 @@ export class CoursedetailsPage implements OnInit {
         course_id: this.courseSelected.id,   //From Entity --course_id
         student_id: this.userAccount.getStudent().getStudentNumber()      //From Entity --student_id
       }).then( () => {
+        
+        this.asf.collection("Course").doc(this.asf.createId()).valueChanges( data=> {
+          let numberEnrolledStudents = data['numberStudentsErrolled'];
+          alert(numberEnrolledStudents);
+        })
         alert(this.courseSelected.name + " enrolled successfully");
         this.close();
         this.route.navigateByUrl('page1');

@@ -108,6 +108,18 @@ const routes: Routes = [
     path: 'results',
     loadChildren: () => import('./pages/Quizzes/results/results.module').then( m => m.ResultsPageModule)
   },
+  {
+    path: 'student',
+    loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
+  },
+  {
+    path: 'instructors',
+    loadChildren: () => import('./pages/instructors/instructors.module').then( m => m.InstructorsPageModule)
+  },
+  {
+    path: 'instructroprofileadmin',
+    loadChildren: () => import('./pages/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
+  },
 
  
  

@@ -2,15 +2,15 @@ import { callbackify } from "util";
 
 export class Student{
     
-    private studentNumber: string;
+    private studentId: string;
     private firstname: string;
     private lastname: string;
     private phone: string;
     private gender: string;
     private email: string;
 
-    constructor(studentNumber: string, firstname: string, lastname: string, phone: string, gender: string, email: string){
-        this.studentNumber = studentNumber;
+    constructor(studentId: string, firstname: string, lastname: string, phone: string, gender: string, email: string){
+        this.studentId = studentId;
 
         this.firstname = firstname;
 
@@ -25,7 +25,7 @@ export class Student{
     }
 
     public getStudentNumber(){ 
-        return this.studentNumber;
+        return this.studentId;
     }
 
     public geteName(){
