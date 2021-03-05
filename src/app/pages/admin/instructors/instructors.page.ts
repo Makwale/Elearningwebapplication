@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Instructor } from 'src/app/Model/instructor';
 import { DatabaseService } from 'src/app/services/database.service';
+import { AddinstructorPage } from '../addinstructor/addinstructor.page';
 import { InstructroprofileadminPage } from '../instructroprofileadmin/instructroprofileadmin.page';
 
 @Component({
@@ -94,13 +95,18 @@ export class InstructorsPage implements OnInit {
     });
 
 
-
     this.dataSource = new MatTableDataSource(this.instructors);
    this.dataSource.sort = this.sort;
    this.dataSource.paginator = this.paginator;
     
 
   });
+
+  this.instructors.push(new Instructor("3erewr3", "Emmanuel", "Mametja", "0761052934", "male", "makwale.em@gmail.com"));
+
+  this.dataSource = new MatTableDataSource(this.instructors);
+   this.dataSource.sort = this.sort;
+   this.dataSource.paginator = this.paginator;
 
   }
 
@@ -116,9 +122,16 @@ export class InstructorsPage implements OnInit {
     for(let instructor of this.instructors){
       if(instructor.getId() == id){
         
-        this.router.navigate(['./instructroprofileadmin']);
+        this.router.navigate(['./adminpanel/instructroprofileadmin']);
         break;
       }
     }
+  }
+
+  async addInstructor(){
+    const modal = await this.modalController.create({
+      component: AddinstructorPage,
+    });
+    await modal.present();
   }
 }

@@ -21,9 +21,11 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from 'src/environments/environment';
 import {MatMenuModule} from '@angular/material/menu';
+import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
+
 
 @NgModule({
-  declarations: [AppComponent, MainPage],
+  declarations: [AppComponent, MainPage, AdminpanelPage],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 

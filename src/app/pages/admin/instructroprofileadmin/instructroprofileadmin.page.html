@@ -1,22 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Instructor Profile </ion-title>
+    
+    <ion-buttons slot="end">
+     
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
   <ion-grid>
     <ion-row>
 
-      <ion-col size="2">
+      <ion-col size="12" style="">
 
-      </ion-col>
-     
-
-      <ion-col size="8">
-
-        <ion-row size="2">
+        <ion-row >
 
           <ion-col size="2" style="text-align: center;">
             <ion-avatar style="height: 100px; width: 100px; margin: auto;">
@@ -65,7 +63,8 @@
 
             <mat-tab-group mat-align-tabs="start">
               <mat-tab label="Enrolled Students">
-                <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 90px;"></mat-paginator>
+                
+                <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 30px;"></mat-paginator>
                 
                 <table style="margin-left: 5px; margin-right: 0px; width: 98%;" mat-table [dataSource]="dataSource2" class="mat-elevation-z8" matSort>
               
@@ -116,9 +115,20 @@
               </mat-tab>
               <mat-tab label="Courses">
                 
-              
-                <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 90px;"></mat-paginator>
-                
+                <ion-row>
+                  <ion-col size="4">
+                    
+                    <ion-input #courseid placeholder="Assign a course by entering course id">
+                      <ion-button (click)="assignCourse(courseid.value)" shape="round" size="small" fill="solid" slot="start"><ion-icon name="add"></ion-icon></ion-button>
+                    </ion-input>
+                    <!-- <ion-button shape="round" size="small" fill="solid"><ion-icon name="add"></ion-icon></ion-button> -->
+                  </ion-col>
+                  
+                  <ion-col size="8">
+                    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 10px;"></mat-paginator>
+
+                  </ion-col>
+                </ion-row>
                 <table style="margin-left: 5px; margin-right: 0px; width: 98%;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
               
                   
@@ -161,4 +171,3 @@
     </ion-row>
   </ion-grid>
 
-</ion-content>

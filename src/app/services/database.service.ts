@@ -268,5 +268,26 @@ export class DatabaseService {
     })
   }
 
+  addInstructor(name: string, surname: string, gender: string, phone: string, email: string, password: string){
+    this.afa.createUserWithEmailAndPassword( email, password).then( userCredentials => {
+      let id = userCredentials.user.uid;
+      this.afs.collection("Instructor").doc(id).set({
+        firstname: name,
+        lastname: surname,
+        gender: gender,
+        phone: phone,
+        email: email,
+      }).then( res => {
+        alert("Instructro registered succesfully");
+      }).catch( error => {
+        alert(error)
+      }).catch( error => {
+        alert(error)
+      })
+    }).catch(error => {
+      alert(error);
+    })
+  }
+
  
 }

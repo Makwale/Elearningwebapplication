@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 import { MainPage } from './pages/main/main.page';
 
 const routes: Routes = [
@@ -88,29 +89,47 @@ const routes: Routes = [
   {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
-  },  {
-    path: 'courses',
-    loadChildren: () => import('./pages/courses/courses.module').then( m => m.CoursesPageModule)
   },
+ 
   {
     path: 'addcourse',
-    loadChildren: () => import('./pages/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
+    loadChildren: () => import('./pages/admin/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
   },
   {
     path: 'editcourse',
-    loadChildren: () => import('./pages/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
+    loadChildren: () => import('./pages/admin/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
+  },
+  
+  {
+    path: 'addinstructor',
+    loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
   {
-    path: 'student',
-    loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
-  },
-  {
-    path: 'instructors',
-    loadChildren: () => import('./pages/instructors/instructors.module').then( m => m.InstructorsPageModule)
-  },
-  {
-    path: 'instructroprofileadmin',
-    loadChildren: () => import('./pages/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
+    path: 'adminpanel',
+    component: AdminpanelPage,
+    children:[
+      {
+        path: 'student',
+        loadChildren: () => import('./pages/admin/student/student.module').then( m => m.StudentPageModule)
+      },
+      {
+        path: 'instructors',
+        loadChildren: () => import('./pages/admin/instructors/instructors.module').then( m => m.InstructorsPageModule)
+      },
+      {
+        path: 'courses',
+        loadChildren: () => import('./pages/admin/courses/courses.module').then( m => m.CoursesPageModule)
+      },
+      {
+        path: '',
+        redirectTo: 'courses',
+        pathMatch: 'full'
+      },
+      {
+        path: 'instructroprofileadmin',
+        loadChildren: () => import('./pages/admin/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
+      },
+    ]
   },
 
 
