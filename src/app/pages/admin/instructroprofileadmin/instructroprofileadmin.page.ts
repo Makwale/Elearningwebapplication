@@ -135,5 +135,9 @@ getAllStudents(){
     await modal.present();
   }
 
+  assignCourse(id){
+   // this.dbs.assignCourse(id)
+  }
+
 
 }
