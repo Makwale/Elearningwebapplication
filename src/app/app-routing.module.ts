@@ -88,25 +88,25 @@ const routes: Routes = [
   {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
+  },
+  {
+    path: 'courses',
+    loadChildren: () => import('./pages/courses/courses.module').then( m => m.CoursesPageModule)
+  },
+  {
+    path: 'addcourse',
+    loadChildren: () => import('./pages/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
+  },
+  {
+    path: 'editcourse',
+    loadChildren: () => import('./pages/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
+  },
+  {
+    path: 'quize1',
+    loadChildren: () => import('./pages/Quizzes/quize1/quize1.module').then( m => m.Quize1PageModule)
   },  {
-    path: 'html-quiz',
-    loadChildren: () => import('./pages/html-quiz/html-quiz.module').then( m => m.HtmlQuizPageModule)
-  },
-  {
-    path: 'instructor-application',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-application/instructor-application.module').then( m => m.InstructorApplicationPageModule)
-  },
-  {
-    path: 'instructor-profile',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-profile/instructor-profile.module').then( m => m.InstructorProfilePageModule)
-  },
-  {
-    path: 'instructor-instructors',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-instructors/instructor-instructors.module').then( m => m.InstructorInstructorsPageModule)
-  },
-  {
-    path: 'instructor-dashboard',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-dashboard/instructor-dashboard.module').then( m => m.InstructorDashboardPageModule)
+    path: 'results',
+    loadChildren: () => import('./pages/Quizzes/results/results.module').then( m => m.ResultsPageModule)
   },
   {
     path: 'student',
@@ -120,6 +120,9 @@ const routes: Routes = [
     path: 'instructroprofileadmin',
     loadChildren: () => import('./pages/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
   },
+
+ 
+ 
 
 
 
