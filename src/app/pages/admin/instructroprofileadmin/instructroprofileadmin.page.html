@@ -9,7 +9,7 @@
 </ion-header>
 
 
-  <ion-grid>
+  <ion-grid style="margin-bottom: 10px;">
     <ion-row>
 
       <ion-col size="12" style="">
@@ -42,7 +42,7 @@
                     <ion-card-title>Enrolled Students</ion-card-title>
                   </ion-card-header>
                   <ion-card-content>
-                    <h2>21k</h2>
+                    <h2>{{students.length}}</h2>
                   </ion-card-content>
                 </ion-card>
               </ion-col>
@@ -53,7 +53,7 @@
                     <ion-card-title>Courses</ion-card-title>
                   </ion-card-header>
                   <ion-card-content>
-                    <h2>4</h2>
+                    <h2>{{courses.length}}</h2>
                   </ion-card-content>
 
                 </ion-card>
@@ -66,7 +66,7 @@
                 
                 <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 30px;"></mat-paginator>
                 
-                <table style="margin-left: 5px; margin-right: 0px; width: 98%;" mat-table [dataSource]="dataSource2" class="mat-elevation-z8" matSort>
+                <table style="margin-left: 5px; margin-right: 0px; width: 98%;" mat-table [dataSource]="studentDataSource" class="mat-elevation-z8" matSort>
               
                   
                   <!-- Name Column -->
@@ -107,8 +107,8 @@
                   </ng-container>
               
                 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsStudents"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsStudents;"></tr>
                 
                 </table>              
               
@@ -118,18 +118,18 @@
                 <ion-row>
                   <ion-col size="4">
                     
-                    <ion-input #courseid placeholder="Assign a course by entering course id">
+                    <ion-input  style="background-color: white; border: 1px solid blue; border-radius: 20px;" #courseid placeholder="Assign a course by entering course id">
                       <ion-button (click)="assignCourse(courseid.value)" shape="round" size="small" fill="solid" slot="start"><ion-icon name="add"></ion-icon></ion-button>
                     </ion-input>
                     <!-- <ion-button shape="round" size="small" fill="solid"><ion-icon name="add"></ion-icon></ion-button> -->
                   </ion-col>
                   
                   <ion-col size="8">
-                    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 10px;"></mat-paginator>
+                    <mat-paginator [pageSizeOptions]="[10, 15]" showFirstLastButtons style="margin-right: 10px;"></mat-paginator>
 
                   </ion-col>
                 </ion-row>
-                <table style="margin-left: 5px; margin-right: 0px; width: 98%;" mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+                <table style="margin-left: 5px; margin-right: 0px; width: 98%; margin-bottom: 60px;" mat-table [dataSource]="coursesDataSource" class="mat-elevation-z8" matSort>
               
                   
                   <!-- Name Column -->
@@ -158,8 +158,8 @@
                   
               
                 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsCourses"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsCourses;"></tr>
                 
                 </table>
               

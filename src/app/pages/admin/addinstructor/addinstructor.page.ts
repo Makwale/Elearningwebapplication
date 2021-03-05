@@ -14,8 +14,8 @@ export class AddinstructorPage implements OnInit {
   ngOnInit() {
   }
 
-  addInstructor(name, surname, genger, phone, email, password){
-    this.dbs.addInstructor(name, surname, genger, phone, email, password);
+  addInstructor(name, surname, gender, phone, email, password){
+    this.dbs.addInstructor(name, surname, gender, phone, email, password);
   }
 
 }

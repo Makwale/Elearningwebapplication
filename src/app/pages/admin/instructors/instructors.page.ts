@@ -43,41 +43,7 @@ export class InstructorsPage implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  deleteDuplicates(){
-    for(let instructor of this.instructors){
-      if( this.tempVar.length < 1){
-        this.tempVar.push(instructor);
-      }else{
-        if(!this.search(instructor)){
-          this.tempVar.push(instructor);
-        }
-        
-      }
-    }
-
-    this.instructors = this.tempVar;
-    
-    return this.instructors;
-  }
-
-  search(instructor: Instructor): boolean{
-    for(let tempInstructor of this.tempVar){
-      if(tempInstructor.getId() == instructor.getId()) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  deleteInstructor(id){
-    this.dbs.deleteStudent(id);
-    
-    //this.deleteStudentFromArray(studentId);
-
-    this.getAllInstructors();
-    
-  }
+  
 
   getAllInstructors(){
     this.dbs.getAllInstructorsAdmim().subscribe(data =>{
@@ -88,9 +54,10 @@ export class InstructorsPage implements OnInit {
         tempvar['gender'], tempvar['phone'], tempvar['email']);
         
 
-        this.instructors.push(instructor);
+        if(!this.search(instructor))
+          this.instructors.push(instructor);
         
-        this.deleteDuplicates();
+        //this.deleteDuplicates();
         
     });
 
@@ -102,7 +69,6 @@ export class InstructorsPage implements OnInit {
 
   });
 
-  this.instructors.push(new Instructor("3erewr3", "Emmanuel", "Mametja", "0761052934", "male", "makwale.em@gmail.com"));
 
   this.dataSource = new MatTableDataSource(this.instructors);
    this.dataSource.sort = this.sort;
@@ -110,19 +76,11 @@ export class InstructorsPage implements OnInit {
 
   }
 
-  deleteInstructorFromArray(studentId){
-    for(let i = 0; i < this.instructors.length ; i++){
-      if(this.instructors[i].getId() == studentId){
-        this.instructors.splice(i,1);
-      }
-    }
-  }
-
   async intructorProfile(id){
     for(let instructor of this.instructors){
       if(instructor.getId() == id){
         
-        this.router.navigate(['./adminpanel/instructroprofileadmin']);
+        this.router.navigate(['./adminpanel/instructroprofileadmin'], { queryParams:{ "id": id}});
         break;
       }
     }
@@ -133,5 +91,32 @@ export class InstructorsPage implements OnInit {
       component: AddinstructorPage,
     });
     await modal.present();
+  }
+
+  search(instructor: Instructor): boolean{
+    for(let tempInstructor of this.instructors){
+      if(tempInstructor.getId() == instructor.getId()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  deleteInstructor(id){
+    if(confirm("Are you sure you want to delete instructor?")){
+      this.deleteInstructorFromArray(id);
+      this.dbs.deleteInstructor(id);
+      this.getAllInstructors();
+    } 
+    
+  }
+
+  deleteInstructorFromArray(id){
+    for(let i = 0; i < this.instructors.length ; i++){
+      if(this.instructors[i].getId() == id){
+        this.instructors.splice(i,1);
+      }
+    }
   }
 }
