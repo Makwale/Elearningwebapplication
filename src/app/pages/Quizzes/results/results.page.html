@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title>E-learningAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+
+    <ion-card color="light" class="bottom">
+        <ion-card-header color="light">
+            
+          <h1> Your Answers</h1>
+            
+        </ion-card-header>
+    
+        <ion-card-content color="light">
+          <table width="100%">
+              <tr>
+                <td><b>Question</b></td>
+                <td><b>Answer</b></td>
+                <td><b>Results</b></td>
+              </tr>
+              <tr>
+                <td>No.1</td>
+                <td>{{q1}}</td>
+                <td *ngIf="q1=='desired by consumer.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.50"></ion-icon>
+                  </td>
+                  <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+              </tr>
+              <tr>
+                <td>No.2</td>
+                <td>{{q2}}</td>
+                <td *ngIf="q2=='Higher prices and higher quality.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                </td>
+                  <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+                <tr>
+                  <td>No.3</td>
+                  <td>{{q3}}</td>
+                  <td *ngIf="q3=='bureaucrat';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                  </td>
+                    <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+                <tr>
+                  <td>No.4</td>
+                  <td>{{q4}}</td>
+                  <td *ngIf="q4=='People to purchase housing.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                  </td>
+                    <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+                <tr>
+                  <td>No.5</td>
+                  <td>{{q5}}</td>
+                  <td *ngIf="q5=='Remained the same.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                  </td>
+                    <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+          
+              <tr>
+                <td>No.6</td>
+                <td>{{q6}}</td>
+                <td *ngIf="q6=='Less poultry and more beef.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                </td>
+                  <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+              </tr>
+              <tr>
+                <td>No.7</td>
+                <td>{{q7}}</td>
+                <td *ngIf="q7=='Automobile manufacturers in the United States..';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                </td>
+                  <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+                <tr>
+                  <td>No.8</td>
+                  <td>{{q8}}</td>
+                  <td *ngIf="q8=='Cameroon';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                  </td>
+                    <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+                <tr>
+                  <td>No.9</td>
+                  <td>{{q9}}</td>
+                  <td *ngIf="q9=='Producers and government.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                  </td>
+                    <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+                <tr>
+                  <td>No.10</td>
+                  <td>{{q10}}</td>
+                  <td *ngIf="q10=='Both Mexico and Argentina lose from the trade.';else other_content"><ion-icon name="checkmark" color="success" style="zoom:2.60"></ion-icon>
+                  </td>
+                    <ng-template #other_content><ion-icon name="close" color="danger" style="zoom:2.50"></ion-icon></ng-template>
+                </tr>
+            </table><br><br>
+           
+            <ion-button color="dark" shape="round" expand="full" (click)="show()" [disabled]="disabled">Show total</ion-button>
+            <br>
+            <b>Total Marks : {{total}}&nbsp;/&nbsp;10</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>{{status}}</b>
+            <br>
+            <br>
+            <ion-button color="dark" shape="round" expand="full" (click)="goHome()">Done</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>
