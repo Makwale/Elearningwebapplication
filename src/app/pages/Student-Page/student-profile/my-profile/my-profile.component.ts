@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import  firebase from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { StudentService } from 'src/app/services/Studentn-Service/student.service';
+import { StudentService } from 'src/app/services/Student-Service/student.service';
 import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 

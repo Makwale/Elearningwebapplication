@@ -7,8 +7,9 @@ export class Course{
      public category:string;
      public price: number;
      public instructor_id: string;
+     public numberStudentsErrolled?: number;
 
-     constructor(id: string, name: string, ratings: number, imgURL: string, category: string, price: number, instructor_id: string){
+     constructor(id: string, name: string, ratings: number, imgURL: string, category: string, price: number, instructor_id: string, numberStudentsErrolled?: number){
          this.id = id;
 
          this.name = name;
@@ -22,16 +23,11 @@ export class Course{
          this.price = price;
 
          this.instructor_id = instructor_id;
+
+         if(numberStudentsErrolled == undefined)
+            this.numberStudentsErrolled = 0;
+         else 
+            this.numberStudentsErrolled = numberStudentsErrolled;
      }
-
-    public equal(course: Course): boolean{
-        if(this.id == course.id){
-            alert("Equal");
-            return true;
-        }
-
-        alert("Not Equal");
-        return false;
-    }
 
  }

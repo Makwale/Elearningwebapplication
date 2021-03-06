@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 import { MainPage } from './pages/main/main.page';
 
-const routes: Routes = [
+export const routes: Routes = [
 
   {
     path: '',
@@ -62,7 +63,6 @@ const routes: Routes = [
         path: 'coursedetails',
         loadChildren: () => import('./pages/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
       },
-      
      
        {
           path: 'leasons',
@@ -90,42 +90,55 @@ const routes: Routes = [
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
   },
+ 
   {
-    path: 'html-quiz',
-    loadChildren: () => import('./pages/html-quiz/html-quiz.module').then( m => m.HtmlQuizPageModule)
+    path: 'addcourse',
+    loadChildren: () => import('./pages/admin/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
   },
   {
-    path: 'instructor-application',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-application/instructor-application.module').then( m => m.InstructorApplicationPageModule)
+    path: 'editcourse',
+    loadChildren: () => import('./pages/admin/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
   },
   {
     path: 'instructor-profile',
     loadChildren: () => import('./pages/Instructors-Page/instructor-profile/instructor-profile.module').then( m => m.InstructorProfilePageModule)
   },
   {
-    path: 'instructor-instructors',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-instructors/instructor-instructors.module').then( m => m.InstructorInstructorsPageModule)
-  },
-  {
-    path: 'instructor-dashboard',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-dashboard/instructor-dashboard.module').then( m => m.InstructorDashboardPageModule)
-  },
-  {
-    path: 'student',
-    loadChildren: () => import('./pages/student/student.module').then( m => m.StudentPageModule)
-  },
-  {
-    path: 'instructors',
-    loadChildren: () => import('./pages/instructors/instructors.module').then( m => m.InstructorsPageModule)
-  },  {
     path: 'student-profile',
     loadChildren: () => import('./pages/Student-Page/student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
   },
-
-
-
-
-
+  
+  {
+    path: 'addinstructor',
+    loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
+  },
+  {
+    path: 'adminpanel',
+    component: AdminpanelPage,
+    children:[
+      {
+        path: 'student',
+        loadChildren: () => import('./pages/admin/student/student.module').then( m => m.StudentPageModule)
+      },
+      {
+        path: 'instructors',
+        loadChildren: () => import('./pages/admin/instructors/instructors.module').then( m => m.InstructorsPageModule)
+      },
+      {
+        path: 'courses',
+        loadChildren: () => import('./pages/admin/courses/courses.module').then( m => m.CoursesPageModule)
+      },
+      {
+        path: '',
+        redirectTo: 'courses',
+        pathMatch: 'full'
+      },
+      {
+        path: 'instructroprofileadmin',
+        loadChildren: () => import('./pages/admin/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
+      },
+    ]
+  },
 
 ];
 

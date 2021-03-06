@@ -20,7 +20,8 @@ import { finalize } from 'rxjs/operators';
 })
 
 export class DatabaseService {
- 
+  
+  
 
   collectionNameStudent = 'Students';
 
@@ -208,8 +209,9 @@ export class DatabaseService {
 
   }
 
-  deleteInstructor(studentId){
-    this.afs.collection("Instructor").doc(studentId).delete();
+  deleteInstructor(id){
+    
+      this.afs.collection("Instructor").doc(id).delete();
   }
   deleteStudent(studentId){
     this.afs.collection("Student").doc(studentId).delete();
@@ -260,5 +262,48 @@ export class DatabaseService {
     })
   }
 
+  addInstructor(name: string, surname: string, gender: string, phone: string, email: string, password: string){
+    
+    this.afa.createUserWithEmailAndPassword( email, password).then( userCredentials => {
+      let id = userCredentials.user.uid;
+      this.afs.collection("Instructor").doc(id).set({
+        name: name,
+        surname: surname,
+        gender: gender,
+        phone: phone,
+        email: email,
+      }).then( res => {
+        alert("Instructro registered succesfully");
+      }).catch( error => {
+        alert(error)
+      }).catch( error => {
+        alert(error)
+      })
+    }).catch(error => {
+      alert(error);
+    })
+  }
+
+  getInstructorCourses(id: string) {
+    return this.afs.collection("Course", ref => ref.where("instructor_id", "==", id)).snapshotChanges();
+  }
+ 
+  assignCourse(cid: string, instrid) {
+    this.afs.collection("Course").doc(cid).update({
+      instructor_id : instrid,
+    }).then( res => {
+      alert("Course assigned succesfully");
+    })
+  }
+
+  getEnrolledCourseAdmim(courseid: any) {
+    return this.afs.collection("EnrolledCourse", ref => ref.where("course_id", "==", courseid)).snapshotChanges();
+
+  }
+
+  getEnrolledCourseStudentAdmin(student_id: string) {
+    return this.afs.collection("Student").doc(student_id).snapshotChanges();
+  }
+ 
  
 }

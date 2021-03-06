@@ -3,8 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
-import { Student } from './../../Model/student.model';
-import { Account } from './../../Model/account.model';
+import { Student } from '../../Model/student.model';
+import { Account } from '../../Model/account.model';
 
 @Injectable({
   providedIn: 'root'

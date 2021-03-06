@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Instructor } from 'src/app/Model/instructor';
 import { DatabaseService } from 'src/app/services/database.service';
+import { AddinstructorPage } from '../addinstructor/addinstructor.page';
+import { InstructroprofileadminPage } from '../instructroprofileadmin/instructroprofileadmin.page';
 
 @Component({
   selector: 'app-instructors',
@@ -41,41 +43,7 @@ export class InstructorsPage implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  deleteDuplicates(){
-    for(let instructor of this.instructors){
-      if( this.tempVar.length < 1){
-        this.tempVar.push(instructor);
-      }else{
-        if(!this.search(instructor)){
-          this.tempVar.push(instructor);
-        }
-        
-      }
-    }
-
-    this.instructors = this.tempVar;
-    
-    return this.instructors;
-  }
-
-  search(instructor: Instructor): boolean{
-    for(let tempInstructor of this.tempVar){
-      if(tempInstructor.getId() == instructor.getId()) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  deleteStudent(studentId){
-    this.dbs.deleteStudent(studentId);
-    
-    this.deleteStudentFromArray(studentId);
-
-    this.getAllInstructors();
-    
-  }
+  
 
   getAllInstructors(){
     this.dbs.getAllInstructorsAdmim().subscribe(data =>{
@@ -86,12 +54,12 @@ export class InstructorsPage implements OnInit {
         tempvar['gender'], tempvar['phone'], tempvar['email']);
         
 
-        this.instructors.push(instructor);
+        if(!this.search(instructor))
+          this.instructors.push(instructor);
         
-        this.deleteDuplicates();
+        //this.deleteDuplicates();
         
     });
-
 
 
     this.dataSource = new MatTableDataSource(this.instructors);
@@ -101,11 +69,52 @@ export class InstructorsPage implements OnInit {
 
   });
 
+
+  this.dataSource = new MatTableDataSource(this.instructors);
+   this.dataSource.sort = this.sort;
+   this.dataSource.paginator = this.paginator;
+
   }
 
-  deleteStudentFromArray(studentId){
+  async intructorProfile(id){
+    for(let instructor of this.instructors){
+      if(instructor.getId() == id){
+        
+        this.router.navigate(['./adminpanel/instructroprofileadmin'], { queryParams:{ "id": id}});
+        break;
+      }
+    }
+  }
+
+  async addInstructor(){
+    const modal = await this.modalController.create({
+      component: AddinstructorPage,
+    });
+    await modal.present();
+  }
+
+  search(instructor: Instructor): boolean{
+    for(let tempInstructor of this.instructors){
+      if(tempInstructor.getId() == instructor.getId()) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  deleteInstructor(id){
+    if(confirm("Are you sure you want to delete instructor?")){
+      this.deleteInstructorFromArray(id);
+      this.dbs.deleteInstructor(id);
+      this.getAllInstructors();
+    } 
+    
+  }
+
+  deleteInstructorFromArray(id){
     for(let i = 0; i < this.instructors.length ; i++){
-      if(this.instructors[i].getId() == studentId){
+      if(this.instructors[i].getId() == id){
         this.instructors.splice(i,1);
       }
     }

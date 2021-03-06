@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoadingController } from '@ionic/angular';
-import { StudentService } from 'src/app/services/Studentn-Service/student.service';
+import { StudentService } from 'src/app/services/Student-Service/student.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

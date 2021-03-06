@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { StudentService } from 'src/app/services/Studentn-Service/student.service';
+import { StudentService } from 'src/app/services/Student-Service/student.service';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 
 @Component({

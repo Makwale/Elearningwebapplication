@@ -70,11 +70,14 @@ export class StudentPage implements OnInit {
   }
 
   deleteStudent(studentId){
-    this.dbs.deleteStudent(studentId);
+    if(confirm("Are you sure?")){
+      this.dbs.deleteStudent(studentId);
     
-    this.deleteStudentFromArray(studentId);
+      this.deleteStudentFromArray(studentId);
 
-    this.getAllStudents();
+      this.getAllStudents();
+    }
+    
     
   }
 
