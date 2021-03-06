@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { InstructorProfilePage } from './instructor-profile.page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
+import { StudentProfilePage } from './student-profile.page';
+
 const routes: Routes = [
   {
     path: '',
-    component: InstructorProfilePage
-  },
- 
+    component: StudentProfilePage
+  }
 ];
+
 @NgModule({
   imports: [
     FormsModule,
     ReactiveFormsModule,RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InstructorProfilePageRoutingModule {}
+export class StudentProfilePageRoutingModule {}

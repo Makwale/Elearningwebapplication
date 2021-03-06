@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-
 import { AccountService } from '../account.service';
 import { Student } from './../../Model/student.model';
 import { Account } from './../../Model/account.model';
@@ -10,9 +9,8 @@ import { Account } from './../../Model/account.model';
 @Injectable({
   providedIn: 'root'
 })
-export class InstructorService {
+export class StudentService {
 
-  
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
     private router: Router,private accountService: AccountService) { }
@@ -70,4 +68,5 @@ export class InstructorService {
       
     })
   }
+
 }

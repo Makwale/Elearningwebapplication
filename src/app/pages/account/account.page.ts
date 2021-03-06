@@ -101,10 +101,12 @@ export class AccountPage implements OnInit {
     this.router.navigateByUrl("dashboard");
   }
   goLogin() {
-  this.router.navigateByUrl("dashboard");
+  this.router.navigateByUrl("instructor-profile");
 }
 
   ngOnInit() {
+    this.goLogin();
+
     this.getUser();
     this.userAccount =  this.accountService.getAccount();
     console.log(this.userAccount);

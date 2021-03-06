@@ -1,0 +1,104 @@
+
+<ion-header class="ion-text-center">
+  <ion-toolbar color="primary" class="full-height flex-middle">
+      <ion-buttons slot="start">
+          <ion-button routerLink = "">
+            Home
+          </ion-button>
+      </ion-buttons>
+
+      <ion-title>Student-profile</ion-title>
+      <ion-buttons slot="end" *ngIf ="loggedIn">
+          <ion-button type="submit"  (click)= "logout()" expand="block">
+              <ion-icon name="log-out"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-item *ngIf= "!loggedIn"  class = "bg-transparent">
+  <ion-segment (ionChange)= "segmentChanged($event)" color="primary">
+      <ion-segment-button value="login"  selecteSegment = "value">
+          <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="signup"  selecteSegment = "value" >
+          <ion-label>Signup</ion-label>
+      </ion-segment-button>
+  </ion-segment>
+</ion-item>
+<ion-item *ngIf= "loggedIn" class = "bg-transparent">
+  <ion-segment (ionChange)= "segmentChanged($event)" color="primary">
+      <ion-segment-button value="myprofile" selecteSegment = "value" >
+          <ion-label>Profile</ion-label >
+      </ion-segment-button>
+      <ion-segment-button value="orders" selecteSegment = "value" >
+          <ion-label>Courses</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="address" selecteSegment = "value" >
+          <ion-label>Students</ion-label>
+      </ion-segment-button>
+  </ion-segment>
+  </ion-item>
+
+  <ion-content *ngIf= "!loggedIn"  class="bg-transparent">
+     <app-login *ngIf="selectedSegment === 'login'"></app-login> 
+     <app-signup *ngIf="selectedSegment === 'signup'"></app-signup> 
+
+</ion-content>
+
+<ion-content *ngIf= "loggedIn"  class="bg-transparent">
+     <app-my-profile  *ngIf="selectedSegment === 'myprofile'"> </app-my-profile>
+
+</ion-content>
+  
+  <ion-header class="ion-text-center">
+  <ion-toolbar color="primary" class="full-height flex-middle">
+      <ion-buttons slot="start">
+          <ion-button routerLink = "">
+            Home
+          </ion-button>
+      </ion-buttons>
+
+      <ion-title>Student Profile</ion-title>
+      <ion-buttons slot="end" *ngIf ="loggedIn">
+          <ion-button type="submit"  (click)= "logout()" expand="block">
+              <ion-icon name="log-out"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-item *ngIf= "!loggedIn"  class = "bg-transparent">
+  <ion-segment (ionChange)= "segmentChanged($event)" color="primary">
+      <ion-segment-button value="login"  selecteSegment = "value">
+          <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="signup"  selecteSegment = "value" >
+          <ion-label>Signup</ion-label>
+      </ion-segment-button>
+  </ion-segment>
+</ion-item>
+<ion-item *ngIf= "loggedIn" class = "bg-transparent">
+  <ion-segment (ionChange)= "segmentChanged($event)" color="primary">
+      <ion-segment-button value="myprofile" selecteSegment = "value" >
+          <ion-label>Profile</ion-label >
+      </ion-segment-button>
+      <ion-segment-button value="orders" selecteSegment = "value" >
+          <ion-label>Courses</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="address" selecteSegment = "value" >
+          <ion-label>Students</ion-label>
+      </ion-segment-button>
+  </ion-segment>
+  </ion-item>
+
+  <ion-content *ngIf= "!loggedIn"  class="bg-transparent">
+     <app-login *ngIf="selectedSegment === 'login'"></app-login> 
+     <app-signup *ngIf="selectedSegment === 'signup'"></app-signup> 
+
+</ion-content>
+
+<ion-content *ngIf= "loggedIn"  class="bg-transparent">
+     <app-my-profile  *ngIf="selectedSegment === 'myprofile'"> </app-my-profile>
+
+</ion-content>
+  
+  

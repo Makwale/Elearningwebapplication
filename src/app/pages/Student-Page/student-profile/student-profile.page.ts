@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { ModalController, PopoverController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-instructor-application',
-  templateUrl: './instructor-application.page.html',
-  styleUrls: ['./instructor-application.page.scss'],
+  selector: 'app-student-profile',
+  templateUrl: './student-profile.page.html',
+  styleUrls: ['./student-profile.page.scss'],
 })
-export class InstructorApplicationPage implements OnInit {
+export class StudentProfilePage implements OnInit {
+
   selectedSegment = 'login';
   loggedIn: boolean;
-  addlocation: boolean;
-  selected: boolean;
+  @ViewChild('cart', {static: false, read: ElementRef}) fab: ElementRef;
   constructor(public popoverController: PopoverController,
     private auth: AngularFireAuth, 
     public router: Router,) {  
@@ -25,15 +25,11 @@ export class InstructorApplicationPage implements OnInit {
           this.loggedIn = false;
         }
       })
-     
   }
   ngOnInit() {
     if(this.loggedIn) {
-      this.selectedSegment = 'address';
-      this.addlocation = false;
-      this.selected = false;
+      this.selectedSegment = 'myprofile';
     }
-    
     this.auth.authState.subscribe(user => {
       if (user) {
         this.loggedIn = true;

@@ -62,6 +62,7 @@ const routes: Routes = [
         path: 'coursedetails',
         loadChildren: () => import('./pages/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
       },
+      
      
        {
           path: 'leasons',
@@ -88,7 +89,8 @@ const routes: Routes = [
   {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
-  },  {
+  },
+  {
     path: 'html-quiz',
     loadChildren: () => import('./pages/html-quiz/html-quiz.module').then( m => m.HtmlQuizPageModule)
   },
@@ -115,7 +117,11 @@ const routes: Routes = [
   {
     path: 'instructors',
     loadChildren: () => import('./pages/instructors/instructors.module').then( m => m.InstructorsPageModule)
+  },  {
+    path: 'student-profile',
+    loadChildren: () => import('./pages/Student-Page/student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
   },
+
 
 
 

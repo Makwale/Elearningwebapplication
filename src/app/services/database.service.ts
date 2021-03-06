@@ -38,13 +38,8 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
-<<<<<<< HEAD
-     private router: Router,private accountService: AccountService) {
-      this.setUser();
-=======
      private router: Router,private accountService: AccountService,private storage: AngularFireStorage) {
       // this.setUser();
->>>>>>> 00a4fe62d031763154c14913ed1b9b6c6fd792a9
     }
     setUser(){
       let userID = firebase.auth().currentUser.uid.toString();
@@ -69,11 +64,9 @@ export class DatabaseService {
       //We get student data
       //
       this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
-        // set student data
-      
+        
+        // set student data      
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
-
-      
         //create account object that has sign state and student object
         let account = new Account(true, student);
         //set Account service to keep account object
@@ -98,7 +91,7 @@ export class DatabaseService {
         phone: phone,
         email: email,
       }).then( res => {
-        alert("Your account is succesfully created");
+        alert("Your account is succesfully created!");
       }).catch( error => {
         alert(error)
       }).catch( error => {
@@ -218,16 +211,13 @@ export class DatabaseService {
   deleteInstructor(studentId){
     this.afs.collection("Instructor").doc(studentId).delete();
   }
-
   deleteStudent(studentId){
     this.afs.collection("Student").doc(studentId).delete();
   }
-
   addCourse(cname , category, price, file) {
     let imgUrl;
     const filePath = cname + String(new Date());
     const ref = this.storage.ref(filePath);
-
     const task = ref.put(file);
 
     task.snapshotChanges().pipe( finalize( () => {

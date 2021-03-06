@@ -1,4 +1,4 @@
-export class InstructorClass{
+export class StudentClass {
     private student_id: string;
     private firstname: string;
     private lastname: string;
