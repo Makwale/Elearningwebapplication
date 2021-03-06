@@ -129,8 +129,13 @@ const routes: Routes = [
         path: 'instructroprofileadmin',
         loadChildren: () => import('./pages/admin/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
       },
+      {
+        path: 'events',
+        loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
+      },
     ]
   },
+  
 
 ];
 

@@ -20,7 +20,7 @@ import { finalize } from 'rxjs/operators';
 })
 
 export class DatabaseService {
-  
+ 
   
 
   collectionNameStudent = 'Students';
@@ -313,5 +313,9 @@ export class DatabaseService {
     return this.afs.collection("Student").doc(student_id).snapshotChanges();
   }
  
+  test() {
+    return this.afs.collection("Test").snapshotChanges();
+  }
+  
  
 }

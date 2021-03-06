@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage Announcements</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-label>{{totalMartks}}</ion-label>
+      <ion-button (click)="test()">Test</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<div style="background-color: white; padding-left: 10px; margin-bottom: 80px;">
+
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Instructors">
+      <ion-item>
+        <ion-label position="stacked" >Description</ion-label>
+        <ion-button slot="end" (click)="enable(ann)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
+        <ion-button color="success" slot="end" (click)="save(ann)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+        
+        <ion-textarea #ann disabled value="Good day instructors, tommorow we are going to have a meeting where we will discuss about how to fuck ladies"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked" >Description</ion-label>
+        <ion-textarea readonly disabled value="Good day instructors, tommorow we are going to have a meeting where we will discuss about how to fuck ladies"></ion-textarea>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked" >Description</ion-label>
+        <ion-textarea readonly disabled value="Good day instructors, tommorow we are going to have a meeting where we will discuss about how to fuck ladies"></ion-textarea>
+      </ion-item>
+
+    </mat-tab>
+    <mat-tab label="Students">
+      Content 2
+    </mat-tab>
+  
+  </mat-tab-group>
+
+
+<!-- 
+  <div *ngFor="let question of questions; let x = index " style="margin-top: 10px;">
+    <h3>({{x + 1}}) {{question.question}}</h3>
+    <ion-radio-group #answer >
+      <ion-item *ngFor="let option of question.options; let i = index">
+        <ion-label>{{option}}</ion-label>
+        <ion-radio slot="start" [value]="i"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button (click)="submit(question, answer.value)">Submit</ion-button>
+  </div>
+
+  <ion-button slot="end" class="ion-margin" (click)="done()">Done</ion-button> -->
+
+
+</div>
+
+  
+
