@@ -37,7 +37,6 @@ export class DatabaseService {
 
   courses: Course[] = [];
 
-
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService,private storage: AngularFireStorage) {
@@ -66,11 +65,9 @@ export class DatabaseService {
       //We get student data
       //
       this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
-        // set student data
-      
+        
+        // set student data      
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
-
-      
         //create account object that has sign state and student object
         let account = new Account(true, student);
         //set Account service to keep account object
@@ -95,7 +92,7 @@ export class DatabaseService {
         phone: phone,
         email: email,
       }).then( res => {
-        alert("Your account is succesfully created");
+        alert("Your account is succesfully created!");
       }).catch( error => {
         alert(error)
       }).catch( error => {
@@ -183,7 +180,6 @@ export class DatabaseService {
     this.afs.doc('Student/' + recordID).update(student);
     this.setUser();
   }
-
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
@@ -193,7 +189,6 @@ export class DatabaseService {
       
     })
   }
-
   //Method to retrieve all courses for admin
   getCourses(){
 
@@ -218,16 +213,13 @@ export class DatabaseService {
     
       this.afs.collection("Instructor").doc(id).delete();
   }
-
   deleteStudent(studentId){
     this.afs.collection("Student").doc(studentId).delete();
   }
-
   addCourse(cname , category, price, file) {
     let imgUrl;
     const filePath = cname + String(new Date());
     const ref = this.storage.ref(filePath);
-
     const task = ref.put(file);
 
     task.snapshotChanges().pipe( finalize( () => {

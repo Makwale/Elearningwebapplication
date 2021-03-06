@@ -5,7 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from "./AppRoutingModule";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainPage } from './pages/main/main.page';
 

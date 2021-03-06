@@ -4,12 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InstructorProfilePageRoutingModule } from './instructor-profile-routing.module';
+import { StudentProfilePageRoutingModule } from './student-profile-routing.module';
 
-import { InstructorProfilePage } from './instructor-profile.page';
+import { StudentProfilePage } from './student-profile.page';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+
 
 @NgModule({
   imports: [
@@ -17,8 +18,8 @@ import { SignupComponent } from './signup/signup.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    InstructorProfilePageRoutingModule
+    StudentProfilePageRoutingModule
   ],
-  declarations: [InstructorProfilePage, MyProfileComponent,LoginComponent,SignupComponent]
+  declarations: [StudentProfilePage,MyProfileComponent,LoginComponent,SignupComponent]
 })
-export class InstructorProfilePageModule {}
+export class StudentProfilePageModule {}

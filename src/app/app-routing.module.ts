@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 import { MainPage } from './pages/main/main.page';
 
-const routes: Routes = [
+export const routes: Routes = [
 
   {
     path: '',
@@ -98,6 +98,14 @@ const routes: Routes = [
   {
     path: 'editcourse',
     loadChildren: () => import('./pages/admin/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
+  },
+  {
+    path: 'instructor-profile',
+    loadChildren: () => import('./pages/Instructors-Page/instructor-profile/instructor-profile.module').then( m => m.InstructorProfilePageModule)
+  },
+  {
+    path: 'student-profile',
+    loadChildren: () => import('./pages/Student-Page/student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
   },
   
   {

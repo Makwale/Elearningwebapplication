@@ -1,4 +1,3 @@
-import { callbackify } from "util";
 
 export class Student{
     
@@ -23,27 +22,21 @@ export class Student{
         this.email = email;
 
     }
-
     public getStudentNumber(){ 
         return this.studentId;
     }
-
     public geteName(){
         return this.firstname;
     }
-
     public getSurname(){
         return this.lastname;
     }
-
     public getGender(){
         return this.gender;
     }
-    
     public getPhone(){
         return this.phone;
     }
-
     public getEmail(){
         return this.email;
     }
