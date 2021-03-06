@@ -18,6 +18,10 @@ import {MatRadioModule} from '@angular/material/radio';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+
+import { MyProfileComponent } from 'src/app/pages/account/my-profile/my-profile.component';
 
 
 @NgModule({
@@ -38,6 +42,6 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
     MatRadioModule,
     AngularFireAuthModule,
   ],
-  declarations: [AccountPage]
+  declarations: [AccountPage,LoginComponent,SignupComponent,MyProfileComponent]
 })
 export class AccountPageModule {}

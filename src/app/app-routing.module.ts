@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 import { MainPage } from './pages/main/main.page';
-
 export const routes: Routes = [
 
   {
@@ -59,6 +58,7 @@ export const routes: Routes = [
         path: 'popularcourses',
         loadChildren: () => import('./pages/popularcourses/popularcourses.module').then(m => m.PopularcoursesPageModule)
       },
+     
       {
         path: 'coursedetails',
         loadChildren: () => import('./pages/coursedetails/coursedetails.module').then( m => m.CoursedetailsPageModule)
@@ -99,14 +99,7 @@ export const routes: Routes = [
     path: 'editcourse',
     loadChildren: () => import('./pages/admin/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
   },
-  {
-    path: 'instructor-profile',
-    loadChildren: () => import('./pages/Instructors-Page/instructor-profile/instructor-profile.module').then( m => m.InstructorProfilePageModule)
-  },
-  {
-    path: 'student-profile',
-    loadChildren: () => import('./pages/Student-Page/student-profile/student-profile.module').then( m => m.StudentProfilePageModule)
-  },
+ 
   
   {
     path: 'addinstructor',

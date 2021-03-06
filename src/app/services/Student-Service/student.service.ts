@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { Student } from '../../Model/student.model';
 import { Account } from '../../Model/account.model';
-
+import { Course } from 'src/app/Model/course';
+import { EnrolledCourse } from 'src/app/Model/Student-Model/enrolledCourse';
 @Injectable({
   providedIn: 'root'
 })
@@ -47,7 +48,9 @@ export class StudentService {
         phone: phone,
         email: email,
       }).then( res => {
-        alert("Your account is succesfully created!");
+       // this.router.navigateByUrl('account');
+
+       // alert("Your account is succesfully created!");
       }).catch( error => {
         alert(error)
       }).catch( error => {
@@ -60,12 +63,12 @@ export class StudentService {
   update_student(recordID, student) {
     this.afs.doc('Student/' + recordID).update(student);
   }
+
+  //==========================================================
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
-      //this.router.navigate(['']);
-     
-      
+      //this.router.navigate(['']); 
     })
   }
 

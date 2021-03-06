@@ -49,7 +49,7 @@ export class CoursedetailsPage implements OnInit {
         })
         alert(this.courseSelected.name + " enrolled successfully");
         this.close();
-        this.route.navigateByUrl('page1');
+        // this.route.navigateByUrl('page1');
       }).catch( error => {
         alert(error)
       })

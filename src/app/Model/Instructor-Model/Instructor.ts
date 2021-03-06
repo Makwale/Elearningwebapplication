@@ -1,5 +1,5 @@
-export class StudentClass {
-    private student_id: string;
+export class InstructorClass {
+    private instructor_id: string;
     private firstname: string;
     private lastname: string;
     private phone: string;
@@ -7,15 +7,15 @@ export class StudentClass {
     private email: string;
 
     constructor(){
-        this.student_id = "xxxxxxxxxxxxxxxxxxx";
+        this.instructor_id = "xxxxxxxxxxxxxxxxxxx";
         this.firstname = "student_First_name";
         this.lastname = "student_last_name";
         this.phone = "0123456789";
         this.gender = "male";
         this.email = "username@123.co.xc";
     }
-    overloadStudent(_instructorID: string, _firstname: string, _lastname: string, _phone: string, _gender: string, _email: string,){
-        this.student_id = _instructorID;
+    overloadInstructor(_instructorID: string, _firstname: string, _lastname: string, _phone: string, _gender: string, _email: string,){
+        this.instructor_id = _instructorID;
         this.firstname = _firstname;
         this.lastname = _lastname;
         this.phone = _phone;
@@ -23,8 +23,8 @@ export class StudentClass {
         this.email = _email;
     }
     //Setters -- Set Attributes one by one
-    public setStudent(_instructorID:string){
-        this.student_id = _instructorID;
+    public setInstructor(_instructorID:string){
+        this.instructor_id = _instructorID;
     }
     public setFirstName(_firstname:string){
         this.firstname = _firstname;
@@ -42,8 +42,8 @@ export class StudentClass {
         this.email = _email;
     }
 //Getters - Get/retrieve/return methods one by one
-    public getStudentNumber(){ 
-        return this.student_id;
+    public getInstructorNumber(){ 
+        return this.instructor_id;
     }
     public getName(){
         return this.firstname;

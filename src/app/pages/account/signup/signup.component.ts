@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-import firebase from 'firebase/app';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DatabaseService } from 'src/app/services/database.service';
-import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
+import { StudentService } from 'src/app/services/Student-Service/student.service';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 
 @Component({
@@ -43,11 +39,8 @@ export class SignupComponent implements OnInit {
       { type: 'minlength', message: 'Password must be at least 6 characters long.' }
     ]
   };
-  constructor(
-    public authService: InstructorService,private asf: AngularFirestore,
-    public router: Router,
-     public loadingCtrl: LoadingController, private dbs: DatabaseService,
-  ) { 
+  constructor(public loadingCtrl: LoadingController, 
+        private studentDao:StudentService) { 
     this.signUpForm = new FormGroup({
       'name': new FormControl('', Validators.compose([
         Validators.required,
@@ -74,9 +67,12 @@ export class SignupComponent implements OnInit {
       ]))
     }); 
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.signUpForm.reset();
+  }
   signUpWithEmail() {
-    this.dbs.RegisterUser(
+
+    this.studentDao.RegisterUser(
       this.signUpForm.value['name'],
       this.signUpForm.value['surname'],
       this.signUpForm.value['gender'],
@@ -85,7 +81,7 @@ export class SignupComponent implements OnInit {
       this.signUpForm.value['password'])
     .then(user => {
       this.signUpForm.reset();
-        window.alert('Successful register');
+        this.presentLoading();
       })
     .catch(error => {
       this.submitError = error.message;
@@ -99,10 +95,12 @@ keyPress(event: any) {
   }
 }
 async presentLoading() {
+ 
   const loader = this.loadingCtrl.create({
-    message: "Signing in....",
-    duration: 5000
+    message: "Registering acccount....",
+    duration: 3000
   });
   (await loader).present();
+  this.studentDao.SignOut();
 }
 }

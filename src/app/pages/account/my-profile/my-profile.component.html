@@ -1,0 +1,142 @@
+
+        
+            <div *ngIf="studentAccount" class="row container d-flex justify-content-center">
+              <div class="col-xl-6 col-md-12">
+                  <div class="card user-card-full">
+  
+                <ion-row *ngIf="!isEdit; else elseBlock" >
+                      <ion-col>
+                              <div > <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
+                        <div class="col-sm-8">
+                         
+                         
+                          <div class="card-block">
+
+                            <h2 class="m-b-20 p-b-5 b-b-default f-w-600">Information </h2>
+                              
+                                  <ion-item>        
+                                        <ion-label><strong>Full Name:</strong>
+                                          {{studentAccount.getName()}}  {{studentAccount.getSurname()}}
+                                        </ion-label>
+                                    </ion-item>
+                          
+                                  <ion-item>
+                                    <ion-label><strong>Gender:</strong>
+                                      {{studentAccount.getGender()}}
+                                    </ion-label>
+                                    </ion-item>
+                           
+                                  <ion-item>
+                                  <ion-label><strong>Phone:</strong>
+                                    {{studentAccount.getPhone()}}
+                                  </ion-label>
+                                  </ion-item>
+                                  <ion-item>
+                                    <ion-label><strong>Email:</strong>
+                                      {{studentAccount.getEmail()}}
+                                    </ion-label>
+                                    </ion-item>
+                              
+                              
+                          <div class="row">
+                            
+                            <ion-grid>
+                                <ion-row>
+                                  <ion-col>
+                                    <ion-button fill="solid" color="medium" size="small" (click)=" this.isEdit = true">
+                                      Update
+                                    </ion-button>
+                                  </ion-col>
+                                </ion-row>
+                              </ion-grid>
+                            </div>
+                          </div>
+                      </div>
+                      </ion-col>       
+                </ion-row>
+
+             <ion-row #elseBlock *ngIf="isEdit" class="row m-l-0 m-r-0"> 
+                   <ion-col size ="6">
+                    <div class="col-sm-8">
+                    
+                      <div class="card-block">
+
+                        <ion-label>Edit Information</ion-label>
+                           <ion-list lines="full">
+                  <form [formGroup]="updateUserForm" (ngSubmit)="updateForm()">
+                    <ion-item>
+                      <ion-label position="floating">First Name</ion-label>
+                      <ion-input formControlName="firstname" placeholder="{{studentAccount.getName()}}" type="text" required></ion-input>
+                    </ion-item>
+                    <div class="error-container">
+                      <ng-container *ngFor="let validation of validation_messages.firstname">
+                        <div class="error-message" *ngIf="updateUserForm.get('firstname').hasError(validation.type) && (updateUserForm.get('firstname').dirty || updateUserForm.get('firstname').touched)">
+                          <ion-icon name="information-circle-outline"></ion-icon>
+                          <span>{{ validation.message }}</span>
+                        </div>
+                      </ng-container>
+                    </div>
+                    <ion-item>
+                      <ion-label position="floating">Last Name</ion-label>
+                      <ion-input formControlName="lastname" placeholder="{{studentAccount.getSurname()}}"  type="text" required>
+                      </ion-input>
+                    </ion-item>
+                    <div class="error-container">
+                      <ng-container *ngFor="let validation of validation_messages.lastname">
+                        <div class="error-message" *ngIf="updateUserForm.get('lastname').hasError(validation.type) && (updateUserForm.get('lastname').dirty || updateUserForm.get('lastname').touched)">
+                          <ion-icon name="information-circle-outline"></ion-icon>
+                          <span>{{ validation.message }}</span>
+                        </div>
+                      </ng-container>
+                    </div>
+              
+                    <ion-item>
+                      <ion-label position="floating">Mobile</ion-label>
+                      <ion-input (keypress)="keyPress($event)" formControlName="phone" placeholder="{{studentAccount.getPhone()}}"  type="text"required>
+                      </ion-input>
+
+                    </ion-item>
+                    <div class="error-container">
+                      <ng-container *ngFor="let validation of validation_messages.phone">
+                        <div class="error-message" *ngIf="updateUserForm.get('phone').hasError(validation.type) && (updateUserForm.get('phone').dirty || updateUserForm.get('phone').touched)">
+                          <ion-icon name="information-circle-outline"></ion-icon>
+                          <span>{{ validation.message }}</span>
+                        </div>
+                      </ng-container>
+            </div>
+                    <ion-row>
+                         <ion-col>
+                        <ion-button fill="solid"  color="medium" shape="full" (click)="isEdit = false" expand="block">
+                          Cancel
+                        </ion-button>
+                      </ion-col>
+                      <ion-col>
+                        <ion-button [disabled]="!updateUserForm.valid" type="submit" color="success" shape="full" expand="block">Update Info</ion-button>
+                        <div class="error-container" *ngIf="submitError">
+                          <div class="error-message">
+                            <ion-icon name="information-circle-outline"></ion-icon>
+                            <span>{{ submitError }}</span>
+                          </div>
+                        </div>
+                      </ion-col>
+                   
+                    </ion-row>
+                  </form>
+                </ion-list>
+                          
+                      </div>
+
+
+                  </div>
+
+                  </ion-col> 
+                  
+            </ion-row> 
+       </div>
+   </div> 
+  </div>
+   
+
+              
+
+           
