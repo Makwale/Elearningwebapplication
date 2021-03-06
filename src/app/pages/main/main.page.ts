@@ -12,9 +12,11 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class MainPage implements OnInit {
   loginStatus: boolean = false;
+  isStudent:boolean;
   userAccount: Account;
   constructor(public accountService: AccountService,  private auth: AngularFireAuth,
-    private afs:AngularFirestore) {}
+    private afs:AngularFirestore) {
+    }
   ngOnInit() {
     this.auth.authState.subscribe(user => {
       if (user) {
@@ -25,14 +27,12 @@ export class MainPage implements OnInit {
           this.userAccount = new Account(true, student);
           //set Account service to keep account object
           this.accountService.setAccount(this.userAccount);
-          console.log(this.loginStatus,'User-in2'); 
 
         })
         this.loginStatus = true;
-        console.log(this.loginStatus,'User-in');    
+    
           } else {
         this.loginStatus = false;
-        console.log(this.loginStatus,'User-out');
       }
     })
   }

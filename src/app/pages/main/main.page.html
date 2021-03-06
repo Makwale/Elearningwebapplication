@@ -13,12 +13,11 @@
             <ion-button fill="outline" shape="round"  id="btnsignin" [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon button with a vertical three dot icon" class="ion-margin" >Sign In/Sign Up</ion-button>
          
             <mat-menu #menu="matMenu">
-              <button mat-menu-item routerLink="student-profile">Student</button>
-              <button mat-menu-item routerLink="instructor-profile">Instructor</button>
+              <button (click)=  "isStudent = true"  mat-menu-item routerLink="student-profile">Student</button>
+              <button (click)=  "isStudent = false" mat-menu-item routerLink="instructor-profile">Instructor</button>
             </mat-menu>
           </div>
-
-
+          
           <ion-button fill="clear" *ngIf="loginStatus" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
           
           <ion-avatar *ngIf ="loginStatus"  style="width: 25px; height: 25px;">
@@ -29,7 +28,8 @@
             <ion-icon size="" name="chevron-down-outline"></ion-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="student-profile">Profile</button>
+            <button *ngIf ="isStudent" mat-menu-item routerLink="student-profile">Student Profile</button>
+            <button *ngIf ="!isStudent" mat-menu-item routerLink="student-instructor">Instructor Profile</button>
             <button mat-menu-item (click)="signOut()">Sign out</button>
           </mat-menu>
         </ion-buttons> 
