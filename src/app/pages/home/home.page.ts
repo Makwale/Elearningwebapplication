@@ -60,10 +60,10 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl("coursedetails");
   }
   ngOnInit(){
-    //Uncommend this code and use your email and password to test the application
-    // this.dbs.SignIn("makwale.em@gmail.com", "123456789").then( () => {
-    //   this.dbs.getStudentsAnnouncements();
-    // });
+    // Uncommend this code and use your email and password to test the application
+    this.dbs.SignIn("makwale.em@gmail.com", "123456789").then( () => {
+      this.dbs.getStudentsAnnouncements();
+    });
     
     this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
       this.featured_course = objects.splice(9,3);
