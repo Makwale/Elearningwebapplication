@@ -11,11 +11,12 @@
 
           <div *ngIf ="!loginStatus" style="width: 35%; padding-left: 15%; margin-right: 40px;">
             <ion-button routerLink="account" fill="outline" shape="round"  id="btnsignin"  aria-label="Example icon button with a vertical three dot icon" class="ion-margin" >Sign In/Sign Up</ion-button>
-         
+         </div>
           
-          </div>
-
-          <ion-button fill="clear" *ngIf="loginStatus" id="btnNotification"><ion-icon name="notifications-outline" style="font-size: x-large;"></ion-icon> </ion-button>
+          <ion-button fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">
+            <ion-badge  style="position: absolute; left: 45%; top: 20%; border-radius: 50%; font-size: 2px;" color="danger" *ngIf="dbs.totalNewAnnouncement > 0">.</ion-badge>
+            <ion-icon color="primary" name="notifications" style="font-size: x-large;"></ion-icon> 
+          </ion-button>
           
           <ion-avatar *ngIf ="loginStatus"  style="width: 25px; height: 25px;">
             <img src="../../../assets/img/profile/pp.jpg">

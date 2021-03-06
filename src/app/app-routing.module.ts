@@ -68,6 +68,11 @@ export const routes: Routes = [
           path: 'leasons',
           loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
         },
+
+        {
+          path: 'studentannouncement',
+          loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
+        },
     ]
   },
   {
@@ -105,6 +110,8 @@ export const routes: Routes = [
     path: 'addinstructor',
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
+
+  
   {
     path: 'adminpanel',
     component: AdminpanelPage,
@@ -130,8 +137,19 @@ export const routes: Routes = [
         path: 'instructroprofileadmin',
         loadChildren: () => import('./pages/admin/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
       },
+      {
+        path: 'events',
+        loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
+      },
     ]
   },
+  {
+    path: 'createannouncement',
+    loadChildren: () => import('./pages/admin/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
+  },
+  
+
+  
 
 ];
 

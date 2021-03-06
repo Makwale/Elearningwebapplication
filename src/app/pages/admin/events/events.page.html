@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Manage Announcements</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-label>{{totalMartks}}</ion-label>
+      <ion-button color="dark" fill="solid" shape="round" (click)="createAnnouncement()">New Announcement</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<div style="background-color: white; padding-left: 10px; margin-bottom: 80px;">
+
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="Instructors">
+      <ion-item *ngFor="let instructorA of instructorsAnnouncements">
+        <ion-label position="stacked" >{{instructorA.subject}} {{instructorA.date}}</ion-label>
+        <ion-button slot="end" (click)="enable(ann)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
+        <ion-button color="success" slot="end" (click)="save(ann, instructorA.id)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+        
+        <ion-textarea #ann disabled [value]="instructorA.message"></ion-textarea>
+      </ion-item>
+
+    </mat-tab>
+    <mat-tab label="Students">
+      <ion-item *ngFor="let studentsA of studentsAnnouncements">
+        <ion-label position="stacked" ><h2 style="margin-right: 15px; display: inline;">{{studentsA.subject}}</h2> {{studentsA.date}}</ion-label>
+        <ion-button slot="end" (click)="enable(ann)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
+        <ion-button color="success" slot="end" (click)="save(ann)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+        
+        <ion-textarea #ann disabled [value]="studentsA.message"></ion-textarea>
+      </ion-item>
+    </mat-tab>
+  
+  </mat-tab-group>
+
+
+<!-- 
+  <div *ngFor="let question of questions; let x = index " style="margin-top: 10px;">
+    <h3>({{x + 1}}) {{question.question}}</h3>
+    <ion-radio-group #answer >
+      <ion-item *ngFor="let option of question.options; let i = index">
+        <ion-label>{{option}}</ion-label>
+        <ion-radio slot="start" [value]="i"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+    <ion-button (click)="submit(question, answer.value)">Submit</ion-button>
+  </div>
+
+  <ion-button slot="end" class="ion-margin" (click)="done()">Done</ion-button> -->
+
+
+</div>
+
+  
+

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestore,AngularFirestoreCollection } from '@angular/fire/firestore'
+import { AngularFirestore,AngularFirestoreCollection, DocumentChange, DocumentChangeAction } from '@angular/fire/firestore'
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
@@ -14,14 +14,17 @@ import { CoursedetailsPage } from '../pages/coursedetails/coursedetails.page';
 import { AccountService } from './account.service';
 import { TasklistPage } from '../pages/tasklist/tasklist.page';
 import { finalize } from 'rxjs/operators';
+import { ThrowStmt } from '@angular/compiler';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Announcement } from '../Model/announcement.model';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DatabaseService {
-  
-  
+ 
+  // Login user with email/password
 
   collectionNameStudent = 'Students';
 
@@ -36,6 +39,10 @@ export class DatabaseService {
   lessonsList: Lesson[] = [];
 
   courses: Course[] = [];
+
+  studentAnnouncement: Announcement[] = [];
+
+  totalNewAnnouncement: number = 0;
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
@@ -72,7 +79,9 @@ export class DatabaseService {
         let account = new Account(true, student);
         //set Account service to keep account object
         this.accountService.setAccount(account);
+       
         this.getEnrolledCourses();
+        //this.getStudentsAnnouncements();
       })
      // this.router.navigateByUrl("home");
      //  console.log( 'Signin success');
@@ -305,5 +314,96 @@ export class DatabaseService {
     return this.afs.collection("Student").doc(student_id).snapshotChanges();
   }
  
+  test() {
+    return this.afs.collection("Test").snapshotChanges();
+  }
+
+  getAnnouncements(){
+    return this.afs.collection("Announcement").snapshotChanges()
+  }
+  
+  post(subject: string ,message: string, category: string) {
+    return this.afs.collection("Announcement").add({
+      subject: subject,
+      date: new Date(),
+      message: message,
+      category: category
+    })
+  }
+
+  updateAnnouncement(id: any, message: any) {
+    return this.afs.collection("Announcement").doc(id).update({
+      message: message,
+    })
+  }
+
+  getStudentsAnnouncements() {
+    this.afs.collection("Announcement", ref => ref.where("category", "==", "s")).snapshotChanges()
+    .subscribe(data => {
+      data.forEach( studAndata =>{
+        let sta = studAndata.payload.doc.data();
+        
+        let stuAnou = new Announcement(sta["date"],  sta["subject"], sta["message"], sta["category"], true ,studAndata.payload.doc.id);
+
+        if(!this.searchStudentsA(stuAnou))
+          this.afs.collection("ViewedAnnouncement", ref => ref.where("category", "==" , "s")).snapshotChanges()
+          .subscribe( vdata => {
+            if(!this.searchSaveViewedAnnouncement(vdata, stuAnou.id, "36DcJ0XzGmTJTlPjEak7ePuT5X02")){
+              stuAnou.viewed = false;
+              if(!this.searchStudentsA(stuAnou)){
+                this.studentAnnouncement.push( stuAnou);
+                this.totalNewAnnouncement++;
+              }
+            }else{
+              if(!this.searchStudentsA(stuAnou)){
+                this.studentAnnouncement.push( stuAnou);
+              }
+            }
+            
+          })
+          
+      });
+    
+    });
+  }
+
+  searchStudentsA(ann: Announcement): boolean{
+    for(let studA of this.studentAnnouncement){
+      if(studA.id == ann.id){
+        return true;
+      }
+    }
+
+    return false;
+  }
+ 
+
+  saveViewedAnnouncementStudent(announcementid: string, studentid: string) {
+    this.afs.collection("ViewedAnnouncement", ref => ref.where("student_id", "==", studentid)).snapshotChanges()
+    .subscribe( data => {
+      if(!this.searchSaveViewedAnnouncement(data, announcementid, studentid)){
+        this.afs.collection("ViewedAnnouncement").add({
+          announcement_id: announcementid,
+          student_id: studentid,
+          category: "s"
+        })
+      }
+    })
+    
+  }
+
+  searchSaveViewedAnnouncement(viewedAnnouncementsdata, announcementid: string, studentid: string) : boolean{
+
+    for(let viewdata of viewedAnnouncementsdata){
+      let viewedData = viewdata.payload.doc.data();
+      if(viewedData["announcement_id"] == announcementid && viewedData["student_id"] ){
+      
+        return true;
+      }
+    }
+
+    return false;
+  }
+  
  
 }
