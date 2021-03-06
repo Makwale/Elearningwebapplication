@@ -4,7 +4,7 @@
 
     <ion-buttons slot="end">
       <ion-label>{{totalMartks}}</ion-label>
-      <ion-button (click)="test()">Test</ion-button>
+      <ion-button color="dark" fill="solid" shape="round" (click)="createAnnouncement()">New Announcement</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,28 +14,23 @@
 
   <mat-tab-group mat-align-tabs="start">
     <mat-tab label="Instructors">
-      <ion-item>
-        <ion-label position="stacked" >Description</ion-label>
+      <ion-item *ngFor="let instructorA of instructorsAnnouncements">
+        <ion-label position="stacked" >{{instructorA.date}}</ion-label>
         <ion-button slot="end" (click)="enable(ann)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
-        <ion-button color="success" slot="end" (click)="save(ann)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+        <ion-button color="success" slot="end" (click)="save(ann, instructorA.id)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
         
-        <ion-textarea #ann disabled value="Good day instructors, tommorow we are going to have a meeting where we will discuss about how to fuck ladies"></ion-textarea>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked" >Description</ion-label>
-        <ion-textarea readonly disabled value="Good day instructors, tommorow we are going to have a meeting where we will discuss about how to fuck ladies"></ion-textarea>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label position="stacked" >Description</ion-label>
-        <ion-textarea readonly disabled value="Good day instructors, tommorow we are going to have a meeting where we will discuss about how to fuck ladies"></ion-textarea>
+        <ion-textarea #ann disabled [value]="instructorA.message"></ion-textarea>
       </ion-item>
 
     </mat-tab>
     <mat-tab label="Students">
-      Content 2
+      <ion-item *ngFor="let studentsA of studentsAnnouncements">
+        <ion-label position="stacked" >{{studentsA.date}}</ion-label>
+        <ion-button slot="end" (click)="enable(ann)" shape="round" ><ion-icon name="create"></ion-icon></ion-button>
+        <ion-button color="success" slot="end" (click)="save(ann)" shape="round" ><ion-icon name="save"></ion-icon></ion-button>
+        
+        <ion-textarea #ann disabled [value]="studentsA.message"></ion-textarea>
+      </ion-item>
     </mat-tab>
   
   </mat-tab-group>

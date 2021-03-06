@@ -142,7 +142,11 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
       },
     ]
+  },  {
+    path: 'createannouncement',
+    loadChildren: () => import('./pages/admin/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
   },
+
   
 
 ];

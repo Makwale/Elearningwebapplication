@@ -20,7 +20,9 @@ import { finalize } from 'rxjs/operators';
 })
 
 export class DatabaseService {
- 
+  // Login user with email/password
+  
+  
   
 
   collectionNameStudent = 'Students';
@@ -308,6 +310,24 @@ export class DatabaseService {
   test() {
     return this.afs.collection("Test").snapshotChanges();
   }
+
+  getAnnouncements(){
+    return this.afs.collection("Announcement").snapshotChanges()
+  }
   
+  post(message: string, category: string) {
+    return this.afs.collection("Announcement").add({
+      date: new Date(),
+      message: message,
+      category: category
+    })
+  }
+
+  updateAnnouncement(id: any, message: any) {
+    return this.afs.collection("Announcement").doc(id).update({
+      message: message,
+    })
+  }
+ 
  
 }
