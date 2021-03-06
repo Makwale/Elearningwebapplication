@@ -5,6 +5,7 @@ import { Account } from 'src/app/Model/account.model';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -15,7 +16,7 @@ export class MainPage implements OnInit {
   isStudent:boolean;
   userAccount: Account;
   constructor(public accountService: AccountService,  private auth: AngularFireAuth,
-    private afs:AngularFirestore) {
+    private afs:AngularFirestore, private dbs: DatabaseService, private router: Router) {
     }
   ngOnInit() {
     this.auth.authState.subscribe(user => {
@@ -35,6 +36,9 @@ export class MainPage implements OnInit {
         this.loginStatus = false;
       }
     })
+
+   
+    
   }
   signOut(){
     if (window.confirm('Do you really want to Sign-Out?')) {    
@@ -44,8 +48,11 @@ export class MainPage implements OnInit {
     this.auth.signOut();
     }
   }
-  
 
+  navigateToAnnouncement(){
+    this.dbs.totalNewAnnouncement = 0;
+    this.router.navigateByUrl("studentannouncement")
+  }
   
 
 

@@ -8,7 +8,7 @@
 
   <ion-item>
     <ion-label>Subject:</ion-label>
-    <ion-input></ion-input>
+    <ion-input #subject></ion-input>
   </ion-item>
 
   <ion-item>
@@ -29,6 +29,6 @@
     </ion-item>
   </ion-radio-group>
   
-  <ion-button shape="round" (click)="post(message.value, category.value)">Post</ion-button>
+  <ion-button shape="round" (click)="post(subject.value ,message.value, category.value)">Post</ion-button>
 
 </ion-content>

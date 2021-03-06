@@ -35,8 +35,9 @@ export class EventsPage implements OnInit {
       data.forEach(anndata =>{
         let announcementdata = anndata.payload.doc.data();
         
-        let annouObject = new Announcement(announcementdata["date"], announcementdata["message"], announcementdata["category"], anndata.payload.doc.id,);
+        let annouObject = new Announcement(announcementdata["date"], announcementdata["subject"], announcementdata["message"], announcementdata["category"],true, anndata.payload.doc.id,);
 
+        console.log(annouObject.subject)
         if(annouObject.category == "s"){
           if(!this.searchStudentsA(annouObject))
             this.studentsAnnouncements.push(annouObject);

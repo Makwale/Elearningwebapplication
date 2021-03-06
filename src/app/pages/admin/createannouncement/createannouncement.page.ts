@@ -14,8 +14,8 @@ export class CreateannouncementPage implements OnInit {
   ngOnInit() {
   }
 
-  post(message: string, category: string){
-    this.dbs.post( message, category).then(() =>{
+  post(subject: string ,message: string, category: string){
+    this.dbs.post( subject, message, category).then(() =>{
       this.modalController.dismiss()
     })
   }
