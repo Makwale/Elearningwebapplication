@@ -13,15 +13,7 @@ import { CreateannouncementPage } from '../createannouncement/createannouncement
 })
 export class EventsPage implements OnInit {
 
-  // exam: Test;
-
-  // questions = [];
-
-  // answer;
-
-  // questionResults: QuestionResults[] = [];
-
-  // totalMartks = 0;
+  
 
   studentsAnnouncements: Announcement[] = [];
 
@@ -50,24 +42,7 @@ export class EventsPage implements OnInit {
       
   }
 
-  test(){
-
-   
-  }
-
-  done(){
-    // for(let questionResult of this.questionResults)
-    //   if(questionResult.answer == questionResult.yourAnswer){
-    //     this.totalMartks++;
-    //   }
-  }
-
-  submit(question, answer){
-    
-
-    // this.questionResults.push(new QuestionResults(question.question, question.answer ,answer ))
-
-  }
+ 
 
   enable(ref){
     ref.disabled = false;

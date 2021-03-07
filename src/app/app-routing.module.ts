@@ -114,6 +114,8 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
 
+
+  
   
   {
     path: 'adminpanel',
@@ -153,7 +155,15 @@ export const routes: Routes = [
   {
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
+  },  {
+    path: 'quiz',
+    loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
   },
+  {
+    path: 'quizresults',
+    loadChildren: () => import('./pages/quizresults/quizresults.module').then( m => m.QuizresultsPageModule)
+  },
+
 
   
 

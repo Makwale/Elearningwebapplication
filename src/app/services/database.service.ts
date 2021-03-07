@@ -404,6 +404,10 @@ export class DatabaseService {
 
     return false;
   }
+
+  getQuiz(){
+    return this.afs.collection("Quiz").snapshotChanges();
+  }
   
  
 }
