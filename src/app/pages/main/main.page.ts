@@ -6,6 +6,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -15,7 +16,9 @@ export class MainPage implements OnInit {
   loginStatus: boolean = false;
   isStudent:boolean;
   userAccount: Account;
-  constructor(public accountService: AccountService,  private auth: AngularFireAuth,
+  constructor(public accountService: AccountService,
+    public loadingCtrl: LoadingController,
+    private auth: AngularFireAuth,
     private afs:AngularFirestore, private dbs: DatabaseService, private router: Router) {
     }
   ngOnInit() {
@@ -36,13 +39,21 @@ export class MainPage implements OnInit {
     })
   }
   signOut(){
+    this.presentLoading();
     if (window.confirm('Do you really want to Sign-Out?')) {    
-    this.loginStatus = false;
-    this.userAccount.setSignIn(this.loginStatus);
-    this.accountService.setAccount(this.userAccount); //Clear the user 
-    this.auth.signOut();
+      this.auth.signOut().then(()=>{
+        this.userAccount.setSignIn(this.loginStatus);
+        this.accountService.setAccount(this.userAccount); //Clear the user     
+      })
     }
   }
+async presentLoading() {
+  const loader = this.loadingCtrl.create({
+    message: "signing out....",
+    duration: 3000,
+  });
+  (await loader).present();
+}
   navigateToAnnouncement(){
     this.dbs.totalNewAnnouncement = 0;
     this.router.navigateByUrl("studentannouncement")

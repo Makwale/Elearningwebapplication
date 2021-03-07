@@ -96,6 +96,7 @@ keyPress(event: any) {
     event.preventDefault();
   }
 }
+
 async presentLoading() {
   const loader = this.loadingCtrl.create({
     message: "Updating user information....",
