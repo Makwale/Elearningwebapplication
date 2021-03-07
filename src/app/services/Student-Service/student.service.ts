@@ -18,17 +18,15 @@ export class StudentService {
     .then(res => {  
       //We get student data
       this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
-        
         // set student data      
         let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
         //create account object that has sign state and student object
         let account = new Account(true, student);
         //set Account service to keep account object
         this.accountService.setAccount(account);
-        
       })
      // this.router.navigateByUrl("home");
-     //  console.log( 'Signin success');
+     // console.log( 'Signin success');
     }).catch(error =>{
       alert(error)
     });
@@ -58,7 +56,11 @@ export class StudentService {
     })
   }
   update_student(recordID, student) {
-    this.afs.doc('Student/' + recordID).update(student);
+    return this.afs.doc('Student/' + recordID).update(student).then(res=>{
+      //Successfull update
+    }).catch(error =>{
+      alert(error);
+    })
   }
 
   //==========================================================

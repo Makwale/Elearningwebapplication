@@ -71,7 +71,7 @@ export class SignupComponent implements OnInit {
     this.signUpForm.reset();
   }
   signUpWithEmail() {
-
+    this.presentLoading();
     this.studentDao.RegisterUser(
       this.signUpForm.value['name'],
       this.signUpForm.value['surname'],
@@ -80,9 +80,9 @@ export class SignupComponent implements OnInit {
       this.signUpForm.value['email'], 
       this.signUpForm.value['password'])
     .then(user => {
-      this.signUpForm.reset();
-        this.presentLoading();
-      })
+      this.loadingCtrl.dismiss();
+      this.signUpForm.reset();  
+    })
     .catch(error => {
       this.submitError = error.message;
     });
@@ -94,13 +94,12 @@ keyPress(event: any) {
     event.preventDefault();
   }
 }
+
 async presentLoading() {
  
   const loader = this.loadingCtrl.create({
     message: "Registering acccount....",
-    duration: 3000
   });
   (await loader).present();
-  this.studentDao.SignOut();
 }
 }
