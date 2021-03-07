@@ -16,7 +16,6 @@ export class MyProfileComponent implements OnInit {
   loggedIn: boolean = false;
   isEdit : boolean = false;
   studentAccount: StudentClass;
-
   updateUserForm: FormGroup;
  validation_messages = {
     'firstname': [
