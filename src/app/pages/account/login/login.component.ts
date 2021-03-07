@@ -49,9 +49,8 @@ export class LoginComponent implements OnInit {
   signInWithEmail() {
     this.studentDao.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
+      this.presentLoading();
       this.signInForm.reset();
-      window.alert('Successful login' + user);
-      console.log(user,"My user Account");
     })
     .catch(error => {
       this.submitError = error.message;

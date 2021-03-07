@@ -13,6 +13,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { StudentProfilePage } from '../Student-Page/student-profile/student-profile.page';
+import { MyProfileComponent } from '../Student-Page/student-profile/my-profile/my-profile.component';
 
 @NgModule({
   imports: [
@@ -27,6 +29,6 @@ import {MatMenuModule} from '@angular/material/menu';
     MatMenuModule
     
   ],
-  declarations: [MainPage]
+  declarations: [MainPage,StudentProfilePage,MyProfileComponent]
 })
 export class MainPageModule {}

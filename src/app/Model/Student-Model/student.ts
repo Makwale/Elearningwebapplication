@@ -8,13 +8,13 @@ export class StudentClass {
 
     constructor(){
         this.student_id = "xxxxxxxxxxxxxxxxxxx";
-        this.firstname = "User_First_name";
-        this.lastname = "user_last_name";
+        this.firstname = "student_First_name";
+        this.lastname = "student_last_name";
         this.phone = "0123456789";
         this.gender = "male";
         this.email = "username@123.co.xc";
     }
-    overloadInstructor(_instructorID: string, _firstname: string, _lastname: string, _phone: string, _gender: string, _email: string,){
+    overloadStudent(_instructorID: string, _firstname: string, _lastname: string, _phone: string, _gender: string, _email: string,){
         this.student_id = _instructorID;
         this.firstname = _firstname;
         this.lastname = _lastname;
@@ -23,7 +23,7 @@ export class StudentClass {
         this.email = _email;
     }
     //Setters -- Set Attributes one by one
-    public setInstructor(_instructorID:string){
+    public setStudent(_instructorID:string){
         this.student_id = _instructorID;
     }
     public setFirstName(_firstname:string){
@@ -42,7 +42,7 @@ export class StudentClass {
         this.email = _email;
     }
 //Getters - Get/retrieve/return methods one by one
-    public getInstructorNumber(){ 
+    public getStudentNumber(){ 
         return this.student_id;
     }
     public getName(){
