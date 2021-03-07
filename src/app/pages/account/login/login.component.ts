@@ -47,10 +47,10 @@ export class LoginComponent implements OnInit {
       });
   }   
   signInWithEmail() {
+    this.presentLoading();
     this.studentDao.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
-      this.presentLoading();
-      this.signInForm.reset();
+      this.loadingCtrl.dismiss();
     })
     .catch(error => {
       this.submitError = error.message;
@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
   async presentLoading() {
     const loader = this.loadingCtrl.create({
       message: "Signing in....",
-      duration: 5000
     });
     (await loader).present();
     

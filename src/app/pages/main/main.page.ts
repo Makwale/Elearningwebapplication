@@ -28,17 +28,12 @@ export class MainPage implements OnInit {
           this.userAccount = new Account(true, student);
           //set Account service to keep account object
           this.accountService.setAccount(this.userAccount);
-
         })
         this.loginStatus = true;
-    
           } else {
         this.loginStatus = false;
       }
     })
-
-   
-    
   }
   signOut(){
     if (window.confirm('Do you really want to Sign-Out?')) {    
@@ -48,7 +43,6 @@ export class MainPage implements OnInit {
     this.auth.signOut();
     }
   }
-
   navigateToAnnouncement(){
     this.dbs.totalNewAnnouncement = 0;
     this.router.navigateByUrl("studentannouncement")

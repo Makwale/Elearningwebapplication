@@ -5,6 +5,7 @@ import { StudentService } from 'src/app/services/Student-Service/student.service
 import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-profile',
@@ -33,6 +34,7 @@ export class MyProfileComponent implements OnInit {
 
    constructor(public fb: FormBuilder,
     private dbs: StudentService,
+    public loadingCtrl: LoadingController,
     private asf: AngularFirestore) {
       this.studentAccount = new StudentClass();
       this.updateUserForm = new FormGroup({
@@ -51,6 +53,7 @@ export class MyProfileComponent implements OnInit {
       }); 
     }
     ngOnInit() {
+      this.updateUserForm.reset();
       this.setUserAccount();
     }
     setUserAccount(){
@@ -74,8 +77,17 @@ export class MyProfileComponent implements OnInit {
   })
 }
 updateForm() {
-    this.dbs.update_student(this.studentAccount.getStudentNumber(), this.updateUserForm.value);  
+  if (window.confirm('You are updating!')){
+  this.presentLoading();
+  this.dbs.update_student(this.studentAccount.getStudentNumber(), this.updateUserForm.value)
+  .then(() => {
+    this.loadingCtrl.dismiss();
     this.isEdit = false;
+  })
+  .catch(error => {
+    alert(error);
+  });
+}
 }
 keyPress(event: any) {
   const pattern = /[0-9\+\-\ ]/;
@@ -83,5 +95,11 @@ keyPress(event: any) {
   if (event.keyCode != 10 && !pattern.test(inputChar)) {
     event.preventDefault();
   }
+}
+async presentLoading() {
+  const loader = this.loadingCtrl.create({
+    message: "Updating user information....",
+  });
+  (await loader).present();
 }
 }
