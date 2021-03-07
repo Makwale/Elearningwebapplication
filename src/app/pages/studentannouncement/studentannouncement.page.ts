@@ -22,7 +22,6 @@ export class StudentannouncementPage implements OnInit {
   }
 
  
-
   view(annoucementObject){
     annoucementObject.viewed = true;
     this.dbs.saveViewedAnnouncementStudent(annoucementObject.id, "36DcJ0XzGmTJTlPjEak7ePuT5X02")

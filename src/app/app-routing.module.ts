@@ -68,7 +68,10 @@ export const routes: Routes = [
           path: 'leasons',
           loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
         },
-
+        {
+          path: 'instructor-page',
+          loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
+        },
         {
           path: 'studentannouncement',
           loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
@@ -147,6 +150,11 @@ export const routes: Routes = [
     path: 'createannouncement',
     loadChildren: () => import('./pages/admin/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
   },
+  {
+    path: 'instructor-page',
+    loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
+  },
+
   
 
   

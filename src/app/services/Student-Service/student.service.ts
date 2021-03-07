@@ -15,8 +15,7 @@ export class StudentService {
     private router: Router,private accountService: AccountService) { }
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
-    .then(res => {
-  
+    .then(res => {  
       //We get student data
       this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
         
@@ -66,7 +65,7 @@ export class StudentService {
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
-      //this.router.navigate(['']); 
+      this.router.navigate(['']); 
     })
   }
 
