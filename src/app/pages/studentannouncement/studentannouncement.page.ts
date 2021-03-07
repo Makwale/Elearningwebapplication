@@ -16,7 +16,7 @@ export class StudentannouncementPage implements OnInit {
 
   ngOnInit() {
 
-    this.studentAnnouncement = this.dbs.studentAnnouncement
+    this.studentAnnouncement = this.dbs.studentAnnouncement;
 
     
   }
