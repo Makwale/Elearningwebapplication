@@ -1,6 +1,6 @@
 
 <ion-header>
-  <ion-toolbar color="dark">
+  <ion-toolbar color="ourtheme">
       <ion-title>
           {{courseSelected.name}}
       </ion-title>
@@ -282,13 +282,12 @@
       <ion-col size="4">
           
           <mat-card  style=" padding: 0px; padding-bottom: 10px; width: 85%; margin: auto;">
-            <img style="margin: auto;"  class="img"  mat-card-image [src]="courseSelected.imgURL">
+            <img style="margin: auto;" mat-card-image [src]="courseSelected.imgURL">
             <mat-card-content style="margin: 10px;">
             <h5><b>{{courseSelected.name}}</b></h5>
             <p>{{courseSelected.category}}</p>
-            <span>By: <span class="instructor">{{courseSelected.instructor}}</span></span>
-            <span class="prices" style="margin-left: 170px;">{{courseSelected.price | currency : 'R'}}</span>
-            <ion-button vertically="bottom" color ="danger" size="large" expand="block" shape="round" (click)="enroll()">Enroll Now
+            <span class="prices" style="margin-left: 0px;">{{courseSelected.price | currency : 'R'}}</span>
+            <ion-button vertically="bottom" color ="warning" size="large" expand="block" shape="round" (click)="enroll()">Enroll Now
             </ion-button>
             
             </mat-card-content>

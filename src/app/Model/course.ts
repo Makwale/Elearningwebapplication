@@ -7,7 +7,9 @@ export class Course{
      public price: number;
      public instructor_id: string;
      public numberStudentsErrolled?: number;
-     constructor(id: string, name: string, ratings: number, imgURL: string, category: string, price: number, instructor_id: string, numberStudentsErrolled?: number){
+     public isAvailabel?: boolean;
+
+     constructor(id: string, name: string, ratings: number, imgURL: string, category: string, price: number, instructor_id: string, isAvailable?: boolean, numberStudentsErrolled?: number,){
          this.id = id;
 
          this.name = name;
@@ -21,6 +23,8 @@ export class Course{
          this.price = price;
 
          this.instructor_id = instructor_id;
+
+         this.isAvailabel = isAvailable;
 
          if(numberStudentsErrolled == undefined)
             this.numberStudentsErrolled = 0;
