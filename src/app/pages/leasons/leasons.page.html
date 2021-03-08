@@ -15,22 +15,6 @@
             </video>
 
          </ion-col> 
-
-         <!-- <ion-col size="4">
-            <div class="popular-aside" style="width: 90%; margin-left: auto; margin-right: auto;">
-                <h2 class="aside-subheaders" >Latest Courses</h2>
-                <a href="#" class="popular-links">Software Engineering</a><br>
-                <a href="#" class="popular-links">Database Management</a><br>
-                <a href="#" class="popular-links">Forex</a><br>
-                <a href="#" class="popular-links">Marketing</a><br>
-                <a href="#" class="popular-links">Business Analysis</a><br>
-                <a href="#" class="popular-links">Business Management</a><br>
-            </div>
-
-           
-
-        </ion-col> -->
-
         </ion-row>
 
     </ion-grid>
@@ -67,7 +51,19 @@
                 
             </ion-list>
         </mat-tab>
-        <mat-tab label="Announcements">Announcements</mat-tab>
+        <mat-tab label="Quizzes">
+            <ion-list>
+                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="navigateToQuiz()">
+                   
+                    <ion-label>
+                       {{lesson.name}}
+                    </ion-label>
+                </ion-item>
+                
+
+                
+            </ion-list>
+        </mat-tab>
     </mat-tab-group>
 
 </div>

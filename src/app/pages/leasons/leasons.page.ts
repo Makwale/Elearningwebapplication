@@ -1,6 +1,6 @@
 import { ConstantPool } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Lesson } from 'src/app/Model/lesson.mode';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -14,7 +14,7 @@ selectTabs ="recent";
 videoURL;
  lessonList: Lesson[];
  tempLessonList: Lesson[] = [];
-  constructor(public activageRoute: ActivatedRoute,public dbs: DatabaseService) { }
+  constructor(public activageRoute: ActivatedRoute,public dbs: DatabaseService, private router: Router) { }
 
   ngOnInit() {
     
@@ -67,6 +67,10 @@ videoURL;
     }
 
     return false;
+  }
+
+  navigateToQuiz(){
+    this.router.navigateByUrl("quiz")
   }
 
 }

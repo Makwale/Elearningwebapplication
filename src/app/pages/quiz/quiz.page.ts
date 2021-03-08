@@ -22,6 +22,12 @@ export class QuizPage implements OnInit {
 
   totalMartks = 0;
 
+  date =new Date();
+
+  isStarted = false;
+
+  duration : Date;
+
   constructor(public dbs: DatabaseService, public qs: QuizserviceService, private router: Router) { }
 
   ngOnInit() {
@@ -31,6 +37,9 @@ export class QuizPage implements OnInit {
         let tempvar = quizdata.payload.doc.data();
 
         this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"])
+
+        this.duration = new Date();
+        this.duration.setMinutes(tempvar["duration"]);
       })
     })
   }
@@ -51,6 +60,15 @@ export class QuizPage implements OnInit {
     
     this.questionResults.push(new QuestionResults(question.question, question.answer , question.marks ,st_answer ))
 
+  }
+
+  start(){
+    this.isStarted = true;
+
+    setInterval(() => {
+      this.duration.setMinutes(0,this.duration.getMinutes() - 1);
+      //alert("Hello world");
+    },1000)
   }
 
 }

@@ -4,9 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content style="padding-bottom: 60px;">
 
-  <div style="margin-bottom: 80px;">
+
+<div style="margin-bottom: 80px; background-color: white;">
 
     <ion-card color="dark" >
     
@@ -24,7 +24,7 @@
 
         <ion-label *ngIf="totalMarks / qs.quiz.total_marks * 100 >= 50">Passed</ion-label>
         
-        <ion-label *ngIf="totalMarks / qs.quiz.total_marks * 100 < 50">Failed++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</ion-label>
+        <ion-label *ngIf="totalMarks / qs.quiz.total_marks * 100 < 50">Failed</ion-label>
       </ion-card-content>
       
   
@@ -51,4 +51,3 @@
 
 </div>
 
-</ion-content>

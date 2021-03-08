@@ -76,6 +76,14 @@ export const routes: Routes = [
           path: 'studentannouncement',
           loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
         },
+        {
+          path: 'quiz',
+          loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
+        },
+        {
+          path: 'quizresults',
+          loadChildren: () => import('./pages/quizresults/quizresults.module').then( m => m.QuizresultsPageModule)
+        },
     ]
   },
   {
@@ -153,14 +161,7 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
-  {
-    path: 'quiz',
-    loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
-  },
-  {
-    path: 'quizresults',
-    loadChildren: () => import('./pages/quizresults/quizresults.module').then( m => m.QuizresultsPageModule)
-  },
+  
 
 
   

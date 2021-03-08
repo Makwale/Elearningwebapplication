@@ -2,14 +2,33 @@
   <ion-toolbar>
     <ion-title>Quiz</ion-title>
 
-    <ion-buttons slot="end">
-      <ion-label style="margin-right: 50px; font-size: larger;">Total Marks {{quiz.total_marks}}</ion-label>
+    <ion-buttons slot="end" style=" width: 60%;">
+      <ion-label slot="start" ><span style="font-size: 25px; margin-left: 10px;" >{{duration.getMinutes()}}</span> Minutes</ion-label>
+      <ion-label slot="end" style="margin-right: 50px; font-size: larger; margin-left: 330px;">Total Marks {{quiz.total_marks}}</ion-label>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div style="background-color: white; width: 900px; margin: auto; margin-bottom: 80px;">
+<div style="background-color: white;">
+
+  <ion-card color="dark" *ngIf="!isStarted" >
+    
+    <ion-card-content>
+
+      <h4>Date: {{date | date}}</h4>
+
+      <ion-label>Duration: {{quiz.duration}} Minutes</ion-label> <br>
+
+      <ion-label>Total Marks: {{quiz.total_marks}}</ion-label> <br>
+
+      <ion-button shape="round" slot="end" size="large" color="success" fill="solid" (click)="start()">START QUIZ</ion-button>
+
+    </ion-card-content>
+    
+
+  </ion-card>
+
+  <div style=" width: 900px; margin: auto; margin-bottom: 80px;"  *ngIf="isStarted">
 
     
     <ion-card *ngFor="let question of quiz.questions; let x = index " style="margin-top: 10px;">
@@ -31,4 +50,6 @@
 
   </div>
 
-</ion-content>
+</div>
+
+
