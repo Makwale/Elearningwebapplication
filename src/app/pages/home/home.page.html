@@ -16,30 +16,22 @@
     
       <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of featured_course"
        [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-       <img style="margin: auto;" class="img" mat-card-image [src]="course.imgURL">
+       <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+       <ion-label style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Available</ion-label>
+
+       <div class="image-cover" style=""></div>
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
-
-         <p></p>
-         <span>By: <span class="instructor">{{course.instructor}}</span></span>
-
+         
+         <br>
          <p> {{course.category}}</p>
-         
-           <div *ngFor ="let instructor of popular_instructors">
-
-            <div *ngIf = "course.instructor_id ===instructor.id" > 
-              <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
-            </div>  
-         
-
-           <br>
            <ion-row>
              <ion-col size ="8"> 
                <ion-icon color="warning" name="star"></ion-icon>
                <ion-icon color="warning" name="star"></ion-icon>
                <ion-icon color="warning" name="star"></ion-icon>
-               <ion-icon name="star-outline"></ion-icon>
-               <ion-icon name="star-outline"></ion-icon>
+               <ion-icon color="warning" name="star-outline"></ion-icon>
+               <ion-icon color="warning" name="star-outline"></ion-icon>
              </ion-col>
      
                 <ion-col    size ="4" class="ion-align-self-end">
@@ -63,19 +55,18 @@
         </ion-label>
 
       </ion-item-divider>
+
+
       <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of latest_course"
       [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-     <img style="margin: auto;"  class="img"  mat-card-image [src]="course.imgURL">
+     <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+
+     <ion-label style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Available</ion-label>
+
       <mat-card-content style="margin: 10px;">
         <a   class="course-link">Learn {{course.name}}</a>
         <p>{{course.category}}</p>
-       
-        <div *ngFor ="let instructor of popular_instructors">
-
-          <div *ngIf = "course.instructor_id ===instructor.id" > 
-            <span>By: <span class="instructor">{{instructor.name}}</span></span></div>
-          </div> 
-        <br>
+  
           <ion-row>
             <ion-col size ="8"> 
               <ion-icon color="warning" name="star"></ion-icon>
