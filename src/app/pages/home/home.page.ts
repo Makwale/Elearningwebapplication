@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl("coursedetails");
   }
   ngOnInit(){
-    //Uncommend this code and use your email and password to test the application
+    // Uncommend this code and use your email and password to test the application
     // this.dbs.SignIn("makwale.em@gmail.com", "123456789").then( () => {
     //   this.dbs.getStudentsAnnouncements();
     // });

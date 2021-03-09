@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 import { Student } from '../../Model/student.model';
 import { Account } from '../../Model/account.model';
+import { DatabaseService } from '../database.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +13,7 @@ export class StudentService {
 
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
-    private router: Router,private accountService: AccountService) { }
+    private router: Router,private accountService: AccountService, private dbs: DatabaseService) { }
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {  
@@ -24,6 +25,8 @@ export class StudentService {
         let account = new Account(true, student);
         //set Account service to keep account object
         this.accountService.setAccount(account);
+        this.dbs.getEnrolledCourses();
+        this.dbs.getStudentsAnnouncements();
       })
      // this.router.navigateByUrl("home");
      // console.log( 'Signin success');

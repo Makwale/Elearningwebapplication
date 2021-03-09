@@ -76,19 +76,19 @@ export const routes: Routes = [
           path: 'studentannouncement',
           loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
         },
+        {
+          path: 'quiz',
+          loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
+        },
+        {
+          path: 'quizresults',
+          loadChildren: () => import('./pages/quizresults/quizresults.module').then( m => m.QuizresultsPageModule)
+        },
     ]
   },
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-  },
-  {
-    path: 'signup',
-    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule)
-  },
-  {
-    path: 'databasequiz',
-    loadChildren: () => import('./pages/databasequiz/databasequiz.module').then( m => m.DatabasequizPageModule)
   },
   {
     path: 'tasklist',
@@ -114,6 +114,8 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
 
+
+  
   
   {
     path: 'adminpanel',
@@ -154,6 +156,8 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
+  
+
 
   
 

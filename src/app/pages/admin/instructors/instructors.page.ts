@@ -25,6 +25,8 @@ export class InstructorsPage implements OnInit {
   tempVar: Instructor[] = [];
 
   
+
+  
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   @ViewChild(MatSort) sort: MatSort;

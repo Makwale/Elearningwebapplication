@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Quiz</ion-title>
+
+    <ion-buttons slot="end" style=" width: 60%;">
+      <ion-label slot="start" ><span style="font-size: 25px; margin-left: 10px;" >{{duration.getMinutes()}}</span> Minutes</ion-label>
+      <ion-label slot="end" style="margin-right: 50px; font-size: larger; margin-left: 330px;">Total Marks {{quiz.total_marks}}</ion-label>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div style="background-color: white;">
+
+  <ion-card color="dark" *ngIf="!isStarted" >
+    
+    <ion-card-content>
+
+      <h4>Date: {{date | date}}</h4>
+
+      <ion-label>Duration: {{quiz.duration}} Minutes</ion-label> <br>
+
+      <ion-label>Total Marks: {{quiz.total_marks}}</ion-label> <br>
+
+      <ion-button shape="round" slot="end" size="large" color="success" fill="solid" (click)="start()">START QUIZ</ion-button>
+
+    </ion-card-content>
+    
+
+  </ion-card>
+
+  <div style=" width: 900px; margin: auto; margin-bottom: 80px;"  *ngIf="isStarted">
+
+    
+    <ion-card *ngFor="let question of quiz.questions; let x = index " style="margin-top: 10px;">
+      <ion-card-content>
+        <h3>({{question.qno}}) {{question.question}} ({{question.marks}} Marks) </h3>
+        <ion-radio-group #answer >
+          <ion-item *ngFor="let option of question.options; let i = index">
+            <ion-label>{{option}}</ion-label>
+            <ion-radio slot="start" [value]="option"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <ion-button size="small" (click)="save(question, answer.value)">Save</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button slot="end" class="ion-margin" (click)="done()">Done</ion-button>
+
+
+  </div>
+
+</div>
+
+

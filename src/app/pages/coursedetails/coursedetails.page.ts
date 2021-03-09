@@ -22,7 +22,7 @@ export class CoursedetailsPage implements OnInit {
   constructor(private modalCtrl: ModalController,
     private courseDao:CourseService,
     private route:Router,
-    private asf:AngularFirestore,
+    private afs:AngularFirestore,
    
     private accountService:AccountService) { 
     }
@@ -37,25 +37,49 @@ export class CoursedetailsPage implements OnInit {
   enroll(){
       //Check if the user has signed in
       if (this.userAccount.getSignInStatus() == true) {
-        let id = this.asf.createId();
-        this.asf.collection("EnrolledCourse").doc(id).set({
-        course_id: this.courseSelected.id,   //From Entity --course_id
-        student_id: this.userAccount.getStudent().getStudentNumber()      //From Entity --student_id
-      }).then( () => {
+        let id = this.afs.createId();
+
         
-        this.asf.collection("Course").doc(this.asf.createId()).valueChanges( data=> {
-          let numberEnrolledStudents = data['numberStudentsErrolled'];
-          alert(numberEnrolledStudents);
+
+        // Firstly the code goes to enrolled coours collection so 
+        // that it can check if the student has already enrolled for that course
+        this.afs.collection("EnrolledCourse").snapshotChanges().subscribe(data =>{
+          
+          //It calls the search student to search the student
+          //If the student is not found then student can enroll
+          if(!this.searchStudent(data)){
+            this.afs.collection("EnrolledCourse").add({
+              course_id: this.courseSelected.id,   //From Entity --course_id
+              student_id: this.userAccount.getStudent().getStudentNumber()      //From Entity --student_id
+      
+            }).then( () => {
+              
+              this.afs.collection("Course").doc(this.courseSelected.id).update({
+                numberStudentsErrolled: this.courseSelected.numberStudentsErrolled + 1,
+              })
+      
+              alert(this.courseSelected.name + " enrolled successfully");
+              this.close();
+              // this.route.navigateByUrl('page1');
+            }).catch( error => {
+              alert(error)
+            })
+          }
         })
-        alert(this.courseSelected.name + " enrolled successfully");
-        this.close();
-        // this.route.navigateByUrl('page1');
-      }).catch( error => {
-        alert(error)
-      })
+       
        } else {
         this.close();
         this.route.navigateByUrl('account');
       }
+  }
+
+
+  searchStudent(enrcourses): boolean{
+    for(let enrcourse of enrcourses){
+      if(enrcourse.payload.doc.data()["student_id"] == this.userAccount.getStudent().getStudentNumber()
+       && enrcourse.payload.doc.data()["course_id"] == this.courseSelected.id) return true;
+    }
+
+    return false;
   }
 }
