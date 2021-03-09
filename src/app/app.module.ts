@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {  NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -23,6 +23,9 @@ import { environment } from 'src/environments/environment';
 import {MatMenuModule} from '@angular/material/menu';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [AppComponent, MainPage, AdminpanelPage],
@@ -30,8 +33,11 @@ import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
+    AngularMaterialModule,
     BrowserAnimationsModule,
-    MatButtonModule,
+    MatButtonModule, 
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatIconModule,
     AngularFireModule.initializeApp( environment.firebaseConfig),
     AngularFireDatabaseModule,
@@ -42,5 +48,6 @@ import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
     MatSidenavModule],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {}

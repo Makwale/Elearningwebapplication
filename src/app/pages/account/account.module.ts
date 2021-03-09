@@ -43,5 +43,6 @@ import { MyProfileComponent } from 'src/app/pages/account/my-profile/my-profile.
     AngularFireAuthModule,
   ],
   declarations: [AccountPage,LoginComponent,SignupComponent,MyProfileComponent]
-})
+  
+})  
 export class AccountPageModule {}

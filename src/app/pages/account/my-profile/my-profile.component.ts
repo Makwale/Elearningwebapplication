@@ -6,13 +6,18 @@ import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
-
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
   styleUrls: ['./my-profile.component.scss'],
 })
 export class MyProfileComponent implements OnInit {
+
+  color = 'primary';
+  mode = 'determinate';
+  value = 50;
+
+
   user = {} as StudentInfo;
   loggedIn: boolean = false;
   isEdit : boolean = false;
@@ -98,6 +103,7 @@ keyPress(event: any) {
 }
 
 async presentLoading() {
+  
   const loader = this.loadingCtrl.create({
     message: "Updating user information....",
   });
