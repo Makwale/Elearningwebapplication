@@ -52,19 +52,81 @@
       background-color: #080110;
     }
 
-
     #searchbar{
-      width: 150px;
-      height: 60%;
-      background-color:  white;
-      border-radius: 23px;
-      margin-left: 250px;
-      border: 1px solid;
+        width: 200.4%;
+        height: 60%;
+        background-color:  white;
+        border-radius: 23px;
+        margin-left: 12%;
+        margin-right: 10px;
+        border: 1px solid;
+      }
+    
+
+    @media screen and (max-width: 800px) {
+        #btnsignin, #sideNav{
+          display: none;
+        }
+
+        #side-nave-content{
+          margin-left: 0px;
+        }
+
+
     }
+
+    @media screen and (min-width: 800px) {
+        #menu-button{
+          display: none;
+        }
+
+        #side-nave-content{
+          margin-left: 0px;
+          margin-left: 217px;
+        }
+    }
+
+    @media screen and (max-width: 775px) {
+      #searchbar{
+        width: 200.4%;
+        height: 60%;
+        background-color:  white;
+        border-radius: 23px;
+        margin-left: 15%;
+        margin-right: 10px;
+        border: 1px solid;
+      }
+    }
+
+    @media screen and (max-width: 380px) {
+      #searchbar{
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 381px) {
+      #search-button{
+        display: none;
+      }
+    }
+
+
+
+
+    /* @media screen and (max-width: 799px) {
+        #searchbar{
+        width: 400%;
+        height: 60%;
+        background-color:  white;
+        border-radius: 23px;
+        margin-left: 15%;
+        border: 1px solid;
+      }
+    } */
 
     #toolbar{
       height: 80px;
-      
+      padding-top: 10px;
     }
 
     #searchicon{
