@@ -5,22 +5,22 @@
     
   <section id="main-content">
     
-    <section id="featured-courses" style="overflow: auto;">
+    <section id="featured-courses" >
       <ion-item-divider class="category">
-        <h2 class="subheaders" style="margin-left: 0px; margin-top: 10px;">Featured Courses</h2>
-        <ion-label slot="end" >
-            <a href="#" style="margin-right: 10px;" [routerLink]="['/featuredcourses']">See All</a>
+        <h2 class="subheaders" >Featured Courses</h2>
+        <ion-label slot="end" color="warning" >
+            <a href="#" class="summary-link" [routerLink]="['/featuredcourses']">See All</a>
         </ion-label>
 
       </ion-item-divider>
     
-      <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of featured_course"
+      <mat-card class="fcourse-card " style=" padding: 0px;" *ngFor="let course of featured_course"
        [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
        <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
-       <ion-label *ngIf="course.numberStudentsErrolled < 1" style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Available</ion-label>
-       <ion-label *ngIf="course.numberStudentsErrolled > 0" style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Occupied</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled < 1"  class="course-status" >Available</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled > 0" class="course-status">Occupied</ion-label>
 
-       <div class="image-cover" style=""></div>
+       <div class="image-cover"></div>
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
          
@@ -46,13 +46,13 @@
      </mat-card>
     </section>
 
-    <section id="latest-courses" style="overflow: auto;">
+    <section id="latest-courses">
 
       <ion-item-divider class="category">
-        <h2 class="subheaders" style="margin-left: 0px; margin-top: 10px;">Latest Courses</h2>
+        <h2 class="subheaders">Latest Courses</h2>
 
         <ion-label slot="end">
-            <a [routerLink]="['/latestcourses']"  style="margin-right: 10px;">See All</a>
+            <a [routerLink]="['/latestcourses']" class="summary-link" >See All</a>
         </ion-label>
 
       </ion-item-divider>
@@ -62,8 +62,8 @@
       [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
      <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
 
-     <ion-label style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Available</ion-label>
-
+      <ion-label *ngIf="course.numberStudentsErrolled < 1"  class="course-status" >Available</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled > 0" class="course-status">Occupied</ion-label>
       <mat-card-content style="margin: 10px;">
         <a   class="course-link">Learn {{course.name}}</a>
         <p>{{course.category}}</p>

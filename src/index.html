@@ -86,7 +86,7 @@
         }
     }
 
-    @media screen and (max-width: 775px) {
+    @media screen and (max-width: 775px ) {
       #searchbar{
         width: 200.4%;
         height: 60%;
@@ -96,13 +96,128 @@
         margin-right: 10px;
         border: 1px solid;
       }
+
+      
     }
 
-    @media screen and (max-width: 380px) {
+    @media screen and (max-width: 380px){
       #searchbar{
         display: none;
       }
+
+      #aside{
+        display: none;
+        width: 0px;
+      }
+
+      #featured-courses, #latest-courses{
+        margin-right: 0px;
+  
+        overflow: auto;
+        padding: 10px;
+      }
+
+      .fcourse-card{
+        width: 100%;
+        margin: 1px;
+      
+      }
+
+      #main-content{
+        width: 100%;
+        padding-left: 0px;
+        outline: 1px solid;
+        margin: 0px;
+        padding-right: 0px;
+      }
+
+      #latest-courses{
+        
+      }
+
+      .image-cover{
+        position: absolute; 
+        width: 100%; 
+        height: 225px; 
+        background-color: transparent; 
+        top: 0%;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+      }
+
+      .course-status{
+        top: 64%;
+      }
     }
+    
+    @media screen and (min-width: 381px){
+      
+      #aside{
+        display: none;
+        width: 0px;
+      }
+
+      #featured-courses, #latest-courses{
+        margin-right: 0px;
+  
+        overflow: auto;
+        padding: 20px;
+      }
+
+      .fcourse-card{
+        width: 100%;
+        margin: 1px;
+        background-color: red;
+      }
+
+      #main-content{
+        width: 100%;
+        padding-left: 0px;
+        outline: 1px solid;
+        margin: 0px;
+        padding-right: 0px;
+      }
+
+      #latest-courses{
+        
+      }
+
+      .image-cover{
+        position: absolute; 
+        width: 100%; 
+        height: 225px; 
+        background-color: transparent; 
+        top: 0%;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+      }
+
+      .course-status{
+        top: 77%;
+      }
+    }
+
+    
+    /* @media screen and (max-width: 500px){
+     
+      #featured-courses, #latest-courses{
+        margin-right: 0px;
+  
+        overflow: auto;
+        padding: 20px;
+      }
+
+      .fcourse-card{
+        width: 100%;
+        margin: 1px;
+      }
+
+      .course-status{
+        top: 70%;
+      }
+
+    } */
+
 
     @media screen and (min-width: 381px) {
       #search-button{
@@ -123,6 +238,13 @@
         border: 1px solid;
       }
     } */
+
+    /* #main-content{
+        width: 100%;
+        float: left;
+        overflow: auto;
+        padding-left: 0px;
+      } */
 
     #toolbar{
       height: 80px;
@@ -166,15 +288,14 @@
       color: lightcoral;
     }
 
-    .fcourse-card{
-      width: 260px;
-      margin: 7px;
-      float: left;
-      height: 290px;
-      border-radius: 40px;
-      
-
-    }
+    /* .fcourse-card{
+        width: 250px;
+        margin: 7px;
+        float: left;
+        height: 290px;
+        border-radius: 40px;
+        
+      } */
 
     .fcourse-card:hover{
       border: 1px solid #ffd534;
@@ -211,6 +332,15 @@
 
     .subheaders{
       margin-left: 15px;
+      margin-left: 0px; 
+      margin-top: 10px; 
+      color: #080110;
+    }
+
+    .summary-link{
+      margin-right: 10px; 
+      text-decoration: none; 
+      color: #ffd534
     }
 
     .fcol{
@@ -234,12 +364,7 @@
       right: 0;
     }
 
-    #main-content{
-      width: 76%;
-      float: left;
-      overflow: auto;
-      padding-left: 10px;
-    }
+    
 
     #aside{
       width: 24%;
@@ -345,18 +470,19 @@
       width: 50px;
     }
 
-    .image-cover{
-      position: absolute; 
-      width: 100%; 
-      height: 166px; 
-      background-color: transparent; 
-      top: 0%;
-      transition-property: background-color;
-      transition-duration: 0.5s;
-    }
-
     .image-cover:hover{
       background-color: rgba(255, 213, 52, .5);
+    }
+
+    .course-status{
+      position: absolute; 
+      z-index: 10; 
+      left: 0%; 
+      background-color: #ffd534; 
+      color: black; 
+      border-top-right-radius: 15px; 
+      border-bottom-right-radius: 15px; 
+      padding: 4px; padding-right: 6px;
     }
 
   </style> 
