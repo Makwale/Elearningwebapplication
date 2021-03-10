@@ -120,38 +120,8 @@ export class AccountPage implements OnInit {
       event.preventDefault();
     }
   }
-  //==================================== Login ============================================
-  signInWithEmail() {
-    this.dbs.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
-    .then(user => {
-      // successfull login 
-     // this.router.navigateByUrl("");
-      this.signInForm.reset();
-      window.alert('Successful login');
-      //Re-Route here
-    })
-    .catch(error => {
-      this.submitError = error.message;
-    });
-  }
- //==================================== Signup ============================================
- signUpWithEmail() {
-  this.dbs.RegisterUser(
-    this.signUpForm.value['name'],
-    this.signUpForm.value['surname'],
-    this.signUpForm.value['gender'],
-    this.signUpForm.value['phone'],
-    this.signUpForm.value['email'], 
-    this.signUpForm.value['password'])
-  .then(user => {
-    this.signUpForm.reset();
-      window.alert('Successful register');
-      //Re-Route here
-    })
-  .catch(error => {
-    this.submitError = error.message;
-  });
-}
+  
+ 
 getUser(){
   this.auth.authState.subscribe(user => {
     if (user) {
