@@ -11,6 +11,7 @@ import { Account } from 'src/app/Model/account.model';
 import { CourseService } from 'src/app/services/course.service';
 import { Student } from 'src/app/Model/student.model';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { StudentService } from 'src/app/services/Student-Service/student.service';
 
 
 @Component({
@@ -58,7 +59,7 @@ export class AccountPage implements OnInit {
   };
   constructor(
     private accountService:AccountService, private courseDao: CourseService,private afs:AngularFirestore,
-      private router: Router, private dbs: DatabaseService, private auth: AngularFireAuth) { 
+      private router: Router, private dbs: StudentService, private auth: AngularFireAuth) { 
     this.signInForm = new FormGroup({
       'email': new FormControl('', Validators.compose([
         Validators.required,
@@ -97,13 +98,6 @@ export class AccountPage implements OnInit {
     this.loggedIn = false;
     this.getUser();
   }
-  goDash() {
-    this.router.navigateByUrl("dashboard");
-  }
-  goLogin() {
-  this.router.navigateByUrl("instructor-profile");
-}
-
   ngOnInit() {
     this.auth.authState.subscribe(user => {
       if (user) {

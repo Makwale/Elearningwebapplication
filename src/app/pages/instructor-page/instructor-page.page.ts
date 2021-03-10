@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instructor-page',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructorPagePage implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+  addTutorial(){
+    this.router.navigateByUrl('/add');
+  }
+  tutolialDetails(){
+    this.router.navigateByUrl('/details');
+  }
+  tutorialsList(){
+    this.router.navigateByUrl('/tutorials');
+  }
+  profile(){
+    this.router.navigateByUrl('/profile');
+  }
+  viewCourse(){
+    this.router.navigateByUrl('/view-course');
   }
 
 }

@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   userAccount: Account;
   
+  load:boolean;
+
   public loginInvalid: boolean;
   signInForm: FormGroup;
   submitError: string;
@@ -29,6 +31,8 @@ export class LoginComponent implements OnInit {
     private studentDao:StudentService,
     private fb: FormBuilder,
     public loadingCtrl: LoadingController,) {
+      
+      
       this.signInForm = new FormGroup({
         'email': new FormControl('', Validators.compose([
           Validators.required,

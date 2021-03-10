@@ -154,9 +154,7 @@ export class DatabaseService {
   }
   //Method to retrieve all courses for admin
   getCourses(){
-
     return this.afs.collection("Course").snapshotChanges();
-
   }
 
 

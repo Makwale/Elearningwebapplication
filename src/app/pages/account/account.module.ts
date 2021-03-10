@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 
 import { MyProfileComponent } from 'src/app/pages/account/my-profile/my-profile.component';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -41,7 +42,9 @@ import { MyProfileComponent } from 'src/app/pages/account/my-profile/my-profile.
     ReactiveFormsModule,
     MatRadioModule,
     AngularFireAuthModule,
+    MatTableModule,
   ],
   declarations: [AccountPage,LoginComponent,SignupComponent,MyProfileComponent]
-})
+  
+})  
 export class AccountPageModule {}

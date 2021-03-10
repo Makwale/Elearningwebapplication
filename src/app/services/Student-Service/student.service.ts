@@ -65,12 +65,14 @@ export class StudentService {
       alert(error);
     })
   }
-
+  getEnrolledCourses(userID){
+    return this.afs.collection('EnrolledCourse', ref => ref.where('student_id','==', userID)).snapshotChanges();
+  }
   //==========================================================
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
-      this.router.navigate(['']); 
+      this.router.navigate(['account']); 
     })
   }
 

@@ -81,7 +81,8 @@ export class SignupComponent implements OnInit {
       this.signUpForm.value['password'])
     .then(user => {
       this.loadingCtrl.dismiss();
-      this.signUpForm.reset();  
+      this.signUpForm.reset();
+      this.studentDao.SignOut();  
     })
     .catch(error => {
       this.submitError = error.message;
