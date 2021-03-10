@@ -1,8 +1,11 @@
+<div>
 
-<section style="overflow:auto" style="padding-bottom: 150px;"> 
+  <section id="main-content">
+
+    <section id="latest-courses"> 
 
   <ion-item-divider class="category">
-    <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;">Popular Courses</h2>
+    <h2 class="subheaders">Popular Courses</h2>
   </ion-item-divider>
 
   <div *ngFor="let course of popular_course; index as i" >
@@ -10,7 +13,9 @@
        [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
      
        <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
-     <ion-label style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Available</ion-label>
+       
+       <ion-label *ngIf="course.numberStudentsErrolled < 1"  class="course-status" >Available</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled > 0" class="course-status">Occupied</ion-label>
 
        <mat-card-content style="margin: 10px;">
          <a   class="course-link">Learn {{course.name}}</a>
@@ -41,3 +46,7 @@
 </ion-item-divider>
 
 </section>
+
+</section>
+
+</div>
