@@ -8,10 +8,6 @@ import { InstructorPagePageRoutingModule } from './instructor-page-routing.modul
 
 import { InstructorPagePage } from './instructor-page.page';
 import { ProfileComponent } from './profile/profile.component';
-import { CoursesComponent } from './courses/courses.component';
-import { TutorialDetailsComponent } from './Tutorial-Component/tutorial-details/tutorial-details.component';
-import { TutorialsListComponent } from './Tutorial-Component/tutorials-list/tutorials-list.component';
-import { AddTutorialComponent } from './Tutorial-Component/add-tutorial/add-tutorial.component';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 @NgModule({
@@ -23,10 +19,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
     AngularMaterialModule
   ],
   declarations: [InstructorPagePage,
-    ProfileComponent, CoursesComponent,
-    TutorialDetailsComponent,
-    TutorialsListComponent,
-    AddTutorialComponent
+
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

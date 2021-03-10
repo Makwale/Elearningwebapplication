@@ -33,69 +33,11 @@ export class AccountPage implements OnInit {
   signInForm: FormGroup;
   signUpForm: FormGroup;
   isEdit : boolean = false;
-  validation_messages = {
-    'name': [
-      { type: 'required', message: 'Name is required.' },
-    ],
-    'surname': [
-      { type: 'required', message: 'Surname is required.' },
-    ],
-    'gender': [
-      { type: 'required', message: 'gender is required.' },
-    ],
-    'phone': [
-      { type: 'required', message: 'phone number is required.'},
-      { type: 'minlength', message: 'Phone number must be 10 numbers long.' },
-      { type: 'maxlength', message: 'Phone number must not exceed 10 numbers.' },
-      
-    ],
-    'email': [
-      { type: 'required', message: 'Email is required.' },
-      { type: 'pattern', message: 'Enter a valid email.' }
-    ],
-    'password': [
-      { type: 'required', message: 'Password is required.' },
-      { type: 'minlength', message: 'Password must be at least 6 characters long.' }
-    ]
-  };
+ 
   constructor(
     private accountService:AccountService, private courseDao: CourseService,private afs:AngularFirestore,
       private router: Router, private dbs: StudentService, private auth: AngularFireAuth) { 
-    this.signInForm = new FormGroup({
-      'email': new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      'password': new FormControl('', Validators.compose([
-        Validators.minLength(6),
-        Validators.required
-      ]))
-    });
-    this.signUpForm = new FormGroup({
-      'name': new FormControl('', Validators.compose([
-        Validators.required,
-      ])),
-      'surname': new FormControl('', Validators.compose([
-        Validators.required,
-      ])),
-      'gender': new FormControl('', Validators.compose([
-        Validators.required,
-      ])),
-      'phone': new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern("^((\\+27-?)|0)?[0-9]{10}$"),
-        Validators.minLength(10),
-        Validators.maxLength(10)
-      ])),
-      'email': new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      'password': new FormControl('', Validators.compose([
-        Validators.minLength(6),
-        Validators.required
-      ]))
-    });  
+ 
     this.loggedIn = false;
     this.getUser();
   }
@@ -107,9 +49,6 @@ export class AccountPage implements OnInit {
         this.loggedIn = false;
       }
     })
-
-
-
     this.getUser();
     this.userAccount =  this.accountService.getAccount();
     console.log(this.userAccount);
@@ -121,8 +60,6 @@ export class AccountPage implements OnInit {
       event.preventDefault();
     }
   }
-  
- 
 getUser(){
   this.auth.authState.subscribe(user => {
     if (user) {

@@ -15,7 +15,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class MainPage implements OnInit {
   loginStatus: boolean = false;
-  isStudent:boolean;
+
+  isStudent: boolean = true;
   userAccount: Account;
   constructor(public accountService: AccountService,
     public loadingCtrl: LoadingController,
