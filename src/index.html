@@ -47,9 +47,10 @@
 
     #sideNav{
       /* margin-top: 80px; */
-      width: 220px;
+      width: 240px;
       height: 100%;
       background-color: #080110;
+
     }
 
     #searchbar{
@@ -61,44 +62,7 @@
         margin-right: 10px;
         border: 1px solid;
       }
-    
 
-    @media screen and (max-width: 800px) {
-        #btnsignin, #sideNav{
-          display: none;
-        }
-
-        #side-nave-content{
-          margin-left: 0px;
-        }
-
-
-    }
-
-    @media screen and (min-width: 800px) {
-        #menu-button{
-          display: none;
-        }
-
-        #side-nave-content{
-          margin-left: 0px;
-          margin-left: 217px;
-        }
-    }
-
-    @media screen and (max-width: 775px ) {
-      #searchbar{
-        width: 200.4%;
-        height: 60%;
-        background-color:  white;
-        border-radius: 23px;
-        margin-left: 15%;
-        margin-right: 10px;
-        border: 1px solid;
-      }
-
-      
-    }
 
     @media screen and (max-width: 380px){
       #searchbar{
@@ -110,11 +74,17 @@
         width: 0px;
       }
 
-      #featured-courses, #latest-courses{
+      #featured-courses, #latest-courses, #icourse-card{
         margin-right: 0px;
   
         overflow: auto;
         padding: 10px;
+      }
+
+      #icourse-card{
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
 
       .fcourse-card{
@@ -196,6 +166,106 @@
         top: 77%;
       }
     }
+
+    
+    @media screen and (min-width: 800px) {
+        #menu-button{
+          display: none;
+        }
+
+        #side-nave-content{
+        
+          margin-left: 237px;
+        }
+    }
+
+    @media screen and (max-width: 775px ) {
+      #searchbar{
+        width: 200.4%;
+        height: 60%;
+        background-color:  white;
+        border-radius: 23px;
+        margin-left: 15%;
+        margin-right: 10px;
+        border: 1px solid;
+      }
+
+      
+    }
+
+    
+    @media screen and (max-width: 800px) {
+        #btnsignin, #sideNav{
+          display: none;
+        }
+
+        #side-nave-content{
+          margin-left: 0px;
+        }
+
+
+    }
+
+    /*For login page*/
+    @media screen and (max-width: 600px) {
+       #login-container{
+          width: 100%;
+          text-align: center; 
+          background-color: white; 
+          padding-top: 5px; 
+          padding-bottom: 10px;
+          border-radius: 20px; 
+          outline: 1px solid red;
+       }
+
+
+    }
+
+    @media screen and (min-width: 601px) {
+       #login-container{
+          width: 75%;
+          margin: auto; 
+          text-align: center; 
+          background-color: white; 
+          margin-top: 40px; 
+          padding-top: 5px; 
+          padding-bottom: 50px; 
+          margin-bottom: 100px; 
+          border-radius: 20px; 
+       }
+
+
+    }
+
+    @media screen and (min-width: 801px) {
+       #login-container{
+          width: 55%;
+          margin: auto; 
+          text-align: center; 
+          background-color: white; 
+          margin-top: 40px; 
+          padding-top: 5px; 
+          padding-bottom: 50px; 
+          margin-bottom: 100px; 
+          border-radius: 20px; 
+       }
+
+
+    }
+
+
+    /* #login-container{
+          width: 100%;
+          margin: auto; 
+          text-align: center; 
+          background-color: white; 
+          margin-top: 40px; 
+          padding-top: 5px; 
+          padding-bottom: 50px; 
+          margin-bottom: 100px; 
+          border-radius: 20px; 
+          outline: 1px solid;
+       } */
 
     
     /* @media screen and (max-width: 500px){
@@ -311,13 +381,13 @@
       
     }
 
-    .icourse-card{
+    /* .icourse-card{
       width: 265px;
       margin: 7px;
       float: left;
       height: 310px;
       text-align: center;
-    }
+    } */
 
     .fcourse-im{
       margin: auto;
@@ -483,6 +553,21 @@
       border-top-right-radius: 15px; 
       border-bottom-right-radius: 15px; 
       padding: 4px; padding-right: 6px;
+    }
+
+    .login-input{
+      border-radius: 90px; 
+      border: 1px solid #080110; 
+      transition-property: border;
+      transition-duration: .3s;
+    }
+
+    .login-input:hover{
+      border: 2px solid rgb(255,213,52); 
+    }
+
+    .login-input:focus-within{
+      border: 2px solid rgb(255,213,52); 
     }
 
   </style> 
