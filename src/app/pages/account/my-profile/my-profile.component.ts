@@ -6,6 +6,31 @@ import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController } from '@ionic/angular';
+import { Course } from 'src/app/Model/course';
+import { EnrolledCourse } from 'src/app/Model/EnrolledCourse';
+import { MatTableDataSource } from '@angular/material/table';
+import {MatTableModule} from '@angular/material/table';
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  weight: number;
+  symbol: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+];
+
+
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
@@ -13,17 +38,28 @@ import { LoadingController } from '@ionic/angular';
 })
 export class MyProfileComponent implements OnInit {
 
-  color = 'primary';
-  mode = 'determinate';
-  value = 50;
+ // displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource = ELEMENT_DATA;
 
-
+  available_course: Course [] = [];
+  enrolled_courses: EnrolledCourse[] =[];
+  courseDetails: Course[]=[];
   user = {} as StudentInfo;
   loggedIn: boolean = false;
   isEdit : boolean = false;
+
+num:number = 0;
+  showEnrolledCourses:boolean;
+  showAvailableCourses:boolean;
   studentAccount: StudentClass;
   updateUserForm: FormGroup;
- validation_messages = {
+ 
+  displayedColumns: string[] = ['position','numberStudentsErrolled', 'name', 'category', ];
+
+  courses: Course[] = [];
+  coursesDataSource: MatTableDataSource<Course>;
+ 
+  validation_messages = {
     'firstname': [
       { type: 'required', message: 'Name is required.' },
     ],
@@ -36,7 +72,6 @@ export class MyProfileComponent implements OnInit {
       { type: 'maxlength', message: 'Phone number must not exceed 10 numbers.' }, 
     ],
   };
-
    constructor(public fb: FormBuilder,
     private dbs: StudentService,
     public loadingCtrl: LoadingController,
@@ -56,12 +91,33 @@ export class MyProfileComponent implements OnInit {
           Validators.maxLength(10)
         ]))
       }); 
+      this.showEnrolledCourses = false;
+      this.showAvailableCourses = false;
     }
     ngOnInit() {
+      this.getCourses();
+      this.getEnrolledCourses();
       this.updateUserForm.reset();
-      this.setUserAccount();
+      this.setUserAccount(); 
+      
     }
-    setUserAccount(){
+
+ display(){
+  if(this.showEnrolledCourses){
+    this.showEnrolledCourses = false;
+    this.showAvailableCourses = true;
+    console.log(this.showEnrolledCourses," Showing" );
+  }
+  else{
+    this.showEnrolledCourses = true;
+    this.showAvailableCourses = false;
+    console.log(this.showEnrolledCourses," Showing" );
+  }
+ }   
+
+
+
+setUserAccount(){
    let userID = firebase.auth().currentUser.uid.toString();
    this.asf.collection("Student").doc(userID).valueChanges().subscribe(data =>{   
     // set student data      
@@ -71,7 +127,6 @@ export class MyProfileComponent implements OnInit {
     this.user.phone = data["phone"];
     this.user.gender = data["gender"];
     this.user.email =  data["email"];
-
     this.studentAccount.overloadStudent(
       this.user.studentId,
       this.user.firstname,
@@ -101,9 +156,26 @@ keyPress(event: any) {
     event.preventDefault();
   }
 }
+getEnrolledCourses(){  
+  let userID = firebase.auth().currentUser.uid.toString();
+  this.dbs.getEnrolledCourses(userID).subscribe(data => {
+    this.enrolled_courses = data.map(e => {
+      return{
+        id: e.payload.doc.id,
+        ... e.payload.doc.data() as EnrolledCourse
+      } as EnrolledCourse
+    })
+    
+  });
+}
+getCourses(){
+  this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(storeItems =>{
+    this.available_course = storeItems;
+    this.coursesDataSource = new MatTableDataSource(this.available_course);
 
-async presentLoading() {
-  
+  })
+}
+async presentLoading() { 
   const loader = this.loadingCtrl.create({
     message: "Updating user information....",
   });

@@ -1,6 +1,221 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Student Profile </ion-title>
+    
+    <ion-buttons slot="end">
+     
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<div style="background-color: white;">
 
+  <ion-grid style="margin-bottom: 10px;">
+    <ion-row>
+
+      <ion-col size="12">
+
+        <ion-row>
+          <ion-col size="2" style="text-align: center;">
+            <ion-avatar style="height: 100px; width: 100px; margin: auto;">
+              <img src="../../../assets/img/profile/pp.jpg">
+            </ion-avatar>
+            <ion-button color="dark" fill = "solid" expand="block">
+              <ion-icon name="camera"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="8" *ngIf="!isEdit; else elseBlock">
+            <h2> <ion-icon size="small" name="person"> </ion-icon> {{studentAccount.getName() | uppercase}} {{studentAccount.getSurname() | uppercase}}  </h2>
+            <h2> <ion-icon size="small" name="call"> </ion-icon> {{studentAccount.getPhone()}}</h2>
+            <h3><ion-icon size="small" name="mail"> </ion-icon> {{studentAccount.getEmail()}}</h3>
+            <ion-label><strong>Gender:</strong>
+              {{studentAccount.getGender() | uppercase}}
+            </ion-label>
+            <!-- <div>
+              <ion-icon size="large" name="logo-facebook"></ion-icon><ion-icon size="large" name="logo-google"></ion-icon><ion-icon size="large" name="logo-linkedin"></ion-icon>
+            </div> -->
+          </ion-col>
+          <ion-col *ngIf="!isEdit;">
+            <ion-button color="warning" (click)="this.isEdit = true">Update</ion-button>  
+          </ion-col>
+        </ion-row>
+        <div>
+            <ion-row>
+
+              <ion-col size="6"  >
+                <ion-card  class="f-card" (click)="display()"color ="warning" button style="text-align: center;" >
+                  <ion-card-header>
+                    <ion-card-title>Enrolled Courses</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h2>{{enrolled_courses.length}}</h2>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col size="6">
+                <ion-card  class="f-card" (click)="display()" color ="warning" button style="text-align: center;"  >
+                  <ion-card-header>
+                    <ion-card-title>Available Courses</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h2>{{available_course.length}}</h2>
+                  </ion-card-content>
+
+                </ion-card>
+              </ion-col>
+
+      </ion-row>      
+          </div>
+      </ion-col>
+    </ion-row>
+      <ion-row #elseBlock *ngIf="isEdit" justify-content-center class="ion-align-self-center"> 
+        <ion-col size="4" offset="4">
+          <ion-label>Edit Information</ion-label>
+                <ion-list lines="full">
+                 <form [formGroup]="updateUserForm" (ngSubmit)="updateForm()">
+         <ion-item>
+           <ion-label position="floating">First Name</ion-label>
+           <ion-input formControlName="firstname" placeholder="{{studentAccount.getName()}}" type="text" required></ion-input>
+         </ion-item>
+         <div class="error-container">
+           <ng-container *ngFor="let validation of validation_messages.firstname">
+             <div class="error-message" *ngIf="updateUserForm.get('firstname').hasError(validation.type) && (updateUserForm.get('firstname').dirty || updateUserForm.get('firstname').touched)">
+               <ion-icon name="information-circle-outline"></ion-icon>
+               <span>{{ validation.message }}</span>
+             </div>
+           </ng-container>
+         </div>
+         <ion-item>
+           <ion-label position="floating">Last Name</ion-label>
+           <ion-input formControlName="lastname" placeholder="{{studentAccount.getSurname()}}"  type="text" required>
+           </ion-input>
+         </ion-item>
+         <div class="error-container">
+           <ng-container *ngFor="let validation of validation_messages.lastname">
+             <div class="error-message" *ngIf="updateUserForm.get('lastname').hasError(validation.type) && (updateUserForm.get('lastname').dirty || updateUserForm.get('lastname').touched)">
+               <ion-icon name="information-circle-outline"></ion-icon>
+               <span>{{ validation.message }}</span>
+             </div>
+           </ng-container>
+         </div>
+   
+         <ion-item>
+           <ion-label position="floating">Mobile</ion-label>
+           <ion-input (keypress)="keyPress($event)" formControlName="phone" placeholder="{{studentAccount.getPhone()}}"  type="text"required>
+           </ion-input>
+
+         </ion-item>
+         <div class="error-container">
+           <ng-container *ngFor="let validation of validation_messages.phone">
+             <div class="error-message" *ngIf="updateUserForm.get('phone').hasError(validation.type) && (updateUserForm.get('phone').dirty || updateUserForm.get('phone').touched)">
+               <ion-icon name="information-circle-outline"></ion-icon>
+               <span>{{ validation.message }}</span>
+             </div>
+           </ng-container>
+ </div>
+         <ion-row>
+              <ion-col>
+             <ion-button fill="solid"  color="medium" shape="full" (click)="isEdit = false" expand="block">
+               Cancel
+             </ion-button>
+           </ion-col>
+           <ion-col>
+             <ion-button [disabled]="!updateUserForm.valid" type="submit" color="success" shape="full" expand="block">Update Info</ion-button>
+             <div class="error-container" *ngIf="submitError">
+               <div class="error-message">
+                 <ion-icon name="information-circle-outline"></ion-icon>
+                 <span>{{ submitError }}</span>
+               </div>
+             </div>
+           </ion-col>
         
-            <div *ngIf="studentAccount" class="row container d-flex justify-content-center">
+         </ion-row>
+                </form>
+           </ion-list>
+       </ion-col> 
+       
+      </ion-row> 
+      
+      <ion-row *ngIf ="showEnrolledCourses;" >
+        <ion-col size ="12">
+          <div *ngFor="let course of available_course;" >
+            <div *ngFor = "let enrol of enrolled_courses">
+              <div *ngIf = "course.id == enrol.course_id">
+
+            <mat-card  class="fcourse-card" style=" padding: 0px;" >
+               <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+                <ion-label style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Enrolled</ion-label>
+        
+               <mat-card-content style="margin: 10px;">
+                 <a   class="course-link">Learn {{course.name}}</a>
+                 <p>{{course.category}}</p>
+                 
+                   <ion-row>
+                     <ion-col size ="8"> 
+                       <ion-icon color="warning" name="star"></ion-icon>
+                       <ion-icon color="warning" name="star"></ion-icon>
+                       <ion-icon color="warning" name="star"></ion-icon>
+                       <ion-icon name="star-outline"></ion-icon>
+                       <ion-icon name="star-outline"></ion-icon>
+                     </ion-col>
+                        <ion-col    size ="4" class="ion-align-self-end">
+                         <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                       </ion-col>
+                   </ion-row>
+                   
+                   
+               </mat-card-content>  
+             </mat-card>
+
+            </div>
+          </div>
+        </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf ="showAvailableCourses" >
+        <ion-col size ="12">
+          <div *ngFor="let course of available_course;" >
+            <mat-card  class="fcourse-card" style=" padding: 0px;" >
+               <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+                <ion-label style="position: absolute; z-index: 10; top: 55%; left: 0%; background-color: #ffd534; color: black; border-top-right-radius: 15px; border-bottom-right-radius: 15px; padding: 4px; padding-right: 6px;" >Available</ion-label>
+        
+               <mat-card-content style="margin: 10px;">
+                 <a   class="course-link">Learn {{course.name}}</a>
+                 <p>{{course.category}}</p>
+                 
+                   <ion-row>
+                     <ion-col size ="8"> 
+                       <ion-icon color="warning" name="star"></ion-icon>
+                       <ion-icon color="warning" name="star"></ion-icon>
+                       <ion-icon color="warning" name="star"></ion-icon>
+                       <ion-icon name="star-outline"></ion-icon>
+                       <ion-icon name="star-outline"></ion-icon>
+                     </ion-col>
+                        <ion-col    size ="4" class="ion-align-self-end">
+                         <ion-label><strong> {{course.price | currency: "R"}} </strong></ion-label>
+                       </ion-col>
+                   </ion-row>
+                   
+                   
+               </mat-card-content>
+               
+             </mat-card>
+           
+        
+        </div>
+
+        </ion-col>
+      </ion-row>
+
+  </ion-grid>
+</div>   
+
+
+
+
+           <!-- <div *ngIf="studentAccount" class="row container d-flex justify-content-center">
               <div class="col-xl-6 col-md-12">
                   <div class="card user-card-full">
   
@@ -131,7 +346,7 @@
             </ion-row> 
        </div>
    </div> 
-  </div>
+            </div>  -->
    
 
               

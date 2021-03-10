@@ -158,5 +158,16 @@
 .shadow-none {
     box-shadow: none!important;
 }
-      
-      
+     
+.f-card{
+  border-radius: 5px;
+}
+
+.f-card:hover{
+  border: 1px solid #080808;
+  transition-property: border;
+  transition-duration: 0.5s;
+}
+table {
+  width: 100%;
+}

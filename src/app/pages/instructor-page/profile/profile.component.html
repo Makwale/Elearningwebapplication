@@ -1,219 +1,175 @@
-<mat-card>
-  <mat-card-title>Profile</mat-card-title>
-  <mat-card-content class="user-detail">
-    <div class="user-image">
-      <img src="http://nicesnippets.com/demo/up-profile.jpg">
-    </div>
-  </mat-card-content>
-</mat-card>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Instructor Profile </ion-title>
+    
+    <ion-buttons slot="end">
+     
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<div style="background-color: white;">
 
+  <ion-grid style="margin-bottom: 10px;">
+    <ion-row>
 
+      <ion-col size="12">
 
-<ion-card>
-  <mat-card>
-    <div class="profile-main">
-      <div class="profile-header">
-        <div class="user-detail">
-          <div class="user-image">
-            <img src="http://nicesnippets.com/demo/up-profile.jpg">
+        <ion-row >
+
+          <ion-col size="2" style="text-align: center;">
+            <ion-avatar style="height: 100px; width: 100px; margin: auto;">
+              <img src="../../../assets/img/profile/pp.jpg">
+            </ion-avatar>
+          </ion-col>
+
+          <ion-col size="8">
+            <h1>Emmanuel Mametja</h1>
+            <ion-label>Software developer</ion-label> 
+            <div>
+
+              <ion-icon size="large" name="logo-facebook"></ion-icon><ion-icon size="large" name="logo-google"></ion-icon><ion-icon size="large" name="logo-linkedin"></ion-icon>
+            </div>
+          </ion-col>
+        </ion-row>
+        
+
+        <div>
+            <ion-row>
+
+              <ion-col size="6">
+                <ion-card button style="text-align: center;" >
+                  <ion-card-header>
+                    <ion-card-title>Enrolled Students</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h2>{{students.length}}</h2>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+
+              <ion-col size="6">
+                <ion-card button style="text-align: center;"  >
+                  <ion-card-header>
+                    <ion-card-title>Courses</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <h2>{{courses.length}}</h2>
+                  </ion-card-content>
+
+                </ion-card>
+              </ion-col>
+
+      </ion-row>
+
+            <mat-tab-group mat-align-tabs="start">
+              <mat-tab label="Enrolled Students">
+                
+                <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 30px;"></mat-paginator>
+                
+                <table style="margin-left: 5px; margin-right: 0px; width: 98%;" mat-table [dataSource]="studentDataSource" class="mat-elevation-z8" matSort>
+              
+                  
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="studentId">
+                    <th mat-header-cell *matHeaderCellDef > Student Id</th>
+                    <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+                  </ng-container>
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="firstname">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+                  </ng-container>
+                
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="lastname">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="gender" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
+                    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef> Gender </th>
+                    <td mat-cell *matCellDef="let element"> 
+                      {{element.phone}}
+                    </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> 
+                      {{element.email}}
+                    </td>
+                  </ng-container>
+              
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsStudents"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsStudents;"></tr>
+                
+                </table>              
+              
+              </mat-tab>
++
+3               <mat-tab label="Courses">
+                
+                <ion-row>
+                  <ion-col size="4">
+                    
+                    <ion-input  style="background-color: white; border: 1px solid blue; border-radius: 20px;" #courseid placeholder="Assign a course by entering course id">
+                      <ion-button (click)="assignCourse(courseid.value)" shape="round" size="small" fill="solid" slot="start"><ion-icon name="add"></ion-icon></ion-button>
+                    </ion-input>
+                    <!-- <ion-button shape="round" size="small" fill="solid"><ion-icon name="add"></ion-icon></ion-button> -->
+                  </ion-col>
+                  
+                  <ion-col size="8">
+                    <mat-paginator [pageSizeOptions]="[10, 15]" showFirstLastButtons style="margin-right: 10px;"></mat-paginator>
+
+                  </ion-col>
+                </ion-row>
+                <table style="margin-left: 5px; margin-right: 0px; width: 98%; margin-bottom: 60px;" mat-table [dataSource]="coursesDataSource" class="mat-elevation-z8" matSort>
+              
+                  
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef > Id </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                  </ng-container>
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  </ng-container>
+                
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+                    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="numberStudentsErrolled" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No Students Enrolled </th>
+                    <td mat-cell *matCellDef="let element"> {{element.numberStudentsErrolled}} </td>
+                  </ng-container>
+              
+                  
+              
+                
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsCourses"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsCourses;"></tr>
+                
+                </table>
+              
+                </mat-tab>
+                </mat-tab-group>
+              
           </div>
-          <div class="user-data">
-            <h2>Smith Alexander</h2>
-            <span class="post-label">Admin</span>
-            <span class="post-label">Speaker</span>
-            <span class="post-label">AMA</span>
-            <p>Founder and CEO at <strong>NewSpot</strong><br>
-            <i class="fa fa-map-marker" aria-hidden="true"></i>  Boston, MA, United States
-            </p>
-          </div>
-          <div class="social-icons">
-            <i class="fa fa-facebook"></i>
-            <i class="fa fa-twitter"></i>
-            <i class="fa fa-linkedin"></i>
-            <i class="fa fa-google"></i>
-            <i class="fa fa-instagram"></i>
-            <a href="#" type="button" class="msg-btn"><i class="fa fa-envelope-o" aria-hidden="true"></i>Send Message</a>
-          </div>
-        </div>
-        <div class="tab-panel-main">
-          <ul class="tabs">
-            <li class="tab-link current" data-tab="Basic-detail">Basic Detail</li>
-            <li class="tab-link" data-tab="Edu-detail">Educational Detail</li>
-            <li class="tab-link" data-tab="Portfolio">Portfolio</li>
-          </ul>
-          <div id="Basic-detail" class="tab-content current">
-            <div class="skill-box">
-              <ul>
-              <li><strong>My Core Skills:</strong></li>
-              <li>INBOUND MARKETING<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li>ENTERPRENEURSHIP<i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></li>
-              <li>GROWTH MARKETING<i class="fa fa-star" aria-hidden="true"></i></li>
-              </ul>		
-            </div>
-            <div class="bio-box">
-              <div class="heading">
-                <p>Professional Bio
-                <label>10 Year Experience</label></p>
-              </div>
-              <div class="desc">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-              </div>
-            </div>
-            <div class="detail-box">
-              <p>Detail</p>
-              <ul class="ul-first">
-                <li>Birth date</li>
-                <li>City</li>
-                <li>Country</li>
-                <li>Contact No</li>
-              </ul>
-              <ul class="ul-second">
-                <li>8 March 1997</li>
-                <li>Jamanagar</li>
-                <li>California</li>
-                <li>9900990087</li>
-              </ul>
-            </div>
-          </div>
-          <div id="Edu-detail" class="tab-content">
-            <div class="Edu-box-main">
-               <h2><i class="fa fa-graduation-cap" aria-hidden="true"></i> Education</h2>
-               <div class="Edu-box">
-                 <h5><span>Graphic designer</span> <br>
-                   2005 - 2007 | Infoway Corporation</h5>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-               </div>
-               <div class="Edu-box">
-                 <h5><span>Web designer</span> <br>
-                   2007 - 2009 | Light Corporation</h5>
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-               </div>
-            </div>
-          </div>
-          <div id="Portfolio" class="tab-content">
-            <div class="portfolio-box">
-              <div class="portfolio-img-box">
-                <h3>Web Design</h3>
-                <img src="http://nicesnippets.com/demo/up-web-design.jpg">
-              </div>
-              <div class="portfolio-img-box">
-                <h3>Web development</h3>
-                <img src="http://nicesnippets.com/demo/up-web-development.png">
-              </div>
-              <div class="portfolio-img-box">
-                <h3>SEO</h3>
-                <img src="http://nicesnippets.com/demo/up-seo.jpg">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style="clear: both;"></div>
-    </div>
-
-
-  </mat-card>
-
-  <!-- <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-mat-8">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title">Edit Profile</h4>
-                        <p class="card-category">Complete your profile</p>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="row">
-                                <div class="col-mat-5">
-                                  <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Company (disabled)" disabled>
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-mat-3">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Username">
-                                    </mat-form-field>
-                                </div>
-                                <div class="col-mat-4">
-                                    <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Email address" type="email">
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-mat-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Fist Name" type="text">
-                                  </mat-form-field>
-                                </div>
-                                <div class="col-mat-6">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Last Name" type="text">
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-mat-12">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Adress" type="text">
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-mat-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="City" type="text">
-                                  </mat-form-field>
-                                </div>
-                                <div class="col-mat-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Country" type="text">
-                                  </mat-form-field>
-                                </div>
-                                <div class="col-mat-4">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Postal Code" type="text">
-                                  </mat-form-field>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-mat-12">
-                                  <label>About Me</label>
-                                  <mat-form-field class="example-full-width">
-                                     <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                   </mat-form-field>
-                                    
-                                </div>
-                            </div>
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
-                            <div class="clearfix"></div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-mat-4">
-                <div class="card card-profile">
-                    <div class="card-avatar">
-                        <a href="javascript:void(0)">
-                            <img class="img" src="./assets/img/faces/marc.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                        <h4 class="card-title">Alec Thompson</h4>
-                        <p class="card-description">
-                            Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                        </p>
-                        <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div> -->
-</ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
