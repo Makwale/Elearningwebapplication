@@ -14,7 +14,8 @@ import { LoadingController } from '@ionic/angular';
 })
 export class MainPage implements OnInit {
   loginStatus: boolean = false;
-  isStudent:boolean;
+
+  isStudent: boolean = true;
   userAccount: Account;
   constructor(public accountService: AccountService,
     public loadingCtrl: LoadingController,
