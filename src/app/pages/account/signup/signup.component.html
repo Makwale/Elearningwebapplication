@@ -1,6 +1,6 @@
 
 <ion-card >
-    <div style="width: 50%; margin: auto; text-align: center; background-color: white; margin-top: 40px; padding-top: 5px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
+    <div id="login-container" style="padding-bottom: 100px;">
 
         <h2>Welcom to Elearning Accademy</h2>
         <h4>Sign up and start learning</h4>
@@ -8,8 +8,8 @@
         <ion-list class="inputs-list" lines="full">      
               <!-- First and Last Name -->
               <ion-row> 
-                <ion-col>
-                  <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                <ion-col size-xs="12" size-md="6">
+                  <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">First Name</ion-label>
                     <ion-input type="text" placeholder="John" formControlName="name" clearInput autocapitalize="off" inputmode="text" ></ion-input>
                   </ion-item>      
@@ -22,8 +22,8 @@
                     </ng-container>
                   </div>
                 </ion-col>
-                <ion-col>
-                  <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                <ion-col size-xs="12" size-md="6">
+                  <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">Last Name</ion-label>
                     <ion-input type="text" placeholder="Dou" formControlName="surname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
                   </ion-item>
@@ -41,7 +41,7 @@
               <!-- Phone Number and Gender -->
               <ion-row>
                 <ion-col>
-                  <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">Phone number</ion-label>
                     <ion-input  (keypress)="keyPress($event)" type="text" placeholder="+271 123 4567" formControlName="phone" clearInput autocapitalize="off" inputmode="numbers" ></ion-input>
           </ion-item>  
@@ -55,7 +55,7 @@
           </div>
                 </ion-col>
                 <ion-col>
-                  <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">Gender</ion-label>
                     <ion-select formControlName="gender" placeholder="Select gender">
                       <ion-select-option  value="female">Female</ion-select-option>
@@ -76,7 +76,7 @@
               <!-- Email Address -->
               <ion-row>
                 <ion-col>
-                  <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                  <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked" >Email Address</ion-label>
                     <ion-input #email type="email" placeholder="you@example.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
                   </ion-item>
@@ -92,7 +92,7 @@
               </ion-row>
               <!-- Password -->
               <ion-row>
-                <ion-col> <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
+                <ion-col> <ion-item class="ion-no-margin login-input" >
                   <ion-label position="stacked" >Password</ion-label>
                   <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
                 </ion-item>
@@ -106,7 +106,7 @@
                 </div></ion-col>
               </ion-row>
         </ion-list>
-        <ion-button class="sign-up-btn" type="submit" expand="block" shape="round" [disabled]="!signUpForm.valid">Sign Up</ion-button>
+        <ion-button class="sign-up-btn" type="submit" expand="block" shape="round" [disabled]="!signUpForm.valid" size="large" color="warning">Sign Up</ion-button>
         <div class="error-container" *ngIf="submitError">
           <div class="error-message">
             <ion-icon name="information-circle-outline"></ion-icon>

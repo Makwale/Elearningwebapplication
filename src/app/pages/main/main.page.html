@@ -40,7 +40,9 @@
           </mat-menu>
 
           <button style="margin-right: 10px" id="menu-button" mat-icon-button (click)="closedsidenav.toggle()" >
-            <ion-icon size="large" name="menu" color="warning"></ion-icon>
+            <ion-icon *ngIf="!closedsidenav.opened" size="large" name="menu" color="warning"></ion-icon>
+            <ion-icon *ngIf="closedsidenav.opened" size="large" color="warning"   name="close"></ion-icon>
+
           </button>
 
       
@@ -54,34 +56,34 @@
   
   <mat-sidenav-container class="example-container" >
     
-    <mat-sidenav #sidenav mode="side" fixedInViewport="true" opened fixedTopGap="80" id="sideNav">
+    <mat-sidenav #sidenav mode="side" fixedInViewport="true" opened fixedTopGap="80" id="sideNav" >
       <ion-item color="ourtheme" button="true" routerLink="home">
-        <mat-icon>home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+        <mat-icon slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routerLink="featuredcourses">
-        <mat-icon>domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
+        <mat-icon slot="start">domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true"  routerLink="latestcourses">
-        <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true"  routerLink="popularcourses">
-        <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routerLink="categories">
-        <mat-icon>book_outline</mat-icon><ion-label class="pagestabs">Categories</ion-label>
+        <mat-icon slot="start">book_outline</mat-icon><ion-label class="pagestabs">Categories</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="courseinrolled">
-        <mat-icon>library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
+        <mat-icon slot="start">library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
       </ion-item>
   
   
       <ion-item color="ourtheme" button="true" routeroulet routerLink="popularinstructors">
-        <mat-icon >people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
+        <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
       </ion-item>
   
      
@@ -93,11 +95,11 @@
       
   
       <ion-item color="ourtheme" button="true" routerLink="about">
-        <mat-icon >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
+        <mat-icon slot="start" >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routerLink="contacts">
-        <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
+        <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
       </ion-item>
 
 
@@ -105,67 +107,61 @@
 
     <!--Side nave that is closed-->
 
-    <mat-sidenav #closedsidenav mode="over" fixedInViewport="true" opened="false" disableClose fixedTopGap="80" id="closedsideNav">
+    <mat-sidenav #closedsidenav mode="over" fixedInViewport="true" opened="false" disableClose fixedTopGap="80" id="closedsideNav" style="border-top-right-radius: 25px; background-color: #080110;">
       <ion-item color="ourtheme" button="true" routerLink="home">
-        <mat-icon>home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
+        <mat-icon  slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routerLink="featuredcourses">
-        <mat-icon>domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
+        <mat-icon slot="start" >domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true"  routerLink="latestcourses">
-        <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true"  routerLink="popularcourses">
-        <mat-icon>ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
+        <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Popular Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routerLink="categories">
-        <mat-icon>book_outline</mat-icon><ion-label class="pagestabs">Categories</ion-label>
+        <mat-icon slot="start">book_outline</mat-icon><ion-label class="pagestabs">Categories</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="courseinrolled">
-        <mat-icon>library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
+        <mat-icon slot="start">library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
       </ion-item>
   
   
       <ion-item color="ourtheme" button="true" routeroulet routerLink="popularinstructors">
-        <mat-icon >people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
+        <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routeroulet routerLink="instructor-page">
-        <mat-icon >person</mat-icon><ion-label class="pagestabs">Instructors</ion-label>
+        <mat-icon slot="start">person</mat-icon><ion-label class="pagestabs">Instructors</ion-label>
       </ion-item>
 
       
       <ion-item *ngIf ="loginStatus " color="ourtheme"  button="true" routerLink="account">
-        <mat-icon >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+        <mat-icon slot="start">person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
       </ion-item>
       
   
       <ion-item color="ourtheme" button="true" routerLink="about">
-        <mat-icon >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
+        <mat-icon slot="start">infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true" routerLink="contacts">
-        <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
+        <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
       </ion-item>
 
-      <ion-item color="ourtheme" button="true" routerLink="contacts">
-        <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Sign in/Sign out</ion-label>
+      <ion-item *ngIf="!loginStatus" color="ourtheme" button="true" routerLink="account">
+        <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Sign in/Sign Up</ion-label>
       </ion-item>
 
-      <ion-item color="ourtheme" button="true" routerLink="contacts">
-        <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Sign in/Sign out</ion-label>
-      </ion-item>
 
-      <ion-item color="ourtheme" button="true" routerLink="contacts">
-        <mat-icon >phone_outline</mat-icon><ion-label class="pagestabs">Sign in/Sign out</ion-label>
-      </ion-item>
       </mat-sidenav>
-    <mat-sidenav-content hasBackdrop="true" id="side-nave-content"  >
+    <mat-sidenav-content hasBackdrop="true" id="side-nave-content" >
       
         <router-outlet></router-outlet>
   

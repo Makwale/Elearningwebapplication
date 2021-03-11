@@ -20,6 +20,7 @@ import { StudentService } from 'src/app/services/Student-Service/student.service
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
+  index = 0;
   hasSignedUp: boolean;
   loggedIn: boolean = false;
   userAccount:Account;
