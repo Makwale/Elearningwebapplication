@@ -14,8 +14,6 @@ import { LoadingController } from '@ionic/angular';
 })
 export class MainPage implements OnInit {
   loginStatus: boolean = false;
-
-  isStudent: boolean = true;
   userAccount: Account;
   constructor(public accountService: AccountService,
     public loadingCtrl: LoadingController,
@@ -51,7 +49,7 @@ export class MainPage implements OnInit {
 async presentLoading() {
   const loader = this.loadingCtrl.create({
     message: "signing out....",
-    duration: 3000,
+    duration: 5000,
   });
   (await loader).present();
 }
