@@ -14,11 +14,14 @@ selectTabs ="recent";
 videoURL;
  lessonList: Lesson[];
  tempLessonList: Lesson[] = [];
+ course_name;
   constructor(public activageRoute: ActivatedRoute,public dbs: DatabaseService, private router: Router) { }
 
   ngOnInit() {
     
     this.activageRoute.queryParams.subscribe(data =>{
+      this.course_name = data["name"];
+      
       this.lessonList = [];
        this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == data["course_id"]);
 
@@ -69,8 +72,9 @@ videoURL;
     return false;
   }
 
-  navigateToQuiz(){
-    this.router.navigateByUrl("quiz")
+  navigateToQuiz(lesson_id){
+    
+    this.router.navigate(["quiz"], {queryParams: {"lesson_id": lesson_id}})
   }
 
 }

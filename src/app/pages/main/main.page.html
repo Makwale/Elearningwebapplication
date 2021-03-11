@@ -85,6 +85,10 @@
       <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="courseinrolled">
         <mat-icon slot="start">library_books</mat-icon><ion-label class="pagestabs">Enrolled Courses</ion-label>
       </ion-item>
+
+      <ion-item color="ourtheme" *ngIf ="loginStatus" button="true" routerLink="quizhistory">
+        <mat-icon slot="start">library_books</mat-icon><ion-label class="pagestabs">Quiz History</ion-label>
+      </ion-item>
   
   
       <ion-item color="ourtheme" button="true" routeroulet routerLink="popularinstructors">
@@ -92,12 +96,12 @@
       </ion-item>
   
       <ion-item *ngIf ="loginStatus && !isStudent" color="ourtheme" button="true" routeroulet routerLink="instructor-page">
-        <mat-icon >person</mat-icon><ion-label class="pagestabs">Instructors</ion-label>
+        <mat-icon slot="start">person</mat-icon><ion-label class="pagestabs">Instructors</ion-label>
       </ion-item>
 
       
       <ion-item *ngIf ="loginStatus && isStudent" color="ourtheme"  button="true" routerLink="account">
-        <mat-icon >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+        <mat-icon slot="start" >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
       </ion-item>
       
   

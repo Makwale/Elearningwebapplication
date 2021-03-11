@@ -84,6 +84,15 @@ export const routes: Routes = [
           path: 'quizresults',
           loadChildren: () => import('./pages/quizresults/quizresults.module').then( m => m.QuizresultsPageModule)
         },
+        {
+          path: 'quizhistory',
+          loadChildren: () => import('./pages/quizhistory/quizhistory.module').then( m => m.QuizhistoryPageModule)
+        },
+        {
+          path: 'quizmarks',
+          loadChildren: () => import('./pages/quizmarks/quizmarks.module').then( m => m.QuizmarksPageModule)
+        },
+      
     ]
   },
   {
@@ -156,6 +165,9 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
+  
+  
+
   
 
 

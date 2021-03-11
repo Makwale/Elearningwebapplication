@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Course } from 'src/app/Model/course';
 import { EnrolledCourse } from 'src/app/Model/enrolledcourse.model';
@@ -12,18 +15,31 @@ import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
   styleUrls: ['./courseinrolled.page.scss'],
 })
 export class CourseinrolledPage implements OnInit {
+
+  displayedColumns: string[] = ['id', 'name', 'category', 'price', 'actions'];
+
+  courses: Course[] = [];
+
   enrolledCourses: Course[] = [];
 
   listCourses: Course[] = [];
+
   tempVar: Course[] = [];
+
+  dataSource: MatTableDataSource<Course>;
+  
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private Router: Router , private dbs: DatabaseService) { }
 
-  lessons(course_id: string) {
-    this.Router.navigate(["leasons"], {queryParams: {"course_id": course_id}}); 
+  lessons(course_id: string, name: string) {
+    this.Router.navigate(["leasons"], {queryParams: {"course_id": course_id, "name": name}}); 
   }
   ngOnInit() {
    this.enrolledCourses = this.dbs.coursesList; 
+   this.getCoursesList();
   }
 
   getCoursesList(){
@@ -39,7 +55,10 @@ export class CourseinrolledPage implements OnInit {
     }
 
     this.enrolledCourses = this.tempVar;
-
+    console.log(this.enrolledCourses);
+    this.dataSource = new MatTableDataSource(this.enrolledCourses);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     return this.enrolledCourses;
   }
 
@@ -52,6 +71,12 @@ export class CourseinrolledPage implements OnInit {
 
     return false;
   }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
 
  
 

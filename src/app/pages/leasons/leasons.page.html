@@ -1,7 +1,9 @@
 <ion-header>
     <ion-toolbar>
-        <h3 style="margin-left: 7px;">Course Name</h3>
-
+        <h2 slot="end"  style="margin-right: 7px;">{{course_name}}</h2>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
@@ -53,7 +55,7 @@
         </mat-tab>
         <mat-tab label="Quizzes">
             <ion-list>
-                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="navigateToQuiz()">
+                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="navigateToQuiz(lesson.id)">
                    
                     <ion-label>
                        {{lesson.name}}

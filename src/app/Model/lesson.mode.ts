@@ -12,6 +12,8 @@ export class Lesson{
     constructor(id: string, name: string, number: number, vidoeURL: string, docURL, date: Date, course_id){
         
         this.id = id;
+
+        this.name = name;
         
         this.videoURL = vidoeURL;
 
