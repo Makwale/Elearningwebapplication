@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionResults } from 'src/app/Model/questionresults.model';
+import { AccountService } from 'src/app/services/account.service';
+import { DatabaseService } from 'src/app/services/database.service';
 import { QuizserviceService } from 'src/app/services/quizservice.service';
 
 @Component({
@@ -13,7 +15,7 @@ export class QuizresultsPage implements OnInit {
   date = new Date();
   totalMarks: number = 0;
 
-  constructor(public qs: QuizserviceService) { }
+  constructor(public qs: QuizserviceService, private dbs: DatabaseService, private accountService: AccountService) { }
 
   ngOnInit() {
     this.questionResults = this.qs.questionResults;
@@ -23,6 +25,8 @@ export class QuizresultsPage implements OnInit {
         this.totalMarks = this.totalMarks + questionResult.marks;
       }
     }
+
+    this.dbs.saveQuizRestuls(this.qs.quiz.lesson_id, this.accountService.getAccount().getStudent().getStudentNumber() , this.date, this.totalMarks / this.qs.quiz.total_marks * 100);
 
   }
 

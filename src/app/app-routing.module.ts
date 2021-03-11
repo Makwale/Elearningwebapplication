@@ -73,6 +73,23 @@ export const routes: Routes = [
           path: 'studentannouncement',
           loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
         },
+        {
+          path: 'quiz',
+          loadChildren: () => import('./pages/quiz/quiz.module').then( m => m.QuizPageModule)
+        },
+        {
+          path: 'quizresults',
+          loadChildren: () => import('./pages/quizresults/quizresults.module').then( m => m.QuizresultsPageModule)
+        },
+        {
+          path: 'quizhistory',
+          loadChildren: () => import('./pages/quizhistory/quizhistory.module').then( m => m.QuizhistoryPageModule)
+        },
+        {
+          path: 'quizmarks',
+          loadChildren: () => import('./pages/quizmarks/quizmarks.module').then( m => m.QuizmarksPageModule)
+        },
+      
     ]
   },
   {
@@ -153,6 +170,15 @@ export const routes: Routes = [
     ]
   }
   
+  
+
+  
+
+
+  
+
+  
+
 ];
 
 @NgModule({

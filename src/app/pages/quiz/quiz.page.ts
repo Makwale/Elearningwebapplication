@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionResults } from 'src/app/Model/questionresults.model';
 import { Quiz } from 'src/app/Model/quiz.model';
 import { DatabaseService } from 'src/app/services/database.service';
@@ -28,20 +28,26 @@ export class QuizPage implements OnInit {
 
   duration : Date;
 
-  constructor(public dbs: DatabaseService, public qs: QuizserviceService, private router: Router) { }
+
+  constructor(public dbs: DatabaseService, public qs: QuizserviceService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
-    this.dbs.getQuiz().subscribe( data =>{
-      data.forEach(quizdata => {
-        let tempvar = quizdata.payload.doc.data();
-
-        this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"])
-
-        this.duration = new Date();
-        this.duration.setMinutes(tempvar["duration"]);
+    this.activatedRoute.queryParams.subscribe(data => {
+     
+      this.dbs.getQuiz(data["lesson_id"]).subscribe( data =>{
+        data.forEach(quizdata => {
+          let tempvar = quizdata.payload.doc.data();
+  
+          this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"])
+  
+          this.duration = new Date();
+          this.duration.setMinutes(tempvar["duration"]);
+        })
       })
     })
+
+    
   }
 
   

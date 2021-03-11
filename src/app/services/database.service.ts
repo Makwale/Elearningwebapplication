@@ -23,7 +23,8 @@ import { Announcement } from '../Model/announcement.model';
 })
 
 export class DatabaseService {
- 
+  
+  
   // Login user with email/password
 
   collectionNameStudent = 'Students';
@@ -126,13 +127,12 @@ export class DatabaseService {
 
     .snapshotChanges().subscribe( lessonsdata =>{
 
-      if(this.lessonsList.length > 0){
-        this.lessonsList.slice(0, this.lessonsList.length - 1);
-      }
-
       lessonsdata.forEach( lesson => {
-  
-        this.lessonsList.push(lesson.payload.doc.data() as Lesson);
+
+        this.lessonsList.push(new Lesson(lesson.payload.doc.id, 
+          lesson.payload.doc.data()["name"], lesson.payload.doc.data()["number"],
+          lesson.payload.doc.data()["videoURL"], lesson.payload.doc.data()["docURL"],
+          lesson.payload.doc.data()["date"], lesson.payload.doc.data()["course_id"]));
        
       })
       
@@ -357,8 +357,23 @@ export class DatabaseService {
     return false;
   }
 
-  getQuiz(){
-    return this.afs.collection("Quiz").snapshotChanges();
+  getQuiz(lesson_id){
+    return this.afs.collection("Quiz", ref => ref.where("lesson_id", "==", lesson_id)).snapshotChanges();
+  }
+
+  getQuizMarks(student_id) {
+    return this.afs.collection("QuizHistroy", ref => ref.where("student_id", "==", student_id)).snapshotChanges();
+  }
+
+  saveQuizRestuls(lesson_id, student_id ,date, marks) {
+    this.afs.collection("QuizHistroy").add({
+      lesson_id : lesson_id,
+      student_id: student_id,
+      date: date,
+      marks: marks
+    }).then(() => {
+      alert("Quiz results saved");
+    })
   }
   
  

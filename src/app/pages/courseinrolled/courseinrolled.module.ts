@@ -8,6 +8,12 @@ import { CourseinrolledPageRoutingModule } from './courseinrolled-routing.module
 
 import { CourseinrolledPage } from './courseinrolled.page';
 import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   imports: [
@@ -15,7 +21,13 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     IonicModule,
     CourseinrolledPageRoutingModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   declarations: [CourseinrolledPage]
 })
