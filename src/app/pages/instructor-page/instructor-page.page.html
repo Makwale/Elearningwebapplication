@@ -1,4 +1,8 @@
-<mat-tab-group *ngIf ="!loggedIn"  mat-align-tabs="center" mat-stretch-tabs [selectedIndex]="index">
+<ion-content *ngIf = "loggedIn">
+  <app-profile></app-profile>
+</ion-content>
+
+<mat-tab-group *ngIf ="!loggedIn"  mat-align-tabs="center" mat-stretch-tabs selectedIndex="0">
   <mat-tab>
     <ng-template mat-tab-label >
       <ion-icon name="log-in" size="large" class="ion-margin"></ion-icon>
@@ -14,6 +18,3 @@
     <app-signup></app-signup>
   </mat-tab>
 </mat-tab-group>
-<div *ngIf ="loggedIn">
-  <app-profile></app-profile>
-</div>

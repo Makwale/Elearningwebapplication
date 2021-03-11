@@ -37,11 +37,11 @@ import { ProfileComponent } from './profile/profile.component';
     AngularFireAuthModule,
     MatTableModule,
     InstructorPagePageRoutingModule,
-    AngularMaterialModule
-  ],
-  declarations: [InstructorPagePage,ProfileComponent,LoginComponent,SignupComponent
+    AngularMaterialModule,
+    MatIconModule,
 
   ],
+  declarations: [InstructorPagePage,ProfileComponent,LoginComponent,SignupComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class InstructorPagePageModule {}

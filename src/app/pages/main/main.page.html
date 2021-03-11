@@ -17,10 +17,7 @@
           <ion-button *ngIf="!loginStatus" color="warning" fill="solid"
             shape="round"  id="btnsignin"  routerLink = "account"
              aria-label="Example icon button with a vertical three dot icon">Sign In/Sign Up</ion-button>
-          
-          
-        
-          
+            
           <ion-button  fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">
             <ion-badge  style="position: absolute; left: 45%; top: 20%; border-radius: 50%; font-size: 2px; z-index: 10; color: red" color="danger" *ngIf="dbs.totalNewAnnouncement > 0">.</ion-badge>
             <ion-icon color="warning" name="notifications" style="font-size: x-large;">
@@ -42,10 +39,7 @@
           <button style="margin-right: 10px" id="menu-button" mat-icon-button (click)="closedsidenav.toggle()" >
             <ion-icon *ngIf="!closedsidenav.opened" size="large" name="menu" color="warning"></ion-icon>
             <ion-icon *ngIf="closedsidenav.opened" size="large" color="warning"   name="close"></ion-icon>
-
           </button>
-
-      
         </ion-buttons> 
    
   </ion-toolbar>
@@ -89,8 +83,8 @@
      
 
       
-      <ion-item *ngIf ="loginStatus" color="ourtheme"  button="true" routerLink="account">
-        <mat-icon >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
+      <ion-item *ngIf ="loginStatus" color="ourtheme"  routeroulet  button="true" routerLink="account">
+        <mat-icon slot="start">person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
       </ion-item>
       
   
