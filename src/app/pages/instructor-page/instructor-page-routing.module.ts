@@ -6,8 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '',component: InstructorPagePage },
-  // { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
-  { path: 'profile', component: ProfileComponent },
+  
 ]
 @NgModule({
   imports: [RouterModule.forChild(routes)],
