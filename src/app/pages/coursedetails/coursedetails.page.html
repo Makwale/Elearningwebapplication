@@ -4,17 +4,21 @@
       <ion-title>
           {{courseSelected.name}}
       </ion-title>
-      <ion-button fill="clear" size="small" slot="end" (click)="close()">
-          <ion-icon color="light" name="close"></ion-icon>
-      </ion-button>
+      <ion-buttons slot="end">
+        <ion-button vertically="bottom" fill="solid" color ="warning" size="medium" shape="round" (click)="enroll()">Enroll Now
+        </ion-button>
+
+        <ion-button fill="clear" size="small" slot="end" (click)="close()">
+            <ion-icon color="light" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="course">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="8">
-        <mat-tab-group>
+<ion-content class="course" style="padding: 5px;">
+ 
+        <mat-tab-group style="margin: 5px">
           <mat-tab label="Course Details">
               <h2 style="margin-top: 20px;">Introduction</h2>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque laoreet leo vulputate justo porta, a pellentesque sem molestie. Nunc tempus metus sed porta sollicitudin. Sed sed ligula nec purus vehicula congue at ac velit. Aenean interdum
@@ -277,25 +281,6 @@
           </mat-tab>
        </mat-tab-group>
 
-      </ion-col>
 
-      <ion-col size="4">
-          
-          <mat-card  style=" padding: 0px; padding-bottom: 10px; width: 85%; margin: auto;">
-            <img style="margin: auto;" mat-card-image [src]="courseSelected.imgURL">
-            <mat-card-content style="margin: 10px;">
-            <h5><b>{{courseSelected.name}}</b></h5>
-            <p>{{courseSelected.category}}</p>
-            <span class="prices" style="margin-left: 0px;">{{courseSelected.price | currency : 'R'}}</span>
-            <ion-button vertically="bottom" color ="warning" size="large" expand="block" shape="round" (click)="enroll()">Enroll Now
-            </ion-button>
-            
-            </mat-card-content>
-            
-        </mat-card>
-          
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
 </ion-content>

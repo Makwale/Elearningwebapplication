@@ -38,7 +38,6 @@ export class LatestcoursesPage implements OnInit {
     async courseDetails() {
       let modal = await this.modalCtrl.create({
       component: CoursedetailsPage,
-      cssClass: 'cart-modal'
     });
     modal.present();
   }

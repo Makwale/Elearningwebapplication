@@ -24,26 +24,69 @@ export class HomePage implements OnInit {
     init: true,
     initialSlide: 0,
     speed: 1000,
-    centeredSlides: true,
+    centeredSlides: false,
     centerInsufficientSlides: true,
     spaceBetween: 2,
     loop: true,
     autoplay:{
       delay: 5000
-    }
+    },
+    breakpoints: { 300: { 
+        slidesPerView: 1, 
+        
+      },
+      400: { 
+        slidesPerView: 2, 
+        spaceBetween: 2
+       
+      },
+      600: { 
+        slidesPerView: 3, 
+        spaceBetween: 2
+      },
+
+      700: { 
+        slidesPerView: 3, 
+        spaceBetween: 2
+      },
+      800: { 
+        slidesPerView: 4,
+        slidesPerGroup : 4, 
+        spaceBetween: 2
+      }
+
+     },
   };
   slideOpts2 = {
     init: true,
     initialSlide: 0,
     speed: 1500,
-    centeredSlides: true,
+    centeredSlides: false,
     centerInsufficientSlides: true,
     spaceBetween: 3,
     loop: true,
     autoplay:{
       delay: 10000
-    }
+    },
+    breakpoints: { 500: { 
+      slidesPerView: 1, 
+
+    },
+    700: { 
+      slidesPerView: 2, 
+      spaceBetween: 4,
+      slidesPerGroup : 2,
+      slidesPerGroupSkip: 2
+    },
+    
   }
+    
+  }
+
+
+
+
+
   featured_courses= [];
   latest_courses= [];
 
@@ -60,10 +103,6 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl("coursedetails");
   }
   ngOnInit(){
-    // Uncommend this code and use your email and password to test the application
-    // this.dbs.SignIn("makwale.em@gmail.com", "123456789").then( () => {
-    //   this.dbs.getStudentsAnnouncements();
-    // });
     
     this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
       this.featured_course = objects.splice(9,3);
@@ -84,8 +123,7 @@ export class HomePage implements OnInit {
   }
   async courseDetails() {
     let modal = await this.modalCtrl.create({
-    component: CoursedetailsPage,
-    cssClass: 'cart-modal'
+    component: CoursedetailsPage
   });
   modal.present();
 }     

@@ -16,7 +16,7 @@ import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 })
 export class CourseinrolledPage implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'category', 'price', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'actions'];
 
   courses: Course[] = [];
 
