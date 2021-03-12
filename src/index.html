@@ -88,6 +88,11 @@
       
       }
 
+      table {
+      width: 100%;
+      margin: auto;
+      }
+
       #main-content{
         width: 100%;
         padding-left: 0px;
@@ -144,7 +149,14 @@
         padding-left: 0px;
         margin: 0px;
         padding-right: 0px;
+
+        
       }
+
+      table {
+          width: 100%;
+          margin: auto;
+        }
 
       #latest-courses{
         
@@ -169,6 +181,11 @@
     @media screen and (min-width: 800px) {
         #menu-button{
           display: none;
+        }
+
+        table {
+          width: 85%;
+          margin: auto;
         }
 
         #side-nave-content{
@@ -290,7 +307,7 @@
       } 
 
       #main-content{
-        width: 78%;
+        width: 80%;
       }
       
       
@@ -467,6 +484,12 @@
       font-weight: 500;
     }
 
+    .popular-links:hover, .categories-links:hover{
+      color: #ffd534;
+      transition-property: color;
+      transition-duration: .3s;
+    }
+
     .categories-aside, .popular-aside{
       background-color: rgba(255, 255, 255, .9);
       width: 220px;
@@ -514,10 +537,7 @@
       font-size: larger ;
     }
 
-    table {
-      width: 85%;
-      margin: auto;
-    }
+  
 
     .mat-form-field {
       font-size: 14px;

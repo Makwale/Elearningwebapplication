@@ -14,7 +14,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class QuizmarksPage implements OnInit {
 
-  displayedColumns: string[] = ['id', 'date', 'marks'];
+  displayedColumns: string[] = [ 'date', 'marks'];
 
   lessonList: Lesson[];
 

@@ -15,7 +15,7 @@ export class QuizhistoryPage implements OnInit {
 
   
 
-  displayedColumns: string[] = ['id', 'name', 'category', 'actions'];
+  displayedColumns: string[] = [ 'name', 'actions'];
 
   courses: Course[] = [];
 
