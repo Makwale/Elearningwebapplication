@@ -124,7 +124,7 @@ export class QuizPage implements OnInit {
 timeOut(){
   if(this.displayTime <= 1 ){
     window.alert('We are done');
-    //this.done();
+    this.done();
   }
 }
 
