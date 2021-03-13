@@ -11,12 +11,11 @@
         <div *ngFor="let course of featured_course" >
           <mat-card class="fcourse-card" style=" padding: 0px;"
              [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
-           
+             <div class="image-cover"></div>
             <img style="margin: auto;" mat-card-image [src]="course.imgURL">
       
-            <ion-label *ngIf="course.numberStudentsErrolled < 1"  class="course-status" >Available</ion-label>
-            <ion-label *ngIf="course.numberStudentsErrolled > 0" class="course-status">Occupied</ion-label>
-
+            <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+            <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
       
              <mat-card-content style="margin: 10px;">
                <a   class="course-link">Learn {{course.name}}</a>

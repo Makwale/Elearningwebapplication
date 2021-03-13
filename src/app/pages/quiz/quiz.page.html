@@ -1,17 +1,17 @@
-<ion-header>
+<ion-header style="position: fixed;">
     <ion-toolbar>
         <ion-title>Quiz</ion-title>
 
         <ion-buttons slot="end" style=" width: 60%;" *ngIf="isStarted">
-            <ion-label slot="start"><span style="font-size: 25px; margin-left: 10px;"> &nbsp;{{displayTime}}</span> Minutes</ion-label>
-            <ion-label slot="end" style="margin-right: 50px; font-size: larger; margin-left: 330px;">Total Marks {{quiz.total_marks}}</ion-label>
+            <ion-label slot="start"><span style="font-size: 25px; margin-left: 10px;"> &nbsp;{{displayTime}}</span></ion-label>
+            <ion-label slot="end" style="margin-right: 50px; font-size: larger; margin-left: 290px;">Total Marks {{quiz.total_marks}}</ion-label>
 
 
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 
-<div style="background-color: white;">
+<div style="background-color: white; padding-top: 60px;">
 
     <ion-card color="dark" *ngIf="!isStarted">
 
@@ -20,7 +20,7 @@
             <h4>Date: {{date | date}}</h4>
             <ion-label>Total Marks: {{quiz.total_marks}}</ion-label> <br>
 
-            <ion-label>Duration: 30 Minutes</ion-label> <br>
+            <ion-label>Duration: {{quiz.duration}} Minutes</ion-label> <br>
 
 
 

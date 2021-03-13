@@ -1,11 +1,12 @@
 <ion-header>
-  <ion-toolbar style="line-height: 40px;">
-    <ion-title>Manage Students</ion-title>
+  <ion-toolbar>
+    <ion-title>Students For {{course_name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<div style="background-color: white; margin-bottom: 80px;">
+<div style="background-color: white; padding-top: 20px; margin-bottom: 80px;">
 
+  
   <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput  placeholder="Search student by email" #input>
@@ -53,24 +54,10 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Actions </th>
-      <td mat-cell *matCellDef="let element"> 
-
-        <button mat-icon-button (click)="studentCourses(element.studentId, element.firstname, element.lastname)" aria-label="Example icon button with a vertical three dot icon">
-          <ion-icon size="large" color="success" name="create-outline"></ion-icon>
-        </button>
-
-        <button mat-icon-button (click)="deleteStudent(element.studentId)" aria-label="Example icon button with a vertical three dot icon">
-          <ion-icon color="danger" size="large" name="trash-outline"></ion-icon>
-        </button>
-      </td>
-    </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   
   </table>
-
 
 </div>

@@ -23,6 +23,7 @@ import { Announcement } from '../Model/announcement.model';
 })
 
 export class DatabaseService {
+ 
   
   
   // Login user with email/password
@@ -44,6 +45,9 @@ export class DatabaseService {
   studentAnnouncement: Announcement[] = [];
 
   totalNewAnnouncement: number = 0;
+
+  //This variable is used by admin to get studets for selected course on instructor page
+  students: Student[] = [];
 
   constructor(private afs: AngularFirestore,
      private afa: AngularFireAuth, 
@@ -376,5 +380,22 @@ export class DatabaseService {
     })
   }
   
+
+  getStudentsForSelectedCourse(id: string) {
+    
+    return this.afs.collection("EnrolledCourse", ref => ref.where("course_id", "==", id))
+    .snapshotChanges();
+  }  
+
+  unassign(course_id) {
+    this.afs.collection("Course").doc(course_id).update({
+      instructor_id: "",
+    })
+  }
+
+  getCoursesForSelectedStudent(student_id: string) {
+    return this.afs.collection("EnrolledCourse", ref => ref.where("student_id", "==", student_id)).snapshotChanges();
+  }
+ 
  
 }

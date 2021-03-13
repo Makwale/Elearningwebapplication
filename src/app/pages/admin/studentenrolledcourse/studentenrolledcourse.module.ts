@@ -4,35 +4,30 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InstructroprofileadminPageRoutingModule } from './instructroprofileadmin-routing.module';
+import { StudentenrolledcoursePageRoutingModule } from './studentenrolledcourse-routing.module';
 
-import { InstructroprofileadminPage } from './instructroprofileadmin.page';
-import {MatTabsModule} from '@angular/material/tabs';
+import { StudentenrolledcoursePage } from './studentenrolledcourse.page';
 import {MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InstructroprofileadminPageRoutingModule,
-    MatTabsModule,
+    StudentenrolledcoursePageRoutingModule,
     MatTableModule,
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
     MatSortModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatMenuModule
+    MatPaginatorModule
+    
   ],
-  declarations: [InstructroprofileadminPage]
+  declarations: [StudentenrolledcoursePage]
 })
-export class InstructroprofileadminPageModule {}
+export class StudentenrolledcoursePageModule {}

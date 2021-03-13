@@ -13,11 +13,6 @@ export const routes: Routes = [
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
       },
       {
-        path: 'login',
-        loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-      },
-
-      {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
@@ -96,10 +91,6 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-  },
-  {
     path: 'tasklist',
     loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
   },
@@ -155,6 +146,14 @@ export const routes: Routes = [
         path: 'events',
         loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
       },
+      {
+        path: 'coursestudents',
+        loadChildren: () => import('./pages/admin/coursestudents/coursestudents.module').then( m => m.CoursestudentsPageModule)
+      },
+      {
+        path: 'studentenrolledcourse',
+        loadChildren: () => import('./pages/admin/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
+      },
     ]
   },
   {
@@ -165,6 +164,10 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
+  
+
+  
+
   
   
 

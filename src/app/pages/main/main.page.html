@@ -56,8 +56,9 @@
   </ion-toolbar>
 
 
-  <ion-content>
+  <ion-content fullscreen="true"  scroll-events="true" (ionScroll)="test()">
   
+    
   
   <mat-sidenav-container class="example-container" >
     
@@ -179,12 +180,19 @@
     <mat-sidenav-content hasBackdrop="true" id="side-nave-content" >
       
         <router-outlet></router-outlet>
-  
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+          
+        </ion-fab>  
 
     </mat-sidenav-content>
   
   </mat-sidenav-container>
 
+ 
 </ion-content>
   
   
