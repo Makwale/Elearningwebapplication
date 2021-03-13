@@ -72,7 +72,7 @@ export class InstructorService {
    // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
-      this.router.navigate(['instructor-page']); 
+      this.router.navigate(['account']); 
     })
   }
 

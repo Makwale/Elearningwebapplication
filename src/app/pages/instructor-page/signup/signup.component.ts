@@ -3,7 +3,7 @@ import { LoadingController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
-import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -15,10 +15,10 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
 
   validation_messages = {
-    'firstname': [
+    'name': [
       { type: 'required', message: 'Name is required.' },
     ],
-    'lastname': [
+    'surname': [
       { type: 'required', message: 'Surname is required.' },
     ],
     'gender': [
@@ -40,12 +40,12 @@ export class SignupComponent implements OnInit {
     ]
   };
   constructor(public loadingCtrl: LoadingController, 
-        private studentDao:InstructorService) { 
+        private studentDao:StudentService) { 
     this.signUpForm = new FormGroup({
-      'firstname': new FormControl('', Validators.compose([
+      'name': new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      'lastname': new FormControl('', Validators.compose([
+      'surname': new FormControl('', Validators.compose([
         Validators.required,
       ])),
       'gender': new FormControl('', Validators.compose([
@@ -73,8 +73,8 @@ export class SignupComponent implements OnInit {
   signUpWithEmail() {
     this.presentLoading();
     this.studentDao.RegisterUser(
-      this.signUpForm.value['firstname'],
-      this.signUpForm.value['lastname'],
+      this.signUpForm.value['name'],
+      this.signUpForm.value['surname'],
       this.signUpForm.value['gender'],
       this.signUpForm.value['phone'],
       this.signUpForm.value['email'], 

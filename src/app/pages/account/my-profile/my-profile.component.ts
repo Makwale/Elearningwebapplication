@@ -59,24 +59,9 @@ num:number = 0;
       this.getEnrolledCourses();
       this.updateUserForm.reset();
       this.setUserAccount(); 
-      
     }
 
- display(){
-  if(this.showEnrolledCourses){
-    this.showEnrolledCourses = false;
-    this.showAvailableCourses = true;
-    console.log(this.showEnrolledCourses," Showing" );
-  }
-  else{
-    this.showEnrolledCourses = true;
-    this.showAvailableCourses = false;
-    console.log(this.showEnrolledCourses," Showing" );
-  }
- }   
-
-
-
+ 
 setUserAccount(){
    let userID = firebase.auth().currentUser.uid.toString();
    this.asf.collection("Student").doc(userID).valueChanges().subscribe(data =>{   

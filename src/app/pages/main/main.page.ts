@@ -7,7 +7,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
-
 import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-main',
@@ -16,11 +15,15 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class MainPage implements OnInit {
   loginStatus: boolean = false;
+
+  isStudent: boolean = true;
   userAccount: Account;
   constructor(public accountService: AccountService,
     public loadingCtrl: LoadingController,
     private auth: AngularFireAuth,
     private afs:AngularFirestore, private dbs: DatabaseService, private router: Router) {
+
+      
     }
   ngOnInit() {
     this.auth.authState.subscribe(user => {
@@ -51,7 +54,7 @@ export class MainPage implements OnInit {
 async presentLoading() {
   const loader = this.loadingCtrl.create({
     message: "signing out....",
-    duration: 5000,
+    duration: 3000,
   });
   (await loader).present();
 }
@@ -59,4 +62,7 @@ async presentLoading() {
     this.dbs.totalNewAnnouncement = 0;
     this.router.navigateByUrl("studentannouncement")
   }
+  
+
+
 }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
-import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
 import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
 
@@ -13,10 +12,7 @@ export const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
       },
-      {
-        path: 'login',
-        loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-      },
+      
 
       {
         path: '',
@@ -70,6 +66,10 @@ export const routes: Routes = [
           loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
         },
         {
+          path: 'instructor-page',
+          loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
+        },
+        {
           path: 'studentannouncement',
           loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
         },
@@ -93,10 +93,6 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-  },
-  {
     path: 'tasklist',
     loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
   },
@@ -104,6 +100,7 @@ export const routes: Routes = [
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
   },
+ 
   {
     path: 'addcourse',
     loadChildren: () => import('./pages/admin/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
@@ -119,6 +116,8 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
 
+
+  
   
   {
     path: 'adminpanel',
@@ -159,16 +158,6 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
-  {
-    path: '',
-    component: InstructorPagePage,
-    children: [
-      {
-        path: 'profile',
-        loadChildren: () => import('./pages/instructor-page/profile/profile.component').then(m => m.ProfileComponent)
-      },
-    ]
-  }
   
   
 

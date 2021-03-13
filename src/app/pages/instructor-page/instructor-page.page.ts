@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-instructor-page',
@@ -8,21 +8,24 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class InstructorPagePage implements OnInit {
 
-  loggedIn: boolean = false;
+  constructor(private router:Router) { }
 
-  constructor( private auth: AngularFireAuth) { }
   ngOnInit() {
-    
-    this.auth.authState.subscribe(user => {
-      if (user) {
-        this.loggedIn = true;
-       } else {
-        this.loggedIn = false;
-      }
-    })
-
-    
   }
- 
+  addTutorial(){
+    this.router.navigateByUrl('/add');
+  }
+  tutolialDetails(){
+    this.router.navigateByUrl('/details');
+  }
+  tutorialsList(){
+    this.router.navigateByUrl('/tutorials');
+  }
+  profile(){
+    this.router.navigateByUrl('/profile');
+  }
+  viewCourse(){
+    this.router.navigateByUrl('/view-course');
+  }
 
 }
