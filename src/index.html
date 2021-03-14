@@ -64,10 +64,8 @@
       }
 
       /*For smart phone*/
-    @media screen and (max-width: 380px){
-      #searchbar{
-        display: none;
-      }
+    @media screen and (min-width: 250px){
+      
 
       #featured-courses, #latest-courses, #icourse-card{
         margin-right: 0px;
@@ -104,15 +102,6 @@
         
       }
 
-      .image-cover{
-        position: absolute; 
-        width: 100%; 
-        height: 225px; 
-        background-color: transparent; 
-        top: 0%;
-        transition-property: background-color;
-        transition-duration: 0.5s;
-      }
 
       .course-status{
         top: 64%;
@@ -162,20 +151,54 @@
         
       }
 
-      .image-cover{
-        position: absolute; 
-        width: 100%; 
-        height: 225px; 
-        background-color: transparent; 
-        top: 0%;
-        transition-property: background-color;
-        transition-duration: 0.5s;
-      }
-
       .course-status{
-        top: 77%;
+        top: 65%;
       }
     }
+
+
+    @media screen and (min-width: 383px){
+      .course-status{
+        top: 65%;
+      }
+    }
+
+    @media screen and (min-width: 435px){
+      .course-status{
+        top: 68%;
+      }
+    }
+
+    @media screen and (min-width: 448px){
+      .course-status{
+        top: 73%;
+      }
+    }
+
+    @media screen and (min-width: 450px){
+      .course-status{
+        top: 71%;
+      }
+    }
+
+    @media screen and (max-width: 545px){
+      
+      #searchbar{
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 545px){
+      
+      #search-button{
+        display: none;
+      }
+    }
+
+
+    
+
+
 
     
     @media screen and (min-width: 800px) {
@@ -205,14 +228,14 @@
         border: 1px solid;
       }
 
-
+      
 
       
     }
 
     
     @media screen and (max-width: 800px) {
-        #btnsignin, #sideNav{
+        #btnsignin, #sideNav, #image-cover{
           display: none;
         }
 
@@ -223,6 +246,16 @@
 
     }
 
+    .image-cover{
+        position: absolute; 
+        width: 100%; 
+        height: 0px; 
+        background-color: transparent; 
+        top: 0%;
+        transition-property: background-color;
+        transition-duration: 0.5s;
+      }
+
     /*For login page*/
     @media screen and (max-width: 600px) {
        #login-container{
@@ -232,7 +265,6 @@
           padding-top: 5px; 
           padding-bottom: 10px;
           border-radius: 20px; 
-          outline: 1px solid red;
        }
 
 
@@ -280,17 +312,6 @@
       
       } 
 
-      
-      .image-cover{
-        position: absolute; 
-        width: 100%; 
-        height: 146px; 
-        background-color: transparent; 
-        top: 0%;
-        transition-property: background-color;
-        transition-duration: 0.5s;
-      }
-
       .course-status{
         top: 46%;
       }
@@ -312,15 +333,7 @@
       
       
 
-      .image-cover{
-        position: absolute; 
-        width: 100%; 
-        height: 176px; 
-        background-color: transparent; 
-        top: 0%;
-        transition-property: background-color;
-        transition-duration: 0.5s;
-      }
+     
 
       .course-status{
         top: 55%;
@@ -333,14 +346,6 @@
         display: none;
       }
     }
-
-
-    @media screen and (min-width: 381px) {
-      #search-button{
-        display: none;
-      }
-    }
-
 
 
 
