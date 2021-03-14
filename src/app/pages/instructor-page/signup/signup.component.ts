@@ -3,7 +3,7 @@ import { LoadingController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
-
+import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -15,10 +15,10 @@ export class SignupComponent implements OnInit {
   signUpForm: FormGroup;
 
   validation_messages = {
-    'name': [
+    'firstname': [
       { type: 'required', message: 'Name is required.' },
     ],
-    'surname': [
+    'lastname': [
       { type: 'required', message: 'Surname is required.' },
     ],
     'gender': [
@@ -40,12 +40,12 @@ export class SignupComponent implements OnInit {
     ]
   };
   constructor(public loadingCtrl: LoadingController, 
-        private studentDao:StudentService) { 
+        private instructorDao:InstructorService) { 
     this.signUpForm = new FormGroup({
-      'name': new FormControl('', Validators.compose([
+      'firstname': new FormControl('', Validators.compose([
         Validators.required,
       ])),
-      'surname': new FormControl('', Validators.compose([
+      'lastname': new FormControl('', Validators.compose([
         Validators.required,
       ])),
       'gender': new FormControl('', Validators.compose([
@@ -72,9 +72,9 @@ export class SignupComponent implements OnInit {
   }
   signUpWithEmail() {
     this.presentLoading();
-    this.studentDao.RegisterUser(
-      this.signUpForm.value['name'],
-      this.signUpForm.value['surname'],
+    this.instructorDao.RegisterUser(
+      this.signUpForm.value['firstname'],
+      this.signUpForm.value['lastname'],
       this.signUpForm.value['gender'],
       this.signUpForm.value['phone'],
       this.signUpForm.value['email'], 
@@ -82,7 +82,7 @@ export class SignupComponent implements OnInit {
     .then(user => {
       this.loadingCtrl.dismiss();
       this.signUpForm.reset();
-      this.studentDao.SignOut();  
+      this.instructorDao.SignOut();  
     })
     .catch(error => {
       this.submitError = error.message;

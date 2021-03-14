@@ -3,7 +3,7 @@
     <div style="width: 50%; margin: auto; text-align: center; background-color: white; margin-top: 40px; padding-top: 5px; padding-bottom: 50px; margin-bottom: 100px; border-radius: 20px;">
 
         <h2>Welcom to Elearning Accademy</h2>
-        <h4>Sign up and start learning</h4>
+        <h4>Sign up and start Instructing</h4>
         <form [formGroup]="signUpForm" (ngSubmit)="signUpWithEmail()">
         <ion-list class="inputs-list" lines="full">      
               <!-- First and Last Name -->
@@ -11,11 +11,11 @@
                 <ion-col>
                   <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
                     <ion-label position="stacked">First Name</ion-label>
-                    <ion-input type="text" placeholder="John" formControlName="name" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+                    <ion-input type="text" placeholder="John" formControlName="firstname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
                   </ion-item>      
                   <div class="error-container">
-                    <ng-container *ngFor="let validation of validation_messages.name">
-                      <div class="error-message" *ngIf="signUpForm.get('name').hasError(validation.type) && (signUpForm.get('name').dirty || signUpForm.get('name').touched)">
+                    <ng-container *ngFor="let validation of validation_messages.firstname">
+                      <div class="error-message" *ngIf="signUpForm.get('firstname').hasError(validation.type) && (signUpForm.get('firstname').dirty || signUpForm.get('firstname').touched)">
                         <ion-icon name="information-circle-outline"></ion-icon>
                         <span>{{ validation.message }}</span>
                       </div>
@@ -25,12 +25,12 @@
                 <ion-col>
                   <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
                     <ion-label position="stacked">Last Name</ion-label>
-                    <ion-input type="text" placeholder="Dou" formControlName="surname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+                    <ion-input type="text" placeholder="Dou" formControlName="lastname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
                   </ion-item>
                   
                   <div class="error-container">
-                    <ng-container *ngFor="let validation of validation_messages.surname">
-                      <div class="error-message" *ngIf="signUpForm.get('surname').hasError(validation.type) && (signUpForm.get('surname').dirty || signUpForm.get('surname').touched)">
+                    <ng-container *ngFor="let validation of validation_messages.lastname">
+                      <div class="error-message" *ngIf="signUpForm.get('lastname').hasError(validation.type) && (signUpForm.get('lastname').dirty || signUpForm.get('lastname').touched)">
                         <ion-icon name="information-circle-outline"></ion-icon>
                         <span>{{ validation.message }}</span>
                       </div>
@@ -58,8 +58,8 @@
                   <ion-item class="ion-no-margin" style="border-radius: 90px; border: 1px solid black;">
                     <ion-label position="stacked">Gender</ion-label>
                     <ion-select formControlName="gender" placeholder="Select gender">
-                      <ion-select-option  value="female">Female</ion-select-option>
-                      <ion-select-option value="male">Male</ion-select-option>
+                      <ion-select-option  value="Female">Female</ion-select-option>
+                      <ion-select-option value="Male">Male</ion-select-option>
                     </ion-select>
                   </ion-item>
                   

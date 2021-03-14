@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
+import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
 import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
 
@@ -64,10 +65,6 @@ export const routes: Routes = [
           loadChildren: () => import('./pages/leasons/leasons.module').then( m => m.LeasonsPageModule)
         },
         {
-          path: 'instructor-page',
-          loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
-        },
-        {
           path: 'studentannouncement',
           loadChildren: () => import('./pages/studentannouncement/studentannouncement.module').then( m => m.StudentannouncementPageModule)
         },
@@ -109,10 +106,6 @@ export const routes: Routes = [
     path: 'addinstructor',
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
-
-
-  
-  
   {
     path: 'adminpanel',
     component: AdminpanelPage,
@@ -160,7 +153,7 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
-  
+
 
   
 
