@@ -10,6 +10,7 @@ import { ModalController } from '@ionic/angular';
 import { AddcoursePage } from '../addcourse/addcourse.page';
 import { EditcoursePage } from '../editcourse/editcourse.page';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { isFormattedError } from '@angular/compiler';
 
 
 
@@ -41,18 +42,26 @@ export class CoursesPage implements OnInit {
   ngOnInit() {
 
     this.dbs.getCourses().subscribe(data =>{
+      
         data.forEach(coursedata => {
           let tempvar = coursedata.payload.doc.data();
-  
-          let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
-          tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"], tempvar['numberStudentsErrolled']);
           
-  
+        
+          let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
+          tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
+          
+          course.numberStudentsErrolled = tempvar['numberStudentsErrolled'];
           this.courses.push(course);
           
           this.getCoursesList();
           
       });
+
+      let course = new Course("1", "Java", 3,
+      "reter", "IT", 4566, "2434");
+      
+      course.numberStudentsErrolled = 3;
+      this.courses.push(course);
 
       this.dataSource = new MatTableDataSource(this.courses);
      this.dataSource.sort = this.sort;
@@ -120,9 +129,15 @@ export class CoursesPage implements OnInit {
     
   }
 
-  deleteCourse(){
-
+  deleteCourse(id){
+    if(confirm("Are you sure, you want to delete?"))
+      this.dbs.deleteCourse(id);
   }
 
+  navigateToCourseStudents(course_id, name){
+    this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
+
+  }
+  
 
 }

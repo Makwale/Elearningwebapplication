@@ -24,12 +24,20 @@
           </ion-col>
 
           <ion-col size="8">
-            <h1>Emmanuel Mametja</h1>
-            <ion-label>Software developer</ion-label> 
-            <div>
+            <ion-label style="font-size: x-large;" size="large">{{firstname}} {{lastname}}</ion-label> <br>
+            <ion-label>Software developer</ion-label> <br>
+            <a href="">
+              <ion-icon size="small" name="logo-facebook" color="primary" class="social"></ion-icon>
+            </a>
+            
+              <a href="">
+                <ion-icon size="small" name="logo-google" color="danger" class="social"></ion-icon>
+              </a>
 
-              <ion-icon size="large" name="logo-facebook"></ion-icon><ion-icon size="large" name="logo-google"></ion-icon><ion-icon size="large" name="logo-linkedin"></ion-icon>
-            </div>
+              <a href="">
+                <ion-icon size="small" name="logo-linkedin" color="secondaary" class="social"></ion-icon>
+              </a>
+            
           </ion-col>
         </ion-row>
         
@@ -38,23 +46,24 @@
             <ion-row>
 
               <ion-col size="6">
-                <ion-card button style="text-align: center;" >
+                <ion-card button style="text-align: center;" color="primary" >
                   <ion-card-header>
-                    <ion-card-title>Enrolled Students</ion-card-title>
+                    
+                    <ion-card-title class="card-title">Enrolled Students</ion-card-title>
                   </ion-card-header>
                   <ion-card-content>
-                    <h2>{{students.length}}</h2>
+                    <h1>{{students.length}}</h1>
                   </ion-card-content>
                 </ion-card>
               </ion-col>
 
               <ion-col size="6">
-                <ion-card button style="text-align: center;"  >
+                <ion-card button style="text-align: center;" color="secondary" class="card-title" >
                   <ion-card-header>
                     <ion-card-title>Courses</ion-card-title>
                   </ion-card-header>
                   <ion-card-content>
-                    <h2>{{courses.length}}</h2>
+                    <h1>{{courses.length}}</h1>
                   </ion-card-content>
 
                 </ion-card>
@@ -155,6 +164,23 @@
                   <ng-container matColumnDef="numberStudentsErrolled" >
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> No Students Enrolled </th>
                     <td mat-cell *matCellDef="let element"> {{element.numberStudentsErrolled}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="action" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                      <ion-button color="secondary" fill="clear" (click)="navigateToCourseStudents(element.id, element.name)">See Students</ion-button>
+                      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="cancel(element.id)">
+      
+                          <span>Cancel</span>
+                        </button>
+              
+                      </mat-menu>
+                     </td>
                   </ng-container>
               
                   

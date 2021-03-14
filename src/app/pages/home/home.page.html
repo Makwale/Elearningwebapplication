@@ -17,8 +17,8 @@
       <mat-card class="fcourse-card " style=" padding: 0px;" *ngFor="let course of featured_course"
        [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
        <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
-       <ion-label *ngIf="course.numberStudentsErrolled < 1"  class="course-status" >Available</ion-label>
-       <ion-label *ngIf="course.numberStudentsErrolled > 0" class="course-status">Occupied</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
 
        <div class="image-cover"></div>
        <mat-card-content style="margin: 10px;">
@@ -61,9 +61,9 @@
       <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of latest_course"
       [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
      <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
-
-      <ion-label *ngIf="course.numberStudentsErrolled < 1"  class="course-status" >Available</ion-label>
-       <ion-label *ngIf="course.numberStudentsErrolled > 0" class="course-status">Occupied</ion-label>
+     <div class="image-cover"></div>
+      <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
+       <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
       <mat-card-content style="margin: 10px;">
         <a   class="course-link">Learn {{course.name}}</a>
         <p>{{course.category}}</p>
@@ -73,8 +73,8 @@
               <ion-icon color="warning" name="star"></ion-icon>
               <ion-icon color="warning" name="star"></ion-icon>
               <ion-icon color="warning" name="star"></ion-icon>
-              <ion-icon name="star-outline"></ion-icon>
-              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon color="warning" name="star-outline"></ion-icon>
+              <ion-icon color="warning" name="star-outline"></ion-icon>
             </ion-col>
     
                <ion-col    size ="5" class="ion-align-self-end">

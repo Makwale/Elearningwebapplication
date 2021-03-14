@@ -12,20 +12,6 @@ export class InstructorPagePage implements OnInit {
 
   ngOnInit() {
   }
-  addTutorial(){
-    this.router.navigateByUrl('/add');
-  }
-  tutolialDetails(){
-    this.router.navigateByUrl('/details');
-  }
-  tutorialsList(){
-    this.router.navigateByUrl('/tutorials');
-  }
-  profile(){
-    this.router.navigateByUrl('/profile');
-  }
-  viewCourse(){
-    this.router.navigateByUrl('/view-course');
-  }
+
 
 }

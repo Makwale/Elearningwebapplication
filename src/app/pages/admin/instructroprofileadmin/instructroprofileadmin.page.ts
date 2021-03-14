@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,9 +18,11 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class InstructroprofileadminPage implements OnInit {
   
   //For students
-  displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email'];
+  displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
 
   students: Student[] = [];
+
+  studentsForSelectedCourse: Student[] = [];
 
   studentDataSource: MatTableDataSource<Student>;
 
@@ -30,7 +33,7 @@ export class InstructroprofileadminPage implements OnInit {
   @ViewChild(MatSort) studentsSort: MatSort;
 
   //For courses
-  displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled'];
+  displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled',  'action'];
 
   courses: Course[] = [];
 
@@ -42,20 +45,26 @@ export class InstructroprofileadminPage implements OnInit {
 
   @ViewChild(MatSort) coursesSort: MatSort;
   
-  instructorid: string;
+  instructor_id: string;
 
+  firstname: string;
 
+  lastname: string;
   
   
 
-  constructor(private router: Router, private dbs: DatabaseService, public modalController: ModalController, private acivatedRoute: ActivatedRoute) {
+  constructor(private afs: AngularFirestore,private router: Router, private dbs: DatabaseService, public modalController: ModalController, private acivatedRoute: ActivatedRoute) {
    }
 
   ngOnInit() {
     this.acivatedRoute.queryParams.subscribe(data => {
-      let instructorId = data["id"];
-      this.instructorid = instructorId;
-      this.getCourses(instructorId);
+      this.instructor_id = data["id"];
+      
+      this.firstname = data["name"];
+
+      this.lastname = data["surname"];
+
+      this.getCourses(this.instructor_id);
     })
     
     //this.getAllStudents()
@@ -77,14 +86,13 @@ export class InstructroprofileadminPage implements OnInit {
         if(!this.search(course)){
           this.courses.push(course);
           this.getAllStudents(course.id);
+          this.coursesDataSource = new MatTableDataSource(this.courses);
+          this.coursesDataSource.sort = this.coursesSort;
+          this.coursesDataSource.paginator = this.coursesPaginator;
         }
         
         
     });
-
-    this.coursesDataSource = new MatTableDataSource(this.courses);
-   this.coursesDataSource.sort = this.coursesSort;
-   this.coursesDataSource.paginator = this.coursesPaginator;
     
 
   });
@@ -152,7 +160,18 @@ getAllStudents(courseid){
   }
 
   assignCourse(id){
-    this.dbs.assignCourse(id, this.instructorid)
+    this.dbs.assignCourse(id, this.instructor_id)
+  }
+
+  navigateToCourseStudents(course_id, name){
+
+    this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
+    
+  }
+
+  cancel(id){
+    if(confirm("Are you sure you want to cancel?"))
+      this.dbs.unassign(id);
   }
 
 

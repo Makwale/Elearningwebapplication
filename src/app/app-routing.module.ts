@@ -12,8 +12,6 @@ export const routes: Routes = [
         path: 'home',
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
       },
-      
-
       {
         path: '',
         redirectTo: 'home',
@@ -89,7 +87,6 @@ export const routes: Routes = [
           path: 'quizmarks',
           loadChildren: () => import('./pages/quizmarks/quizmarks.module').then( m => m.QuizmarksPageModule)
         },
-      
     ]
   },
   {
@@ -100,7 +97,6 @@ export const routes: Routes = [
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
   },
- 
   {
     path: 'addcourse',
     loadChildren: () => import('./pages/admin/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
@@ -109,8 +105,6 @@ export const routes: Routes = [
     path: 'editcourse',
     loadChildren: () => import('./pages/admin/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
   },
- 
-  
   {
     path: 'addinstructor',
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
@@ -148,6 +142,14 @@ export const routes: Routes = [
         path: 'events',
         loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
       },
+      {
+        path: 'coursestudents',
+        loadChildren: () => import('./pages/admin/coursestudents/coursestudents.module').then( m => m.CoursestudentsPageModule)
+      },
+      {
+        path: 'studentenrolledcourse',
+        loadChildren: () => import('./pages/admin/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
+      },
     ]
   },
   {
@@ -158,6 +160,10 @@ export const routes: Routes = [
     path: 'instructor-page',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
+  
+
+  
+
   
   
 

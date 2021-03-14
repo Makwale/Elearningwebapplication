@@ -114,4 +114,9 @@ export class StudentPage implements OnInit {
       }
     }
   }
+
+  studentCourses(id, firstname, lastname){
+  
+      this.router.navigate(['./adminpanel/studentenrolledcourse'] , {queryParams: { "id": id, "firstname": firstname, "lastname": lastname}})
+  }
 }

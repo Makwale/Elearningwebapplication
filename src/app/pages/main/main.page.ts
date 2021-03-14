@@ -63,6 +63,8 @@ async presentLoading() {
     this.router.navigateByUrl("studentannouncement")
   }
   
-
+  test(){
+    
+  }
 
 }

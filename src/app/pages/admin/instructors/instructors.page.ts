@@ -59,10 +59,7 @@ export class InstructorsPage implements OnInit {
         if(!this.search(instructor))
           this.instructors.push(instructor);
         
-        //this.deleteDuplicates();
-        
     });
-
 
     this.dataSource = new MatTableDataSource(this.instructors);
    this.dataSource.sort = this.sort;
@@ -78,11 +75,11 @@ export class InstructorsPage implements OnInit {
 
   }
 
-  async intructorProfile(id){
+  async intructorProfile(id, name, surname){
     for(let instructor of this.instructors){
       if(instructor.getId() == id){
         
-        this.router.navigate(['./adminpanel/instructroprofileadmin'], { queryParams:{ "id": id}});
+        this.router.navigate(['./adminpanel/instructroprofileadmin'], { queryParams:{ "id": id, "name": name, "surname": surname}});
         break;
       }
     }
@@ -118,6 +115,7 @@ export class InstructorsPage implements OnInit {
     for(let i = 0; i < this.instructors.length ; i++){
       if(this.instructors[i].getId() == id){
         this.instructors.splice(i,1);
+
       }
     }
   }
