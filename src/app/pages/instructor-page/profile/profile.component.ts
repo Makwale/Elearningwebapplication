@@ -143,7 +143,6 @@ async addCourse(){
   });
   await modal.present();
 }
-
 assignCourse(id){
   this.dbs.assignCourse(id, this.instructorid)
 }

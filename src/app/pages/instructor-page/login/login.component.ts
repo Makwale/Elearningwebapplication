@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoadingController } from '@ionic/angular';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
+
+import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit {
     ]
   };
   constructor(
-    private studentDao:StudentService,
+    private instructorDao:InstructorService,
     private fb: FormBuilder,
     public loadingCtrl: LoadingController,) {
       
@@ -52,7 +55,7 @@ export class LoginComponent implements OnInit {
   }   
   signInWithEmail() {
     this.presentLoading();
-    this.studentDao.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
+    this.instructorDao.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
       this.loadingCtrl.dismiss();
     })
