@@ -56,11 +56,16 @@ export class QuizPage implements OnInit {
 
           this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"])
 
-         
-          this.timeInSeconds = this.quiz.duration * 60;
+          this.duration = new Date();
+          this.duration.setMinutes(tempvar["duration"]);
         })
       })
     })
+
+    this.initTimer();
+    this.startTimer();
+    this.timeOut();
+
 
   }
 
@@ -161,6 +166,64 @@ timeOut(){
    secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
    return hoursString + ':' + minutesString + ':' + secondsString;
   }
+//   initTimer() {
+
+//    if (!this.timeInSeconds) {
+//      this.timeInSeconds = 1800;
+//    }
+
+//    this.time = this.timeInSeconds;
+//    this.runTimer = false;
+//    this.hasStarted = false;
+//    this.hasFinished = false;
+//    this.remainingTime = this.timeInSeconds;
+
+//    this.displayTime = this.getSecondsAsDigitalClock(this.remainingTime);
+//   }
+//   startTimer() {
+//     this.runTimer = true;
+//    this.hasStarted = true;
+//    this.timerTick();
+//   }
+//   pauseTimer() {
+//    this.runTimer = false;
+//   }
+// timeOut(){
+//   if(this.displayTime <= 1 ){
+//     window.alert('We are done');
+//     this.done();
+//   }
+// }
+//   resumeTimer() {
+//    this.startTimer();
+//   }
+//   timerTick() {
+//    setTimeout(() => {
+
+//      if (!this.runTimer) { return; }
+//      this.remainingTime--;
+//      this.displayTime = this.getSecondsAsDigitalClock(this.remainingTime);
+//      if (this.remainingTime > 0) {
+//        this.timerTick();
+//      }
+//      else {
+//        this.hasFinished = true;
+//      }
+//    }, 1000);
+//   }
+//   getSecondsAsDigitalClock(inputSeconds: number) {
+//    var sec_num = parseInt(inputSeconds.toString(), 10);
+//    var hours = Math.floor(sec_num / 3600);
+//    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+//    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+//    var hoursString = '';
+//    var minutesString = '';
+//    var secondsString = '';
+//    hoursString = (hours < 10) ? "0" + hours : hours.toString();
+//    minutesString = (minutes < 10) ? "0" + minutes : minutes.toString();
+//    secondsString = (seconds < 10) ? "0" + seconds : seconds.toString();
+//    return hoursString + ':' + minutesString + ':' + secondsString;
+//   }
 
 
 }

@@ -88,7 +88,6 @@ export const routes: Routes = [
           path: 'quizmarks',
           loadChildren: () => import('./pages/quizmarks/quizmarks.module').then( m => m.QuizmarksPageModule)
         },
-      
     ]
   },
   {
@@ -99,7 +98,6 @@ export const routes: Routes = [
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
   },
- 
   {
     path: 'addcourse',
     loadChildren: () => import('./pages/admin/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
@@ -108,8 +106,6 @@ export const routes: Routes = [
     path: 'editcourse',
     loadChildren: () => import('./pages/admin/editcourse/editcourse.module').then( m => m.EditcoursePageModule)
   },
- 
-  
   {
     path: 'addinstructor',
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
