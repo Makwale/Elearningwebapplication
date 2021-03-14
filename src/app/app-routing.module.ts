@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
+import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
 
@@ -154,6 +155,45 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
   },
 
+  {
+    path: 'createannouncementi',
+    loadChildren: () => import('./pages/instructorpages/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
+  },
+
+
+  {
+    path: 'instructorpanel',
+    component: InstructorpanelPage,
+    children: [ {
+      path: 'student',
+      loadChildren: () => import('./pages/instructorpages/student/student.module').then( m => m.StudentPageModule)
+    },
+    {
+      path: 'courses',
+      loadChildren: () => import('./pages/instructorpages/courses/courses.module').then( m => m.CoursesPageModule)
+    },
+    {
+      path: '',
+      redirectTo: 'courses',
+      pathMatch: 'full'
+    },
+
+    {
+      path: 'events',
+      loadChildren: () => import('./pages/instructorpages/events/events.module').then( m => m.EventsPageModule)
+    },
+    {
+      path: 'coursestudents',
+      loadChildren: () => import('./pages/instructorpages/coursestudents/coursestudents.module').then( m => m.CoursestudentsPageModule)
+    },
+    {
+      path: 'studentenrolledcourse',
+      loadChildren: () => import('./pages/instructorpages/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
+    },
+    ]
+  },
+
+  
 
   
 

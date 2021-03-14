@@ -195,12 +195,14 @@ export class DatabaseService {
           name: cname,
           price: price,
           category: category,
-          url: imgUrl,
+          imgURL: imgUrl,
           ratings: 0,
           instructor_id: "",
-          number_students: 0
+          numberStudentsErrolled: 0
         }).then(() => {
           alert("Course added");
+          }).catch( error =>{
+            alert(error.message)
           })
         });
   	})).subscribe()	
