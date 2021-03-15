@@ -66,11 +66,7 @@
       <ion-item color="ourtheme" button="true" routerLink="home" >
         <mat-icon slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
       </ion-item>
-  
-      <ion-item color="ourtheme" button="true" routerLink="featuredcourses">
-        <mat-icon slot="start">domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
-      </ion-item>
-  
+
       <ion-item color="ourtheme" button="true"  routerLink="latestcourses">
         <mat-icon slot="start">ondemand_video</mat-icon><ion-label class="pagestabs">Latest Courses</ion-label>
       </ion-item>
@@ -118,10 +114,6 @@
     <mat-sidenav #closedsidenav mode="over" fixedInViewport="true" opened="false" disableClose fixedTopGap="80" id="closedsideNav" style="border-top-right-radius: 25px; background-color: #080110;">
       <ion-item color="ourtheme" button="true" routerLink="home" (click)="closedsidenav.close()">
         <mat-icon  slot="start">home_outline</mat-icon><ion-label class="pagestabs">Home</ion-label>
-      </ion-item>
-  
-      <ion-item color="ourtheme" button="true" routerLink="featuredcourses" (click)="closedsidenav.close()">
-        <mat-icon slot="start" >domain</mat-icon><ion-label class="pagestabs">Featured Courses</ion-label>
       </ion-item>
   
       <ion-item color="ourtheme" button="true"  routerLink="latestcourses" (click)="closedsidenav.close()">

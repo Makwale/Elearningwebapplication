@@ -10,7 +10,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-import { FeaturedcoursesPage } from '../featuredcourses/featuredcourses.page';
 import { LatestcoursesPage } from '../latestcourses/latestcourses.page';
 
 @NgModule({
@@ -25,6 +24,6 @@ import { LatestcoursesPage } from '../latestcourses/latestcourses.page';
     MatMenuModule,
     MatButtonModule
   ],
-  declarations: [HomePage,FeaturedcoursesPage,LatestcoursesPage]
+  declarations: [HomePage,LatestcoursesPage]
 })
 export class HomePageModule {}

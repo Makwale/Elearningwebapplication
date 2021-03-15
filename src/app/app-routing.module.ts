@@ -20,10 +20,7 @@ export const routes: Routes = [
         redirectTo: 'home',
         pathMatch: 'full'
       },
-      {
-        path: 'featuredcourses',
-        loadChildren: () => import('./pages/featuredcourses/featuredcourses.module').then(m => m.FeaturedcoursesPageModule)
-      },
+      
       {
         path: 'categories',
         loadChildren: () => import('./pages/categories/categories.module').then(m => m.CategoriesPageModule)
