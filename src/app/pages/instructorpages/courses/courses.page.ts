@@ -139,11 +139,7 @@ getCourses(id){
         this.coursesDataSource.sort = this.coursesSort;
         this.coursesDataSource.paginator = this.coursesPaginator;
       }
-      
-      
   });
-  
-
 });
 
   this.coursesDataSource = new MatTableDataSource(this.courses);
