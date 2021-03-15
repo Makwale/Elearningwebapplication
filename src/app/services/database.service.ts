@@ -23,8 +23,6 @@ import { Announcement } from '../Model/announcement.model';
 
 export class DatabaseService {
  
-  
-  
   // Login user with email/password
 
   collectionNameStudent = 'Students';
@@ -58,7 +56,7 @@ export class DatabaseService {
       if(userID!=null){
       this.afs.collection("Student").doc(userID).valueChanges().subscribe(data =>{
         // set student data
-        let student = new Student(userID, data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+        let student = new Student(userID, data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"], data["imgURL"]);
         console.log(student)
         //create account object that has sign state and student object
         let account = new Account(true, student);
@@ -398,6 +396,25 @@ export class DatabaseService {
 
   getCoursesForSelectedStudent(student_id: string) {
     return this.afs.collection("EnrolledCourse", ref => ref.where("student_id", "==", student_id)).snapshotChanges();
+  }
+ 
+  updateProfile(file) {
+    const filePath = this.accountService.getAccount().getStudent().getStudentNumber()
+    const ref = this.storage.ref("StudentProfile/" + filePath);
+    const task = ref.put(file);
+
+    task.snapshotChanges().pipe( finalize( () => {
+  		ref.getDownloadURL().subscribe(url =>{
+        
+        this.afs.collection("Student").doc(this.accountService.getAccount().getStudent().getStudentNumber()).update({
+          imgURL: url,
+        }).then(() => {
+          alert("Updated");
+        });
+
+      })
+  	})).subscribe()	
+    
   }
  
  

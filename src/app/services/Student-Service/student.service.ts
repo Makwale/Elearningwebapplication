@@ -10,6 +10,9 @@ import { DatabaseService } from '../database.service';
   providedIn: 'root'
 })
 export class StudentService {
+  updateProfile(arg0: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
@@ -20,7 +23,7 @@ export class StudentService {
       //We get student data
       this.afs.collection("Student").doc(res.user.uid).valueChanges().subscribe(data =>{
         // set student data      
-        let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+        let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"], data["imgURL"]);
         //create account object that has sign state and student object
         let account = new Account(true, student);
         //set Account service to keep account object
