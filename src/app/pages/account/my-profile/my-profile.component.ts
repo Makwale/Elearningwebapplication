@@ -22,7 +22,6 @@ export class MyProfileComponent implements OnInit {
   available_course: Course [] = [];
   enrolled_courses: EnrolledCourse[] =[];
   courseDetails: Course[]=[];
-  user = {} as StudentInfo;
   loggedIn: boolean = false;
   isEdit : boolean = false;
 
@@ -30,6 +29,8 @@ num:number = 0;
   showEnrolledCourses:boolean;
   showAvailableCourses:boolean;
   studentAccount: StudentClass;
+  user = {} as StudentInfo;
+
   updateUserForm: FormGroup;
  
    constructor(public fb: FormBuilder,
@@ -59,9 +60,10 @@ num:number = 0;
       this.getEnrolledCourses();
       this.updateUserForm.reset();
       this.setUserAccount(); 
+      
     }
 
- 
+
 setUserAccount(){
    let userID = firebase.auth().currentUser.uid.toString();
    this.asf.collection("Student").doc(userID).valueChanges().subscribe(data =>{   

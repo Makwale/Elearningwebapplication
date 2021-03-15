@@ -2,31 +2,35 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AccountService } from '../account.service';
+import { AccountService } from '../Instructor-Service/account.service';
 import { Student } from '../../Model/student.model';
-import { Account } from '../../Model/account.model';
+import { Account } from '../../Model/Instructor-Model/account.model';
 import { DatabaseService } from '../database.service';
+import { InstructorClass } from 'src/app/Model/Instructor-Model/instructor';
+import firebase from 'firebase/app';
+import { Instructor } from 'src/app/Model/instructor';
+import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
 @Injectable({
   providedIn: 'root'
 })
 export class InstructorService {
 
+  user = {} as InstructorInfo;
+  instructor = new InstructorClass;
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
-    private router: Router,private accountService: AccountService, private dbs: DatabaseService) { }
+    private router: Router,private accountService: AccountService, private dbs: DatabaseService) {
+      this.instructor = new InstructorClass();
+     }
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {  
-      //We get student data
+          //create account object that has sign state and student object
+    //We get student data
       this.afs.collection("Instructor").doc(res.user.uid).valueChanges().subscribe(data =>{
         // set student data      
-        let student = new Student(res.user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
-        //create account object that has sign state and student object
-        let account = new Account(true, student);
-        //set Account service to keep account object
-        this.accountService.setAccount(account);
-        this.dbs.getEnrolledCourses();
-        this.dbs.getStudentsAnnouncements();
+      this.instructor.overloadStudent(res.user.uid,data["name"], data["name"], data["phone"],data["gender"], data["email"]);
+      this.setUser();
       })
      // this.router.navigateByUrl("home");
      // console.log( 'Signin success');
@@ -40,8 +44,8 @@ export class InstructorService {
     return this.afa.createUserWithEmailAndPassword( email, password).then( userCredentials => {
       let id = userCredentials.user.uid;
       this.afs.collection("Instructor").doc(id).set({
-        firstname: name,
-        lastname: surname,
+        name: name,
+        surname: surname,
         gender: gender,
         phone: phone,
         email: email,
@@ -58,6 +62,21 @@ export class InstructorService {
       alert(error);
     })
   }
+  setUser(){
+    let userID = firebase.auth().currentUser.uid.toString();
+    if(userID!=null){
+    this.afs.collection("Instructor").doc(userID).valueChanges().subscribe(data =>{
+      // set student data
+      let student = new Instructor(userID, data["name"], data["surname"], data["phone"],data["gender"], data["email"]);
+      console.log(student)
+      //create account object that has sign state and student object
+      let account = new Account(true, student);
+      console.log(account);
+      //set Account service to keep account object
+      this.accountService.setAccount(account);
+      })
+    }
+}
   update_student(recordID, instructor) {
     return this.afs.doc('Instructor/' + recordID).update(instructor).then(res=>{
       //Successfull update
@@ -66,7 +85,10 @@ export class InstructorService {
     })
   }
   getEnrolledCourses(userID){
-    return this.afs.collection('EnrolledCourse', ref => ref.where('student_id','==', userID)).snapshotChanges();
+    return this.afs.collection('EnrolledCourse', ref => ref.where('instructor_id','==', userID)).snapshotChanges();
+  }
+  getInstructorInfo(userID){
+    return this.afs.collection('Instructor', ref => ref.where('id','==', userID)).snapshotChanges();
   }
   //==========================================================
    // Sign-out 

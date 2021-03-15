@@ -19,6 +19,7 @@ export class InstructorPagePage implements OnInit {
        } else {
         this.loggedIn = false;
       }
-    }) 
+    })
+    window.alert("Logged in: "+this.loggedIn);
   }
 }

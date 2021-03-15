@@ -17,7 +17,7 @@ export class Account{
         return this.isSignedIn;
     }
 
-    public getStudent(): Instructor{
+    public getInstructor(): Instructor{
         return this.instructor;
     }
     public setSignIn(isSignedIn: boolean){

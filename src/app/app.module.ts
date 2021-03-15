@@ -27,9 +27,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AngularMaterialModule } from './angular-material.module';
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
+import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
 
 @NgModule({
-  declarations: [AppComponent, MainPage, AdminpanelPage, InstructorpanelPage],
+  declarations: [AppComponent, MainPage, AdminpanelPage, InstructorpanelPage, InstructorPagePage],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 

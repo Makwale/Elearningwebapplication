@@ -1,15 +1,19 @@
+
 <ion-header id="toolbar" style="background-color: #080110;">
   <ion-toolbar color="ourtheme">
-    <ion-title>Admin Panel</ion-title>
+    <ion-title>Instructor Panel</ion-title>
+    <ion-buttons slot="end" fill="outline" >
+      <ion-button fill="outline"  color="primary" (click)="signOut()">
+        <mat-icon slot="start">logout</mat-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
   <mat-sidenav-container class="example-container" >
     
     <mat-sidenav #sidenav mode="side" fixedInViewport="true" opened fixedTopGap="80" id="sideNav">
-      <ion-item button="true" routerLink="dashboard" color="ourtheme" >
+      <ion-item button="true" routerLink="account" color="ourtheme" >
         <mat-icon slot="start">palette</mat-icon><ion-label class="pagestabs">Dashboard</ion-label>
       </ion-item>
 
@@ -38,6 +42,4 @@
     </mat-sidenav-content>
   
   </mat-sidenav-container>
-
-
 </ion-content>
