@@ -20,8 +20,8 @@
               <img [src]="this.accountService.getAccount().getStudent().imgURL">
             </ion-avatar>
 
-            <ion-input type="file" style="background-color: black; border-radius: 20px; height: 40px;" (change)="updateProfilePic($event)" >
-              <ion-icon name="camera"></ion-icon>
+            <ion-input type="file" accept="image/*" style="background-color: black; border-radius: 20px; height: 40px;" (change)="updateProfilePic($event)" >
+              <ion-icon slot="start" size="large" name="camera"></ion-icon>
             </ion-input>
           </ion-col>
 
