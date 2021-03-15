@@ -28,6 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AngularMaterialModule } from './angular-material.module';
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 
+
 @NgModule({
   declarations: [AppComponent, MainPage, AdminpanelPage, InstructorpanelPage],
   entryComponents: [],

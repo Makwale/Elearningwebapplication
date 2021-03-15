@@ -15,9 +15,6 @@ export class CreateannouncementPage implements OnInit {
   }
 
   post(subject: string ,message: string, category: string){
-    this.dbs.post( subject, message, category).then(() =>{
-      this.modalController.dismiss()
-    })
   }
 
 }

@@ -279,7 +279,7 @@ export class DatabaseService {
     return this.afs.collection("Announcement").snapshotChanges()
   }
   
-  post(subject: string ,message: string, category: string) {
+  postAdmin(subject: string ,message: string, category: string) {
     return this.afs.collection("Announcement").add({
       subject: subject,
       date: new Date(),
@@ -323,6 +323,8 @@ export class DatabaseService {
     
     });
   }
+
+  //Test
 
   searchStudentsA(ann: Announcement): boolean{
     for(let studA of this.studentAnnouncement){

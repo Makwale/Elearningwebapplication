@@ -87,11 +87,7 @@ export const routes: Routes = [
         },
     ]
   },
-  
-  {
-    path: 'forum',
-    loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
-  },
+
   {
     path: 'addcourse',
     loadChildren: () => import('./pages/admin/addcourse/addcourse.module').then( m => m.AddcoursePageModule)
@@ -189,6 +185,8 @@ export const routes: Routes = [
     },
     ]
   },
+  
+
 
   
 
