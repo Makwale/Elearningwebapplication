@@ -46,11 +46,10 @@ export class AccountPage implements OnInit {
 
   courses: Course[] = [];
 
-  coursesDataSource: MatTableDataSource<Course>;
-
   tempVar: Course[] = [];
 
   @ViewChild(MatPaginator) coursesPaginator: MatPaginator;
+  coursesDataSource: MatTableDataSource<Course>;
 
   @ViewChild(MatSort) coursesSort: MatSort;
   
