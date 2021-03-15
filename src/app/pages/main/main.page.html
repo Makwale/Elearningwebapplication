@@ -96,10 +96,6 @@
         <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
       </ion-item>
   
-      <ion-item *ngIf ="loginStatus && !isStudent" color="ourtheme" button="true" routeroulet routerLink="instructor-page">
-        <mat-icon slot="start">person</mat-icon><ion-label class="pagestabs">Instructors</ion-label>
-      </ion-item>
-
       
       <ion-item *ngIf ="loginStatus && isStudent" color="ourtheme"  button="true" routerLink="account">
         <mat-icon slot="start" >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
@@ -153,10 +149,7 @@
         <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
       </ion-item>
   
-      <ion-item color="ourtheme" button="true" routeroulet routerLink="instructor-page" (click)="closedsidenav.close()">
-        <mat-icon slot="start">person</mat-icon><ion-label class="pagestabs">Instructors</ion-label>
-      </ion-item>
-
+  
       
       <ion-item *ngIf ="loginStatus " color="ourtheme"  button="true" routerLink="account" (click)="closedsidenav.close()">
         <mat-icon slot="start">person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
