@@ -1,16 +1,24 @@
-import { ViewChild } from '@angular/core';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Instructor } from 'src/app/Model/instructor';
+import { InstructorClass } from 'src/app/Model/Instructor-Model/instructor';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { Course } from 'src/app/Model/course';
-import { DatabaseService } from 'src/app/services/database.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { isFormattedError } from '@angular/compiler';
-
-
+import { Course } from 'src/app/Model/course';
+import { EnrolledCourse } from 'src/app/Model/EnrolledCourse';
+import { Student } from 'src/app/Model/student.model';
+import { DatabaseService } from 'src/app/services/database.service';
+import { Account } from 'src/app/Model/Instructor-Model/account.model';
+import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
+import { AccountService } from 'src/app/services/Instructor-Service/account.service';
+import  firebase from 'firebase/app';
+import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
+import { StudentClass } from 'src/app/Model/Student-Model/student';
+import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
 
 @Component({
   selector: 'app-courses',
@@ -21,98 +29,173 @@ import { isFormattedError } from '@angular/compiler';
 
 export class CoursesPage implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'category', 'price', 'numberStudentsErrolled', 'actions'];
+//For students
+displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
 
-  courses: Course[] = [];
+students: Student[] = [];
 
-  dataSource: MatTableDataSource<Course>;
+studentsForSelectedCourse: Student[] = [];
 
-  tempVar: Course[] = [];
+studentDataSource: MatTableDataSource<Student>;
 
-  
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+tempVar2: Student[] = [];
 
-  @ViewChild(MatSort) sort: MatSort;
+@ViewChild(MatPaginator) studentsPaginator: MatPaginator;
 
-  constructor(private router: Router, private dbs: DatabaseService, public modalController: ModalController) {
-   }
+@ViewChild(MatSort) studentsSort: MatSort;
 
-  ngOnInit() {
+//For courses
+displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled',  'action'];
 
-    this.dbs.getCourses().subscribe(data =>{
+courses: Course[] = [];
+
+tempVar: Course[] = [];
+
+@ViewChild(MatPaginator) coursesPaginator: MatPaginator;
+coursesDataSource: MatTableDataSource<Course>;
+
+@ViewChild(MatSort) coursesSort: MatSort;
+
+id:string;
+loggedIn: boolean = false;
+
+userAccount: Account;
+student: Instructor;
+
+studentAccount: StudentClass;
+user = {} as StudentInfo;
+
+constructor( private auth: AngularFireAuth,
+  private afs: AngularFirestore,
+  private accountService: AccountService,
+  private router:Router,
+  private dbs: DatabaseService,private instructorDao:InstructorService ) {
+    this.studentAccount = new StudentClass();
+    this.userAccount =  this.accountService.getAccount();   
+    this.getCourses(this.studentAccount.getStudentNumber());
+    this.getUser();
+    this.loggedIn = false;
+  }
+ngOnInit() { 
+  this.auth.authState.subscribe(user => {
+  if (user) {
+    this.loggedIn = true;
+    this.setUserAccount();
+    this.getCourses(user.uid);      
+  } else {
+      this.loggedIn = false;
+    }
+  })     
+  this.getCourses(this.studentAccount.getStudentNumber());
+}
+setUserAccount(){
+  let userID = firebase.auth().currentUser.uid.toString();
+  this.afs.collection("Instructor").doc(userID).valueChanges().subscribe(data =>{   
+   // set student data      
+   this.user.studentId = userID;
+   this.user.firstname = data["name"];
+   this.user.lastname =  data["surname"];
+   this.user.phone = data["phone"];
+   this.user.gender = data["gender"];
+   this.user.email =  data["email"];
+   this.studentAccount.overloadStudent(
+     this.user.studentId,
+     this.user.firstname,
+     this.user.lastname,
+     this.user.phone,
+     this.user.gender,
+     this.user.email);
+ })
+}
+getUser(){
+  this.auth.authState.subscribe(user => {
+    if (user) {
+      this.afs.collection("Instructor").doc(user.uid).valueChanges().subscribe(data =>{
+        // set student data
+        let student = new Instructor(user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+        //create account object that has sign state and student object
+        let userAccount = new Account(true, student);
+        //set Account service to keep account object
+        this.accountService.setAccount(userAccount);
+      })
+      this.loggedIn = true;
+        } else {
+      this.loggedIn = false;
+    }
+  })
+}
+getCourses(id){
+  this.dbs.getInstructorCourses(id).subscribe(data =>{
+    data.forEach(coursedata => {
+      let tempvar = coursedata.payload.doc.data();
+
+      let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
+      tempvar["imgURL"], tempvar["category"], tempvar["instructor_id"], tempvar['numberStudentsErrolled']);
       
-        data.forEach(coursedata => {
-          let tempvar = coursedata.payload.doc.data();
-          
-        
-          let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
-          tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
-          
-          course.numberStudentsErrolled = tempvar['numberStudentsErrolled'];
-          this.courses.push(course);
-          
-          this.getCoursesList();
-          
-      });
+      if(!this.search(course)){
+        this.courses.push(course);
+        this.getAllStudents(course.id);
+        this.coursesDataSource = new MatTableDataSource(this.courses);
+        this.coursesDataSource.sort = this.coursesSort;
+        this.coursesDataSource.paginator = this.coursesPaginator;
+      }
+  });
+});
 
-      let course = new Course("1", "Java", 3,
-      "reter", "IT", 4566, "2434");
-      
-      course.numberStudentsErrolled = 3;
-      this.courses.push(course);
+  this.coursesDataSource = new MatTableDataSource(this.courses);
+ this.coursesDataSource.sort = this.coursesSort;
+ this.coursesDataSource.paginator = this.coursesPaginator;
 
-      this.dataSource = new MatTableDataSource(this.courses);
-     this.dataSource.sort = this.sort;
-     this.dataSource.paginator = this.paginator;
-      
+}
+getAllStudents(courseid){
+this.dbs.getEnrolledCourseAdmim(courseid).subscribe(data =>{
+  data.forEach( encoursedata => {
+    let tempvar = encoursedata.payload.doc.data();
 
-    });
-
+    let enrcourse = new EnrolledCourse(encoursedata.payload.doc.id, tempvar['student_id'], tempvar['course_id']);
     
-  }
+    this.dbs.getEnrolledCourseStudentAdmin(enrcourse.student_id).subscribe( studentdata => {
+      let tempvar = studentdata.payload.data();
 
-  ngAfterViewInit() {
-    //this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
-  }
+      let student = new Student(studentdata.payload.id, tempvar['firstname'], tempvar['lastname'],
+      tempvar['gender'], tempvar['phone'], tempvar['email']);
 
-  getCoursesList(){
-    for(let course of this.courses){
-      if( this.tempVar.length < 1){
-        this.tempVar.push(course);
-      }else{
-        if(!this.search(course)){
-          this.tempVar.push(course);
-        }
-        
-      }
+      if(!this.searchStudent(student))
+        this.students.push(student);
+
+        this.studentDataSource = new MatTableDataSource(this.students);
+        this.studentDataSource.sort = this.studentsSort;
+        this.studentDataSource.paginator = this.studentsPaginator;
+    })
+    
+    
+    
+});
+
+});
+
+}
+search(course: Course): boolean{
+  for(let temcourse of this.courses){
+    if(temcourse.id == course.id){
+      return true;
     }
-
-    this.courses = this.tempVar;
-
-    return this.courses;
   }
 
-  search(course: Course): boolean{
-    for(let temcourse of this.tempVar){
-      if(temcourse.id == course.id){
-        return true;
-      }
+  return false;
+}
+searchStudent(student: Student): boolean{
+  for(let tempstud of this.students){
+    if(tempstud.getStudentNumber() == student.getStudentNumber()){
+      return true;
     }
-
-    return false;
   }
 
+  return false;
+}
+navigateToCourseStudents(course_id, name){
 
-  deleteCourse(id){
-    if(confirm("Are you sure, you want to delete?"))
-      this.dbs.deleteCourse(id);
-  }
-
-  navigateToCourseStudents(course_id, name){
-    this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
-
-  }
+  this.router.navigate(['./instructorpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
   
-
+}
 }

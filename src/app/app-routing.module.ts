@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
+import { InstructorPagePageModule } from './pages/instructor-page/instructor-page.module';
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { MainPage } from './pages/main/main.page';
@@ -144,16 +145,9 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/admin/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
   },
   {
-    path: 'instructor-page',
-    loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
-  },
-
-  {
     path: 'createannouncementi',
     loadChildren: () => import('./pages/instructorpages/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
   },
-
-
   {
     path: 'instructorpanel',
     component: InstructorpanelPage,
@@ -162,15 +156,26 @@ export const routes: Routes = [
       loadChildren: () => import('./pages/instructorpages/student/student.module').then( m => m.StudentPageModule)
     },
     {
+      path: 'account',
+      loadChildren: () => import('./pages/instructorpages/account/account.module').then( m => m.AccountPageModule)
+    },  
+    {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
+    },
+    {
+      path: 'profile',
+      loadChildren: () => import('./pages/instructor-page/profile/profile.component').then( m => m.ProfileComponent)
+    },
+    {
       path: 'courses',
       loadChildren: () => import('./pages/instructorpages/courses/courses.module').then( m => m.CoursesPageModule)
     },
     {
       path: '',
-      redirectTo: 'courses',
+      redirectTo: 'account',
       pathMatch: 'full'
     },
-
     {
       path: 'events',
       loadChildren: () => import('./pages/instructorpages/events/events.module').then( m => m.EventsPageModule)
@@ -188,7 +193,7 @@ export const routes: Routes = [
   
 
 
-  
+
 
   
 

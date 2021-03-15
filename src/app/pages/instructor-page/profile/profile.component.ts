@@ -18,35 +18,22 @@ export class ProfileComponent implements OnInit {
 
 //For students
 displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email'];
-
 students: Student[] = [];
-
 studentDataSource: MatTableDataSource<Student>;
-
 tempVar2: Student[] = [];
-
 @ViewChild(MatPaginator) studentsPaginator: MatPaginator;
-
 @ViewChild(MatSort) studentsSort: MatSort;
-
 //For courses
 displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled'];
-
 courses: Course[] = [];
-
 coursesDataSource: MatTableDataSource<Course>;
-
 tempVar: Course[] = [];
-
 @ViewChild(MatPaginator) coursesPaginator: MatPaginator;
-
 @ViewChild(MatSort) coursesSort: MatSort;
-
 instructorid: string;
 
 constructor(private router: Router, private dbs: DatabaseService, public modalController: ModalController, private acivatedRoute: ActivatedRoute) {
  }
-
 ngOnInit() {
   this.acivatedRoute.queryParams.subscribe(data => {
     let instructorId = data["id"];
@@ -56,12 +43,10 @@ ngOnInit() {
   
   //this.getAllStudents()
 }
-
 ngAfterViewInit() {
   //this.dataSource.paginator = this.paginator;
   //this.dataSource.sort = this.sort;
 }
-
 getCourses(id){
   this.dbs.getInstructorCourses(id).subscribe(data =>{
     data.forEach(coursedata => {
@@ -74,20 +59,14 @@ getCourses(id){
         this.getAllStudents(course.id);
       } 
   });
-
   this.coursesDataSource = new MatTableDataSource(this.courses);
  this.coursesDataSource.sort = this.coursesSort;
  this.coursesDataSource.paginator = this.coursesPaginator;
-  
-
 });
-
   this.coursesDataSource = new MatTableDataSource(this.courses);
  this.coursesDataSource.sort = this.coursesSort;
  this.coursesDataSource.paginator = this.coursesPaginator;
-
 }
-
 getAllStudents(courseid){
 this.dbs.getEnrolledCourseAdmim(courseid).subscribe(data =>{
   data.forEach( encoursedata => {
@@ -100,33 +79,23 @@ this.dbs.getEnrolledCourseAdmim(courseid).subscribe(data =>{
 
       let student = new Student(studentdata.payload.id, tempvar['firstname'], tempvar['lastname'],
       tempvar['gender'], tempvar['phone'], tempvar['email']);
-
       if(!this.searchStudent(student))
         this.students.push(student);
-
         this.studentDataSource = new MatTableDataSource(this.students);
         this.studentDataSource.sort = this.studentsSort;
         this.studentDataSource.paginator = this.studentsPaginator;
     })
-    
-    
-    
 });
-
 });
-
 }
-
 search(course: Course): boolean{
   for(let temcourse of this.courses){
     if(temcourse.id == course.id){
       return true;
     }
   }
-
   return false;
 }
-
 searchStudent(student: Student): boolean{
   for(let tempstud of this.students){
     if(tempstud.getStudentNumber() == student.getStudentNumber()){
@@ -136,7 +105,6 @@ searchStudent(student: Student): boolean{
 
   return false;
 }
-
 async addCourse(){
   const modal = await this.modalController.create({
     component: null,

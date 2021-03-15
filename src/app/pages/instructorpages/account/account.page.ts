@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Instructor } from 'src/app/Model/instructor';
+import { InstructorClass } from 'src/app/Model/Instructor-Model/instructor';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,14 +12,20 @@ import { Course } from 'src/app/Model/course';
 import { EnrolledCourse } from 'src/app/Model/EnrolledCourse';
 import { Student } from 'src/app/Model/student.model';
 import { DatabaseService } from 'src/app/services/database.service';
+import { Account } from 'src/app/Model/Instructor-Model/account.model';
+import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
+import { AccountService } from 'src/app/services/Instructor-Service/account.service';
+import  firebase from 'firebase/app';
+import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
+import { StudentClass } from 'src/app/Model/Student-Model/student';
+import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
 
 @Component({
-  selector: 'app-instructroprofileadmin',
-  templateUrl: './instructroprofileadmin.page.html',
-  styleUrls: ['./instructroprofileadmin.page.scss'],
+  selector: 'app-account',
+  templateUrl: './account.page.html',
+  styleUrls: ['./account.page.scss'],
 })
-export class InstructroprofileadminPage implements OnInit {
-  
+export class AccountPage implements OnInit {
   //For students
   displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
 
@@ -37,42 +46,80 @@ export class InstructroprofileadminPage implements OnInit {
 
   courses: Course[] = [];
 
-  coursesDataSource: MatTableDataSource<Course>;
-
   tempVar: Course[] = [];
 
   @ViewChild(MatPaginator) coursesPaginator: MatPaginator;
+  coursesDataSource: MatTableDataSource<Course>;
 
   @ViewChild(MatSort) coursesSort: MatSort;
   
-  instructor_id: string;
+  id:string;
+  loggedIn: boolean = false;
 
-  firstname: string;
+  userAccount: Account;
+  student: Instructor;
 
-  lastname: string;
-  
-  
+  studentAccount: StudentClass;
+  user = {} as StudentInfo;
 
-  constructor(private afs: AngularFirestore,private router: Router, private dbs: DatabaseService, public modalController: ModalController, private acivatedRoute: ActivatedRoute) {
-   }
-
-  ngOnInit() {
-    this.acivatedRoute.queryParams.subscribe(data => {
-      this.instructor_id = data["id"];
-      
-      this.firstname = data["name"];
-
-      this.lastname = data["surname"];
-
-      this.getCourses(this.instructor_id);
-    })
-    
-    //this.getAllStudents()
+  constructor( private auth: AngularFireAuth,
+    private afs: AngularFirestore,
+    private accountService: AccountService,
+    private router:Router,
+    private dbs: DatabaseService,private instructorDao:InstructorService ) {
+      this.studentAccount = new StudentClass();
+      this.userAccount =  this.accountService.getAccount();   
+      this.getCourses(this.studentAccount.getStudentNumber());
+      this.getUser();
+      this.loggedIn = false;
+    }
+  ngOnInit() { 
+    this.auth.authState.subscribe(user => {
+    if (user) {
+      this.loggedIn = true;
+      this.setUserAccount();
+      this.getCourses(user.uid);      
+    } else {
+        this.loggedIn = false;
+      }
+    })     
+    this.getCourses(this.studentAccount.getStudentNumber());
   }
-
-  ngAfterViewInit() {
-    //this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
+  setUserAccount(){
+    let userID = firebase.auth().currentUser.uid.toString();
+    this.afs.collection("Instructor").doc(userID).valueChanges().subscribe(data =>{   
+     // set student data      
+     this.user.studentId = userID;
+     this.user.firstname = data["name"];
+     this.user.lastname =  data["surname"];
+     this.user.phone = data["phone"];
+     this.user.gender = data["gender"];
+     this.user.email =  data["email"];
+     this.studentAccount.overloadStudent(
+       this.user.studentId,
+       this.user.firstname,
+       this.user.lastname,
+       this.user.phone,
+       this.user.gender,
+       this.user.email);
+   })
+ }
+  getUser(){
+    this.auth.authState.subscribe(user => {
+      if (user) {
+        this.afs.collection("Instructor").doc(user.uid).valueChanges().subscribe(data =>{
+          // set student data
+          let student = new Instructor(user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+          //create account object that has sign state and student object
+          let userAccount = new Account(true, student);
+          //set Account service to keep account object
+          this.accountService.setAccount(userAccount);
+        })
+        this.loggedIn = true;
+          } else {
+        this.loggedIn = false;
+      }
+    })
   }
   getCourses(id){
     this.dbs.getInstructorCourses(id).subscribe(data =>{
@@ -147,24 +194,11 @@ getAllStudents(courseid){
 
     return false;
   }
-  async addCourse(){
-    const modal = await this.modalController.create({
-      component: null,
-    });
-    await modal.present();
-  }
-  assignCourse(id){
-    this.dbs.assignCourse(id, this.instructor_id)
-  }
   navigateToCourseStudents(course_id, name){
 
     this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
     
   }
-  cancel(id){
-    if(confirm("Are you sure you want to cancel?"))
-      this.dbs.unassign(id);
-  }
-
+  
 
 }

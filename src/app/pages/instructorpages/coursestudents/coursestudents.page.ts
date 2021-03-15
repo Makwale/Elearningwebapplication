@@ -29,9 +29,6 @@ export class CoursestudentsPage implements OnInit {
   constructor(private activatedRoute :ActivatedRoute, private dbs: DatabaseService, private afs: AngularFirestore) { }
 
   ngOnInit() {
-
-  
-
     this.activatedRoute.queryParams.subscribe( data => {;
       this.course_name = data["name"];
           this.dbs.getStudentsForSelectedCourse(data["course_id"]).subscribe( data =>{

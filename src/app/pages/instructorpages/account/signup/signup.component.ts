@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
 
 @Component({
   selector: 'app-signup',
@@ -42,7 +43,7 @@ export class SignupComponent implements OnInit {
   };
   constructor(public loadingCtrl: LoadingController,     private auth: AngularFireAuth,
 
-        private studentDao:StudentService) { 
+        private studentDao:InstructorService) { 
     this.signUpForm = new FormGroup({
       'name': new FormControl('', Validators.compose([
         Validators.required,
@@ -73,7 +74,7 @@ export class SignupComponent implements OnInit {
     this.signUpForm.reset();
   }
   signUpWithEmail() {
-    this.presentLoading();
+    this.presentLoading("Registering acccount....");
     this.studentDao.RegisterUser(
       this.signUpForm.value['name'],
       this.signUpForm.value['surname'],
@@ -98,10 +99,9 @@ keyPress(event: any) {
   }
 }
 
-async presentLoading() {
- 
+async presentLoading(msg:string) {
   const loader = this.loadingCtrl.create({
-    message: "Registering acccount....",
+    message: msg,
   });
   (await loader).present();
 }
