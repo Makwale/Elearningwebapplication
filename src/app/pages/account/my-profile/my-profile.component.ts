@@ -10,6 +10,8 @@ import { Course } from 'src/app/Model/course';
 import { EnrolledCourse } from 'src/app/Model/EnrolledCourse';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
+import { DatabaseService } from 'src/app/services/database.service';
+import { AccountService } from 'src/app/services/account.service';
 
 
 @Component({
@@ -24,6 +26,7 @@ export class MyProfileComponent implements OnInit {
   courseDetails: Course[]=[];
   loggedIn: boolean = false;
   isEdit : boolean = false;
+  imgURL;
 
 num:number = 0;
   showEnrolledCourses:boolean;
@@ -34,9 +37,9 @@ num:number = 0;
   updateUserForm: FormGroup;
  
    constructor(public fb: FormBuilder,
-    private dbs: StudentService,
+    private sts: StudentService,
     public loadingCtrl: LoadingController,
-    private asf: AngularFirestore) {
+    private asf: AngularFirestore, private dbs: DatabaseService, private accountService: AccountService) {
       this.studentAccount = new StudentClass();
       this.updateUserForm = new FormGroup({
         'firstname': new FormControl('', Validators.compose([
@@ -60,69 +63,79 @@ num:number = 0;
       this.getEnrolledCourses();
       this.updateUserForm.reset();
       this.setUserAccount(); 
+
+      this.imgURL = this.accountService.getAccount().getStudent().imgURL;
       
     }
 
 
-setUserAccount(){
-   let userID = firebase.auth().currentUser.uid.toString();
-   this.asf.collection("Student").doc(userID).valueChanges().subscribe(data =>{   
-    // set student data      
-    this.user.studentId = userID;
-    this.user.firstname = data["firstname"];
-    this.user.lastname =  data["lastname"];
-    this.user.phone = data["phone"];
-    this.user.gender = data["gender"];
-    this.user.email =  data["email"];
-    this.studentAccount.overloadStudent(
-      this.user.studentId,
-      this.user.firstname,
-      this.user.lastname,
-      this.user.phone,
-      this.user.gender,
-      this.user.email);
-  })
-}
-updateForm() {
-  if (window.confirm('You are updating!')){
-  this.presentLoading();
-  this.dbs.update_student(this.studentAccount.getStudentNumber(), this.updateUserForm.value)
-  .then(() => {
-    this.loadingCtrl.dismiss();
-    this.isEdit = false;
-  })
-  .catch(error => {
-    alert(error);
-  });
-}
-}
-keyPress(event: any) {
-  const pattern = /[0-9\+\-\ ]/;
-  let inputChar = String.fromCharCode(event.charCode);
-  if (event.keyCode != 10 && !pattern.test(inputChar)) {
-    event.preventDefault();
-  }
-}
-getEnrolledCourses(){  
-  let userID = firebase.auth().currentUser.uid.toString();
-  this.dbs.getEnrolledCourses(userID).subscribe(data => {
-    this.enrolled_courses = data.map(e => {
-      return{
-        id: e.payload.doc.id,
-        ... e.payload.doc.data() as EnrolledCourse
-      } as EnrolledCourse
+  setUserAccount(){
+    let userID = firebase.auth().currentUser.uid.toString();
+    this.asf.collection("Student").doc(userID).valueChanges().subscribe(data =>{   
+      // set student data      
+      this.user.studentId = userID;
+      this.user.firstname = data["firstname"];
+      this.user.lastname =  data["lastname"];
+      this.user.phone = data["phone"];
+      this.user.gender = data["gender"];
+      this.user.email =  data["email"];
+      this.studentAccount.overloadStudent(
+        this.user.studentId,
+        this.user.firstname,
+        this.user.lastname,
+        this.user.phone,
+        this.user.gender,
+        this.user.email);
     })
-  });
-}
-getCourses(){
-  this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(storeItems =>{
-    this.available_course = storeItems;
-  })
-}
-async presentLoading() { 
-  const loader = this.loadingCtrl.create({
-    message: "Updating user information....",
-  });
-  (await loader).present();
-}
+  }
+  updateForm() {
+    if (window.confirm('You are updating!')){
+    this.presentLoading();
+    this.sts.update_student(this.studentAccount.getStudentNumber(), this.updateUserForm.value)
+    .then(() => {
+      this.loadingCtrl.dismiss();
+      this.isEdit = false;
+    })
+    .catch(error => {
+      alert(error);
+    });
+  }
+  }
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 10 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+  getEnrolledCourses(){  
+    let userID = firebase.auth().currentUser.uid.toString();
+    this.sts.getEnrolledCourses(userID).subscribe(data => {
+      this.enrolled_courses = data.map(e => {
+        return{
+          id: e.payload.doc.id,
+          ... e.payload.doc.data() as EnrolledCourse
+        } as EnrolledCourse
+      })
+    });
+  }
+  getCourses(){
+    this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(storeItems =>{
+      this.available_course = storeItems;
+    })
+  }
+  async presentLoading() { 
+    const loader = this.loadingCtrl.create({
+      message: "Updating user information....",
+    });
+    (await loader).present();
+  }
+
+  updateProfilePic(event) {
+    
+    this.dbs.updateProfile(event.target.files[0])
+ 
+  }
+
+
 }
