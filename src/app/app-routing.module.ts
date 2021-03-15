@@ -177,7 +177,7 @@ export const routes: Routes = [
     },
     {
       path: '',
-      redirectTo: 'courses',
+      redirectTo: 'account',
       pathMatch: 'full'
     },
     {
