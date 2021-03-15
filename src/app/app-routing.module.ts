@@ -88,10 +88,7 @@ export const routes: Routes = [
         },
     ]
   },
-  {
-    path: 'tasklist',
-    loadChildren: () => import('./pages/tasklist/tasklist.module').then( m => m.TasklistPageModule)
-  },
+  
   {
     path: 'forum',
     loadChildren: () => import('./pages/forum/forum.module').then( m => m.ForumPageModule)
