@@ -29,12 +29,19 @@ videoURL;
 
        this.sort();
 
+       if(localStorage.getItem("url").toString().length > 1){
+        this.videoURL = localStorage.getItem("url");
+       }
+       
+
       
     })
   }
 
   play(videoURL){
     this.videoURL = videoURL;
+
+    localStorage.setItem("url", videoURL);
   }
 
   sort(){

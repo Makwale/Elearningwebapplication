@@ -8,7 +8,9 @@ export class QuestionResults{
 
     student_answer: string;
 
-    constructor(question: string, answer : string, marks: number, yourAnswer: string){
+    qno: number
+
+    constructor(question: string, answer : string, marks: number, yourAnswer: string, qno: number){
         this.question = question;
 
         this.answer = answer;
@@ -16,6 +18,12 @@ export class QuestionResults{
         this.marks = marks;
 
         this.student_answer = yourAnswer;
+
+        this.qno = qno;
+    }
+
+    setStudentAswer(student_answer){
+        this.student_answer = student_answer;
     }
     
 }

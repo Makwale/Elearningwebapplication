@@ -53,8 +53,8 @@ export class QuizPage implements OnInit {
       this.dbs.getQuiz(data["lesson_id"]).subscribe( data =>{
         data.forEach(quizdata => {
           let tempvar = quizdata.payload.doc.data();
-
-          this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"])
+          console.log(quizdata.payload.doc.data())
+          this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"], tempvar["topic"])
 
           this.duration = new Date();
           this.duration.setMinutes(tempvar["duration"]);
@@ -80,11 +80,33 @@ export class QuizPage implements OnInit {
 
   }
 
-  save(question, st_answer){
+  save(question, st_answer, qno){
+
+    if(!this.searchQuestion(qno)){
+      this.questionResults.push(new QuestionResults(question.question, question.answer , question.marks ,st_answer, qno ))
+      
+    }else{
+    
+      for(var i = 0; i < this.questionResults.length; i++){
+        if(this.questionResults[i].qno == qno){
+          this.questionResults[i].setStudentAswer(st_answer);
+          break;
+        }
+      }
+    }
+    
 
 
-    this.questionResults.push(new QuestionResults(question.question, question.answer , question.marks ,st_answer ))
+  }
 
+  searchQuestion(qno): boolean{
+    for(let quiz of this.questionResults){
+      if(quiz.qno == qno){
+        
+        return true;
+      }
+    }
+    return false;
   }
 
   start(){
