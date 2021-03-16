@@ -57,12 +57,6 @@ export class CoursesPage implements OnInit {
           
       });
 
-      let course = new Course("1", "Java", 3,
-      "reter", "IT", 4566, "2434");
-      
-      course.numberStudentsErrolled = 3;
-      this.courses.push(course);
-
       this.dataSource = new MatTableDataSource(this.courses);
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
