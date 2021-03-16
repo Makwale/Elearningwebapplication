@@ -29,7 +29,8 @@ export class DashboardPage implements OnInit {
           tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
           
           course.numberStudentsErrolled = tempvar['numberStudentsErrolled'];
-          this.courses.push(course);
+          if(!this.search(course))
+            this.courses.push(course);
           
           
       });
@@ -113,6 +114,15 @@ export class DashboardPage implements OnInit {
     })
   }
 
+  search(course: Course): boolean{
+    for(let temcourse of this.courses){
+      if(temcourse.id == course.id){
+        return true;
+      }
+    }
+
+    return false;
+  }
 
 
 

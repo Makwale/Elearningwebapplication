@@ -51,9 +51,9 @@ export class CoursesPage implements OnInit {
           tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
           
           course.numberStudentsErrolled = tempvar['numberStudentsErrolled'];
-          this.courses.push(course);
-          
-          this.getCoursesList();
+          if(!this.search(course)){
+            this.courses.push(course);
+          }
           
       });
 
@@ -72,25 +72,9 @@ export class CoursesPage implements OnInit {
     //this.dataSource.sort = this.sort;
   }
 
-  getCoursesList(){
-    for(let course of this.courses){
-      if( this.tempVar.length < 1){
-        this.tempVar.push(course);
-      }else{
-        if(!this.search(course)){
-          this.tempVar.push(course);
-        }
-        
-      }
-    }
-
-    this.courses = this.tempVar;
-
-    return this.courses;
-  }
 
   search(course: Course): boolean{
-    for(let temcourse of this.tempVar){
+    for(let temcourse of this.courses){
       if(temcourse.id == course.id){
         return true;
       }
