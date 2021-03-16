@@ -103,6 +103,10 @@ export const routes: Routes = [
     component: AdminpanelPage,
     children:[
       {
+        path: 'dashboard',
+        loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+      },    
+      {
         path: 'student',
         loadChildren: () => import('./pages/admin/student/student.module').then( m => m.StudentPageModule)
       },
@@ -116,7 +120,7 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'courses',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       },
       {
@@ -145,6 +149,7 @@ export const routes: Routes = [
     path: 'createannouncementi',
     loadChildren: () => import('./pages/instructorpages/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
   },
+
   {
     path: 'instructorpanel',
     component: InstructorpanelPage,
@@ -195,21 +200,6 @@ export const routes: Routes = [
     path: 'addlesson',
     loadChildren: () => import('./pages/instructorpages/addlesson/addlesson.module').then( m => m.AddlessonPageModule)
   },
-
-  
-
-
-
-
-  
-
-  
-  
-
-  
-
-
-  
 
   
 
