@@ -16,11 +16,8 @@ export class AddcoursePage implements OnInit {
   }
 
   uploadFile(event) {
-
     this.file = event.target.files[0];
-
   }
-
   addCourse(cname, catogory, price){
     this.dbs.addCourse( cname, catogory, price, this.file);
   }

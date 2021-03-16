@@ -10,6 +10,7 @@ import { InstructorClass } from 'src/app/Model/Instructor-Model/instructor';
 import firebase from 'firebase/app';
 import { Instructor } from 'src/app/Model/instructor';
 import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
+import { finalize } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,6 +18,9 @@ export class InstructorService {
 
   user = {} as InstructorInfo;
   instructor = new InstructorClass;
+  storage: any;
+
+  video;
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
     private router: Router,private accountService: AccountService, private dbs: DatabaseService) {
@@ -90,12 +94,17 @@ export class InstructorService {
   getInstructorInfo(userID){
     return this.afs.collection('Instructor', ref => ref.where('id','==', userID)).snapshotChanges();
   }
+  
+
   //==========================================================
-   // Sign-out 
+  
+  
+  // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
       this.router.navigate(['account']); 
     })
   }
+
 
 }

@@ -12,7 +12,7 @@ import { Lesson } from '../Model/lesson.mode';
 import { Student } from '../Model/student.model';
 import { CoursedetailsPage } from '../pages/coursedetails/coursedetails.page';
 import { AccountService } from './account.service';
-import { finalize } from 'rxjs/operators';
+
 import { ThrowStmt } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Announcement } from '../Model/announcement.model';
@@ -202,6 +202,7 @@ export class DatabaseService {
             alert(error.message)
           })
         });
+        
   	})).subscribe()	
     
   }
@@ -419,3 +420,7 @@ export class DatabaseService {
  
  
 }
+function finalize(arg0: () => void): any {
+  throw new Error('Function not implemented.');
+}
+

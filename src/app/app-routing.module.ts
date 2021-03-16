@@ -174,6 +174,10 @@ export const routes: Routes = [
       pathMatch: 'full'
     },
     {
+      path: 'addlesson',
+      loadChildren: () => import('./pages/instructorpages/addlesson/addlesson.module').then( m => m.AddlessonPageModule)
+    },
+    {
       path: 'events',
       loadChildren: () => import('./pages/instructorpages/events/events.module').then( m => m.EventsPageModule)
     },
@@ -187,6 +191,11 @@ export const routes: Routes = [
     },
     ]
   },
+  {
+    path: 'addlesson',
+    loadChildren: () => import('./pages/instructorpages/addlesson/addlesson.module').then( m => m.AddlessonPageModule)
+  },
+
   
 
 

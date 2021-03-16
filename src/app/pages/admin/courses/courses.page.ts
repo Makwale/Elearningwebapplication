@@ -113,7 +113,6 @@ export class CoursesPage implements OnInit {
   }
 
   async editCourse(id){
-
     for(let i = 0; i < this.courses.length; i++){
       if(this.courses[i].id == id){
         const modal = await this.modalController.create({

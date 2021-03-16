@@ -19,6 +19,8 @@ import  firebase from 'firebase/app';
 import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
+import { AddlessonPage } from './../addlesson/addlesson.page';
+
 
 @Component({
   selector: 'app-courses',
@@ -67,6 +69,7 @@ user = {} as StudentInfo;
 
 constructor( private auth: AngularFireAuth,
   private afs: AngularFirestore,
+  public modalController: ModalController,
   private accountService: AccountService,
   private router:Router,
   private dbs: DatabaseService,private instructorDao:InstructorService ) {
@@ -88,6 +91,21 @@ ngOnInit() {
   })     
   this.getCourses(this.studentAccount.getStudentNumber());
 }
+async addLesson(id){
+  for(let i = 0; i < this.courses.length; i++){
+    if(this.courses[i].id == id){
+      const modal = await this.modalController.create({
+        component: AddlessonPage,
+        componentProps:{
+          course: this.courses[i],
+    },
+  });
+  await modal.present();
+  break;
+}
+}
+}
+
 setUserAccount(){
   let userID = firebase.auth().currentUser.uid.toString();
   this.afs.collection("Instructor").doc(userID).valueChanges().subscribe(data =>{   

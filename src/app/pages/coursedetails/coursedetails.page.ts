@@ -31,6 +31,7 @@ export class CoursedetailsPage implements OnInit {
     this.userAccount = this.accountService.getAccount();
    
   }
+  
   close() {
     this.modalCtrl.dismiss();
   }
