@@ -119,4 +119,8 @@ export class StudentPage implements OnInit {
   
       this.router.navigate(['./adminpanel/studentenrolledcourse'] , {queryParams: { "id": id, "firstname": firstname, "lastname": lastname}})
   }
+
+  filter(value){
+    this.dataSource.filter = value;
+  }
 }

@@ -61,14 +61,29 @@ export class DashboardPage implements OnInit {
           data: {
               labels: coursesnames,
               datasets: [{
-                  label: 'No Students Each Course',
                   data: numStudents,
                   backgroundColor: bgcs,
                   borderWidth: 1
               }]
           },
           options: {
-              scales: {
+            responsive: true,
+            title: {
+              display: true,
+              position: "top",
+              text: "No Students Per Course",
+              fontSize: 18,
+              fontColor: "#111"
+            },
+            legend: {
+              display: false,
+              position: "bottom",
+              labels: {
+                fontColor: "#333",
+                fontSize: 16
+              }
+            },
+            scales: {
                   yAxes: [{
                       ticks: {
                           beginAtZero: true

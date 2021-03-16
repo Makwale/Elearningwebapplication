@@ -116,6 +116,10 @@ export class CoursesPage implements OnInit {
     this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
 
   }
+
+  filter(value){
+    this.dataSource.filter = value;
+  }
   
 
 }

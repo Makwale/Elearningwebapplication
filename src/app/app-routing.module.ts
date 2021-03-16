@@ -120,7 +120,7 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: 'courses',
+        redirectTo: 'dashboard',
         pathMatch: 'full'
       },
       {

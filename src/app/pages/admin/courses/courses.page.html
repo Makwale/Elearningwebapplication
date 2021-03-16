@@ -12,9 +12,9 @@
 
 <div style="background-color: white; margin-bottom: 80px;">
 
-  <mat-form-field>
+  <mat-form-field style="margin-left: 30px; margin-top: 10px;">
     <mat-label>Filter</mat-label>
-    <input matInput  placeholder="Search course by name" #input>
+    <input matInput  placeholder="Search course by id,  name or category" #input (keyup)="filter(input.value)">
   </mat-form-field>
 
   <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 90px;"></mat-paginator>

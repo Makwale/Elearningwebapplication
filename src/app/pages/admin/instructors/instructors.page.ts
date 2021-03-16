@@ -119,4 +119,8 @@ export class InstructorsPage implements OnInit {
       }
     }
   }
+
+  filter(value){
+    this.dataSource.filter = value;
+  }
 }

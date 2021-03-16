@@ -78,6 +78,9 @@ export class CoursestudentsPage implements OnInit {
     return false;
   }
 
+  filter(value){
+    this.dataSource.filter = value;
+  }
 }
 
 
