@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Chart } from "chart.js";
+
 import { Course } from 'src/app/Model/course';
 import { DatabaseService } from 'src/app/services/database.service';
 
