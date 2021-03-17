@@ -27,39 +27,50 @@
 </ion-content> -->
 
 
-<mat-card style="margin-top: 100px;">
+<mat-card>
     <ion-item>
         <ion-label position="fixed">Lesson name </ion-label>
         <ion-input [(ngModel)]="lessonName" #name type="text"></ion-input>
     </ion-item>
-    <ion-label position="fixed">Document </ion-label>
-    <input type='file' (change)="uploadFile($event)">
-    <div> {{ uploadPercentage | async }} %</div>
-    <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
-    <mat-card style="margin-top: 10px; width: 50%;">
-        <mat-card-content>
-            <ion-progress-bar [value]="(uploadPercentage |async)"> </ion-progress-bar>
-            <label [className]="(uploadPercentage |async)"> {{uploadPercentage |async}} %</label>
-            <span id="(uploadPercentage |async)"></span>
-        </mat-card-content>
-    </mat-card>
-    <ion-label position="fixed">Video </ion-label>
-    <input type='file' (change)="uploadVideo($event)">
-    <div> {{ uploadPercentage_V | async }} %</div>
-    <a [href]="downloadURL_V | async">{{ downloadURL_V | async }}</a>
-    <mat-card style="margin-top: 10px; width: 50%;">
-        <mat-card-content>
-            <ion-progress-bar [value]="(uploadPercentage_V |async)"> </ion-progress-bar>
-            <label [className]="(uploadPercentage_V |async)"> {{uploadPercentage_V |async}} %</label>
-            <span id="(uploadPercentage_V |async)"></span>
-        </mat-card-content>
-    </mat-card>
+    <ion-list>
+        <ion-item>
+            <ion-label position="fixed">Document </ion-label>
+            <input type='file' (change)="uploadFile($event)">
+            <!-- <div> {{ uploadPercentage | async }} %</div> -->
+        </ion-item>
+        <ion-item>
+            <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
+            <ion-progress-bar [value]="(uploadPercentage |async)"></ion-progress-bar>
+            <label [className]="(uploadPercentage |async)"> {{uploadPercentage | async }}%</label>
+        </ion-item>
+        <span id="(uploadPercentage |async)"></span>
+    </ion-list>
+    <ion-list>
+        <ion-item>
+            <ion-label position="fixed">Video </ion-label>
+            <input type='file' (change)="uploadVideo($event)">
+            <!-- <div> {{ uploadPercentage_V | async }} %</div> -->
+        </ion-item>
+        <ion-item>
+            <a [href]="downloadURL_V | async">{{ downloadURL_V | async }}</a>
+            <ion-progress-bar [value]="(uploadPercentage_V |async)"></ion-progress-bar>
+            <label [className]="(uploadPercentage_V |async)"> {{uploadPercentage_V |async }}%</label>
+        </ion-item>
+        <span id="(uploadPercentage_V |async)"></span>
+    </ion-list>
 
-    <mat-card style="margin-top: 10px; width: 50%;">
+
+
+    <ion-button color="primary" expand="block" shape="round" (click)="onClick(name.value)">Upload
+        <mat-icon>file_upload</mat-icon>
+    </ion-button>
+
+
+    <!-- <mat-card style="margin-top: 10px; width: 50%;">
         <mat-card-actions>
             <button mat-button color="warn" (click)="onClick(name.value)">
             <mat-icon>file_upload</mat-icon>Upload
           </button>
         </mat-card-actions>
-    </mat-card>
+    </mat-card> -->
 </mat-card>
