@@ -11,6 +11,8 @@ import firebase from 'firebase/app';
 import { Instructor } from 'src/app/Model/instructor';
 import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
 import { finalize } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,14 +20,124 @@ export class InstructorService {
 
   user = {} as InstructorInfo;
   instructor = new InstructorClass;
-  storage: any;
 
-  video;
+  //Upload Document
+  image: Observable<any>;
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<any>;
+  lessonName: Observable<any>;
+  //Upload video
+  image_V: Observable<any>;
+  uploadPercent_V: Observable<number>;
+  downloadURL_V: Observable<any>;
+
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
-    private router: Router,private accountService: AccountService, private dbs: DatabaseService) {
-      this.instructor = new InstructorClass();
-     }
+    private router: Router,
+    private accountService: AccountService,
+   private dbs: DatabaseService,
+   
+   private storage: AngularFireStorage,
+   ) {this.instructor = new InstructorClass();}
+
+     uploadFile(event,name,lname) {
+      const file = event.target.files[0];
+      const filename = file.name;
+      const fileExt = filename.split('.').pop();
+      const filePath = name + "/" + lname + '.' + fileExt;
+      const fileRef = this.storage.ref(`StudyMaterial/${filePath}`);
+      const task = this.storage.upload(`StudyMaterial/${filePath}`, file);
+  
+      this.uploadPercent = task.percentageChanges();
+  
+      task.snapshotChanges().pipe(
+        finalize(() => this.downloadURL =  fileRef.getDownloadURL())
+      ).subscribe()
+    
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(downloadURL => {
+            this.image = downloadURL;
+            });
+        })
+       )
+    .subscribe()
+    }
+    uploadVideo(event,name, lname) {
+      const file = event.target.files[0];
+      const filename = file.name;
+      const fileExt = filename.split('.').pop();
+      const filePath =   name +"/" + lname + '.' + fileExt;
+      const fileRef = this.storage.ref(`LessonsVideos/${filePath}`);
+      const task = this.storage.upload(`LessonsVideos/${filePath}`, file);
+  
+      this.uploadPercent_V = task.percentageChanges();
+      task.snapshotChanges().pipe(
+        finalize(() => this.downloadURL_V =  fileRef.getDownloadURL())
+      ).subscribe()
+    
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe(downloadURL_V => {
+            this.image_V = downloadURL_V;
+            //video
+            });
+        })
+       )
+    .subscribe()
+    }
+    //Uploaded method
+    uploadItem(_name,_course_id) {
+      window.alert("Lesson has been uploaded successfully" + _name);
+      let id = this.afs.createId();
+      this.afs.collection('LessonsThembi').doc(id).set({
+        course_id: _course_id,
+        name: _name,
+        number: 6,
+        date: new Date(),
+        docUrl: this.image,
+        videoUrl: this.image_V
+      }).catch(error => {
+        console.log("not added error ->" + error);
+      }).then(() => {
+        this.router.navigate(["/home"]);
+      })
+    }
+    // uploadImage(event){
+    //   const file = event.target.files[0];
+    //   const filePath = 'images' + this.makeid(3);
+    //   const fileRef = this.storage.ref(filePath);
+    //   const task = this.storage.upload(filePath,file);
+      
+    //   //const task1 = fileRef.put(file);
+    //   //Observe percentage changes
+    //   this.uploadPercent = task.percentageChanges();
+    //   task.snapshotChanges().pipe(
+    //     finalize(() => this.downloadURL =  fileRef.getDownloadURL())
+    //   ).subscribe()
+    //   return this.uploadPercent;
+    // }
+    // makeid(length){
+    //   var result ='';
+    //   var characters ='ABCDEFGHIJKLMNOPQRTSUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    //   var charactersLength = characters.length;
+    //   for(var i =0; i < length; i++){
+    //     result += characters.charAt(Math.random()* charactersLength);
+    //   }
+    //   return result;
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {  
@@ -94,17 +206,14 @@ export class InstructorService {
   getInstructorInfo(userID){
     return this.afs.collection('Instructor', ref => ref.where('id','==', userID)).snapshotChanges();
   }
-  
-
   //==========================================================
-  
-  
   // Sign-out 
    SignOut() {
     return this.afa.signOut().then(() => {  
       this.router.navigate(['account']); 
     })
   }
+
 
 
 }

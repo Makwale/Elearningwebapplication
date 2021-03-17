@@ -7,6 +7,10 @@ import { Course } from 'src/app/Model/course';
 import { Lesson } from 'src/app/Model/lesson.mode';
 import { DatabaseService } from 'src/app/services/database.service';
 import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
+import { AngularMaterialModule } from "../../../angular-material.module";
+import { MatProgressBar } from "@angular/material/progress-bar";
+import { Observable, of } from 'rxjs';
+
 
 @Component({
   selector: 'app-addlesson',
@@ -21,48 +25,46 @@ export class AddlessonPage implements OnInit {
   docURL;
   videoURL;
   lessonNumber: number;
+
+
+  uploadPercentage;
+  filename: string;
+
+  item: Observable<string>;
+  price: Observable<number>;
+  image: Observable<string>;
+  description: Observable<string>
+//Document -- pdf
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+//Video -- .mp4
+  uploadPercentage_V;
+  uploadPercent_V: Observable<number>;
+  downloadURL_V: Observable<string>;
+  lessonName: Observable<string>;
+
   constructor(private storage: AngularFireStorage,
     public db: DatabaseService,
     private afs: AngularFirestore,
-     private router: Router,
-     private modalCtrl: ModalController,  
-      private dbs: InstructorService) { 
-
-      }
-
+    private modalCtrl: ModalController,  
+    private dbs: InstructorService) { }
+    
+    onClick(name){
+      this.lessonName = name;
+      this.dbs.uploadItem(name,this.course.id);
+      window.alert(this.lessonName + "Lesson Name\n"+name + "Lesson Name\n");
+     this.close();
+  }
+    uploadFile(event){
+      this.dbs.uploadFile(event, this.course.name,this.lessonName);
+      this.uploadPercentage = this.dbs.uploadPercent;
+   }
+   uploadVideo(event){
+    this.dbs.uploadVideo(event,this.course.name,this.lessonName);
+    this.uploadPercentage_V = this.dbs.uploadPercent_V;
+ }
   ngOnInit() {
-    this.lessonList = [];
     this.lessonList = this.db.lessonsList.filter( lesson => lesson.course_id == this.course.id);
-    this.lessonNumber = this.lessonList.length + 1;
-  }
-  uploadDocURL(event) {
-    this.docURL = event.target.files[0];
-  }
-  uploadVideoUrl(event) {
-    this.videoURL = event.target.files[0];
-  }
-
-
-addLesson(lessonName, num){
-  if(window.confirm("Add new lesson")){
-  this.afs.collection('Lessons').add({
-    course_id: this.course.id, 
-    name: lessonName,
-    date: new Date(),
-    number: num,
-    //Just for testing purposes....We'll Upload doc and video later
-    docUrl: 'https://firebasestorage.googleapis.com/v0/b/elearningapp-ad47e.appspot.com/o/StudyMaterial%2Fnull.pdf?alt=media&token=23fa9391-6edc-48b6-8111-2bd9f09a6624cUrl',
-    //StudyMaterial/this.course/name/url
-    videoUrl: 'https://firebasestorage.googleapis.com/v0/b/elearningapp-ad47e.appspot.com/o/LessonsVideos%2FHTML%2Fhtml5.mp4?alt=media&token=a3f160c7-1956-4c8d-8103-1e865180cbb9',
-    //LessonsVideo/this.course/name/url
-  }).then(() => {
-    window.alert("lesson added");
-    this.close();
-    }).catch( error =>{
-      window.alert(error.message);
-      console.log("Error Message " ,error.message);
-    })
-      }
   }
   close() {
     this.modalCtrl.dismiss();
