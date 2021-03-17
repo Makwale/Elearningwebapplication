@@ -8,6 +8,9 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
 import { MatSidenav } from '@angular/material/sidenav';
+import { PopoverController } from '@ionic/angular';
+import { PopovermainPage } from '../popovermain/popovermain.page';
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -21,7 +24,8 @@ export class MainPage implements OnInit {
   constructor(public accountService: AccountService,
     public loadingCtrl: LoadingController,
     private auth: AngularFireAuth,
-    private afs:AngularFirestore, private dbs: DatabaseService, private router: Router) {
+    private afs:AngularFirestore, private dbs: DatabaseService,
+     private router: Router, public popoverController: PopoverController) {
 
       
     }
@@ -46,25 +50,20 @@ export class MainPage implements OnInit {
       }
     })
   }
-  signOut(){
-    this.presentLoading();
-    if (window.confirm('Do you really want to Sign-Out?')) {    
-      this.auth.signOut().then(()=>{
-        this.userAccount.setSignIn(this.loginStatus);
-        this.accountService.setAccount(this.userAccount); //Clear the user     
-      })
-    }
-  }
-async presentLoading() {
-  const loader = this.loadingCtrl.create({
-    message: "signing out....",
-    duration: 3000,
-  });
-  (await loader).present();
-}
+ 
+
   navigateToAnnouncement(){
     this.dbs.totalNewAnnouncement = 0;
     this.router.navigateByUrl("studentannouncement")
+  }
+
+  async openPopover(ev){
+    const popover = await this.popoverController.create({
+      component: PopovermainPage,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
   
   
