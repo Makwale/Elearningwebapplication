@@ -3,7 +3,7 @@
     <ion-title>Student Profile </ion-title>
     
     <ion-buttons slot="end">
-      <ion-button (click)="test()">Test</ion-button>
+     
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -22,9 +22,9 @@
               <img *ngIf="!this.accountService.getAccount().getStudent().imgURL" src="../../../../assets/img/profile/dp.png">
             </ion-avatar>
 
-            <ion-input type="file" accept="image/*" style="background-color: black; border-radius: 20px; height: 40px;" (change)="updateProfilePic($event)" >
-              <ion-icon slot="start" size="large" name="camera"></ion-icon>
-            </ion-input>
+            <ion-button color="light" (click)="uploadPhoto($event)">Update Photo</ion-button>
+
+            
           </ion-col>
 
           <ion-col size="8" *ngIf="!isEdit; else elseBlock">

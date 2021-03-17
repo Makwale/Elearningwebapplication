@@ -199,7 +199,11 @@ export const routes: Routes = [
   {
     path: 'addlesson',
     loadChildren: () => import('./pages/instructorpages/addlesson/addlesson.module').then( m => m.AddlessonPageModule)
+  },  {
+    path: 'popover',
+    loadChildren: () => import('./pages/popover/popover.module').then( m => m.PopoverPageModule)
   },
+
 
   
 

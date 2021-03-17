@@ -12,7 +12,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import {MatTableModule} from '@angular/material/table';
 import { DatabaseService } from 'src/app/services/database.service';
 import { AccountService } from 'src/app/services/account.service';
-
+import { PopoverController } from '@ionic/angular';
+import { PopoverPage } from '../../popover/popover.page';
 
 @Component({
   selector: 'app-my-profile',
@@ -39,7 +40,8 @@ num:number = 0;
    constructor(public fb: FormBuilder,
     private sts: StudentService,
     public loadingCtrl: LoadingController,
-    private asf: AngularFirestore, private dbs: DatabaseService, private accountService: AccountService) {
+    private asf: AngularFirestore, private dbs: DatabaseService, private accountService: AccountService
+    ,public popoverController: PopoverController) {
       this.studentAccount = new StudentClass();
       this.updateUserForm = new FormGroup({
         'firstname': new FormControl('', Validators.compose([
@@ -131,11 +133,6 @@ num:number = 0;
     (await loader).present();
   }
 
-  updateProfilePic(event) {
-    
-    this.dbs.updateProfile(event.target.files[0])
- 
-  }
 
   test(){
     let i = document.createElement("input");
@@ -144,6 +141,16 @@ num:number = 0;
 
     i.accept = "image/*";
 
+  }
+
+  async uploadPhoto(ev){
+    const popover = await this.popoverController.create({
+      component: PopoverPage,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
 

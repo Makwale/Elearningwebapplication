@@ -30,6 +30,7 @@ import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/ins
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
 
 
+
 @NgModule({
   declarations: [AppComponent, MainPage, AdminpanelPage, InstructorpanelPage, InstructorPagePage],
   entryComponents: [],
@@ -42,6 +43,7 @@ import { InstructorPagePage } from './pages/instructor-page/instructor-page.page
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatIconModule,
+    MatSidenavModule,
     AngularFireModule.initializeApp( environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
