@@ -1,3 +1,5 @@
+
+
 <ion-card >
 <div id="login-container" >
 
@@ -33,7 +35,7 @@
     </div>
   </ion-list>
 
-  <ion-button class="ion-margin" color="warning" class="sign-in-btn" type="submit" size="large" expand="block" shape="round"   strong [disabled]="!signInForm.valid">SIGN IN</ion-button>
+  <ion-button class="ion-margin" color="warning" class="sign-in-btn" type="submit" size="large" expand="block" shape="round"   strong [disabled]="!signInForm.valid">SIGN IN<ion-spinner style="font-size: 100px;" name="bubbles" *ngIf="isVisible"></ion-spinner></ion-button>
 
   <div class="error-container" *ngIf="submitError">
     <div class="error-message">

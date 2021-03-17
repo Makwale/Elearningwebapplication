@@ -16,7 +16,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
-import { InputModule } from 'src/app/components/input/input.module';
+
 import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
@@ -24,7 +24,6 @@ import { ProfileComponent } from './profile/profile.component';
     CommonModule,
     FormsModule,
     IonicModule,
-    InputModule,
     MatCardModule,
     MatIconModule,
     MatStepperModule,

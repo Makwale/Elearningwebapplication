@@ -16,6 +16,7 @@ import { AccountService } from './account.service';
 import { ThrowStmt } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Announcement } from '../Model/announcement.model';
+import { QuizHistory } from '../Model/quizhistory.model';
 
 @Injectable({
   providedIn: 'root'
@@ -120,25 +121,54 @@ export class DatabaseService {
     });
   }
 // Get lessons for selected enrolled courses
-  public getLessons(course_id: string): Lesson[]{
+  public getLessons(course_id: string){
 
-   
+    
 
     this.afs.collection("Lesson", ref => ref.where("course_id", "==", course_id),)
 
     .snapshotChanges().subscribe( lessonsdata =>{
 
-      lessonsdata.forEach( lesson => {
+      for(let lesson of lessonsdata){
 
-        this.lessonsList.push(new Lesson(lesson.payload.doc.id, 
-          lesson.payload.doc.data()["name"], lesson.payload.doc.data()["number"],
-          lesson.payload.doc.data()["videoURL"], lesson.payload.doc.data()["docURL"],
-          lesson.payload.doc.data()["date"], lesson.payload.doc.data()["course_id"]));
+        this.afs.collection("QuizHistory", ref => ref.where("student_id", "==" , 
+        this.accountService.getAccount().getStudent().getStudentNumber())).snapshotChanges().
+        subscribe(data => {
+          
+            let ls = new Lesson(lesson.payload.doc.id, 
+            lesson.payload.doc.data()["name"], lesson.payload.doc.data()["number"],
+            lesson.payload.doc.data()["videoURL"], lesson.payload.doc.data()["docURL"],
+            lesson.payload.doc.data()["date"], lesson.payload.doc.data()["course_id"]);
+
+          if(this.searchLesson(data, lesson.payload.doc.id)){
+
+            ls.isWritten = true;
+
+          }else{
+              ls.isWritten = false;
+          }
+
+          this.lessonsList.push(ls);
+        })
        
-      })
+      }
       
     })
-    return null;
+  
+  }
+
+  searchLesson(writtenqQuizes: DocumentChangeAction<unknown>[], lesson_id): boolean{
+
+    
+
+    for(let wq of writtenqQuizes){
+      if(wq.payload.doc.data()["lesson_id"] == lesson_id){
+        
+        return true;
+      }
+    }
+
+    return false;
   }
   update_student(recordID, student) {
     this.afs.doc('Student/' + recordID).update(student);
@@ -368,15 +398,16 @@ export class DatabaseService {
   }
 
   getQuizMarks(student_id) {
-    return this.afs.collection("QuizHistroy", ref => ref.where("student_id", "==", student_id)).snapshotChanges();
+    return this.afs.collection("QuizHistory", ref => ref.where("student_id", "==", student_id)).snapshotChanges();
   }
 
-  saveQuizRestuls(lesson_id, student_id ,date, marks) {
-    this.afs.collection("QuizHistroy").add({
+  saveQuizRestuls(lesson_id, student_id ,date, marks, pdf) {
+    this.afs.collection("QuizHistory").add({
       lesson_id : lesson_id,
       student_id: student_id,
       date: date,
-      marks: marks
+      marks: marks,
+      pdf: pdf,
     }).then(() => {
       alert("Quiz results saved");
     })
@@ -398,6 +429,7 @@ export class DatabaseService {
   getCoursesForSelectedStudent(student_id: string) {
     return this.afs.collection("EnrolledCourse", ref => ref.where("student_id", "==", student_id)).snapshotChanges();
   }
+
  
   updateProfile(file) {
     const filePath = this.accountService.getAccount().getStudent().getStudentNumber()

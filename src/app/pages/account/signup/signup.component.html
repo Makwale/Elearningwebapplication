@@ -106,7 +106,7 @@
                 </div></ion-col>
               </ion-row>
         </ion-list>
-        <ion-button class="sign-up-btn" type="submit" expand="block" shape="round" [disabled]="!signUpForm.valid" size="large" color="warning">Sign Up</ion-button>
+        <ion-button class="sign-up-btn" type="submit" expand="block" shape="round" [disabled]="!signUpForm.valid" size="large" color="warning">Sign Up<ion-spinner style="font-size: 100px;" name="bubbles" *ngIf="isVisible"></ion-spinner></ion-button>
         <div class="error-container" *ngIf="submitError">
           <div class="error-message">
             <ion-icon name="information-circle-outline"></ion-icon>

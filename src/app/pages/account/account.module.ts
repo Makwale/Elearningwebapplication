@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { AccountPageRoutingModule } from './account-routing.module';
 
 import { AccountPage } from './account.page';
-import { InputModule } from 'src/app/components/input/input.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatStepperModule } from '@angular/material/stepper';
@@ -23,7 +22,7 @@ import { SignupComponent } from './signup/signup.component';
 
 import { MyProfileComponent } from 'src/app/pages/account/my-profile/my-profile.component';
 import { MatTableModule } from '@angular/material/table';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -31,7 +30,6 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     IonicModule,
     AccountPageRoutingModule,
-    InputModule,
     MatCardModule,
     MatIconModule,
     MatStepperModule,
@@ -43,6 +41,7 @@ import { MatTableModule } from '@angular/material/table';
     MatRadioModule,
     AngularFireAuthModule,
     MatTableModule,
+    MatProgressSpinnerModule
   ],
   declarations: [AccountPage,LoginComponent,SignupComponent,MyProfileComponent]
   

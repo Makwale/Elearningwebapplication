@@ -1,15 +1,24 @@
 import { IonDatetime } from "@ionic/angular";
 
 export class Lesson{
+
     id: string;
+
     videoURL: string;
+
     date: Date;
+
     course_id: string;
+
     name: string;
-    number: number
+
+    number: number;
+
     docURL: string;
 
-    constructor(id: string, name: string, number: number, vidoeURL: string, docURL, date: Date, course_id){
+    isWritten: boolean;
+
+    constructor(id: string, name: string, number: number, vidoeURL: string, docURL, date: Date, course_id, isWritten?: boolean){
         
         this.id = id;
 
@@ -24,6 +33,8 @@ export class Lesson{
         this.number = number;
 
         this.docURL = docURL;
+
+        this.isWritten = isWritten;
     }
 
     

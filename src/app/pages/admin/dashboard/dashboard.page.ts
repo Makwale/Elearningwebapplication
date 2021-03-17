@@ -55,7 +55,6 @@ export class DashboardPage implements OnInit {
           
           }
 
-          console.log(bgcs)
 
         let myChart = new Chart("barchart", {
           type: 'bar',

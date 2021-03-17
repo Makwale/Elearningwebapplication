@@ -35,6 +35,10 @@ export class MainPage implements OnInit {
           this.userAccount = new Account(true, student);
           //set Account service to keep account object
           this.accountService.setAccount(this.userAccount);
+
+          this.dbs.getEnrolledCourses();
+
+          this.dbs.getAnnouncements();
         })
         this.loginStatus = true;
           } else {

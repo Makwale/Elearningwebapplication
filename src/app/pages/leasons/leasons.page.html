@@ -55,11 +55,17 @@
         </mat-tab>
         <mat-tab label="Quizzes">
             <ion-list>
+                <ion-list-header>
+                   <ion-label >Quizzes completed: {{nquizwritten}} of {{lessonList.length}}</ion-label>
+                </ion-list-header>
                 <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="navigateToQuiz(lesson.id)">
                    
                     <ion-label>
                        {{lesson.name}}
                     </ion-label>
+
+                    <ion-icon size="large" color="success" *ngIf="lesson.isWritten" name="checkmark-done-circle-outline" slot="end"></ion-icon>
+                    
                 </ion-item>
                 
 

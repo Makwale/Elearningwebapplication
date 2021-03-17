@@ -80,7 +80,7 @@
         margin-bottom: 10px;
       }
 
-      .fcourse-card{
+      .fcourse-card, .lcourse-card{
         width: 100%;
         margin: 1px;
       
@@ -107,6 +107,10 @@
         top: 64%;
       }
 
+      .lcourse-status{
+        top: 64%;
+      }
+
       .student-table{
         margin: 0px;
         outline: 1px solid;
@@ -128,7 +132,7 @@
         padding: 20px;
       }
 
-      .fcourse-card{
+      .fcourse-card, .lcourse-card{
         width: 100%;
         margin: 1px;
       }
@@ -154,11 +158,19 @@
       .course-status{
         top: 65%;
       }
+
+      .lcourse-status{
+        top: 65%;
+      }
     }
 
 
     @media screen and (min-width: 383px){
       .course-status{
+        top: 65%;
+      }
+
+      .lcourse-status{
         top: 65%;
       }
     }
@@ -167,16 +179,28 @@
       .course-status{
         top: 68%;
       }
+
+      .lcourse-status{
+        top: 68%;
+      }
     }
 
     @media screen and (min-width: 448px){
       .course-status{
         top: 73%;
       }
+
+      .lcourse-status{
+        top: 73%;
+      }
     }
 
     @media screen and (min-width: 450px){
       .course-status{
+        top: 71%;
+      }
+
+      .lcourse-status{
         top: 71%;
       }
     }
@@ -303,7 +327,7 @@
 
     /*For cards*/
     @media screen and (min-width: 550px) {
-      .fcourse-card{
+      .fcourse-card, .lcourse-card{
         width: 220px;
         margin: 8px;
         float: left;
@@ -312,14 +336,36 @@
       
       } 
 
+      .instructor{
+        width: 220px;
+        margin: 8px;
+        float: left;
+        height: 330px;
+        border-radius: 40px;
+      
+      } 
+
       .course-status{
+        top: 46%;
+      }
+
+      .lcourse-status{
         top: 46%;
       }
     }
 
     @media screen and (min-width: 900px) {
       .fcourse-card{
-        width: 265px;
+        width: 250px;
+        margin: 5px;
+        float: left;
+        height: 290px;
+        border-radius: 40px;
+      
+      } 
+
+      .lcourse-card{
+        width: 270px;
         margin: 5px;
         float: left;
         height: 290px;
@@ -329,15 +375,22 @@
 
       #main-content{
         width: 80%;
+    
       }
       
-      
-
-     
+      #main-content-latest{
+        width: 100%;
+      }
 
       .course-status{
+        top: 52%;
+      }
+     
+
+      .lcourse-status{
         top: 55%;
       }
+
     }
 
 
@@ -393,7 +446,7 @@
 
    
 
-    .fcourse-card:hover{
+    .lcourse-card:hover , .fcourse-card:hover{
       border: 1px solid #ffd534;
       transition-property: border;
       transition-duration: 0.5s;
@@ -560,7 +613,7 @@
       background-color: rgba(255, 213, 52, .5);
     }
 
-    .course-status{
+    .course-status, .lcourse-status{
       position: absolute; 
       z-index: 10; 
       left: 0%; 
@@ -593,6 +646,10 @@
 
     .tab:focus{
       background-color: #ffd534;
+    }
+
+    .instructor{
+      margin-top: 10px;
     }
 
   </style> 

@@ -6,6 +6,7 @@ import { Lesson } from 'src/app/Model/lesson.mode';
 import { QuizHistory } from 'src/app/Model/quizhistory.model';
 import { AccountService } from 'src/app/services/account.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-quizmarks',
@@ -14,7 +15,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class QuizmarksPage implements OnInit {
 
-  displayedColumns: string[] = [ 'date', 'marks'];
+  displayedColumns: string[] = [ 'date', 'marks', 'pdf'];
 
   lessonList: Lesson[];
 
@@ -91,7 +92,7 @@ export class QuizmarksPage implements OnInit {
       for(let quizhistory of data){
         if(quizhistory.payload.doc.data()["lesson_id"] == lesson_id){
           let quiz = new QuizHistory(quizhistory.payload.doc.id, quizhistory.payload.doc.data()["date"], 
-          quizhistory.payload.doc.data()["marks"])
+          quizhistory.payload.doc.data()["marks"],quizhistory.payload.doc.data()["pdf"])
           
            this.quizHitory [0] = quiz;
            this.dataSource = this.quizHitory;
@@ -103,6 +104,14 @@ export class QuizmarksPage implements OnInit {
     
      
     })
+  }
+
+  generate(pdf, name){
+    let doc = new jsPDF();
+
+    doc.text(pdf, 10, 20);
+    
+    doc.save(name);
   }
 
 

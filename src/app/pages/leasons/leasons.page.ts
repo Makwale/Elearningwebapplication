@@ -15,6 +15,8 @@ videoURL;
  lessonList: Lesson[];
  tempLessonList: Lesson[] = [];
  course_name;
+ nquizwritten: number;
+
   constructor(public activageRoute: ActivatedRoute,public dbs: DatabaseService, private router: Router) { }
 
   ngOnInit() {
@@ -27,7 +29,11 @@ videoURL;
 
        this.deleteDuplicates();
 
+       this.nquizwritten = this.lessonList.filter( lesson => lesson.isWritten == true).length;
+
        this.sort();
+
+       console.log(this.lessonList);
 
        if(localStorage.getItem("url").toString().length > 1){
         this.videoURL = localStorage.getItem("url");

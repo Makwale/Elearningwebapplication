@@ -27,6 +27,10 @@ export class LoginComponent implements OnInit {
       { type: 'minlength', message: 'Password must be at least 6 characters long.' }
     ]
   };
+
+  isVisible: boolean = false;
+
+
   constructor(
     private studentDao:StudentService,
     private fb: FormBuilder,
@@ -51,23 +55,20 @@ export class LoginComponent implements OnInit {
       });
   }   
   signInWithEmail() {
-    this.presentLoading();
+
+    this.isVisible = true;
+    
+  
     this.studentDao.SignIn(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
-      this.loadingCtrl.dismiss();
+      this.isVisible = false;
     })
     .catch(error => {
       this.submitError = error.message;
     });
   }
-  async presentLoading() {
-    const loader = this.loadingCtrl.create({
-      message: "Signing in....",
-    });
-    (await loader).present();
-    
-  }
-  }
+ 
+}
  
 
 

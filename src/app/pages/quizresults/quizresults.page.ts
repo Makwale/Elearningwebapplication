@@ -30,11 +30,13 @@ export class QuizresultsPage implements OnInit {
 
     console.log(this.totalMarks)
 
-    this.dbs.saveQuizRestuls(this.qs.quiz.lesson_id, this.accountService.getAccount().getStudent().getStudentNumber() , this.date, this.totalMarks / this.qs.quiz.total_marks * 100);
+    this.dbs.saveQuizRestuls(this.qs.quiz.lesson_id, this.accountService.getAccount().getStudent().getStudentNumber() , this.date, this.totalMarks / this.qs.quiz.total_marks * 100, this.generage());
+    
+    this.generage();
 
   }
 
-  generage(){
+  generage(): string{
 
     let quizR: string = "Student id: " + this.accountService.getAccount().getStudent().getStudentNumber() + "\n";
     quizR = quizR + "Email: " + this.accountService.getAccount().getStudent().getEmail() + "\n";
@@ -64,7 +66,11 @@ export class QuizresultsPage implements OnInit {
     }
 
     doc.text(quizR, 10, 20);
+    
     doc.save(this.qs.quiz.topic);
+  
+  
+    return quizR;
   }
 
 }

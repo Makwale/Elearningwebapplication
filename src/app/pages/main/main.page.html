@@ -41,7 +41,8 @@
             <ion-icon size="" name="chevron-down-outline"></ion-icon>
           </button>
           <mat-menu #menu="matMenu">
-           <button mat-menu-item (click)="signOut()">Sign out</button>
+            <button mat-menu-item routerLink="account"><mat-icon slot="start">person</mat-icon>My Profile</button>
+           <button mat-menu-item (click)="signOut()"><mat-icon slot="start">logout</mat-icon>Sign out</button>
           </mat-menu>
 
           <button style="margin-right: 10px" id="menu-button" mat-icon-button (click)="closedsidenav.toggle()" >

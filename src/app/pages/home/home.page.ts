@@ -69,21 +69,19 @@ export class HomePage implements OnInit {
       delay: 10000
     },
     breakpoints: { 500: { 
-      slidesPerView: 1, 
+          slidesPerView: 1, 
 
-    },
-    700: { 
-      slidesPerView: 2, 
-      spaceBetween: 4,
-      slidesPerGroup : 2,
-      slidesPerGroupSkip: 2
-    },
+        },
+        700: { 
+          slidesPerView: 2, 
+          spaceBetween: 4,
+          slidesPerGroup : 2,
+          slidesPerGroupSkip: 2
+        },
+        
+      }
     
   }
-    
-  }
-
-
 
 
 

@@ -15,6 +15,8 @@ export class SignupComponent implements OnInit {
   submitError: string;
   signUpForm: FormGroup;
 
+  isVisible = false;
+
   validation_messages = {
     'name': [
       { type: 'required', message: 'Name is required.' },
@@ -73,7 +75,7 @@ export class SignupComponent implements OnInit {
     this.signUpForm.reset();
   }
   signUpWithEmail() {
-    this.presentLoading();
+    this.isVisible = true;
     this.studentDao.RegisterUser(
       this.signUpForm.value['name'],
       this.signUpForm.value['surname'],
@@ -82,27 +84,22 @@ export class SignupComponent implements OnInit {
       this.signUpForm.value['email'], 
       this.signUpForm.value['password'])
     .then(user => {
-      this.loadingCtrl.dismiss();
+      
       this.auth.signOut();
       this.signUpForm.reset();  
+      this.isVisible = false
     })
     .catch(error => {
       this.submitError = error.message;
     });
   }
-keyPress(event: any) {
-  const pattern = /[0-9\+\-\ ]/;
-  let inputChar = String.fromCharCode(event.charCode);
-  if (event.keyCode != 10 && !pattern.test(inputChar)) {
-    event.preventDefault();
+  
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 10 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
-}
 
-async presentLoading() {
- 
-  const loader = this.loadingCtrl.create({
-    message: "Registering acccount....",
-  });
-  (await loader).present();
-}
 }
