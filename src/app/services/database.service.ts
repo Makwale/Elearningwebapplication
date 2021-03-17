@@ -406,7 +406,6 @@ export class DatabaseService {
 
     task.snapshotChanges().pipe( finalize( () => {
   		ref.getDownloadURL().subscribe(url =>{
-        
         this.afs.collection("Student").doc(this.accountService.getAccount().getStudent().getStudentNumber()).update({
           imgURL: url,
         }).then(() => {
