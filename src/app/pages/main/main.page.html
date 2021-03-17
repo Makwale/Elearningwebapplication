@@ -34,7 +34,10 @@
           </ion-button>
           
           <ion-avatar *ngIf ="loginStatus"  style="width: 25px; height: 25px;">
-            <img [src]="this.accountService.getAccount().getStudent().imgURL">
+            <img *ngIf="this.accountService.getAccount().getStudent().imgURL" [src]="this.accountService.getAccount().getStudent().imgURL">
+
+            <img *ngIf="!this.accountService.getAccount().getStudent().imgURL" src="../../../assets/img/profile/dp.png">
+
           </ion-avatar>
        
           <button *ngIf ="loginStatus" [matMenuTriggerFor]="menu" mat-icon-button aria-label="Example icon button with a vertical three dot icon">

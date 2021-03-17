@@ -28,11 +28,8 @@ export class QuizresultsPage implements OnInit {
       }
     }
 
-    console.log(this.totalMarks)
 
     this.dbs.saveQuizRestuls(this.qs.quiz.lesson_id, this.accountService.getAccount().getStudent().getStudentNumber() , this.date, this.totalMarks / this.qs.quiz.total_marks * 100, this.generage());
-    
-    this.generage();
 
   }
 

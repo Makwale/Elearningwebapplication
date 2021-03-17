@@ -17,6 +17,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Announcement } from '../Model/announcement.model';
 import { QuizHistory } from '../Model/quizhistory.model';
+import { finalize } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -449,9 +450,5 @@ export class DatabaseService {
     
   }
  
- 
-}
-function finalize(arg0: () => void): any {
-  throw new Error('Function not implemented.');
 }
 

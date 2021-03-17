@@ -1,5 +1,6 @@
 import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
+
 export class Student{
 
     private studentId: string;
@@ -30,7 +31,11 @@ export class Student{
 
         this.email = email;
 
+      
         this.imgURL = imgURL;
+       
+
+        
 
     }
     public getStudentNumber(){ 

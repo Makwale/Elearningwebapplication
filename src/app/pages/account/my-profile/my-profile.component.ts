@@ -137,5 +137,14 @@ num:number = 0;
  
   }
 
+  test(){
+    let i = document.createElement("input");
+
+    i.type = "file";
+
+    i.accept = "image/*";
+
+  }
+
 
 }

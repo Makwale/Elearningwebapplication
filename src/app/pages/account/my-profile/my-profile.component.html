@@ -3,7 +3,7 @@
     <ion-title>Student Profile </ion-title>
     
     <ion-buttons slot="end">
-     
+      <ion-button (click)="test()">Test</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -17,7 +17,9 @@
         <ion-row>
           <ion-col size="2" style="text-align: center;">
             <ion-avatar style="height: 100px; width: 100px; margin: auto;">
-              <img [src]="this.accountService.getAccount().getStudent().imgURL">
+              <img *ngIf="this.accountService.getAccount().getStudent().imgURL" [src]="this.accountService.getAccount().getStudent().imgURL">
+             
+              <img *ngIf="!this.accountService.getAccount().getStudent().imgURL" src="../../../../assets/img/profile/dp.png">
             </ion-avatar>
 
             <ion-input type="file" accept="image/*" style="background-color: black; border-radius: 20px; height: 40px;" (change)="updateProfilePic($event)" >
