@@ -66,6 +66,10 @@ export class MainPage implements OnInit {
     });
     return await popover.present();
   }
+
+  navigateToSearch(){
+    this.router.navigateByUrl("search");
+  }
   
   
 
