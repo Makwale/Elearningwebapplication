@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 import { MatSidenav } from '@angular/material/sidenav';
 import { PopoverController } from '@ionic/angular';
 import { PopovermainPage } from '../popovermain/popovermain.page';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-main',
@@ -25,7 +26,7 @@ export class MainPage implements OnInit {
     public loadingCtrl: LoadingController,
     private auth: AngularFireAuth,
     private afs:AngularFirestore, private dbs: DatabaseService,
-     private router: Router, public popoverController: PopoverController) {
+     private router: Router, public popoverController: PopoverController, public sp: SpinnerService) {
 
       
     }

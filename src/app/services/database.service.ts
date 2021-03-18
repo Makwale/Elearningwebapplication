@@ -18,6 +18,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Announcement } from '../Model/announcement.model';
 import { QuizHistory } from '../Model/quizhistory.model';
 import { finalize } from 'rxjs/operators';
+import { SpinnerService } from './spinner.service';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class DatabaseService {
   //This variable is used by admin to get studets for selected course on instructor page
   students: Student[] = [];
 
-  constructor(private afs: AngularFirestore,
+  constructor(private sp: SpinnerService, private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService,private storage: AngularFireStorage) {
       // this.setUser();
@@ -442,7 +443,11 @@ export class DatabaseService {
         this.afs.collection("Student").doc(this.accountService.getAccount().getStudent().getStudentNumber()).update({
           imgURL: url,
         }).then(() => {
+          this.sp.isVisible = false;
           alert("Updated");
+        }).catch(error => {
+          this.sp.isVisible = false;
+          alert(error.message)
         });
 
       })
