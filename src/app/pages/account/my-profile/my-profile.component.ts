@@ -134,15 +134,6 @@ num:number = 0;
   }
 
 
-  test(){
-    let i = document.createElement("input");
-
-    i.type = "file";
-
-    i.accept = "image/*";
-
-  }
-
   async uploadPhoto(ev){
     const popover = await this.popoverController.create({
       component: PopoverPage,

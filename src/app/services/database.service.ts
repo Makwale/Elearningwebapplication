@@ -434,6 +434,9 @@ export class DatabaseService {
 
  
   updateProfile(file) {
+
+    this.sp.isVisible = true;
+    
     const filePath = this.accountService.getAccount().getStudent().getStudentNumber()
     const ref = this.storage.ref("StudentProfile/" + filePath);
     const task = ref.put(file);

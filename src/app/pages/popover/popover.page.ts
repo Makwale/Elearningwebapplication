@@ -13,10 +13,11 @@ export class PopoverPage implements OnInit {
   constructor(private dbs: DatabaseService, public popoverController: PopoverController, public sp: SpinnerService) { }
 
   ngOnInit() {
+    
   }
 
   updateProfilePic(event) {
-    this.sp.isVisible = true;
+    
     this.dbs.updateProfile(event.target.files[0])
     this.popoverController.dismiss()
     
