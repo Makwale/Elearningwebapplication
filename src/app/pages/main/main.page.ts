@@ -35,7 +35,7 @@ export class MainPage implements OnInit {
       if (user) {
         this.afs.collection("Student").doc(user.uid).valueChanges().subscribe(data =>{
           // set student data
-          let student = new Student(user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+          let student = new Student(user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"], data["imgURL"]);
           //create account object that has sign state and student object
           this.userAccount = new Account(true, student);
           //set Account service to keep account object
