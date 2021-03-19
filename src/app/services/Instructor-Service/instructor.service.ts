@@ -87,14 +87,14 @@ export class InstructorService {
     .subscribe()
     }
     //Uploaded method
-    uploadItem(_name,_course_id) {
+    uploadItem(_name,_course_id,_number) {
       window.alert(_name + " lesson has been uploaded successfully!");
       let id = this.afs.createId();
       this.afs.collection('Lesson').doc(id).set({
         course_id: _course_id,
         name: _name,
-        number: 6,
-        date: new Date(),
+        number: _number + 1,
+        date: new Date().toLocaleString(),
         docUrl: this.image,
         videoUrl: this.image_V
       }).catch(error => {

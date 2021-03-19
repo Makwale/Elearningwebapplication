@@ -33,8 +33,15 @@ import { Lesson } from 'src/app/Model/lesson.mode';
 export class CoursesPage implements OnInit {
 lessons: Lesson[];
 
+displayedColumnsLesson: string[] = ['number', 'name', 'date', 'doc', 'video','action'];
+lessonDataSource: MatTableDataSource<Lesson>;
+@ViewChild(MatPaginator) lessonPaginator: MatPaginator;
+@ViewChild(MatSort) lessonSort: MatSort;
 
-  //For students
+
+
+
+//For students
 displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
 
 students: Student[] = [];
@@ -111,7 +118,12 @@ getCourseLessons(id){
       } as Lesson
     })
     console.log(this.lessons);
-  })
+
+  this.lessonDataSource = new MatTableDataSource(this.lessons);
+  this.lessonDataSource.sort = this.lessonSort;
+  this.lessonDataSource.paginator = this.lessonPaginator;
+
+})
 }
 delete(id){
   if(window.confirm("Delete lesson? ")){
@@ -121,10 +133,12 @@ delete(id){
 async addLesson(id){
   for(let i = 0; i < this.courses.length; i++){
     if(this.courses[i].id == id){
+      this.getLessons(this.courses[i].id);
       const modal = await this.modalController.create({
         component: AddlessonPage,
         componentProps:{
           course: this.courses[i],
+          lessonNumber: this.lessons.length,
     },
   });
   await modal.present();
@@ -140,6 +154,7 @@ getLessons(id){
     if(this.courses[i].id == id){
       this.getCourseLessons(this.courses[i].id);
       //this.afs.collection("Lesson", ref => ref.where("course_id", "==",this.courses[i].id )).snapshotChanges();
+ 
       this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == this.courses[i].id);
       this.viewLesson =true;
     }

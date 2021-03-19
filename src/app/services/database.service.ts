@@ -23,7 +23,6 @@ import { SpinnerService } from './spinner.service';
 @Injectable({
   providedIn: 'root'
 })
-
 export class DatabaseService {
  
   // Login user with email/password
