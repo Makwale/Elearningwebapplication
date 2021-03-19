@@ -207,6 +207,10 @@ export const routes: Routes = [
     path: 'popovermain',
     loadChildren: () => import('./pages/popovermain/popovermain.module').then( m => m.PopovermainPageModule)
   },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
+  },
 
 
   

@@ -1,16 +1,17 @@
 
 
+  <mat-spinner  style="position: absolute; z-index: 100;" class="spinner-main" *ngIf="sp.isVisible" ></mat-spinner>
   <ion-toolbar id="toolbar" color="ourtheme">
 
     
       <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
         <img src="../../../assets/img/appicon.jpg">
       </ion-avatar >
-        <ion-input slot="start" style="width: auto;"  color="light" style="color: black;" placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
+        <ion-input slot="start" style="width: auto;" (click)="navigateToSearch()"  color="light" style="color: black;" placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
     
 
         <ion-buttons  slot="end" >
-          <button  id="search-button" mat-icon-button >
+          <button  id="search-button" mat-icon-button (click)="navigateToSearch()" >
             <ion-icon style="font-size: large;" name="search-outline"></ion-icon>
           </button>
           
@@ -173,5 +174,7 @@
 
  
 </ion-content>
+
+
   
   

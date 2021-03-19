@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 import { MatSidenav } from '@angular/material/sidenav';
 import { PopoverController } from '@ionic/angular';
 import { PopovermainPage } from '../popovermain/popovermain.page';
+import { SpinnerService } from 'src/app/services/spinner.service';
 
 @Component({
   selector: 'app-main',
@@ -25,7 +26,7 @@ export class MainPage implements OnInit {
     public loadingCtrl: LoadingController,
     private auth: AngularFireAuth,
     private afs:AngularFirestore, private dbs: DatabaseService,
-     private router: Router, public popoverController: PopoverController) {
+     private router: Router, public popoverController: PopoverController, public sp: SpinnerService) {
 
       
     }
@@ -34,7 +35,7 @@ export class MainPage implements OnInit {
       if (user) {
         this.afs.collection("Student").doc(user.uid).valueChanges().subscribe(data =>{
           // set student data
-          let student = new Student(user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"]);
+          let student = new Student(user.uid,data["firstname"], data["lastname"], data["phone"],data["gender"], data["email"], data["imgURL"]);
           //create account object that has sign state and student object
           this.userAccount = new Account(true, student);
           //set Account service to keep account object
@@ -64,6 +65,10 @@ export class MainPage implements OnInit {
       translucent: true
     });
     return await popover.present();
+  }
+
+  navigateToSearch(){
+    this.router.navigateByUrl("search");
   }
   
   
