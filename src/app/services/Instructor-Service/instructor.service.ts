@@ -90,7 +90,7 @@ export class InstructorService {
     uploadItem(_name,_course_id) {
       window.alert(_name + " lesson has been uploaded successfully!");
       let id = this.afs.createId();
-      this.afs.collection('Lessons').doc(id).set({
+      this.afs.collection('Lesson').doc(id).set({
         course_id: _course_id,
         name: _name,
         number: 6,
@@ -102,6 +102,12 @@ export class InstructorService {
       }).then(() => {
       })
     }
+    getCourseLessons(id) {
+      return this.afs.collection('Lesson',ref => ref.where("course_id","==",id)).snapshotChanges();
+  }
+  deleteLesson(Id: string){
+    this.afs.doc('Lesson/' + Id).delete();
+}
     // uploadImage(event){
     //   const file = event.target.files[0];
     //   const filePath = 'images' + this.makeid(3);

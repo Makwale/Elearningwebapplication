@@ -52,8 +52,7 @@ export class AddlessonPage implements OnInit {
     onClick(name){
       this.lessonName = name;
       this.dbs.uploadItem(name,this.course.id);
-      window.alert(this.lessonName + " lesson Name- " + name + " -lesson Name\n");
-     this.close();
+       this.close();
   }
     uploadFile(event){
       this.dbs.uploadFile(event, this.course.name,this.lessonName);

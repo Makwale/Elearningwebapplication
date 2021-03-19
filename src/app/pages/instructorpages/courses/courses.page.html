@@ -47,10 +47,9 @@
 
       </ion-row>
 
-            <mat-tab-group mat-align-tabs="start">
+            <mat-tab-group *ngIf="!viewLesson" mat-align-tabs="start">
               <mat-tab label="Enrolled Students">
-                
-                
+                     
                 <table style="margin-left: 5px; margin-right: 5px; width: 98%;" mat-table [dataSource]="studentDataSource" class="mat-elevation-z8" matSort>
               
                   
@@ -141,14 +140,14 @@
                   <ng-container matColumnDef="action" >
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
                     <td mat-cell *matCellDef="let element">
-                      <ion-button color="secondary" fill="clear" (click)="addLesson(element.id)">Add Lesson</ion-button>
+                      <ion-button color="secondary" fill="clear" (click)="getLessons(element.id)">View Lesson</ion-button>
                       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                         <mat-icon>more_vert</mat-icon>
                       </button>
                       <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)="cancel(element.id)">
+                        <button mat-menu-item>
       
-                          <span>Lessons</span>
+                          <span (click)="addLesson(element.id)"> Add Lesson</span>
                         </button>
               
                       </mat-menu>
@@ -166,8 +165,17 @@
 
  
                 </mat-tab>
-                </mat-tab-group>
-              
+            </mat-tab-group>
+
+            <ion-list *ngIf ="viewLesson">
+              <ion-button (click)="goBack()">Back</ion-button>
+              <ion-item *ngFor = "let lesson of lessons">
+                Name:      {{lesson.name}}<br>
+               Number:       {{lesson.number}}<br>
+                <ion-button (click)= "delete(lesson.id)" slot ="end">Delete Lesson</ion-button>
+              </ion-item>
+            </ion-list>
+
           </div>
       </ion-col>
     </ion-row>
