@@ -67,7 +67,6 @@ num:number = 0;
       this.setUserAccount(); 
 
       this.imgURL = this.accountService.getAccount().getStudent().imgURL;
-      
     }
 
 

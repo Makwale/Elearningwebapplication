@@ -90,13 +90,13 @@ export class InstructorService {
     uploadItem(_name,_course_id,_number) {
       window.alert(_name + " lesson has been uploaded successfully!");
       let id = this.afs.createId();
-      this.afs.collection('Lesson').doc(id).set({
+      this.afs.collection('Lessons').doc(id).set({
         course_id: _course_id,
         name: _name,
         number: _number + 1,
         date: new Date().toLocaleString(),
-        docUrl: this.image,
-        videoUrl: this.image_V
+        docURL: this.image,
+        videoURL: this.image_V
       }).catch(error => {
         console.log("not added error ->" + error);
       }).then(() => {

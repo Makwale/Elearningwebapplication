@@ -5,6 +5,7 @@ export class InstructorClass {
     private phone: string;
     private gender: string;
     private email: string;
+    imgURL: string;
 
     constructor(){
         this.instructor_id = "xxxxxxxxxxxxxxxxxxx";
@@ -13,6 +14,7 @@ export class InstructorClass {
         this.phone = "0123456789";
         this.gender = "male";
         this.email = "username@123.co.xc";
+        
     }
     overloadStudent(_instructorID: string, _firstname: string, _lastname: string, _phone: string, _gender: string, _email: string,){
         this.instructor_id = _instructorID;
