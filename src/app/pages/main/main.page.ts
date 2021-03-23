@@ -11,6 +11,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { PopoverController } from '@ionic/angular';
 import { PopovermainPage } from '../popovermain/popovermain.page';
 import { SpinnerService } from 'src/app/services/spinner.service';
+import { Course } from 'src/app/Model/course';
+import { CourseService } from 'src/app/services/course.service';
 
 @Component({
   selector: 'app-main',
@@ -26,11 +28,10 @@ export class MainPage implements OnInit {
     public loadingCtrl: LoadingController,
     private auth: AngularFireAuth,
     private afs:AngularFirestore, private dbs: DatabaseService,
-     private router: Router, public popoverController: PopoverController, public sp: SpinnerService) {
-
-      
-    }
-  ngOnInit() {
+     private router: Router, public popoverController: PopoverController, 
+     public sp: SpinnerService, public cs: CourseService) {}
+  
+    ngOnInit() {
     this.auth.authState.subscribe(user => {
       if (user) {
         this.afs.collection("Student").doc(user.uid).valueChanges().subscribe(data =>{
@@ -43,13 +44,41 @@ export class MainPage implements OnInit {
 
           this.dbs.getEnrolledCourses();
 
-          this.dbs.getAnnouncements();
+          this.dbs.getStudentsAnnouncements()
         })
         this.loginStatus = true;
           } else {
         this.loginStatus = false;
       }
     })
+
+    this.dbs.getCourses().subscribe(data =>{
+      
+      data.forEach(coursedata => {
+        let tempvar = coursedata.payload.doc.data();
+      
+            let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
+            tempvar["imgURL"], tempvar["category"], tempvar["price"], tempvar["instructor_id"]);
+            
+            course.numberStudentsErrolled = tempvar['numberStudentsErrolled'];
+            
+            if(!this.search(course)){
+              this.cs.courses.push(course)
+            }
+            
+        });
+
+      });
+  }
+
+  search(course: Course): boolean{
+    for(let temcourse of this.cs.courses){
+      if(temcourse.id == course.id){
+        return true;
+      }
+    }
+
+    return false;
   }
  
 

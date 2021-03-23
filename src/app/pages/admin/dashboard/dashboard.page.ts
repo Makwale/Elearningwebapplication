@@ -57,7 +57,7 @@ export class DashboardPage implements OnInit {
 
 
         let myChart = new Chart("barchart", {
-          type: 'bar',
+          type: 'doughnut',
           data: {
               labels: coursesnames,
               datasets: [{
@@ -76,7 +76,7 @@ export class DashboardPage implements OnInit {
               fontColor: "#111"
             },
             legend: {
-              display: false,
+              display: true,
               position: "bottom",
               labels: {
                 fontColor: "#333",
@@ -86,7 +86,7 @@ export class DashboardPage implements OnInit {
             scales: {
                   yAxes: [{
                       ticks: {
-                          beginAtZero: true
+                          beginAtZero: false
                       }
                   }]
               },

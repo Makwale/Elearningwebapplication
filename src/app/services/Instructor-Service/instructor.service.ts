@@ -88,18 +88,19 @@ export class InstructorService {
     }
     //Uploaded method
     uploadItem(_name,_course_id) {
-      window.alert(_name + " lesson has been uploaded successfully!");
+     
       let id = this.afs.createId();
-      this.afs.collection('Lessons').doc(id).set({
+      this.afs.collection('Lesson').doc(id).set({
         course_id: _course_id,
         name: _name,
         number: 6,
         date: new Date(),
-        docUrl: this.image,
-        videoUrl: this.image_V
+        docURL: this.image,
+        videoURL: this.image_V
       }).catch(error => {
         console.log("not added error ->" + error);
       }).then(() => {
+        
       })
     }
     // uploadImage(event){

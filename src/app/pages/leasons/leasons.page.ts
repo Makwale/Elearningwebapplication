@@ -25,6 +25,7 @@ videoURL;
       this.course_name = data["name"];
       
       this.lessonList = [];
+
        this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == data["course_id"]);
 
        this.deleteDuplicates();
@@ -44,10 +45,12 @@ videoURL;
     })
   }
 
-  play(videoURL){
+  play(videoURL, id){
     this.videoURL = videoURL;
 
-    localStorage.setItem("url", videoURL);
+    localStorage.setItem("url", videoURL); 
+    
+    this.dbs.recordAttendance(id);
   }
 
   sort(){

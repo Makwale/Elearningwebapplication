@@ -16,10 +16,11 @@
 
       </ion-item-divider>
 
+      <div *ngIf="imgDidLoad">
 
       <mat-card class="lcourse-card" style=" padding: 0px;" *ngFor="let course of latest_course"
-      [class.selected]="course === selectedcourse" (click) ="selectCourse(course)">
-     <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+      [class.selected]="course === selectedcourse" (click) ="selectCourse(course)"  >
+     <ion-img style="margin: auto;" [src]="course.imgURL" (ionImgDidLoad)="ionImgDidLoad()"  (ionImgWillLoad)="ionImgWillLoad()"></ion-img>
      <div class="image-cover"></div>
       <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="lcourse-status" >Available</ion-label>
        <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="lcourse-status">Occupied</ion-label>
@@ -42,9 +43,26 @@
           </ion-row>
           
           
-      </mat-card-content>
+          </mat-card-content>
       
         </mat-card>
+
+        </div>
+
+
+        <div *ngIf="!imgDidLoad">
+
+        <mat-card class="lcourse-card" style=" padding: 0px;" *ngFor="let course of latest_course"
+          [class.selected]="course === selectedcourse" (click) ="selectCourse(course)" >
+          <ion-img style="margin: auto;" [src]="course.imgURL" (ionImgDidLoad)="ionImgDidLoad()"  (ionImgWillLoad)="ionImgWillLoad()"></ion-img>
+     
+          <mat-card-content style="margin: 10px;">
+          </mat-card-content>
+    
+        </mat-card>
+
+        </div>
+
 
   </section>
     

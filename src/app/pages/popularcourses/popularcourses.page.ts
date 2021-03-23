@@ -5,6 +5,7 @@ import { FeaturedCourse } from 'src/app/MockData/featured.mock';
 import { Course } from 'src/app/Model/course';
 import { CourseService } from 'src/app/services/course.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
 @Component({
@@ -17,12 +18,13 @@ export class PopularcoursesPage implements OnInit {
 
   popular_course: Course [] = []; //All courses offered
   popular_instructors: Course []=[];
+  imgDidLoad: boolean;
   
   constructor( 
     private modalCtrl: ModalController, 
     private asf:AngularFirestore,
     private coursesService: CourseService, 
-    private dbService: DatabaseService){}
+    private dbService: DatabaseService, private sp: SpinnerService){}
      
     ngOnInit() {
       this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
@@ -44,6 +46,16 @@ export class PopularcoursesPage implements OnInit {
       
     });
     modal.present();
+  }
+
+  ionImgWillLoad(){
+    
+    this.sp.isVisible = true;
+  }
+
+  ionImgDidLoad(){
+    this.imgDidLoad = true;
+    this.sp.isVisible = false;
   }
 
 }

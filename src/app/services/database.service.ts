@@ -19,12 +19,15 @@ import { Announcement } from '../Model/announcement.model';
 import { QuizHistory } from '../Model/quizhistory.model';
 import { finalize } from 'rxjs/operators';
 import { SpinnerService } from './spinner.service';
+import { CourseService } from './course.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DatabaseService {
+ 
+  
  
   // Login user with email/password
 
@@ -51,7 +54,8 @@ export class DatabaseService {
 
   constructor(private sp: SpinnerService, private afs: AngularFirestore,
      private afa: AngularFireAuth, 
-     private router: Router,private accountService: AccountService,private storage: AngularFireStorage) {
+     private router: Router,private accountService: AccountService,private storage: AngularFireStorage,
+     private cs: CourseService) {
       // this.setUser();
     }
     setUser(){
@@ -79,7 +83,6 @@ export class DatabaseService {
     // A query to select enrolled courses for a specific student
     this.afs.collection("EnrolledCourse", ref => 
     ref.where("student_id", "==", this.accountService.getAccount()
-
     .getStudent().getStudentNumber())).snapshotChanges().subscribe(enrolledcoursesdata =>{
       let tempvar: Course[] = [];
         
@@ -336,7 +339,7 @@ export class DatabaseService {
         if(!this.searchStudentsA(stuAnou))
           this.afs.collection("ViewedAnnouncement", ref => ref.where("category", "==" , "s")).snapshotChanges()
           .subscribe( vdata => {
-            if(!this.searchSaveViewedAnnouncement(vdata, stuAnou.id, "36DcJ0XzGmTJTlPjEak7ePuT5X02")){
+            if(!this.searchSaveViewedAnnouncement(vdata, stuAnou.id, this.accountService.getAccount().getStudent().getStudentNumber())){
               stuAnou.viewed = false;
               if(!this.searchStudentsA(stuAnou)){
                 this.studentAnnouncement.push( stuAnou);
@@ -368,13 +371,13 @@ export class DatabaseService {
   }
  
 
-  saveViewedAnnouncementStudent(announcementid: string, studentid: string) {
-    this.afs.collection("ViewedAnnouncement", ref => ref.where("student_id", "==", studentid)).snapshotChanges()
+  saveViewedAnnouncementStudent(announcementid: string) {
+    this.afs.collection("ViewedAnnouncement", ref => ref.where("student_id", "==", this.accountService.getAccount().getStudent().getStudentNumber())).snapshotChanges()
     .subscribe( data => {
-      if(!this.searchSaveViewedAnnouncement(data, announcementid, studentid)){
+      if(!this.searchSaveViewedAnnouncement(data, announcementid, this.accountService.getAccount().getStudent().getStudentNumber())){
         this.afs.collection("ViewedAnnouncement").add({
           announcement_id: announcementid,
-          student_id: studentid,
+          student_id: this.accountService.getAccount().getStudent().getStudentNumber() ,
           category: "s"
         })
       }
@@ -386,7 +389,7 @@ export class DatabaseService {
 
     for(let viewdata of viewedAnnouncementsdata){
       let viewedData = viewdata.payload.doc.data();
-      if(viewedData["announcement_id"] == announcementid && viewedData["student_id"] ){
+      if(viewedData["announcement_id"] == announcementid && viewedData["student_id"] == studentid ){
       
         return true;
       }
@@ -456,6 +459,60 @@ export class DatabaseService {
       })
   	})).subscribe()	
     
+  }
+
+  recordAttendance(id: any) {
+    let date = new Date();
+    
+    this.afs.collection("Attendance").add({
+      student_id: this.accountService.getAccount().getStudent().getStudentNumber(),
+      lesson_id: id,
+      date: date
+    })
+  }
+
+  cancel(id) {
+
+   let courselist = this.cs.courses.filter( course => course.id == id);
+
+   let course = courselist[0];
+
+   let nsEnrolled = course.numberStudentsErrolled;
+
+   nsEnrolled--;
+
+   this.afs.collection("Course").doc(id).update({
+    numberStudentsErrolled: nsEnrolled,
+   }).then(() => {
+    
+   })
+    
+   this.updateEnrolledCourse(id);
+    
+  }
+
+  updateEnrolledCourse(id){
+    let isDelete: boolean = false;
+    if(!isDelete){
+    this.afs.collection("EnrolledCourse").snapshotChanges().subscribe(data =>{
+      
+        for(let coursedata of data) {
+      
+          if(coursedata.payload.doc.data()["course_id"] == id && coursedata.payload.doc.data()["student_id"] ==
+              this.accountService.getAccount().getStudent().getStudentNumber() ){
+              this.afs.collection("EnrolledCourse").doc(coursedata.payload.doc.id).update({
+                student_id: "",
+                course_id: "",
+              }).then(()=>{
+                isDelete = true;
+                return null;
+              });
+              
+            }
+        }
+        
+    })
+  }
   }
  
 }
