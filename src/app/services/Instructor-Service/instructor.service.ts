@@ -87,22 +87,28 @@ export class InstructorService {
     .subscribe()
     }
     //Uploaded method
-    uploadItem(_name,_course_id) {
-     
+    uploadItem(_name,_course_id,_number) {
+      window.alert(_name + " lesson has been uploaded successfully!");
       let id = this.afs.createId();
       this.afs.collection('Lesson').doc(id).set({
         course_id: _course_id,
         name: _name,
-        number: 6,
-        date: new Date(),
-        docURL: this.image,
-        videoURL: this.image_V
+        number: _number + 1,
+        date: new Date().toLocaleString(),
+        docUrl: this.image,
+        videoUrl: this.image_V
       }).catch(error => {
         console.log("not added error ->" + error);
       }).then(() => {
         
       })
     }
+    getCourseLessons(id) {
+      return this.afs.collection('Lesson',ref => ref.where("course_id","==",id)).snapshotChanges();
+  }
+  deleteLesson(Id: string){
+    this.afs.doc('Lesson/' + Id).delete();
+}
     // uploadImage(event){
     //   const file = event.target.files[0];
     //   const filePath = 'images' + this.makeid(3);

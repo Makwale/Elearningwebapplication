@@ -24,7 +24,6 @@ import { CourseService } from './course.service';
 @Injectable({
   providedIn: 'root'
 })
-
 export class DatabaseService {
  
   
@@ -163,8 +162,6 @@ export class DatabaseService {
   }
 
   searchLesson(writtenqQuizes: DocumentChangeAction<unknown>[], lesson_id): boolean{
-
-    
 
     for(let wq of writtenqQuizes){
       if(wq.payload.doc.data()["lesson_id"] == lesson_id){

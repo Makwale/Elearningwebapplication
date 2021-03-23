@@ -20,12 +20,10 @@ import { Observable, of } from 'rxjs';
 export class AddlessonPage implements OnInit {
 
   @Input() course: Course;
-
+  @Input() lessonNumber: Lesson;
   lessonList: Lesson[];
   docURL;
   videoURL;
-  lessonNumber: number;
-
 
   uploadPercentage;
   filename: string;
@@ -51,9 +49,9 @@ export class AddlessonPage implements OnInit {
     
     onClick(name){
       this.lessonName = name;
-      this.dbs.uploadItem(name,this.course.id);
-      window.alert(this.lessonName + " lesson Name- " + name + " -lesson Name\n");
-     this.close();
+      this.dbs.uploadItem(name,this.course.id,this.lessonNumber);
+      window.alert(this.lessonNumber);
+       this.close();
   }
     uploadFile(event){
       this.dbs.uploadFile(event, this.course.name,this.lessonName);

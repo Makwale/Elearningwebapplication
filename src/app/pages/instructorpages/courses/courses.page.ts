@@ -20,6 +20,7 @@ import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
 import { AddlessonPage } from './../addlesson/addlesson.page';
+import { Lesson } from 'src/app/Model/lesson.mode';
 
 
 @Component({
@@ -30,6 +31,15 @@ import { AddlessonPage } from './../addlesson/addlesson.page';
 
 
 export class CoursesPage implements OnInit {
+lessons: Lesson[];
+
+displayedColumnsLesson: string[] = ['number', 'name', 'date', 'doc', 'video','action'];
+lessonDataSource: MatTableDataSource<Lesson>;
+@ViewChild(MatPaginator) lessonPaginator: MatPaginator;
+@ViewChild(MatSort) lessonSort: MatSort;
+
+
+
 
 //For students
 displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
@@ -49,10 +59,12 @@ tempVar2: Student[] = [];
 //For courses
 displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled',  'action'];
 
+
 courses: Course[] = [];
 
 tempVar: Course[] = [];
 
+viewLesson:Boolean;
 @ViewChild(MatPaginator) coursesPaginator: MatPaginator;
 coursesDataSource: MatTableDataSource<Course>;
 
@@ -67,6 +79,9 @@ student: Instructor;
 studentAccount: StudentClass;
 user = {} as StudentInfo;
 
+
+lessonList: Lesson[];
+
 constructor( private auth: AngularFireAuth,
   private afs: AngularFirestore,
   public modalController: ModalController,
@@ -78,26 +93,52 @@ constructor( private auth: AngularFireAuth,
     this.getCourses(this.studentAccount.getStudentNumber());
     this.getUser();
     this.loggedIn = false;
+    this.viewLesson = false;
   }
 ngOnInit() { 
   this.auth.authState.subscribe(user => {
   if (user) {
     this.loggedIn = true;
     this.setUserAccount();
-    this.getCourses(user.uid);      
-  } else {
+    this.getCourses(user.uid);   
+          
+    this.lessonList = [];
+    } else {
       this.loggedIn = false;
     }
   })     
   this.getCourses(this.studentAccount.getStudentNumber());
 }
+getCourseLessons(id){
+  this.instructorDao.getCourseLessons(id).subscribe(data=>{
+    this.lessons = data.map(e =>{
+      return{
+        id: e.payload.doc.id,
+        ...e.payload.doc.data() as Lesson
+      } as Lesson
+    })
+    console.log(this.lessons);
+
+  this.lessonDataSource = new MatTableDataSource(this.lessons);
+  this.lessonDataSource.sort = this.lessonSort;
+  this.lessonDataSource.paginator = this.lessonPaginator;
+
+})
+}
+delete(id){
+  if(window.confirm("Delete lesson? ")){
+  this.instructorDao.deleteLesson(id);
+}
+}
 async addLesson(id){
   for(let i = 0; i < this.courses.length; i++){
     if(this.courses[i].id == id){
+      this.getLessons(this.courses[i].id);
       const modal = await this.modalController.create({
         component: AddlessonPage,
         componentProps:{
           course: this.courses[i],
+          lessonNumber: this.lessons.length,
     },
   });
   await modal.present();
@@ -106,6 +147,22 @@ async addLesson(id){
 }
 }
 
+
+getLessons(id){
+  for(let i = 0; i < this.courses.length; i++){
+    this.lessonList = [];
+    if(this.courses[i].id == id){
+      this.getCourseLessons(this.courses[i].id);
+      //this.afs.collection("Lesson", ref => ref.where("course_id", "==",this.courses[i].id )).snapshotChanges();
+ 
+      this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == this.courses[i].id);
+      this.viewLesson =true;
+    }
+  }
+}
+goBack(){
+  this.viewLesson =false;
+}
 setUserAccount(){
   let userID = firebase.auth().currentUser.uid.toString();
   this.afs.collection("Instructor").doc(userID).valueChanges().subscribe(data =>{   
