@@ -95,8 +95,8 @@ export class InstructorService {
         name: _name,
         number: _number + 1,
         date: new Date().toLocaleString(),
-        docUrl: this.image,
-        videoUrl: this.image_V
+        docURL: this.image,
+        videoURL: this.image_V
       }).catch(error => {
         console.log("not added error ->" + error);
       }).then(() => {
