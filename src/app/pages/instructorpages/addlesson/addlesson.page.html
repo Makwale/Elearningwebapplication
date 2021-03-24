@@ -15,19 +15,18 @@
         <ion-label position="fixed">Lesson name </ion-label>
         <ion-input [(ngModel)]="lessonName" #name type="text"></ion-input>
     </ion-item>
-    <ion-list>
+    <!-- <ion-list>
         <ion-item>
             <ion-label position="fixed">Document </ion-label>
             <input type='file' (change)="uploadFile($event)">
-            <!-- <div> {{ uploadPercentage | async }} %</div> -->
-        </ion-item>
+            </ion-item>
         <ion-item>
             <a [href]="downloadURL | async">{{ downloadURL | async }}</a>
             <ion-progress-bar [value]="(uploadPercentage |async)"></ion-progress-bar>
             <label [className]="(uploadPercentage |async)"> {{uploadPercentage | async }}%</label>
         </ion-item>
         <span id="(uploadPercentage |async)"></span>
-    </ion-list>
+    </ion-list> -->
     <ion-list>
         <ion-item>
             <ion-label position="fixed">Video </ion-label>

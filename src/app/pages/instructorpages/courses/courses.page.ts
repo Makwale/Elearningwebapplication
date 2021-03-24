@@ -33,7 +33,7 @@ import { Lesson } from 'src/app/Model/lesson.mode';
 export class CoursesPage implements OnInit {
 lessons: Lesson[];
 
-displayedColumnsLesson: string[] = ['number', 'name', 'date', 'doc', 'video','action'];
+displayedColumnsLesson: string[] = ['number', 'name', 'date', 'video','action'];
 lessonDataSource: MatTableDataSource<Lesson>;
 @ViewChild(MatPaginator) lessonPaginator: MatPaginator;
 @ViewChild(MatSort) lessonSort: MatSort;
