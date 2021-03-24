@@ -28,6 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AngularMaterialModule } from './angular-material.module';
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -50,7 +51,9 @@ import { InstructorPagePage } from './pages/instructor-page/instructor-page.page
     AngularFireStorageModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule],  
+    MatSidenavModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+  ],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
