@@ -100,6 +100,7 @@ export class InstructorService {
       }).catch(error => {
         console.log("not added error ->" + error);
       }).then(() => {
+        
       })
     }
     getCourseLessons(id) {

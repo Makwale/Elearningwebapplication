@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -18,11 +19,9 @@ export class CourseinrolledPage implements OnInit {
 
   displayedColumns: string[] = ['name', 'actions'];
 
-  courses: Course[] = [];
 
   enrolledCourses: Course[] = [];
 
-  listCourses: Course[] = [];
 
   tempVar: Course[] = [];
 
@@ -38,11 +37,12 @@ export class CourseinrolledPage implements OnInit {
     this.Router.navigate(["leasons"], {queryParams: {"course_id": course_id, "name": name}}); 
   }
   ngOnInit() {
-   this.enrolledCourses = this.dbs.coursesList; 
+    this.enrolledCourses = this.dbs.coursesList; 
    this.getCoursesList();
   }
 
   getCoursesList(){
+   
     for(let course of this.enrolledCourses){
       if( this.tempVar.length < 1){
         this.tempVar.push(course);
@@ -77,8 +77,14 @@ export class CourseinrolledPage implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
+  cancel(id){
+    
+    this.dbs.cancel(id);
 
- 
-
-
+    // for(let i = 0; i < this.enrolledCourses.length; i++){
+    //   if(this.enrolledCourses[i].id = id){
+    //     this.enrolledCourses.splice(i, 1);
+    //   }
+    // }
+  }
 }

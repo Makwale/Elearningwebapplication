@@ -57,11 +57,11 @@ export class CoursedetailsPage implements OnInit {
               
               this.afs.collection("Course").doc(this.courseSelected.id).update({
                 numberStudentsErrolled: this.courseSelected.numberStudentsErrolled + 1,
+              }).then(()=> {
+                alert(this.courseSelected.name + " enrolled successfully");
+                this.close();
               })
       
-              alert(this.courseSelected.name + " enrolled successfully");
-              this.close();
-              // this.route.navigateByUrl('page1');
             }).catch( error => {
               alert(error)
             })

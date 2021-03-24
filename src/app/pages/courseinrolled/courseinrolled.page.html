@@ -12,7 +12,7 @@
 
  
 
-  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-left: 10px;"></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons style="margin-right: 60px;"></mat-paginator>
   
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
 
@@ -31,6 +31,15 @@
         <button (click)="lessons(element.id, element.name)" mat-icon-button >
           <ion-label color="warning">Lessons</ion-label>
         </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" style="margin-left: 6px;" aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="cancel(element.id)">
+
+            <span>Cancel</span>
+          </button>
+        </mat-menu>
       </td>
     </ng-container>
 

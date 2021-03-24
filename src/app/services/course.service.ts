@@ -17,6 +17,9 @@ export class CourseService {
   featuredCourses = FeaturedCourse; 
   latestCourses = LatestCourse; 
   selectedC: Course;
+
+  courses: Course[] = [];
+  
   constructor(private firestore: AngularFirestore,
     private accountService:AccountService,
     private auth:AngularFireAuth) {

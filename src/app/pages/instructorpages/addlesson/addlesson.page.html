@@ -27,7 +27,7 @@
         </ion-item>
         <span id="(uploadPercentage |async)"></span>
     </ion-list> -->
-    <ion-list>
+
         <ion-item>
             <ion-label position="fixed">Video </ion-label>
             <input type='file' (change)="uploadVideo($event)">
@@ -39,11 +39,11 @@
             <label [className]="(uploadPercentage_V |async)"> {{uploadPercentage_V |async }}%</label>
         </ion-item>
         <span id="(uploadPercentage_V |async)"></span>
-    </ion-list>
+ 
 
 
 
-    <ion-button color="primary" expand="block" shape="round" (click)="onClick(name.value)">Upload
+    <ion-button  shape="round" color="primary" expand="block" shape="round" (click)="onClick(name.value)">Upload
         <mat-icon>file_upload</mat-icon>
     </ion-button>
 

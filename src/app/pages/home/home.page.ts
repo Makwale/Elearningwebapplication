@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import { Course } from 'src/app/Model/course';
 import { CourseService } from 'src/app/services/course.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 import { AccountPage } from '../account/account.page';
 import { CoursedetailsPage } from '../coursedetails/coursedetails.page';
 
@@ -93,25 +94,28 @@ export class HomePage implements OnInit {
   featured_course: Course [] = []; //All courses offered
   latest_course: Course [] = [];
   popular_instructors: Course []=[];
+
+  imgDidLoad: boolean = false;
+
   constructor(private router: Router, 
     private asf:AngularFirestore,
     private modalCtrl: ModalController,
-    private courseDao: CourseService, private dbs: DatabaseService) {}
+    private courseDao: CourseService, private dbs: DatabaseService, public sp: SpinnerService) {}
   navigateToCourselink(){
     this.router.navigateByUrl("coursedetails");
   }
   ngOnInit(){
-    
+    this.dbs.getCourses().subscribe()
     this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
       this.featured_course = objects.splice(9,3);
-   })
-   this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
-    this.latest_course = objects.splice(6,3);
- })
- this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
-  this.popular_instructors= objects;
-})
- 
+      })
+      this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(objects =>{
+        this.latest_course = objects.splice(6,3);
+    })
+    this.asf.collection<Course>("Instructor").valueChanges({idField: 'id'}).subscribe(objects =>{
+      this.popular_instructors= objects;
+    })
+    
   }
    //Selected course
    selectCourse(_course:Course){  
@@ -121,10 +125,21 @@ export class HomePage implements OnInit {
   }
   async courseDetails() {
     let modal = await this.modalCtrl.create({
-    component: CoursedetailsPage
-  });
-  modal.present();
-}     
+        component: CoursedetailsPage
+      });
+      modal.present();
+  } 
+
+
+  ionImgWillLoad(){
+    
+    this.sp.isVisible = true;
+  }
+
+  ionImgDidLoad(){
+    this.imgDidLoad = true;
+    this.sp.isVisible = false;
+  }
 }
 
 

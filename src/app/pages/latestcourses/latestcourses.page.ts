@@ -4,6 +4,7 @@ import { ModalController} from '@ionic/angular';
 import { Course } from 'src/app/Model/course';
 import { CourseService } from 'src/app/services/course.service';
 import { DatabaseService } from 'src/app/services/database.service';
+import { SpinnerService } from 'src/app/services/spinner.service';
 import { CoursedetailsPage } from './../coursedetails/coursedetails.page'
 @Component({
   selector: 'app-latestcourses',
@@ -16,10 +17,12 @@ export class LatestcoursesPage implements OnInit {
   selectedCourse;
   iT: string = 'IT';
   bM: string = 'Business Management';
+  imgDidLoad: boolean;
+  
   constructor( 
     private modalCtrl: ModalController, private asf:AngularFirestore,
     private coursesService: CourseService, private dbService: DatabaseService
-    ){ }
+    , private sp: SpinnerService){ }
      ngOnInit() { 
            this.asf.collection<Course>("Course").valueChanges({idField: 'id'}).subscribe(storeItems =>{
         this.latest_course = storeItems;
@@ -41,4 +44,15 @@ export class LatestcoursesPage implements OnInit {
     });
     modal.present();
   }
+
+  ionImgWillLoad(){
+    
+    this.sp.isVisible = true;
+  }
+
+  ionImgDidLoad(){
+    this.imgDidLoad = true;
+    this.sp.isVisible = false;
+  }
+
 }

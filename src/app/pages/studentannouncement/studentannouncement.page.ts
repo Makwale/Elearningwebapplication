@@ -17,14 +17,14 @@ export class StudentannouncementPage implements OnInit {
   ngOnInit() {
 
     this.studentAnnouncement = this.dbs.studentAnnouncement;
-
+     console.log(this.studentAnnouncement);
     
   }
 
  
   view(annoucementObject){
     annoucementObject.viewed = true;
-    this.dbs.saveViewedAnnouncementStudent(annoucementObject.id, "36DcJ0XzGmTJTlPjEak7ePuT5X02")
+    this.dbs.saveViewedAnnouncementStudent(annoucementObject.id)
     
   }
 

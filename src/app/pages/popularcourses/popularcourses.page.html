@@ -4,15 +4,17 @@
 
     <section id="latest-courses"> 
 
-  <ion-item-divider class="category">
-    <h2 class="subheaders">Popular Courses</h2>
-  </ion-item-divider>
+      <ion-item-divider class="category">
+        <h2 class="subheaders">Popular Courses</h2>
+      </ion-item-divider>
 
-  <div *ngFor="let course of popular_course; index as i" >
-    <mat-card class="fcourse-card" style=" padding: 0px;"
-       [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
-     
-       <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
+    <div *ngIf="imgDidLoad">
+
+    <div *ngFor="let course of popular_course; index as i" >
+      <mat-card class="fcourse-card" style=" padding: 0px;"
+        [class.selected] ="course === selectedcourse" (click) ="selectCourse(course)">
+      
+        <img style="margin: auto;"  mat-card-image [src]="course.imgURL">
        
        <ion-label *ngIf="course.numberStudentsErrolled < 10"  class="course-status" >Available</ion-label>
        <ion-label *ngIf="course.numberStudentsErrolled >= 10" class="course-status">Occupied</ion-label>
@@ -39,11 +41,22 @@
        </mat-card-content>
        
      </mat-card>
+    </div>
   </div>
 
-<ion-item-divider class="category">
-  <h2 class="subheaders" style="margin-left: 30px; margin-top: 10px;"></h2>
-</ion-item-divider>
+  <div *ngIf="!imgDidLoad">
+
+    <mat-card class="fcourse-card" style=" padding: 0px;" *ngFor="let course of popular_course"
+      [class.selected]="course === selectedcourse" (click) ="selectCourse(course)" >
+      <ion-img style="margin: auto;" [src]="course.imgURL" (ionImgDidLoad)="ionImgDidLoad()"  (ionImgWillLoad)="ionImgWillLoad()"></ion-img>
+ 
+      <mat-card-content style="margin: 10px;">
+      </mat-card-content>
+
+    </mat-card>
+
+    </div>
+
 
 </section>
 

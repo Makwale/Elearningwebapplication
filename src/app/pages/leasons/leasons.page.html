@@ -25,10 +25,10 @@
     <mat-tab-group mat-align-tabs="start">
         <mat-tab label="Course Contents">
             <ion-list>
-                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="play(lesson.videoURL)">
+                <ion-item *ngFor="let lesson of lessonList" button type="button" (click)="play(lesson.videoURL, lesson.id)">
                     <ion-icon *ngIf="videoURL != lesson.videoURL" slot="start" name="play-circle-outline"></ion-icon><ion-icon slot="start" *ngIf="videoURL == lesson.videoURL" name="pause-circle-outline" color="warning"></ion-icon>
                     <ion-label>
-                        {{lesson.name}} 
+                        {{lesson.name}}
                     </ion-label>
                 </ion-item>
                 
@@ -38,13 +38,12 @@
               
 
         </mat-tab>
-        <mat-tab label="Q&A">Q&A</mat-tab>
         <mat-tab label="Notes">
            
             <ion-list>
-                <ion-item *ngFor="let lesson of lessonList" button type="button">
+                <ion-item *ngFor="let lesson of lessonList"  button type="button">
                    
-                    <ion-label>
+                    <ion-label *ngIf="lesson.docURL">
                        <a href="{{lesson.docURL}}" style="text-decoration: none; color: black;" target="_blank">{{lesson.name}} study material (pdf)</a>
                     </ion-label>
                 </ion-item>
