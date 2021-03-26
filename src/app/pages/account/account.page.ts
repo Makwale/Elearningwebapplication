@@ -46,6 +46,7 @@ export class AccountPage implements OnInit {
     this.auth.authState.subscribe(user => {
       if (user) {
         this.loggedIn = true;
+        
        } else {
         this.loggedIn = false;
       }

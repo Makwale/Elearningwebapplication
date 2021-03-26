@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoadingController } from '@ionic/angular';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
+import { Account} from 'src/app/model/account.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

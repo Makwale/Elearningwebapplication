@@ -148,15 +148,57 @@ export const routes: Routes = [
   {
     path: 'createannouncementi',
     loadChildren: () => import('./pages/instructorpages/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
+  }, 
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./pages/instructorpages/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
-
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/instructorpages/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  
+{
+  path: 'sign-in',
+  loadChildren: () => import('./pages/instructorpages/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
+},
+{
+  path: 'sign-up',
+  loadChildren: () => import('./pages/instructorpages/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+},
+{
+  path: 'profile',
+  loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
+},
   {
     path: 'instructorpanel',
     component: InstructorpanelPage,
-    children: [ {
+    children: [ 
+      {
       path: 'student',
       loadChildren: () => import('./pages/instructorpages/student/student.module').then( m => m.StudentPageModule)
     },
+    {
+        path: '',
+        redirectTo: 'courses',
+        pathMatch: 'full'
+    }, 
+    {
+      path: 'sign-in',
+      loadChildren: () => import('./pages/instructorpages/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
+    },
+    {
+      path: 'sign-up',
+      loadChildren: () => import('./pages/instructorpages/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    },
+    {
+      path: 'profile',
+      loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
+    }, 
     {
       path: 'account',
       loadChildren: () => import('./pages/instructorpages/account/account.module').then( m => m.AccountPageModule)
@@ -174,11 +216,6 @@ export const routes: Routes = [
       loadChildren: () => import('./pages/instructorpages/courses/courses.module').then( m => m.CoursesPageModule)
     },
     {
-      path: '',
-      redirectTo: 'account',
-      pathMatch: 'full'
-    },
-    {
       path: 'addlesson',
       loadChildren: () => import('./pages/instructorpages/addlesson/addlesson.module').then( m => m.AddlessonPageModule)
     },
@@ -194,12 +231,14 @@ export const routes: Routes = [
       path: 'studentenrolledcourse',
       loadChildren: () => import('./pages/instructorpages/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
     },
+
     ]
   },
   {
     path: 'addlesson',
     loadChildren: () => import('./pages/instructorpages/addlesson/addlesson.module').then( m => m.AddlessonPageModule)
-  },  {
+  },
+  {
     path: 'popover',
     loadChildren: () => import('./pages/popover/popover.module').then( m => m.PopoverPageModule)
   },
@@ -211,10 +250,6 @@ export const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
   },
-
-
-  
-
 ];
 
 @NgModule({

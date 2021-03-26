@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { LoadingController } from '@ionic/angular';
+import  firebase from 'firebase/app';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-instructorpanel',
@@ -14,7 +16,7 @@ export class InstructorpanelPage implements OnInit {
  
   constructor(
     public loadingCtrl: LoadingController,
-    private auth: AngularFireAuth,
+    private auth: AngularFireAuth,private authService: AuthenticationService,
     private afs:AngularFirestore, private router: Router) {}
 
     
@@ -22,8 +24,11 @@ export class InstructorpanelPage implements OnInit {
   }
   signOut(){
     this.presentLoading();
-    if (window.confirm('Do you really want to Sign-Out?')) {    
-      this.auth.signOut();
+    if (window.confirm('Do you really want to Sign-Out?')) {  
+        firebase.auth().signOut();
+        this.auth.signOut();
+        this.authService.SignOut();
+    
     }
   }
 async presentLoading() {

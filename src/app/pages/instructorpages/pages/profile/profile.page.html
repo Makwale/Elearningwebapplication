@@ -1,0 +1,101 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goHome()">Home</ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button  (click)="signOut()">Log-out</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content"  > 
+  <!-- <ion-spinner style="position: absolute;" class="spinner" *ngIf="isVisible" ></ion-spinner> -->
+
+  <div *ngIf="user">
+    
+    <ion-row class="user-details-wrapper" *ngIf="!isEdit" >
+        
+    <ion-col size="6" class="user-image-wrapper">
+      <img class="user-image" [src]="user.imageURL">
+    </ion-col>
+    <ion-col class="user-info-wrapper" size="12">
+      <h3>{{user.firstname}} {{user.lastname}} </h3>
+      <p>{{user.boi}} </p>
+      <ion-list class="user-info-wrapper">
+        <ion-item>
+         Email:  {{user.email}}
+        </ion-item>
+        <ion-item>
+         Gender: {{user.gender}}
+        </ion-item>
+        <ion-item>
+         Phone: {{user.phone}}
+        </ion-item>
+        <ion-item>
+          Address: {{user.address}}
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-button (click)="isEdit = true">Update</ion-button>
+  </ion-row>
+  <ion-row class="user-details-wrapper" *ngIf="isEdit">
+
+    <ion-col size="6" class="user-image-wrapper">
+      
+      <img class="user-image" [src]="user.imageURL">
+      <ion-button (click)="uploadPhoto($event)">Upload Photo</ion-button>
+    </ion-col>
+    <ion-col class="user-info-wrapper" size="12">
+      <ion-list class="user-info-wrapper">
+          
+          <ion-item (click) = "updateState('firstname')" >First Name:  {{user.firstname}}</ion-item>
+          
+          <ion-item *ngIf="editfield =='firstname'">
+            <ion-input type="text" placeholder="{{user.firstname}}" [(ngModel)]="user.firstname" clearInput autocapitalize="off" ></ion-input>
+            <ion-button (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+          <ion-item (click) = "updateState('lastname')">Last Name:  {{user.lastname}}</ion-item>
+          
+          <ion-item *ngIf="editfield=='lastname'">
+            <ion-input type="text" placeholder="{{user.lastname}}" [(ngModel)]="user.lastname" clearInput autocapitalize="off" ></ion-input>
+            <ion-button (click) = "cancelUpdate()">Cancel</ion-button>
+
+            <ion-button (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+          <ion-item (click) = "updateState('phone')">phone:  {{user.phone}}</ion-item>
+          
+          <ion-item *ngIf="editfield=='phone'">
+            <ion-input type="text" placeholder="{{user.phone}}" [(ngModel)]="user.phone" clearInput autocapitalize="off" ></ion-input>
+            <ion-button (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+          <ion-item (click) = "updateState('address')">Address:  {{user.address}}</ion-item>
+          
+          <ion-item *ngIf="editfield=='address'">
+            <ion-input type="text" placeholder="{{user.address}}" [(ngModel)]="user.address" clearInput autocapitalize="off" ></ion-input>
+            <ion-button (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button (click) = "updatedState()">Update</ion-button>
+          </ion-item>
+
+          
+          <ion-item (click) = "updateState('boi')">Bio:  {{user.boi}}</ion-item>
+          
+          <ion-item *ngIf="editfield=='boi'">
+            <ion-input type="text" placeholder="{{user.boi}}" [(ngModel)]="user.boi" clearInput autocapitalize="off" ></ion-input>
+            <ion-button (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button (click) = "updatedState()">update</ion-button>
+          </ion-item>
+
+      </ion-list>
+      <ion-button color="dark" expand = "block" (click)="isEdit = false">Cancel</ion-button>
+      <ion-button color="success" expand = "block" (click)="isEdit = false">Update</ion-button>
+    </ion-col>
+  </ion-row>
+</div>
+</ion-content>

@@ -4,7 +4,7 @@
   <ion-toolbar id="toolbar" color="ourtheme">
 
     
-      <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
+        <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
         <img src="../../../assets/img/appicon.jpg">
       </ion-avatar >
         <ion-input slot="start" style="width: auto;" (click)="navigateToSearch()"  color="light" style="color: black;" placeholder="Search course by name" id="searchbar" clear-input="true"><ion-icon name="search-outline" slot="start" id="searchicon"></ion-icon></ion-input>
@@ -24,7 +24,7 @@
             <button  mat-menu-item (click)="isStudent = true" routerLink="account">Student</button>
             
             
-            <button  mat-menu-item (click)="isStudent = false" routerLink="instructorpanel">Instructor</button>
+            <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in">Instructor</button>
            </mat-menu>
           
           <ion-button  fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">
@@ -94,6 +94,7 @@
         <mat-icon slot="start">people_outline</mat-icon><ion-label class="pagestabs">Popular Instructors</ion-label>
       </ion-item>
   
+
       
       <ion-item *ngIf ="loginStatus && isStudent" color="ourtheme"  button="true" routerLink="account">
         <mat-icon slot="start" >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
@@ -158,9 +159,21 @@
         <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
       </ion-item>
 
-      <ion-item *ngIf="!loginStatus" color="ourtheme" button="true" routerLink="account" (click)="closedsidenav.close()">
+      <ion-item *ngIf="!loginStatus" color="ourtheme" button="true" routerLink="account" (click)="closedsidenav.close()"
+      id="btnsignin"  [matMenuTriggerFor]="signin"
+    aria-label="Example icon button with a vertical three dot icon">
         <mat-icon slot="start">login</mat-icon><ion-label class="pagestabs">Sign in/Sign Up</ion-label>
       </ion-item>
+    
+    <mat-menu #signin="matMenu" >
+      <button  mat-menu-item (click)="isStudent = true" routerLink="account">Student</button>
+      
+      
+      <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in">Instructor</button>
+     </mat-menu>
+
+
+
 
 
       </mat-sidenav>

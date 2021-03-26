@@ -440,7 +440,6 @@ export class DatabaseService {
     const filePath = this.accountService.getAccount().getStudent().getStudentNumber()
     const ref = this.storage.ref("StudentProfile/" + filePath);
     const task = ref.put(file);
-
     task.snapshotChanges().pipe( finalize( () => {
   		ref.getDownloadURL().subscribe(url =>{
         this.afs.collection("Student").doc(this.accountService.getAccount().getStudent().getStudentNumber()).update({

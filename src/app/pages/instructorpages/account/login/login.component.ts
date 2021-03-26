@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoadingController } from '@ionic/angular';
+import { Account } from 'src/app/Model/Instructor-Model/account.model';
 import { InstructorService } from 'src/app/services/Instructor-Service/instructor.service';
 @Component({
   selector: 'app-login',
