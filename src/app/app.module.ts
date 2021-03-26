@@ -28,11 +28,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AngularMaterialModule } from './angular-material.module';
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
+import { AdminPage } from './pages/admin/admin/admin.page';
 
 
 
 @NgModule({
-  declarations: [AppComponent, MainPage, AdminpanelPage, InstructorpanelPage, InstructorPagePage],
+  declarations: [AppComponent, MainPage, AdminpanelPage, InstructorpanelPage, InstructorPagePage, AdminPage],
   entryComponents: [],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 

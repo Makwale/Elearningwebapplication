@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private studentDao:StudentService,
     private fb: FormBuilder,
-    public loadingCtrl: LoadingController,) {
+    public loadingCtrl: LoadingController, private toastController: ToastController) {
       
       
       this.signInForm = new FormGroup({
@@ -63,8 +64,15 @@ export class LoginComponent implements OnInit {
     .then(user => {
       this.isVisible = false;
     })
-    .catch(error => {
-      this.submitError = error.message;
+    .catch(async error => {
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
+
     });
   }
  

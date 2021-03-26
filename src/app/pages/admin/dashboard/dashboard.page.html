@@ -20,32 +20,42 @@
       </ion-col>
 
       <ion-col size="12">
-        <ion-card color="success" style="height: 29%; text-align: center;" routerLink="adminpanel/student" (click)="navigateToStudents()">
+        <ion-row>
+          <ion-col size="4">
+            <ion-card  color="success" style="text-align: center;" routerLink="adminpanel/student" (click)="navigateToStudents()">
 
-          <ion-card-content>
-              <h2 style="margin-top: 25px;">Total Students</h2>
-              <mat-icon slot="start" style="font-size: 550%;position: absolute; top: 0%; left: 5%;">school</mat-icon>
-              <h4 style="font-size: 200%;">{{students}}</h4>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card color="secondary"  style="height: 29%; text-align: center;" routerLink="adminpanel/courses" (click)="navigateToCourses()">
-
-          <ion-card-content>
-              <h2 style="margin-top: 25px;">Total Courses</h2>
-              <mat-icon slot="start" style="font-size: 550%;position: absolute; top: 0%; left: 5%;">ondemand_video</mat-icon>
-              <h4 style="font-size: 200%;">{{nCourses}}</h4>
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card color="tertiary"  style="height: 29%; text-align: center;" routerLink="adminpanel/instructors" (click)="navigateToInstructors()">
-
-          <ion-card-content>
-              <h2 style="margin-top: 25px;">Total Instructors</h2>
-              <mat-icon slot="start" style="font-size: 550%;position: absolute; top: 0%; left: 5%;">people</mat-icon>
-              <h4 style="font-size: 200%;">{{instructors}}</h4>
-          </ion-card-content>
-        </ion-card>
+              <ion-card-content>
+                  <h2 style="margin-top: 25px;">Total Students</h2>
+                  <mat-icon slot="start" style="font-size: 550%;position: absolute; top: 0%; left: 5%;">school</mat-icon>
+                  <h4 style="font-size: 200%;">{{students}}</h4>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+          
+          <ion-col size="4">
+            <ion-card  color="secondary"  style=" text-align: center;" routerLink="adminpanel/courses" (click)="navigateToCourses()">
+  
+              <ion-card-content>
+                  <h2 style="margin-top: 25px;">Total Courses</h2>
+                  <mat-icon slot="start" style="font-size: 550%;position: absolute; top: 0%; left: 5%;">ondemand_video</mat-icon>
+                  <h4 style="font-size: 200%;">{{nCourses}}</h4>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+         
+          <ion-col size="4">
+            <ion-card  color="tertiary"  style="text-align: center;" routerLink="adminpanel/instructors" (click)="navigateToInstructors()">
+  
+              <ion-card-content>
+                  <h2 style="margin-top: 25px;">Total Instructors</h2>
+                  <mat-icon slot="start" style="font-size: 550%;position: absolute; top: 0%; left: 5%;">people</mat-icon>
+                  <h4 style="font-size: 200%;">{{instructors}}</h4>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+         
+        </ion-row>
+        
       </ion-col>
 
     </ion-row>

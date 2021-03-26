@@ -25,6 +25,8 @@
             
             
             <button  mat-menu-item (click)="isStudent = false" routerLink="instructorpanel">Instructor</button>
+            <button  mat-menu-item (click)="isStudent = false" routerLink="admin">Admin</button>
+
            </mat-menu>
           
           <ion-button  fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">

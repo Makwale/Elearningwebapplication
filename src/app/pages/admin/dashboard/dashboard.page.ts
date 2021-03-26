@@ -57,7 +57,7 @@ export class DashboardPage implements OnInit {
 
 
         let myChart = new Chart("barchart", {
-          type: 'doughnut',
+          type: 'bar',
           data: {
               labels: coursesnames,
               datasets: [{
@@ -76,7 +76,7 @@ export class DashboardPage implements OnInit {
               fontColor: "#111"
             },
             legend: {
-              display: true,
+              display: false,
               position: "bottom",
               labels: {
                 fontColor: "#333",
@@ -103,17 +103,17 @@ export class DashboardPage implements OnInit {
   }
 
   navigateToStudents(){
-    this.router.navigateByUrl("adminpanel/student")
+    this.router.navigateByUrl("admin/adminpanel/student")
 
   }
 
   navigateToCourses(){
-    this.router.navigateByUrl("adminpanel/courses")
+    this.router.navigateByUrl("admin/adminpanel/courses")
 
   }
 
   navigateToInstructors(){
-    this.router.navigateByUrl("adminpanel/instructors")
+    this.router.navigateByUrl("admin/adminpanel/instructors")
 
   }
 
