@@ -29,6 +29,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
 import { AdminPage } from './pages/admin/admin/admin.page';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 
 
 
@@ -51,7 +52,9 @@ import { AdminPage } from './pages/admin/admin/admin.page';
     AngularFireStorageModule,
     MatToolbarModule,
     MatMenuModule,
-    MatSidenavModule],  
+    MatSidenavModule,
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+  ],  
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

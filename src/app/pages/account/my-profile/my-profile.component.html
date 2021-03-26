@@ -26,7 +26,7 @@
             <ion-button fill="outline"  shape="round" color="ourtheme" (click)="uploadPhoto($event)" >Update Photo</ion-button>
 
             
-          </ion-col>
+          </ion-col> 
 
           <ion-col size-sm="12" size-lg="8" *ngIf="!isEdit; else elseBlock">
             <h2> <ion-icon size="small" name="person"> </ion-icon> {{studentAccount.getName() | uppercase}} {{studentAccount.getSurname() | uppercase}}  </h2>

@@ -29,7 +29,6 @@ export class PopovermainPage implements OnInit {
 
   signOut(){
 
-    if (window.confirm('Do you really want to Sign-Out?')) {   
       this.sp.isVisible = true; 
       this.auth.signOut().then(()=>{
         
@@ -39,7 +38,6 @@ export class PopovermainPage implements OnInit {
         this.popoverController.dismiss();
         
       })
-    }
   }
 
 

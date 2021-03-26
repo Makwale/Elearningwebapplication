@@ -12,7 +12,7 @@
                 <ion-col size-xs="12" size-md="6">
                   <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">First Name</ion-label>
-                    <ion-input type="text" placeholder="John" formControlName="name" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+                    <ion-input type="text"  formControlName="name" clearInput autocapitalize="off" inputmode="text" ></ion-input>
                   </ion-item>      
                   <div class="error-container">
                     <ng-container *ngFor="let validation of validation_messages.name">
@@ -26,7 +26,7 @@
                 <ion-col size-xs="12" size-md="6">
                   <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">Last Name</ion-label>
-                    <ion-input type="text" placeholder="Dou" formControlName="surname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
+                    <ion-input type="text"  formControlName="surname" clearInput autocapitalize="off" inputmode="text" ></ion-input>
                   </ion-item>
                   
                   <div class="error-container">
@@ -58,7 +58,7 @@
                 <ion-col>
                   <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked">Gender</ion-label>
-                    <ion-select formControlName="gender" placeholder="Select gender">
+                    <ion-select formControlName="gender">
                       <ion-select-option  value="female">Female</ion-select-option>
                       <ion-select-option value="male">Male</ion-select-option>
                     </ion-select>
@@ -79,7 +79,7 @@
                 <ion-col>
                   <ion-item class="ion-no-margin login-input" >
                     <ion-label position="stacked" >Email Address</ion-label>
-                    <ion-input #email type="email" placeholder="you@example.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+                    <ion-input #email type="email" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
                   </ion-item>
                   <div class="error-container" >
                     <ng-container *ngFor="let validation of validation_messages.email">
@@ -95,7 +95,7 @@
               <ion-row>
                 <ion-col> <ion-item class="ion-no-margin login-input" >
                   <ion-label position="stacked" >Password</ion-label>
-                  <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
+                  <ion-input type="password"  formControlName="password"></ion-input>
                 </ion-item>
                 <div class="error-container">
                   <ng-container *ngFor="let validation of validation_messages.password">
