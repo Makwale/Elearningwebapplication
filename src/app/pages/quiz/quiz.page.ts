@@ -43,6 +43,7 @@ export class QuizPage implements OnInit {
 
   duration;
 
+  isQuizAvailable = false;
 
   constructor(public dbs: DatabaseService, public qs: QuizserviceService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -53,7 +54,9 @@ export class QuizPage implements OnInit {
       this.dbs.getQuiz(data["lesson_id"]).subscribe( data =>{
         data.forEach(quizdata => {
           let tempvar = quizdata.payload.doc.data();
-          console.log(quizdata.payload.doc.data())
+
+          this.isQuizAvailable = true;
+          
           this.quiz = new Quiz(quizdata.payload.doc.id, tempvar["lesson_id"], tempvar["total_marks"], tempvar["duration"], tempvar["questions"], tempvar["topic"])
 
           this.duration = new Date();

@@ -11,7 +11,12 @@
     </ion-toolbar>
 </ion-header>
 
-<div style="background-color: white; padding-top: 60px;">
+<div *ngIf="!isQuizAvailable" style="height: 400px;">
+    <h2 style="color: gray; text-align: center; margin-top: 200px;">No Quiz uploaded for this lesson</h2>
+</div>
+
+
+<div style="background-color: white; padding-top: 60px;" *ngIf="isQuizAvailable">
 
     <ion-card color="dark" *ngIf="!isStarted">
 
@@ -47,7 +52,7 @@
             </ion-card-content>
         </ion-card>
 
-        <ion-button slot="end" class="ion-margin" (click)="done()">Done</ion-button>
+        <ion-button slot="end" class="ion-margin" (click)="done()" color="success">Done</ion-button>
 
 
     </div>
