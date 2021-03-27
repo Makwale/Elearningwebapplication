@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginGuard } from './guards/login.guard';
+import { AdminPage } from './pages/admin/admin/admin.page';
 import { AdminpanelPage } from './pages/admin/adminpanel/adminpanel.page';
 import { InstructorPagePageModule } from './pages/instructor-page/instructor-page.module';
 import { InstructorPagePage } from './pages/instructor-page/instructor-page.page';
@@ -7,6 +9,10 @@ import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/ins
 import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
 
+  {
+    path: 'account',
+    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
+  },
   {
     path: '',
     component: MainPage,
@@ -25,10 +31,10 @@ export const routes: Routes = [
         path: 'categories',
         loadChildren: () => import('./pages/categories/categories.module').then(m => m.CategoriesPageModule)
       },
-      {
-        path: 'account',
-        loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
-      },
+      // {
+      //   path: 'account',
+      //   loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
+      // },
       {
         path: 'popularinstructors',
         loadChildren: () => import('./pages/popularinstructors/popularinstructors.module').then(m => m.PopularinstructorsPageModule)
@@ -98,49 +104,69 @@ export const routes: Routes = [
     path: 'addinstructor',
     loadChildren: () => import('./pages/admin/addinstructor/addinstructor.module').then( m => m.AddinstructorPageModule)
   },
+
   {
-    path: 'adminpanel',
-    component: AdminpanelPage,
-    children:[
+    path: 'admin',
+    component: AdminPage,
+    children: [
       {
-        path: 'dashboard',
-        loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-      },    
-      {
-        path: 'student',
-        loadChildren: () => import('./pages/admin/student/student.module').then( m => m.StudentPageModule)
+        path: 'login',
+        loadChildren: () => import('./pages/admin/login/login.module').then( m => m.LoginPageModule)
       },
-      {
-        path: 'instructors',
-        loadChildren: () => import('./pages/admin/instructors/instructors.module').then( m => m.InstructorsPageModule)
-      },
-      {
-        path: 'courses',
-        loadChildren: () => import('./pages/admin/courses/courses.module').then( m => m.CoursesPageModule)
-      },
+
       {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'login',
         pathMatch: 'full'
       },
       {
-        path: 'instructroprofileadmin',
-        loadChildren: () => import('./pages/admin/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
-      },
-      {
-        path: 'events',
-        loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
-      },
-      {
-        path: 'coursestudents',
-        loadChildren: () => import('./pages/admin/coursestudents/coursestudents.module').then( m => m.CoursestudentsPageModule)
-      },
-      {
-        path: 'studentenrolledcourse',
-        loadChildren: () => import('./pages/admin/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
+        path: 'adminpanel',
+        component: AdminpanelPage,
+        canActivate: [LoginGuard],
+        children:[
+          
+          {
+            path: 'dashboard',
+            loadChildren: () => import('./pages/admin/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+          },    
+          {
+            path: 'student',
+            loadChildren: () => import('./pages/admin/student/student.module').then( m => m.StudentPageModule)
+          },
+          {
+            path: 'instructors',
+            loadChildren: () => import('./pages/admin/instructors/instructors.module').then( m => m.InstructorsPageModule)
+          },
+          {
+            path: 'courses',
+            loadChildren: () => import('./pages/admin/courses/courses.module').then( m => m.CoursesPageModule)
+          },
+          {
+            path: '',
+            redirectTo: 'dashboard',
+            pathMatch: 'full'
+          },
+          {
+            path: 'instructroprofileadmin',
+            loadChildren: () => import('./pages/admin/instructroprofileadmin/instructroprofileadmin.module').then( m => m.InstructroprofileadminPageModule)
+          },
+          {
+            path: 'events',
+            loadChildren: () => import('./pages/admin/events/events.module').then( m => m.EventsPageModule)
+          },
+          {
+            path: 'coursestudents',
+            loadChildren: () => import('./pages/admin/coursestudents/coursestudents.module').then( m => m.CoursestudentsPageModule)
+          },
+          {
+            path: 'studentenrolledcourse',
+            loadChildren: () => import('./pages/admin/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
+          },
+        ]
       },
     ]
   },
+
   {
     path: 'createannouncement',
     loadChildren: () => import('./pages/admin/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
@@ -200,7 +226,7 @@ export const routes: Routes = [
       loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
     }, 
     {
-      path: 'account',
+      path: 'instructoraccount',
       loadChildren: () => import('./pages/instructorpages/account/account.module').then( m => m.AccountPageModule)
     },  
     {
@@ -231,7 +257,6 @@ export const routes: Routes = [
       path: 'studentenrolledcourse',
       loadChildren: () => import('./pages/instructorpages/studentenrolledcourse/studentenrolledcourse.module').then( m => m.StudentenrolledcoursePageModule)
     },
-
     ]
   },
   {

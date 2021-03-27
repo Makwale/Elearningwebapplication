@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button (click)="goHome()">Home</ion-button>
+      <ion-button (click)="goHome()">Dashboard</ion-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
@@ -14,7 +14,7 @@
   <!-- <ion-spinner style="position: absolute;" class="spinner" *ngIf="isVisible" ></ion-spinner> -->
 
   <div *ngIf="user">
-    
+  <ion-card>  
     <ion-row class="user-details-wrapper" *ngIf="!isEdit" >
         
     <ion-col size="6" class="user-image-wrapper">
@@ -97,5 +97,6 @@
       <ion-button color="success" expand = "block" (click)="isEdit = false">Update</ion-button>
     </ion-col>
   </ion-row>
+</ion-card>
 </div>
 </ion-content>

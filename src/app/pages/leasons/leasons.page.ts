@@ -15,7 +15,8 @@ videoURL;
  lessonList: Lesson[];
  tempLessonList: Lesson[] = [];
  course_name;
- nquizwritten: number;
+ nquizwritten: number;  
+ isLessonAvailable: boolean = false;
 
   constructor(public activageRoute: ActivatedRoute,public dbs: DatabaseService, private router: Router) { }
 
@@ -28,6 +29,10 @@ videoURL;
 
        this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == data["course_id"]);
 
+       if(this.lessonList.length > 0){
+         this.isLessonAvailable = true;
+       } 
+       
        this.deleteDuplicates();
 
        this.nquizwritten = this.lessonList.filter( lesson => lesson.isWritten == true).length;

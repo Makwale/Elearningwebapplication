@@ -1,4 +1,4 @@
-package team.elearning.com;
+package team.el.com;
 
 import android.os.Bundle;
 

@@ -6,6 +6,7 @@ import { AccountService } from '../account.service';
 import { Student } from '../../Model/student.model';
 import { Account } from '../../Model/account.model';
 import { DatabaseService } from '../database.service';
+import { ToastController } from '@ionic/angular';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,8 @@ export class StudentService {
 
   constructor(private afs: AngularFirestore,
     private afa: AngularFireAuth, 
-    private router: Router,private accountService: AccountService, private dbs: DatabaseService) { }
+    private router: Router,private accountService: AccountService,
+     private dbs: DatabaseService, private toastController: ToastController) { }
   SignIn(email, password) {    
     return this.afa.signInWithEmailAndPassword(email, password)
     .then(res => {  
@@ -33,8 +35,14 @@ export class StudentService {
       })
      // this.router.navigateByUrl("home");
      // console.log( 'Signin success');
-    }).catch(error =>{
-      alert(error)
+    }).catch(async error =>{
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
     });
   }
   // Register user with email/password
@@ -52,20 +60,45 @@ export class StudentService {
        // this.router.navigateByUrl('account');
 
        // alert("Your account is succesfully created!");
-      }).catch( error => {
-        alert(error)
-      }).catch( error => {
-        alert(error)
+      }).catch( async error => {
+        let toast = await this.toastController.create({
+          message: error.message,
+          duration: 3000,
+          color: "danger",
+        })
+  
+        toast.present()
+
+      }).catch( async error => {
+        let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
       })
-    }).catch(error => {
-      alert(error);
+
+      toast.present()
+      })
+    }).catch( async error => {
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
     })
   }
   update_student(recordID, student) {
     return this.afs.doc('Student/' + recordID).update(student).then(res=>{
       //Successfull update
-    }).catch(error =>{
-      alert(error);
+    }).catch(async error =>{
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
     })
   }
   getEnrolledCourses(userID){

@@ -7,12 +7,16 @@
     </ion-toolbar>
 </ion-header>
 
+<div *ngIf="!isLessonAvailable" style="height: 400px;">
+    <h2 style="color: gray; text-align: center; margin-top: 200px;">No lessons uploaded for this course</h2>
+</div>
+
     
-<div style="margin-left: 7px; margin-bottom: 90px;" class="ion-margin">
-    <ion-grid> 
+<div style="margin-left: 7px; margin-bottom: 90px;" class="ion-margin" *ngIf="isLessonAvailable">
+    <ion-grid *ngIf="lessonList.length > 0"> 
         <ion-row>
         <ion-col size="12">  
-            <video [src]="videoURL" controls loop style="width: 100%; margin: auto;" autoplay  >
+            <video [src]="videoURL" controls loop style="width: 100%; margin: auto;" autoplay *ngIf="lessonList.length > 0"  >
                 
             </video>
 

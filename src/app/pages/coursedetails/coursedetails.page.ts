@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
 import { Account } from 'src/app/Model/account.model';
 import { Course } from 'src/app/Model/course';
 import { AccountService } from 'src/app/services/account.service';
@@ -23,7 +23,7 @@ export class CoursedetailsPage implements OnInit {
     private courseDao:CourseService,
     private route:Router,
     private afs:AngularFirestore,
-   
+    private toastController: ToastController,
     private accountService:AccountService) { 
     }
   ngOnInit() {
@@ -57,13 +57,26 @@ export class CoursedetailsPage implements OnInit {
               
               this.afs.collection("Course").doc(this.courseSelected.id).update({
                 numberStudentsErrolled: this.courseSelected.numberStudentsErrolled + 1,
-              }).then(()=> {
-                alert(this.courseSelected.name + " enrolled successfully");
+              }).then(async ()=> {
+               
+                let toast = await this.toastController.create({
+                  message: "Successully enrolled",
+                  duration: 3000,
+                  color: "success",
+                })
+          
+                toast.present()
                 this.close();
               })
       
-            }).catch( error => {
-              alert(error)
+            }).catch( async error => {
+              let toast = await this.toastController.create({
+                message: error.message,
+                duration: 3000,
+                color: "danger",
+              })
+        
+              toast.present()
             })
           }
         })

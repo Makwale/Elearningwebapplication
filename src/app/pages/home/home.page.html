@@ -1,5 +1,52 @@
 
 
+
+<ion-slides [options]="slideOptsfade" style="margin: 5px; border-radius: 5px;">
+  <ion-slide>
+    <div style="height: 550px; width: 100%; background-image: url(../../../assets/img/welcome.jpg);">
+        <div style="position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.685);">
+          <h1 class="welcome" style="text-align: center;">Welcome to E-Learning Accademy</h1>
+          <ion-button size="large" shape="round" color="warning" [routerLink]="['/categories']">Explore Courses</ion-button>
+        </div>
+    </div>
+   
+  </ion-slide>
+
+  <ion-slide>
+    <div style="height: 550px; width: 100%; background-image: url(../../../assets/img/getcourse.jpg);">
+        <div style="position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.685);">
+          <h1 class="welcome">Enroll For Your Dream Course</h1>
+        </div>
+    </div>
+   
+  </ion-slide>
+
+  <ion-slide>
+    <div style="height: 550px; width: 100%; background-image: url(../../../assets/img/lessons.jpg);">
+      
+      <div style="position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.685);">
+        <h1 class="welcome">Get Online Classes</h1></div>
+    </div>
+  </ion-slide>
+
+  <ion-slide>
+    <div style="height: 550px; width: 100%; background-image: url(../../../assets/img/applyskills.jpg);">
+      <div style="position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.685);">
+        <h1 class="welcome">Apply Your Skills</h1>
+      </div>
+    </div>
+  </ion-slide>
+
+  <ion-slide>
+    <div style="height: 550px; width: 100%; background-image: url(../../../assets/img/cert.jpg);">
+      <div style="position: absolute; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.685);">
+        <h1 class="welcome">Get Certificate</h1>
+      </div>
+    </div>
+  </ion-slide>
+</ion-slides>
+
+
 <div  style="margin-bottom: 80px;">
 
     
@@ -290,7 +337,7 @@
       
     </section>
 
-    <aside id="new-aside" style="position: fixed; left: 82%; top: 15%;" >
+    <aside id="new-aside" style="position: absolute; left: 79%; top: 35%;" >
     
       <div class="popular-aside">
         <h2 class="aside-subheaders" >Popular Courses</h2>

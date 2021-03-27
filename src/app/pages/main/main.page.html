@@ -17,7 +17,7 @@
           
           <ion-button *ngIf="!loginStatus" color="warning" fill="solid"
             shape="round"  id="btnsignin"  [matMenuTriggerFor]="signin"
-          aria-label="Example icon button with a vertical three dot icon"  >Sign In/Sign Up</ion-button>
+          aria-label="Example icon button with a vertical three dot icon" >Sign In/Sign Up</ion-button>
           
           
           <mat-menu #signin="matMenu" >
@@ -25,6 +25,8 @@
             
             
             <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in">Instructor</button>
+            <button  mat-menu-item (click)="isStudent = false" routerLink="admin">Admin</button>
+
            </mat-menu>
           
           <ion-button  fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">
@@ -100,6 +102,7 @@
         <mat-icon slot="start" >person_outline</mat-icon><ion-label class="pagestabs">Account</ion-label>
       </ion-item>
       
+      
   
       <ion-item color="ourtheme" button="true" routerLink="about">
         <mat-icon slot="start" >infor_outline</mat-icon><ion-label class="pagestabs">About Us</ion-label>
@@ -159,17 +162,15 @@
         <mat-icon slot="start">phone_outline</mat-icon><ion-label class="pagestabs">Contact Us</ion-label>
       </ion-item>
 
-      <ion-item *ngIf="!loginStatus" color="ourtheme" button="true" routerLink="account" (click)="closedsidenav.close()"
-      id="btnsignin"  [matMenuTriggerFor]="signin"
-    aria-label="Example icon button with a vertical three dot icon">
+      <ion-item *ngIf="!loginStatus" color="ourtheme" button="true" [matMenuTriggerFor]="signin">
         <mat-icon slot="start">login</mat-icon><ion-label class="pagestabs">Sign in/Sign Up</ion-label>
       </ion-item>
     
     <mat-menu #signin="matMenu" >
-      <button  mat-menu-item (click)="isStudent = true" routerLink="account">Student</button>
+      <button  mat-menu-item (click)="isStudent = true" routerLink="account" (click)="closedsidenav.close()">Student</button>
       
       
-      <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in">Instructor</button>
+      <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in" (click)="closedsidenav.close()">Instructor</button>
      </mat-menu>
 
 

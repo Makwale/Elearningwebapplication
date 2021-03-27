@@ -63,7 +63,9 @@ export class SignUpPage {
       this.router.navigate(['profile']);
     });
   }
-
+  goHome(){
+    this.router.navigateByUrl('');
+  }
   signUpWithEmail() {
     this.authService.signUpWithEmail(this.signUpForm.value['email'], this.signUpForm.value['password'])
     .then(user => {

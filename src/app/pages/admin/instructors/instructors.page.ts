@@ -79,7 +79,7 @@ export class InstructorsPage implements OnInit {
     for(let instructor of this.instructors){
       if(instructor.getId() == id){
         
-        this.router.navigate(['./adminpanel/instructroprofileadmin'], { queryParams:{ "id": id, "name": name, "surname": surname}});
+        this.router.navigate(['./admin/adminpanel/instructroprofileadmin'], { queryParams:{ "id": id, "name": name, "surname": surname}});
         break;
       }
     }

@@ -112,7 +112,7 @@ export class CoursesPage implements OnInit {
   }
 
   navigateToCourseStudents(course_id, name){
-    this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
+    this.router.navigate(['./admin/adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
 
   }
 

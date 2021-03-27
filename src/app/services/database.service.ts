@@ -20,6 +20,7 @@ import { QuizHistory } from '../Model/quizhistory.model';
 import { finalize } from 'rxjs/operators';
 import { SpinnerService } from './spinner.service';
 import { CourseService } from './course.service';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +55,7 @@ export class DatabaseService {
   constructor(private sp: SpinnerService, private afs: AngularFirestore,
      private afa: AngularFireAuth, 
      private router: Router,private accountService: AccountService,private storage: AngularFireStorage,
-     private cs: CourseService) {
+     private cs: CourseService, private toastController: ToastController) {
       // this.setUser();
     }
     setUser(){
@@ -410,9 +411,7 @@ export class DatabaseService {
       date: date,
       marks: marks,
       pdf: pdf,
-    }).then(() => {
-      alert("Quiz results saved");
-    })
+    });
   }
   
 
@@ -446,10 +445,15 @@ export class DatabaseService {
           imgURL: url,
         }).then(() => {
           this.sp.isVisible = false;
-          alert("Updated");
-        }).catch(error => {
+        }).catch(async error => {
           this.sp.isVisible = false;
-          alert(error.message)
+          let toast = await this.toastController.create({
+            message: error.message,
+            duration: 3000,
+            color: "danger",
+          })
+    
+          toast.present()
         });
 
       })

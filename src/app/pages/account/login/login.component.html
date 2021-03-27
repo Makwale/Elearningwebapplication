@@ -9,7 +9,7 @@
   <ion-list class="inputs-list" lines="full">
     <ion-item class="ion-margin login-input" >
       <ion-label position="stacked" >Email Address</ion-label>
-      <ion-input #email type="email" placeholder="you@example.com" formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
+      <ion-input #email type="email"  formControlName="email" clearInput autocapitalize="off" inputmode="email"></ion-input>
     </ion-item>
     <div class="error-container" >
       <ng-container *ngFor="let validation of validation_messages.email">
@@ -22,7 +22,7 @@
 
     <ion-item class="ion-margin login-input" >
       <ion-label position="stacked" >Password</ion-label>
-      <ion-input type="password" placeholder="(atleast 6 characters)" formControlName="password"></ion-input>
+      <ion-input type="password"  formControlName="password"></ion-input>
     </ion-item>
 
     <div class="error-container">
