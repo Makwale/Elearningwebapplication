@@ -176,30 +176,26 @@ export const routes: Routes = [
     loadChildren: () => import('./pages/instructorpages/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
   }, 
   {
-    path: 'sign-in',
-    loadChildren: () => import('./pages/instructorpages/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
+    path: 'sign-in-instructor',
+    loadChildren: () => import('./pages/instructorpages/account/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
   {
-    path: 'sign-up',
-    loadChildren: () => import('./pages/instructorpages/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    path: 'sign-up-instructor',
+    loadChildren: () => import('./pages/instructorpages/account/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  
+    path: 'profile-instructor',
+    loadChildren: () => import('./pages/instructorpages/account/pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },  
 {
-  path: 'sign-in',
-  loadChildren: () => import('./pages/instructorpages/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
+  path: 'Register-Instructor',
+  loadChildren: () => import('./../app/pages/instructorpages/account/signup/signup.component').then( m => m.SignupComponent)
 },
 {
-  path: 'sign-up',
-  loadChildren: () => import('./pages/instructorpages/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  path: 'Register-Instructor',
+  loadChildren: () => import('./../app/pages/instructorpages/account/login/login.component').then( m => m.LoginComponent)
 },
-{
-  path: 'profile',
-  loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
-},
+
   {
     path: 'instructorpanel',
     component: InstructorpanelPage,
@@ -214,29 +210,13 @@ export const routes: Routes = [
         pathMatch: 'full'
     }, 
     {
-      path: 'sign-in',
-      loadChildren: () => import('./pages/instructorpages/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
-    },
-    {
-      path: 'sign-up',
-      loadChildren: () => import('./pages/instructorpages/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
-    },
-    {
-      path: 'profile',
-      loadChildren: () => import('./pages/instructorpages/pages/profile/profile.module').then( m => m.ProfilePageModule)
-    }, 
-    {
-      path: 'instructoraccount',
-      loadChildren: () => import('./pages/instructorpages/account/account.module').then( m => m.AccountPageModule)
-    },  
-    {
     path: 'dashboard',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
     },
-    {
-      path: 'profile',
-      loadChildren: () => import('./pages/instructor-page/profile/profile.component').then( m => m.ProfileComponent)
-    },
+    // {
+    //   path: 'profile',
+    //   loadChildren: () => import('./pages/instructor-page/profile/profile.component').then( m => m.ProfileComponent)
+    // },
     {
       path: 'courses',
       loadChildren: () => import('./pages/instructorpages/courses/courses.module').then( m => m.CoursesPageModule)

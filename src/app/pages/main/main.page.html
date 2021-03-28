@@ -24,16 +24,14 @@
             <button  mat-menu-item (click)="isStudent = true" routerLink="account">Student</button>
             
             
-            <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in">Instructor</button>
+            <button  mat-menu-item (click)="isStudent = false" [routerLink]="['/sign-in-instructor']" >Instructor</button>
             <button  mat-menu-item (click)="isStudent = false" routerLink="admin">Admin</button>
 
            </mat-menu>
           
           <ion-button  fill="clear" *ngIf="loginStatus" id="btnNotification" (click)="navigateToAnnouncement()">
             <ion-badge  style="position: absolute; left: 45%; top: 20%; border-radius: 50%; font-size: 2px; z-index: 10; color: red" color="danger" *ngIf="dbs.totalNewAnnouncement > 0">.</ion-badge>
-            <ion-icon color="warning" name="notifications" style="font-size: x-large;">
-
-            </ion-icon> 
+            <ion-icon color="warning" name="notifications" style="font-size: x-large;"></ion-icon> 
           </ion-button>
           
           <ion-avatar *ngIf ="loginStatus"  style="width: 25px; height: 25px;">
@@ -170,7 +168,7 @@
       <button  mat-menu-item (click)="isStudent = true" routerLink="account" (click)="closedsidenav.close()">Student</button>
       
       
-      <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in" (click)="closedsidenav.close()">Instructor</button>
+      <button  mat-menu-item (click)="isStudent = false" routerLink="sign-in-instructor" (click)="closedsidenav.close()">Instructor</button>
      </mat-menu>
 
 

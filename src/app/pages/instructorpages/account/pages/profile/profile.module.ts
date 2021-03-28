@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { ProfilePage } from './profile.page';
 import { RouterModule, Routes } from '@angular/router';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [ProfilePage],
+  declarations: [ProfilePage,AngularMaterialModule],
   providers: []
 })
 export class ProfilePageModule {}

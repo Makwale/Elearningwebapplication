@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { finalize } from 'rxjs/operators';
-// import { User } from "../../app/model/user";
+//import { User } from "../../app/model/user";
 import { Router } from "@angular/router";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, Subject, from } from 'rxjs';
@@ -14,7 +14,7 @@ import { ProfileModel } from '../pages/profile/profile.model';
 })
 export class AuthenticationService {
 
-  // userData : User;
+//  userData : User;
   redirectResult: Subject<any> = new Subject<any>();
   public loggedIn: boolean;
   constructor(
@@ -35,7 +35,7 @@ export class AuthenticationService {
     return this.ngFireAuth.signInWithEmailAndPassword(email, password)
     .then(() => {
       console.log("Your account is succesfully logged!");
-      this.router.navigateByUrl('profile');
+      this.router.navigateByUrl('profile-instructor');
       this.loggedIn = true;
     })
   }
@@ -44,10 +44,10 @@ export class AuthenticationService {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password)
     .then( userCredentials => {
       let id = userCredentials.user.uid;
-      this.afStore.collection("InstructorAccount").doc(id).set({
+      this.afStore.collection("Instructor").doc(id).set({
         id:id,
-        firstname: "set first name",
-        lastname: "Set lastname",
+        name: "set name",
+        surname: "Set surname",
         gender: "male",
         phone: "set phone",
         imageURL: "https://firebasestorage.googleapis.com/v0/b/elearningapp-ad47e.appspot.com/o/StudentProfile%2FVUrsNF8J6ufoZBvJYcACCIlzajf2?alt=media&token=062cabcb-e07f-4f11-9c14-fdcac6667332",
@@ -66,7 +66,7 @@ export class AuthenticationService {
     })
   }
   getUserInfo(userID){
-    return this.afStore.collection('InstructorAccount', ref => ref.where('id','==', userID)).snapshotChanges();
+    return this.afStore.collection('Instructor', ref => ref.where('id','==', userID)).snapshotChanges();
   }
   updateProfile(userID,file) {
     const filePath = userID;
@@ -74,7 +74,7 @@ export class AuthenticationService {
     const task = ref.put(file);
     task.snapshotChanges().pipe( finalize( () => {
   		ref.getDownloadURL().subscribe(url =>{
-        this.afStore.collection("InstructorAccount/").doc(userID).update({
+        this.afStore.collection("Instructor/").doc(userID).update({
           imageURL: url,
         }).then(() => {
           alert("Display photo successfully Updated!");
@@ -86,9 +86,9 @@ export class AuthenticationService {
     
   }
   updateInfo(userID,profile: ProfileModel){
-    this.afStore.collection("InstructorAccount/").doc(userID).update({
-      firstname: profile.firstname,
-      lastname: profile.lastname,
+    this.afStore.collection("Instructor/").doc(userID).update({
+      name: profile.name,
+      surname: profile.surname,
       phone: profile.phone,
       boi: profile.boi,
       address: profile.address,
@@ -115,7 +115,7 @@ export class AuthenticationService {
   // Sign-out 
   SignOut() {
     return this.ngFireAuth.signOut().then(() => {  
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['sign-in-instructor']);
       this.loggedIn = false;
     })
   }

@@ -1,8 +1,8 @@
 export class ProfileModel {
   id:string;
   email:string;
-  firstname: string;
-  lastname: string;
+  name: string;
+  surname: string;
   gender: string;
   phone: string;
   imageURL: string;
@@ -15,8 +15,8 @@ export class ProfileModel {
   _ad:string){
     this.id = _id;
     this.email = _e;
-    this.firstname = _fn;
-    this.lastname = _ln;
+    this.name = _fn;
+    this.surname = _ln;
     this.gender = _g;
     this.phone = _ph;
     this.imageURL = _img;

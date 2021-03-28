@@ -11,7 +11,9 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class PopoverPage implements OnInit {
   isVisible = false;
   constructor(private dbs: AuthenticationService, public popoverController: PopoverController, public sp: SpinnerService) { }
+
   ngOnInit() {
+    
   }
 
   updateProfilePic(event) {

@@ -21,6 +21,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import { MatSortModule } from '@angular/material/sort';
     MatIconModule,
     MatMenuModule,
     MatIconModule,
+    AngularMaterialModule,
 
   ],
   declarations: [AccountPage,LoginComponent,SignupComponent]
