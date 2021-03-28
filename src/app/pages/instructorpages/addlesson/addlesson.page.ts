@@ -59,10 +59,10 @@ export class AddlessonPage implements OnInit {
       window.alert(this.lessonNumber);
        this.close();
   }
-  //   uploadFile(event){
-  //     this.dbs.uploadFile(event, this.course.name,this.lessonName);
-  //     this.uploadPercentage = this.dbs.uploadPercent;
-  //  }
+    uploadFile(event){
+      this.dbs.uploadFile(event, this.course.name,this.lessonName);
+      this.uploadPercentage = this.dbs.uploadPercent;
+   }
    uploadVideo(event){
     this.dbs.uploadVideo(event,this.course.name,this.lessonName);
     this.uploadPercentage_V = this.dbs.uploadPercent_V;
