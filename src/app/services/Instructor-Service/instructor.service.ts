@@ -26,6 +26,7 @@ export class InstructorService {
   uploadPercent: Observable<number>;
   downloadURL: Observable<any>;
   lessonName: Observable<any>;
+  lessonType: string;
   //Upload video
   image_V: Observable<any>;
   uploadPercent_V: Observable<number>;
@@ -40,7 +41,8 @@ export class InstructorService {
    private storage: AngularFireStorage,
    ) {this.instructor = new InstructorClass();}
 
-     uploadFile(event,name,lname) {
+     uploadFile(event,name,lname,type) {
+       this.lessonType = type;
       const file = event.target.files[0];
       const filename = file.name;
       const fileExt = filename.split('.').pop();
@@ -90,17 +92,33 @@ export class InstructorService {
     uploadItem(_name,_course_id,_number) {
       window.alert(_name + " lesson has been uploaded successfully!");
       let id = this.afs.createId();
+
       this.afs.collection('Lesson').doc(id).set({
         course_id: _course_id,
         name: _name,
         number: _number + 1,
         date: new Date().toLocaleString(),
-        // docURL: this.image,
+        lessonType: this.lessonType,
+        docURL: this.image,
+      }).catch(error => {
+        console.log("not added error ->" + error);
+      }).then(() => {  
+      })
+    }
+    uploadItemV(_name,_course_id,_number) {
+      window.alert(_name + " lesson has been uploaded successfully!");
+      let id = this.afs.createId();
+
+      this.afs.collection('Lesson').doc(id).set({
+        course_id: _course_id,
+        name: _name,
+        number: _number + 1,
+        date: new Date().toLocaleString(),
+        lessonType: "Video",
         videoURL: this.image_V
       }).catch(error => {
         console.log("not added error ->" + error);
-      }).then(() => {
-        
+      }).then(() => {  
       })
     }
     getCourseLessons(id) {
