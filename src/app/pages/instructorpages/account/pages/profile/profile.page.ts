@@ -7,12 +7,42 @@ import  firebase from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthenticationService } from '../../services/authentication.service';
+
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  submitError: string;
+  signUpForm: FormGroup;
+
+  nameForm: FormGroup;
+  validation_messages = {
+    'name': [
+      { type: 'required', message: 'Name is required.' },
+    ],
+    'surname': [
+      { type: 'required', message: 'Surname is required.' },
+    ],
+    'phone': [
+      { type: 'required', message: 'phone number is required.'},
+      { type: 'minlength', message: 'Phone number must be 10 numbers long.' },
+      { type: 'maxlength', message: 'Phone number must not exceed 10 numbers.' },
+      
+    ],
+    'address': [
+      { type: 'required', message: 'Address is required.' },
+      { type: 'pattern', message: 'Enter a valid address.' }
+    ],
+    'bio': [
+      { type: 'required', message: 'Biography is required.' },
+      { type: 'minlength', message: 'Biography must be at least 6 characters long.' }
+    ]
+  };
+
+
   user: ProfileModel;
   userlist: ProfileModel[];
   isEdit:boolean;
@@ -26,7 +56,34 @@ export class ProfilePage implements OnInit {
     private auth:AngularFireAuth,
     private asf: AngularFirestore,
     private authService: AuthenticationService
-  ) {    
+  ) { 
+    this.nameForm = new FormGroup({
+      'name': new FormControl('', Validators.compose([
+        Validators.required,
+        ]))});
+
+    this.signUpForm = new FormGroup({
+      'name': new FormControl('', Validators.compose([
+        Validators.required,
+      ])),
+      'surname': new FormControl('', Validators.compose([
+        Validators.required,
+      ])),
+      'phone': new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern("^((\\+27-?)|0)?[0-9]{10}$"),
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ])),
+      'address': new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      'bio': new FormControl('', Validators.compose([
+        Validators.minLength(10),
+        Validators.required
+      ]))
+    });    
     this.editItem = false;
     this.isEdit =false;
     this.update = false;

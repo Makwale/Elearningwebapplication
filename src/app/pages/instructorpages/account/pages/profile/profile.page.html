@@ -61,25 +61,43 @@
       </ion-col>
     <ion-col class="user-info-wrapper" size="12">
       <ion-list class="user-info-wrapper">
-          
+
+        <!-- <form [formGroup]="nameForm" (ngSubmit)="updatedState()">
+          <ion-list class="inputs-list" lines="full">
+            <ion-item class="ion-margin login-input" >
+              <ion-label position="stacked" >Email Address</ion-label>
+              <ion-input #name type="name" placeholder="you@example.com" formControlName="name" clearInput autocapitalize="off" inputmode="email"></ion-input>
+            </ion-item>
+            <div class="error-container" >
+              <ng-container *ngFor="let validation of validation_messages.name">
+                <div class="error-message" *ngIf="nameForm.get('name').hasError(validation.type) && (nameForm.get('name').dirty || nameForm.get('name').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+            <ion-button color="warning" type="submit" [disabled]="nameForm.valid" (click) = "updatedState()">update</ion-button>
+            </form>
+           -->
+        
           <ion-item class="user-info-wrapper" (click) = "updateState('name')" *ngIf="editfield !='name';">First Name:  {{user.name}}</ion-item>
           <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='name';">
             Name:  
-            <ion-input type="text" placeholder="{{user.name}}" [(ngModel)]="user.name" clearInput autocapitalize="off" ></ion-input>
+            <ion-input type="text" placeholder="{{user.name}}"  [(ngModel)]="user.name" clearInput autocapitalize="off" ></ion-input>
           </ion-item>
           <ion-item *ngIf="editfield =='name'" class="user-info-wrapper">            
-          <ion-button color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
-          <ion-button color="warning" (click) = "updatedState()">update</ion-button>
+          <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+          <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
           </ion-item>
 
-          <ion-item class="user-info-wrapper"  (click) = "updateState('surname')" *ngIf="editfield !='surname';">SurnName:  {{user.surname}}</ion-item>
+          <ion-item class="user-info-wrapper"  (click) = "updateState('surname')" *ngIf="editfield !='surname';">Surname:  {{user.surname}}</ion-item>
           <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='surname';">
             Surname:   
             <ion-input type="text" placeholder="{{user.surname}}" [(ngModel)]="user.surname" clearInput autocapitalize="off" ></ion-input>
           </ion-item>
           <ion-item *ngIf="editfield =='surname'">            
-          <ion-button color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
-          <ion-button color="warning" (click) = "updatedState()">update</ion-button>
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+          <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
           </ion-item>
 
           
@@ -89,8 +107,8 @@
             <ion-input type="text" placeholder="{{user.phone}}" [(ngModel)]="user.phone" clearInput autocapitalize="off" ></ion-input>
           </ion-item>
           <ion-item *ngIf="editfield =='phone'">            
-          <ion-button color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
-          <ion-button color="warning" (click) = "updatedState()">update</ion-button>
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+          <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
           </ion-item>
           
           <ion-item class="user-info-wrapper" (click) = "updateState('address')" *ngIf="editfield !='address';"> Address:  {{user.address}}</ion-item>
@@ -99,8 +117,8 @@
             <ion-input type="text" placeholder="{{user.address}}" [(ngModel)]="user.address" clearInput autocapitalize="off" ></ion-input>
           </ion-item>
           <ion-item *ngIf="editfield =='address'">            
-          <ion-button color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
-          <ion-button color="warning" (click) = "updatedState()">update</ion-button>
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
           </ion-item>
           <ion-item class="user-info-wrapper" (click) = "updateState('boi')" *ngIf="editfield !='boi';"> Bio:  {{user.boi}}</ion-item>
           <ion-item class="user-info-wrapper" class="ion-margin login-input" *ngIf="editfield =='boi';">
@@ -108,8 +126,8 @@
             <ion-input type="text" placeholder="{{user.boi}}" [(ngModel)]="user.boi" clearInput autocapitalize="off" ></ion-input>
           </ion-item>
           <ion-item *ngIf="editfield =='boi'">            
-          <ion-button color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
-          <ion-button color="warning" (click) = "updatedState()">update</ion-button>
+            <ion-button size="medium" color="dark" (click) = "cancelUpdate()">Cancel</ion-button>
+            <ion-button size="medium" color="warning" (click) = "updatedState()">update</ion-button>
           </ion-item>
 
 
