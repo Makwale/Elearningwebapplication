@@ -4,6 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignInPage } from './sign-in.page';
 import { Routes, RouterModule } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 const routes: Routes = [
   {
@@ -18,6 +20,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
+    
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes),
   ],
   declarations: [SignInPage]

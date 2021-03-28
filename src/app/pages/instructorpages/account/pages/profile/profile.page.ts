@@ -18,6 +18,7 @@ export class ProfilePage implements OnInit {
   submitError: string;
   signUpForm: FormGroup;
 
+  isVisible:boolean;
   nameForm: FormGroup;
   validation_messages = {
     'name': [
@@ -44,7 +45,7 @@ export class ProfilePage implements OnInit {
       'name': new FormControl('', Validators.compose([
         Validators.required,
         ]))});
-  
+        this.isVisible = true;
     this.editItem = false;
     this.isEdit =false;
     this.update = false;
@@ -54,6 +55,7 @@ export class ProfilePage implements OnInit {
 this.auth.authState.subscribe(user => {
   if (user) {
     this.getUserInfo();  
+    this.isVisible = false;
   } else {
   }
   })
@@ -68,8 +70,18 @@ this.auth.authState.subscribe(user => {
     })
   }
   updateProfile() {
+    if (window.confirm('You are updating!')){
+      
     let userID = firebase.auth().currentUser.uid.toString();
     this.authService.updateInfo(userID,this.user);
+    // .then(() => {
+    //     this.loadingCtrl.dismiss();
+    //     this.isEdit = false;
+    //   })
+    //   .catch(error => {
+    //     alert(error);
+    //   });
+    }
   }
   updateState(field){
     this.update = true;
@@ -99,10 +111,12 @@ this.auth.authState.subscribe(user => {
     this.router.navigateByUrl('instructorpanel');
   }
   signOut() {
+    this.isVisible = true;
+        
     this.userlist = [];
     this.user = this.userlist[0];
  
-    firebase.auth().signOut();
+    firebase.auth().signOut()
     this.auth.signOut();
     this.authService.SignOut();
     this.router.navigateByUrl('sign-in-instructor');

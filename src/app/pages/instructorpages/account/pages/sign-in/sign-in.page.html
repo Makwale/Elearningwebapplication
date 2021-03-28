@@ -74,9 +74,12 @@
   </ion-toolbar>
 </ion-header>
  <ion-content class="sign-in-content" >
+  <mat-spinner style="position: absolute;" class="spinner" *ngIf="isVisible" ></mat-spinner>
+
   <h2>Welcom to Elearning Accademy</h2>
   <h4>Sign in and start Instructor</h4>
-<div id="login-container" >
+  
+  <div id="login-container" >
 
   <form [formGroup]="signInForm"  (ngSubmit)="signInWithEmail()">
     <ion-list class="inputs-list"  lines="full">

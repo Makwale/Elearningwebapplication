@@ -8,6 +8,7 @@ import firebase from 'firebase/app';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { ProfileModel } from '../pages/profile/profile.model';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class AuthenticationService {
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,
     public router: Router, 
+    private toastController: ToastController,
     private storage: AngularFireStorage,
     //private share: ShareService,
   )
@@ -37,7 +39,15 @@ export class AuthenticationService {
       console.log("Your account is succesfully logged!");
       this.router.navigateByUrl('profile-instructor');
       this.loggedIn = true;
-    })
+    }).catch(async error =>{
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
+    });
   }
   // Register user with email/password
   signUpWithEmail(email, password) {
@@ -54,15 +64,32 @@ export class AuthenticationService {
         email: userCredentials.user.email,
         boi: "Say something about yourself",
         address: "Add address",
-      }).then( res => {
-       console.log("Your account is succesfully created!");
-      }).catch( error => {
-        alert(error)
-      }).catch( error => {
-        alert(error)
+      }).catch( async error => {
+        let toast = await this.toastController.create({
+          message: error.message,
+          duration: 3000,
+          color: "danger",
+        })
+  
+        toast.present()
+
+      }).catch( async error => {
+        let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
       })
-    }).catch(error => {
-      alert(error);
+
+      toast.present()
+      })
+    }).catch( async error => {
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
     })
   }
   getUserInfo(userID){
@@ -92,8 +119,14 @@ export class AuthenticationService {
       phone: profile.phone,
       boi: profile.boi,
       address: profile.address,
-    }).then(() => {alert("Profile Updated!");}).catch(error => {
+    }).then(() => {alert("Profile Updated!");}).catch(async error => {
       alert(error.message)
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+      toast.present();
     });
   }
 

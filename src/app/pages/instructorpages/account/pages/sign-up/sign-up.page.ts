@@ -14,7 +14,7 @@ export class SignUpPage {
   signUpForm: FormGroup;
   submitError: string;
   authRedirectResult: Subscription;
-
+  isVisible: boolean = false;
   validation_messages = {
     'email': [
       { type: 'required', message: 'Email is required.' },
@@ -50,6 +50,7 @@ export class SignUpPage {
         this.redirectLoggedUserToProfilePage();
       } else if (result.error) {
         this.submitError = result.error;
+
       }
     });
   }
@@ -60,17 +61,25 @@ export class SignUpPage {
     // As we are calling the Angular router navigation inside a subscribe method, the navigation will be triggered outside Angular zone.
     // That's why we need to wrap the router navigation call inside an ngZone wrapper
     this.ngZone.run(() => {
-      this.router.navigate(['profile-instructor']);
+      this.router.navigate(['sign-in-instructor']);
     });
   }
 
   signUpWithEmail() {
+    this.isVisible = true;
     this.authService.signUpWithEmail(this.signUpForm.value['email'], this.signUpForm.value['password'])
     .then(user => {
+      this.isVisible = false;
       // navigate to user profile
-      this.redirectLoggedUserToProfilePage();
+      
+      this.authService.SignOut();
+      this.signUpForm.reset();  
+      this.isVisible = false;
     })
     .catch(error => {
+      this.isVisible = false;
+      this.signUpForm.reset(); 
+      this.router.navigate(['sign-in-instructor']);
       this.submitError = error.message;
     });
   }
