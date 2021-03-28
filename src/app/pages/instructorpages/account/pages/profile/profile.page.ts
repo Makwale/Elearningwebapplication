@@ -23,23 +23,6 @@ export class ProfilePage implements OnInit {
     'name': [
       { type: 'required', message: 'Name is required.' },
     ],
-    'surname': [
-      { type: 'required', message: 'Surname is required.' },
-    ],
-    'phone': [
-      { type: 'required', message: 'phone number is required.'},
-      { type: 'minlength', message: 'Phone number must be 10 numbers long.' },
-      { type: 'maxlength', message: 'Phone number must not exceed 10 numbers.' },
-      
-    ],
-    'address': [
-      { type: 'required', message: 'Address is required.' },
-      { type: 'pattern', message: 'Enter a valid address.' }
-    ],
-    'bio': [
-      { type: 'required', message: 'Biography is required.' },
-      { type: 'minlength', message: 'Biography must be at least 6 characters long.' }
-    ]
   };
 
 
@@ -61,29 +44,7 @@ export class ProfilePage implements OnInit {
       'name': new FormControl('', Validators.compose([
         Validators.required,
         ]))});
-
-    this.signUpForm = new FormGroup({
-      'name': new FormControl('', Validators.compose([
-        Validators.required,
-      ])),
-      'surname': new FormControl('', Validators.compose([
-        Validators.required,
-      ])),
-      'phone': new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern("^((\\+27-?)|0)?[0-9]{10}$"),
-        Validators.minLength(10),
-        Validators.maxLength(10)
-      ])),
-      'address': new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      'bio': new FormControl('', Validators.compose([
-        Validators.minLength(10),
-        Validators.required
-      ]))
-    });    
+  
     this.editItem = false;
     this.isEdit =false;
     this.update = false;
@@ -97,7 +58,6 @@ this.auth.authState.subscribe(user => {
   }
   })
   }
-  
   getUserInfo(){
     let userID = firebase.auth().currentUser.uid.toString();
     this.asf.collection<ProfileModel>("Instructor", ref => ref.where('id','==', userID)).valueChanges(

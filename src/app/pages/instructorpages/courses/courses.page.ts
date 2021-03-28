@@ -33,7 +33,7 @@ import { Lesson } from 'src/app/Model/lesson.mode';
 export class CoursesPage implements OnInit {
 lessons: Lesson[];
 
-displayedColumnsLesson: string[] = ['number', 'name', 'date', 'video','action'];
+displayedColumnsLesson: string[] = ['number', 'name', 'date', 'type','action'];
 lessonDataSource: MatTableDataSource<Lesson>;
 @ViewChild(MatPaginator) lessonPaginator: MatPaginator;
 @ViewChild(MatSort) lessonSort: MatSort;
@@ -42,7 +42,7 @@ lessonDataSource: MatTableDataSource<Lesson>;
 
 
 //For students
-displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
+displayedColumnsStudents: string[] = ['fullname','email',];
 
 students: Student[] = [];
 
@@ -57,7 +57,7 @@ tempVar2: Student[] = [];
 @ViewChild(MatSort) studentsSort: MatSort;
 
 //For courses
-displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled',  'action'];
+displayedColumnsCourses: string[] = [ 'name', 'lessons'];
 
 
 courses: Course[] = [];
@@ -131,6 +131,7 @@ delete(id){
 }
 }
 async addLesson(id){
+  
   for(let i = 0; i < this.courses.length; i++){
     if(this.courses[i].id == id){
       this.getLessons(this.courses[i].id);
