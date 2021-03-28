@@ -21,17 +21,12 @@ export class AdminpanelPage implements OnInit {
   ngOnInit() {
   }
   signOut(){
-    this.presentLoading();
-    if (window.confirm('Do you really want to Sign-Out?')) {    
-      this.auth.signOut();
-    }
+  
+      this.auth.signOut().then(()=> {
+        this.router.navigateByUrl("admin/login");
+      });
+  
   }
-async presentLoading() {
-  const loader = this.loadingCtrl.create({
-    message: "signing out....",
-    duration: 3000,
-  });
-  (await loader).present();
-}
+
 
 }

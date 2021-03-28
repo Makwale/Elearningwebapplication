@@ -8,11 +8,6 @@ import { InstructorPagePage } from './pages/instructor-page/instructor-page.page
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
-
-  {
-    path: 'account',
-    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
-  },
   {
     path: '',
     component: MainPage,
@@ -31,10 +26,10 @@ export const routes: Routes = [
         path: 'categories',
         loadChildren: () => import('./pages/categories/categories.module').then(m => m.CategoriesPageModule)
       },
-      // {
-      //   path: 'account',
-      //   loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
-      // },
+      {
+        path: 'account',
+        loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
+      },
       {
         path: 'popularinstructors',
         loadChildren: () => import('./pages/popularinstructors/popularinstructors.module').then(m => m.PopularinstructorsPageModule)

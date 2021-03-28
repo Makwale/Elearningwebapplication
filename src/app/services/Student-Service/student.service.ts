@@ -33,7 +33,7 @@ export class StudentService {
         this.dbs.getEnrolledCourses();
         this.dbs.getStudentsAnnouncements();
       })
-     this.router.navigateByUrl("account");
+     this.router.navigateByUrl("main/account");
      // console.log( 'Signin success');
     }).catch(async error =>{
       let toast = await this.toastController.create({
