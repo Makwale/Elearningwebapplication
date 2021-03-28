@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Instructor } from 'src/app/Model/instructor';
 import { InstructorClass } from 'src/app/Model/Instructor-Model/instructor';
-import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,6 +19,8 @@ import { StudentInfo } from 'src/app/Model/Student-Model/student_Info';
 import { StudentClass } from 'src/app/Model/Student-Model/student';
 import { InstructorInfo } from 'src/app/Model/Instructor-Model/instructor_Info';
 
+import { AngularMaterialModule  } from 'src/app/angular-material.module';
+import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',

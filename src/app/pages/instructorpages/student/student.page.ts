@@ -15,7 +15,7 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class StudentPage implements OnInit {
 
-  displayedColumns: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email', 'actions'];
+  displayedColumns: string[] = [ 'fullname', 'email', 'actions'];
 
   students: Student[] = [];
 

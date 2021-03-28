@@ -172,7 +172,7 @@ export class InstructorService {
         phone: phone,
         email: email,
       }).then( res => {
-       // this.router.navigateByUrl('account');
+       this.router.navigateByUrl('sign-in');
 
        // alert("Your account is succesfully created!");
       }).catch( error => {

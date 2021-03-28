@@ -10,6 +10,10 @@ import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
 
   {
+    path: 'account',
+    loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
+  },
+  {
     path: '',
     component: MainPage,
     children: [
@@ -27,10 +31,10 @@ export const routes: Routes = [
         path: 'categories',
         loadChildren: () => import('./pages/categories/categories.module').then(m => m.CategoriesPageModule)
       },
-      {
-        path: 'account',
-        loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
-      },
+      // {
+      //   path: 'account',
+      //   loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
+      // },
       {
         path: 'popularinstructors',
         loadChildren: () => import('./pages/popularinstructors/popularinstructors.module').then(m => m.PopularinstructorsPageModule)
@@ -170,35 +174,52 @@ export const routes: Routes = [
   {
     path: 'createannouncementi',
     loadChildren: () => import('./pages/instructorpages/createannouncement/createannouncement.module').then( m => m.CreateannouncementPageModule)
+  }, 
+  {
+    path: 'sign-in-instructor',
+    loadChildren: () => import('./pages/instructorpages/account/pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
   },
+  {
+    path: 'sign-up-instructor',
+    loadChildren: () => import('./pages/instructorpages/account/pages/sign-up/sign-up.module').then( m => m.SignUpPageModule)
+  },
+  {
+    path: 'profile-instructor',
+    loadChildren: () => import('./pages/instructorpages/account/pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },  
+{
+  path: 'Register-Instructor',
+  loadChildren: () => import('./../app/pages/instructorpages/account/signup/signup.component').then( m => m.SignupComponent)
+},
+{
+  path: 'Register-Instructor',
+  loadChildren: () => import('./../app/pages/instructorpages/account/login/login.component').then( m => m.LoginComponent)
+},
 
   {
     path: 'instructorpanel',
     component: InstructorpanelPage,
-    children: [ {
+    children: [ 
+      {
       path: 'student',
       loadChildren: () => import('./pages/instructorpages/student/student.module').then( m => m.StudentPageModule)
     },
     {
-      path: 'account',
-      loadChildren: () => import('./pages/instructorpages/account/account.module').then( m => m.AccountPageModule)
-    },  
+        path: '',
+        redirectTo: 'courses',
+        pathMatch: 'full'
+    }, 
     {
     path: 'dashboard',
     loadChildren: () => import('./pages/instructor-page/instructor-page.module').then( m => m.InstructorPagePageModule)
     },
-    {
-      path: 'profile',
-      loadChildren: () => import('./pages/instructor-page/profile/profile.component').then( m => m.ProfileComponent)
-    },
+    // {
+    //   path: 'profile',
+    //   loadChildren: () => import('./pages/instructor-page/profile/profile.component').then( m => m.ProfileComponent)
+    // },
     {
       path: 'courses',
       loadChildren: () => import('./pages/instructorpages/courses/courses.module').then( m => m.CoursesPageModule)
-    },
-    {
-      path: '',
-      redirectTo: 'account',
-      pathMatch: 'full'
     },
     {
       path: 'addlesson',
@@ -234,7 +255,6 @@ export const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./pages/search/search.module').then( m => m.SearchPageModule)
   },
-  
 ];
 
 @NgModule({

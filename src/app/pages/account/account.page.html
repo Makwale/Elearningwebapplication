@@ -1,5 +1,16 @@
 
+<ion-header class="ion-no-border">
 
+  <ion-toolbar color="ourtheme">
+    <ion-avatar slot="start" style="margin-left:21px; width: 45px; height: 45px; min-width: 45px; min-height: 45px;">
+      <img src="../../../../../assets//img/appicon.jpg">
+    </ion-avatar >
+
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/']">Home</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 
 <mat-tab-group *ngIf ="!loggedIn"  mat-align-tabs="center" mat-stretch-tabs selectedIndex="0">

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder,FormControl, FormGroup, Validators } from "@angular/forms";
 import { LoadingController, ToastController } from '@ionic/angular';
+import { Account } from 'src/app/Model/account.model';
 import { StudentService } from 'src/app/services/Student-Service/student.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
