@@ -82,6 +82,8 @@ export class InstructroprofileadminPage implements OnInit {
         let course = new Course(coursedata.payload.doc.id, tempvar["name"], tempvar["ratings"],
         tempvar["imgURL"], tempvar["category"], tempvar["instructor_id"], tempvar['numberStudentsErrolled']);
         
+        course.numberStudentsErrolled = tempvar['numberStudentsErrolled'];
+        
         if(!this.search(course)){
           this.courses.push(course);
           this.getAllStudents(course.id);
@@ -158,7 +160,7 @@ getAllStudents(courseid){
   }
   navigateToCourseStudents(course_id, name){
 
-    this.router.navigate(['./adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
+    this.router.navigate(['./admin/adminpanel/coursestudents'], {queryParams: {"course_id": course_id, "name": name}});
     
   }
   cancel(id){

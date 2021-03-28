@@ -3,7 +3,7 @@
     <ion-title>Add Course</ion-title>
 
     <ion-buttons slot="end">
-      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="close()">
         <ion-icon size="large" name="close-outline"></ion-icon>
         </button>
     </ion-buttons>
@@ -36,6 +36,6 @@
     <ion-input type="file" accept="jpeg" (change)="uploadFile($event)"></ion-input>
   </ion-item>
 
-  <ion-button color="primary" expand="block" shape="round" (click)="addCourse(coursename.value, category.value, price.value)">Add Course</ion-button>
+  <ion-button color="dark" expand="block"  (click)="addCourse(coursename.value, category.value, price.value)">Add Course</ion-button>
 
 </ion-content>

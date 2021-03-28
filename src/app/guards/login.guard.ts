@@ -18,13 +18,7 @@ export class LoginGuard implements CanActivate {
     
       return true;
     }else{
-      let toast = await this.toastController.create({
-        message: "User unauthorised",
-        duration: 3000,
-        color: "danger",
-      })
-
-      toast.present()
+     
       this.router.navigateByUrl("admin/login");
     }
     

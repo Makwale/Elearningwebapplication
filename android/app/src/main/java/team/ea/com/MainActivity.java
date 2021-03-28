@@ -1,4 +1,4 @@
-package team.el.com;
+package team.ea.com;
 
 import android.os.Bundle;
 

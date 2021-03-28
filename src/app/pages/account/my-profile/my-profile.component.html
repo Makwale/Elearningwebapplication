@@ -8,7 +8,7 @@
   </ion-toolbar>
 </ion-header>
 
-<div style="background-color: white;">
+<div style="background-color: white; margin-bottom: 70px;">
 
   <ion-grid style="margin-bottom: 10px;">
     <ion-row>
@@ -28,13 +28,12 @@
             
           </ion-col> 
 
-          <ion-col size-sm="12" size-lg="8" *ngIf="!isEdit; else elseBlock">
+          <ion-col size-sm="12" size-lg="8" >
             <h2> <ion-icon size="small" name="person"> </ion-icon> {{studentAccount.getName() | uppercase}} {{studentAccount.getSurname() | uppercase}}  </h2>
             <h2> <ion-icon size="small" name="call"> </ion-icon> {{studentAccount.getPhone()}}</h2>
-            <h3><ion-icon size="small" name="mail"> </ion-icon> {{studentAccount.getEmail()}}</h3>
-            <ion-label><strong>Gender:</strong>
-              {{studentAccount.getGender() | uppercase}}
-            </ion-label>
+            <h2><ion-icon size="small" name="mail"> </ion-icon> {{studentAccount.getEmail()}}</h2>
+            <h2>Gender: {{studentAccount.getGender() | uppercase}}
+            </h2>
             <!-- <div>
               <ion-icon size="large" name="logo-facebook"></ion-icon><ion-icon size="large" name="logo-google"></ion-icon><ion-icon size="large" name="logo-linkedin"></ion-icon>
             </div> -->
@@ -72,13 +71,13 @@
       </ion-col>
     </ion-row>
       <ion-row #elseBlock *ngIf="isEdit" justify-content-center class="ion-align-self-center"> 
-        <ion-col size="4" offset="4">
+        <ion-col size-lg="10" offset-lg="1">
           <ion-label>Edit Information</ion-label>
                 <ion-list lines="full">
                  <form [formGroup]="updateUserForm" (ngSubmit)="updateForm()">
-         <ion-item>
-           <ion-label position="floating">First Name</ion-label>
-           <ion-input formControlName="firstname" placeholder="{{studentAccount.getName()}}" type="text" required></ion-input>
+         <ion-item class="login-input ion-margin">
+           <ion-label position="stacked">First Name</ion-label>
+           <ion-input formControlName="firstname" [placeholder]="studentAccount.getName()" type="text" required ></ion-input>
          </ion-item>
          <div class="error-container">
            <ng-container *ngFor="let validation of validation_messages.firstname">
@@ -88,8 +87,8 @@
              </div>
            </ng-container>
          </div>
-         <ion-item>
-           <ion-label position="floating">Last Name</ion-label>
+         <ion-item class="login-input ion-margin">
+           <ion-label position="stacked">Last Name</ion-label>
            <ion-input formControlName="lastname" placeholder="{{studentAccount.getSurname()}}"  type="text" required>
            </ion-input>
          </ion-item>
@@ -102,8 +101,8 @@
            </ng-container>
          </div>
    
-         <ion-item>
-           <ion-label position="floating">Mobile</ion-label>
+         <ion-item class="login-input ion-margin">
+           <ion-label position="stacked">Mobile</ion-label>
            <ion-input (keypress)="keyPress($event)" formControlName="phone" placeholder="{{studentAccount.getPhone()}}"  type="text"required>
            </ion-input>
 
@@ -118,12 +117,12 @@
  </div>
          <ion-row>
               <ion-col>
-             <ion-button fill="solid"  color="medium" shape="full" (click)="isEdit = false" expand="block">
+             <ion-button fill="solid" class="ion-margin"  color="light" shape="round" (click)="isEdit = false" expand="block">
                Cancel
              </ion-button>
            </ion-col>
            <ion-col>
-             <ion-button [disabled]="!updateUserForm.valid" type="submit" color="success" shape="full" expand="block">Update Info</ion-button>
+             <ion-button [disabled]="!updateUserForm.valid" type="submit" color="success" class="ion-margin" shape="round" expand="block">Update</ion-button>
              <div class="error-container" *ngIf="submitError">
                <div class="error-message">
                  <ion-icon name="information-circle-outline"></ion-icon>

@@ -15,7 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
     FormsModule,
     IonicModule,
     AddcoursePageRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+  
   ],
   declarations: [AddcoursePage]
 })

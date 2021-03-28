@@ -13,11 +13,11 @@
         <mat-panel-title  style=" width: 150px;" >
           {{studentA.subject}}
         </mat-panel-title>
-        <mat-panel-description style="">
-          {{studentA.date | date}}
+        <mat-panel-description >
+          {{studentA.date | date:'medium'}}
           
         </mat-panel-description>
-        <ion-badge slot="end" color="success" style="margin-right: 10px;" *ngIf="!studentA.viewed">New</ion-badge>
+        <ion-badge slot="end" color="success" style="margin-right: 10px;" *ngIf="!studentA.viewed ">New</ion-badge>
     </mat-expansion-panel-header>
 
     <ion-textarea #ann readonly [value]="studentA.message" style="color: rgb(0, 0, 0, .5);"></ion-textarea>

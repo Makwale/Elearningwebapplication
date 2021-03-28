@@ -34,14 +34,22 @@
 
 .welcome{
   color: white; 
-  margin-top: 20%; 
+  margin-top: 25%; 
   font-weight: 500; 
-  letter-spacing: 1px;
   font-size: 250%;
+  letter-spacing: 1px;
   line-height: normal;
   padding: 10px;
+  animation-name: headerslideanimation;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
   
   
+}
+
+@keyframes headerslideanimation{
+  from{ font-size: 100%;}
+  to{ font-size: 250%;}
 }
 
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Course } from 'src/app/Model/course';
 import { DatabaseService } from 'src/app/services/database.service';
 
@@ -14,7 +15,7 @@ export class EditcoursePage implements OnInit {
   @Input() course: Course;
   @Input() name: string;
 
-  constructor( private router: Router, private dbs: DatabaseService) { }
+  constructor( private router: Router, private dbs: DatabaseService, public modalController: ModalController) { }
 
   ngOnInit() {
     
@@ -28,6 +29,10 @@ export class EditcoursePage implements OnInit {
 
   updateCourse(cname, catogory, price){
     this.dbs.updateCourse(this.course.id, cname, catogory, price);
+  }
+
+  close(){
+    this.modalController.dismiss();
   }
 
 

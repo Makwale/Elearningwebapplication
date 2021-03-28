@@ -25,6 +25,7 @@ export class PopovermainPage implements OnInit {
      private router: Router, public popoverController: PopoverController, public sp: SpinnerService) { }
 
   ngOnInit() {
+    
   }
 
   signOut(){
@@ -35,7 +36,9 @@ export class PopovermainPage implements OnInit {
         this.accountService.getAccount().setSignIn(this.loginStatus);
         this.accountService.setAccount(null);
         this.sp.isVisible = false;
+        this.router.navigateByUrl("home")
         this.popoverController.dismiss();
+        
         
       })
   }

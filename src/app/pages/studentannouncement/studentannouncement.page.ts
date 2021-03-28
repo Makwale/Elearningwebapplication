@@ -11,13 +11,14 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class StudentannouncementPage implements OnInit {
 
   studentAnnouncement: Announcement[] = [];
+  canHide: boolean = false;
 
   constructor(private dbs: DatabaseService, private accountService: AccountService) { }
 
   ngOnInit() {
 
     this.studentAnnouncement = this.dbs.studentAnnouncement;
-     console.log(this.studentAnnouncement);
+    
     
   }
 

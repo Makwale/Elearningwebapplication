@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AddinstructorPageRoutingModule } from './addinstructor-routing.module';
 
 import { AddinstructorPage } from './addinstructor.page';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AddinstructorPageRoutingModule
+    AddinstructorPageRoutingModule,
+    MatButtonModule
   ],
   declarations: [AddinstructorPage]
 })

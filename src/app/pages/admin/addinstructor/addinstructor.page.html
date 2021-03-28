@@ -1,6 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Add Instructor</ion-title>
+
+    <ion-buttons slot="end">
+      <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="close()">
+        <ion-icon size="large" name="close-outline"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -44,6 +50,6 @@
     <ion-input type="password"></ion-input>
   </ion-item>
 
-  <ion-button shape="round" fill="solid" expand="block" (click)="addInstructor(fname.value, lname.value, gender.value, phone.value, email.value, password.value)">Add Instructor</ion-button>
+  <ion-button fill="solid" expand="block" color="dark" (click)="addInstructor(fname.value, lname.value, gender.value, phone.value, email.value, password.value)">Add Instructor</ion-button>
 
 </ion-content>
