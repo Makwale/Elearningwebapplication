@@ -41,6 +41,12 @@ export class AddlessonPage implements OnInit {
   downloadURL_V: Observable<string>;
   lessonName: Observable<string>;
 
+
+  lessonType: string;
+  lessonTypes: string[] = ['PDF', 'docx', 'Video', 'image'];
+
+
+
   constructor(private storage: AngularFireStorage,
     public db: DatabaseService,
     private afs: AngularFirestore,

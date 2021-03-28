@@ -33,7 +33,7 @@ import { Lesson } from 'src/app/Model/lesson.mode';
 export class CoursesPage implements OnInit {
 lessons: Lesson[];
 
-displayedColumnsLesson: string[] = ['number', 'name', 'date', 'video','action'];
+displayedColumnsLesson: string[] = ['number', 'name', 'date', 'type','action'];
 lessonDataSource: MatTableDataSource<Lesson>;
 @ViewChild(MatPaginator) lessonPaginator: MatPaginator;
 @ViewChild(MatSort) lessonSort: MatSort;
@@ -42,7 +42,7 @@ lessonDataSource: MatTableDataSource<Lesson>;
 
 
 //For students
-displayedColumnsStudents: string[] = ['studentId', 'firstname', 'lastname', 'gender', 'phone', 'email',];
+displayedColumnsStudents: string[] = ['fullname','email',];
 
 students: Student[] = [];
 
@@ -57,7 +57,7 @@ tempVar2: Student[] = [];
 @ViewChild(MatSort) studentsSort: MatSort;
 
 //For courses
-displayedColumnsCourses: string[] = ['id', 'name', 'category', 'numberStudentsErrolled',  'action'];
+displayedColumnsCourses: string[] = [ 'name', 'lessons'];
 
 
 courses: Course[] = [];
@@ -79,7 +79,8 @@ student: Instructor;
 studentAccount: StudentClass;
 user = {} as StudentInfo;
 
-
+courseName:string;
+lessonID: string;
 lessonList: Lesson[];
 
 constructor( private auth: AngularFireAuth,
@@ -88,6 +89,9 @@ constructor( private auth: AngularFireAuth,
   private accountService: AccountService,
   private router:Router,
   private dbs: DatabaseService,private instructorDao:InstructorService ) {
+    this.courseName = "Coursename";
+    this.lessonID = "null";
+
     this.studentAccount = new StudentClass();
     this.userAccount =  this.accountService.getAccount();   
     this.getCourses(this.studentAccount.getStudentNumber());
@@ -130,7 +134,8 @@ delete(id){
   this.instructorDao.deleteLesson(id);
 }
 }
-async addLesson(id){
+async addLesson(){
+ let id = this.lessonID;
   for(let i = 0; i < this.courses.length; i++){
     if(this.courses[i].id == id){
       this.getLessons(this.courses[i].id);
@@ -150,9 +155,11 @@ async addLesson(id){
 
 getLessons(id){
   for(let i = 0; i < this.courses.length; i++){
-    this.lessonList = [];
+    this.lessonList  = [];
     if(this.courses[i].id == id){
       this.getCourseLessons(this.courses[i].id);
+      this.courseName = this.courses[i].name;
+      this.lessonID = this.courses[i].id;
       //this.afs.collection("Lesson", ref => ref.where("course_id", "==",this.courses[i].id )).snapshotChanges();
  
       this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == this.courses[i].id);

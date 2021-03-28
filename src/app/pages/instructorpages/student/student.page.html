@@ -57,14 +57,15 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> Actions </th>
       <td mat-cell *matCellDef="let element"> 
-
-        <button mat-icon-button (click)="studentCourses(element.studentId, element.firstname, element.lastname)" aria-label="Example icon button with a vertical three dot icon">
-          <ion-icon size="large" color="success" name="create-outline"></ion-icon>
+<ion-item><button mat-icon-button (click)="studentCourses(element.studentId, element.firstname, element.lastname)" aria-label="Example icon button with a vertical three dot icon">
+          <ion-icon size="small" color="success" name="create-outline"></ion-icon>
         </button>
 
         <button mat-icon-button (click)="deleteStudent(element.studentId)" aria-label="Example icon button with a vertical three dot icon">
-          <ion-icon color="danger" size="large" name="trash-outline"></ion-icon>
+          <ion-icon color="danger" size="small" name="trash-outline"></ion-icon>
         </button>
+      </ion-item>
+        
       </td>
     </ng-container>
   

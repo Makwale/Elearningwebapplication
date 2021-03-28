@@ -16,6 +16,21 @@
         <ion-label position="fixed">Lesson name </ion-label>
         <ion-input [(ngModel)]="lessonName" #name type="text"></ion-input>
     </ion-item>
+
+    
+
+        
+<label id="example-radio-group-label">Pick lesson type</label>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group"
+  [(ngModel)]="lessonType">
+  <mat-radio-button class="example-radio-button" *ngFor="let lesson of lessonTypes" [value]="lesson">
+    {{lesson}}
+  </mat-radio-button>
+</mat-radio-group>
+<ion-label position="fixed">Select {{lessonType}}</ion-label>
+
     <!-- <ion-list>
         <ion-item>
             <ion-label position="fixed">Document </ion-label>
@@ -30,7 +45,6 @@
     </ion-list> -->
 
         <ion-item>
-            <ion-label position="fixed">Select Video</ion-label>
             <!-- <input type='file' (change)="uploadVideo($event)"> -->
             <ion-button  fill="outline"  shape="round" color="ourtheme" >
 

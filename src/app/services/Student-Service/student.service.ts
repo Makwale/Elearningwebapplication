@@ -33,7 +33,7 @@ export class StudentService {
         this.dbs.getEnrolledCourses();
         this.dbs.getStudentsAnnouncements();
       })
-     // this.router.navigateByUrl("home");
+     this.router.navigateByUrl("account");
      // console.log( 'Signin success');
     }).catch(async error =>{
       let toast = await this.toastController.create({
@@ -57,7 +57,7 @@ export class StudentService {
         phone: phone,
         email: email,
       }).then( res => {
-       // this.router.navigateByUrl('account');
+       this.router.navigateByUrl('account');
 
        // alert("Your account is succesfully created!");
       }).catch( async error => {

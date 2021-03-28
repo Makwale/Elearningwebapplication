@@ -13,90 +13,58 @@
       <ion-col size="12">
 
         <div>
-            <ion-row>
+            <ion-row *ngIf="!viewLesson">
 
               <ion-col size="6">
                 <ion-card button style="text-align: center;" color="primary" >
                   <ion-card-header>
-                    
-                    <ion-card-title class="card-title">Enrolled Students</ion-card-title>
+                    <h3>Enrolled Students</h3>
                   </ion-card-header>
                   <ion-card-content>
-                    <h1>{{students.length}}</h1>
+                    
+                <h3>{{students.length}}</h3>
                   </ion-card-content>
+
                 </ion-card>
               </ion-col>
 
               <ion-col size="6">
                 <ion-card button style="text-align: center;" color="secondary" class="card-title" >
-                  <ion-card-header>
-                    <ion-card-title>Courses</ion-card-title>
-                  </ion-card-header>
-                  <ion-card-content>
-                    <h1>{{courses.length}}</h1>
-                  </ion-card-content>
+                  
+                    <ion-card-header>
+                      <h3>Courses</h3>
+                    </ion-card-header>
+                    <ion-card-content>
+                      
+                  <h3>{{courses.length}}</h3>
+                    </ion-card-content>
 
                 </ion-card>
               </ion-col>
 
-      </ion-row>
+            </ion-row>
 
             <mat-tab-group *ngIf="!viewLesson" mat-align-tabs="start">
               <mat-tab label="Courses">
                 
-                <ion-row>
-                  <ion-col size="4">
-                    
-                    <!-- <ion-input  style="background-color: white; border: 1px solid blue; border-radius: 20px;" #courseid placeholder="Assign a course by entering course id">
-                      <ion-button (click)="assignCourse(courseid.value)" shape="round" size="small" fill="solid" slot="start"><ion-icon name="add"></ion-icon></ion-button>
-                    </ion-input> -->
-                    <!-- <ion-button shape="round" size="small" fill="solid"><ion-icon name="add"></ion-icon></ion-button> -->
-                  </ion-col>
-                  
-                
-                </ion-row>
                 <table style="margin-left: 5px; margin-right: 5px; width: 98%;" mat-table [dataSource]="coursesDataSource" class="mat-elevation-z8" matSort>
               
                   
                   <!-- Name Column -->
-                  <ng-container matColumnDef="id">
-                    <th mat-header-cell *matHeaderCellDef > Id </th>
-                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-                  </ng-container>
-                
-                  <!-- Name Column -->
                   <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Course Name </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name </th>
                     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                   </ng-container>
                 
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="category">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
-                    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="numberStudentsErrolled" >
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> No Students Enrolled </th>
-                    <td mat-cell *matCellDef="let element"> {{element.numberStudentsErrolled}} </td>
+                
+                  <ng-container matColumnDef="lessons" >
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Lessons </th>
+                    <td mat-cell *matCellDef="let element">
+                      <a color="secondary" fill="clear" (click)="getLessons(element.id)">View Lessons</a>
+                  </td>
                   </ng-container>
 
-                  <ng-container matColumnDef="action" >
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
-                    <td mat-cell *matCellDef="let element">
-                      <ion-button color="secondary" fill="clear" (click)="getLessons(element.id)">View Lessons</ion-button>
-                      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                      </button>
-                      <mat-menu #menu="matMenu">
-                        <button mat-menu-item>
-      
-                          <span (click)="addLesson(element.id)"> Add Lesson</span>
-                        </button>
-          
-                      </mat-menu>
-                     </td>
-                  </ng-container>
+                  
               
                   
               
@@ -113,34 +81,18 @@
               
                   
                   <!-- Name Column -->
-                  <ng-container matColumnDef="studentId">
+                  <!-- <ng-container matColumnDef="studentId">
                     <th mat-header-cell *matHeaderCellDef > Student Id</th>
                     <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
-                  </ng-container>
+                  </ng-container> -->
                 
                   <!-- Name Column -->
-                  <ng-container matColumnDef="firstname">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+                  <ng-container matColumnDef="fullname">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Fullname </th>
+                    <td mat-cell *matCellDef="let element"> {{element.firstname}} {{element.lastname}} </td>
                   </ng-container>
                 
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="lastname">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="gender" >
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone </th>
-                    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
-                  </ng-container>
-              
-                  <ng-container matColumnDef="phone">
-                    <th mat-header-cell *matHeaderCellDef> Gender </th>
-                    <td mat-cell *matCellDef="let element"> 
-                      {{element.phone}}
-                    </td>
-                  </ng-container>
+                
               
                   <ng-container matColumnDef="email">
                     <th mat-header-cell *matHeaderCellDef> Email </th>
@@ -161,38 +113,48 @@
             </mat-tab-group>
 
             <ion-list *ngIf ="viewLesson">
-
-              <ion-buttons>
-                    <ion-button slot="start" (click)="goBack()" fill ="clear">
+              <ion-item> 
+              <ion-buttons >
+                    <ion-button size="medium"  (click)="goBack()" fill ="clear">
                       <ion-icon name ="arrow-back"></ion-icon>
                     </ion-button>
                  </ion-buttons>
+                 <ion-title>{{courseName}} lessons</ion-title>
+                 <ion-buttons slot="end">
+                  <ion-button size="medium"  (click)="addLesson()" fill ="clear">
+                    <ion-icon name ="arrow-up"></ion-icon>New lesson
+                  </ion-button>               
+               </ion-buttons>
+              </ion-item>
               <table style="margin-left: 5px; margin-right: 5px; width: 98%;" mat-table [dataSource]="lessonDataSource" class="mat-elevation-z8" matSort>
               
-                  
                 <!-- Name Column -->
                 <ng-container matColumnDef="number">
-                  <th mat-header-cell *matHeaderCellDef > #Number </th>
+                  <th mat-header-cell *matHeaderCellDef > # </th>
                   <td mat-cell *matCellDef="let element"> {{element.number }}  </td>
                 </ng-container>
               
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header>Lesson Name </th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  <td mat-cell *matCellDef="let element"> 
+                  
+                    {{element.name}} 
+                  
+                  </td>
                 </ng-container>
               
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="date">
                   <th mat-header-cell *matHeaderCellDef mat-sort-header> Date</th>
-                  <td mat-cell *matCellDef="let element" displayFormat="DDDD  D MMM YYYY H:mm" >{{element.date}}
+                  <td mat-cell *matCellDef="let element" displayFormat="h:mm A MMM D YYYY"  >{{element.date}}
                   </td>
                 </ng-container>
                 
 
-                <ng-container matColumnDef="video" >
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Video </th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}} Video</td>
+                <ng-container matColumnDef="type" >
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Type PDF/VID </th>
+                  <td mat-cell *matCellDef="let element"> PDF</td>
                 </ng-container>
           
                 <ng-container matColumnDef="action" >
