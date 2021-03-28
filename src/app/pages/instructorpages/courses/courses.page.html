@@ -13,7 +13,7 @@
       <ion-col size="12">
 
         <div>
-            <ion-row>
+            <ion-row *ngIf="!viewLesson">
 
               <ion-col size="6">
                 <ion-card button style="text-align: center;" color="primary" >
@@ -113,15 +113,21 @@
             </mat-tab-group>
 
             <ion-list *ngIf ="viewLesson">
-
-              <ion-buttons>
-                    <ion-button slot="start" (click)="goBack()" fill ="clear">
+              <ion-item> 
+              <ion-buttons >
+                    <ion-button size="medium"  (click)="goBack()" fill ="clear">
                       <ion-icon name ="arrow-back"></ion-icon>
                     </ion-button>
                  </ion-buttons>
+                 <ion-title>{{courseName}} lessons</ion-title>
+                 <ion-buttons slot="end">
+                  <ion-button size="medium"  (click)="goBack()" fill ="clear">
+                    <ion-icon name ="arrow-up"></ion-icon>New lesson
+                  </ion-button>               
+               </ion-buttons>
+              </ion-item>
               <table style="margin-left: 5px; margin-right: 5px; width: 98%;" mat-table [dataSource]="lessonDataSource" class="mat-elevation-z8" matSort>
               
-                  
                 <!-- Name Column -->
                 <ng-container matColumnDef="number">
                   <th mat-header-cell *matHeaderCellDef > # </th>

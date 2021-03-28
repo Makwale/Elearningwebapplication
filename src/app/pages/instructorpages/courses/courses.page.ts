@@ -79,7 +79,7 @@ student: Instructor;
 studentAccount: StudentClass;
 user = {} as StudentInfo;
 
-
+courseName:string;
 lessonList: Lesson[];
 
 constructor( private auth: AngularFireAuth,
@@ -88,6 +88,7 @@ constructor( private auth: AngularFireAuth,
   private accountService: AccountService,
   private router:Router,
   private dbs: DatabaseService,private instructorDao:InstructorService ) {
+    this.courseName = "Coursename"
     this.studentAccount = new StudentClass();
     this.userAccount =  this.accountService.getAccount();   
     this.getCourses(this.studentAccount.getStudentNumber());
@@ -131,7 +132,6 @@ delete(id){
 }
 }
 async addLesson(id){
-  
   for(let i = 0; i < this.courses.length; i++){
     if(this.courses[i].id == id){
       this.getLessons(this.courses[i].id);
@@ -154,6 +154,7 @@ getLessons(id){
     this.lessonList = [];
     if(this.courses[i].id == id){
       this.getCourseLessons(this.courses[i].id);
+      this.courseName = this.courses[i].name;
       //this.afs.collection("Lesson", ref => ref.where("course_id", "==",this.courses[i].id )).snapshotChanges();
  
       this.lessonList = this.dbs.lessonsList.filter( lesson => lesson.course_id == this.courses[i].id);
