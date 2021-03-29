@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { SignUpPage } from './sign-up.page';
 import { Routes, RouterModule } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   {
@@ -18,6 +19,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
+    
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     IonicModule,
     RouterModule.forChild(routes),

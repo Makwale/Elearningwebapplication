@@ -22,6 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { AngularMaterialModule } from 'src/app/angular-material.module';
     MatIconModule,
     MatMenuModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     AngularMaterialModule,
 
   ],

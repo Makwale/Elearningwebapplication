@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilePage } from './profile.page';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularMaterialModule } from 'src/app/angular-material.module';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    MatProgressSpinnerModule,
     RouterModule.forChild(routes),
   ],
   declarations: [ProfilePage,AngularMaterialModule],

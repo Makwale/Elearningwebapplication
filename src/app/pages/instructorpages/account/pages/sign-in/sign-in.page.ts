@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../services/authentication.service';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sign-in',
@@ -16,6 +17,8 @@ export class SignInPage implements OnInit {
   signInForm: FormGroup;
   submitError: string;
   authRedirectResult: Subscription;
+
+  isVisible: boolean = false;
 
   validation_messages = {
     'email': [
@@ -29,6 +32,8 @@ export class SignInPage implements OnInit {
   };
 
   constructor(
+    public loadingCtrl: LoadingController, private toastController: ToastController,
+
     public angularFire: AngularFireAuth,
     
     public router: Router,
@@ -50,9 +55,10 @@ export class SignInPage implements OnInit {
     this.angularFire.authState.subscribe(user => {
       if (user) {
         console.log("Logged in");
-       // this.router.navigate(['profile']);
-      } else {
+        
+             } else {
         console.log("Logged out");
+        
       }
     })
   }
@@ -78,13 +84,25 @@ export class SignInPage implements OnInit {
   }
 
   signInWithEmail() {
+    this.isVisible = true;
     this.authService.signInWithEmail(this.signInForm.value['email'], this.signInForm.value['password'])
     .then(user => {
-      // navigate to user profile 
-      this.router.navigateByUrl('profile-instructor');
+      // navigate to user profile
+      this.isVisible = false; 
+      this.signInForm.reset();
     })
-    .catch(error => {
-      this.submitError = error.message;
+    .catch(async error => {
+      let toast = await this.toastController.create({
+        message: error.message,
+        duration: 3000,
+        color: "danger",
+      })
+
+      toast.present()
+
     });
+    
+    this.signInForm.reset();
   }
+
 }
