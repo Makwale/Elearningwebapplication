@@ -8,14 +8,6 @@ import { InstructorPagePage } from './pages/instructor-page/instructor-page.page
 import { InstructorpanelPage } from './pages/instructorpages/instructorpanel/instructorpanel.page';
 import { MainPage } from './pages/main/main.page';
 export const routes: Routes = [
-<<<<<<< HEAD
-=======
-
-  // {
-  //   path: 'account',
-  //   loadChildren: () => import('./pages/account/account.module').then(m => m.AccountPageModule)
-  // },
->>>>>>> 04bfa62e446101d8e04827ac72d15b42be75b5bc
   {
     path: '',
     component: MainPage,
